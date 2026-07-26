@@ -1,0 +1,130 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Centre {
+  id        String    @id @default(cuid())
+  name      String
+  languages String    @default("de")
+  createdAt DateTime  @default(now())
+  cohorts   Cohorte[]
+  users     User[]
+}
+
+model Cohorte {
+  id            String      @id @default(cuid())
+  name          String
+  centreId      String
+  centre        Centre      @relation(fields: [centreId], references: [id], onDelete: Cascade)
+  nextSessionAt DateTime?
+  createdAt     DateTime    @default(now())
+  users         User[]
+  challenges    Challenge[]
+}
+
+model User {
+  id            String         @id @default(cuid())
+  email         String         @unique
+  passwordHash  String
+  name          String
+  role          String         @default("STUDENT")
+  centreId      String?
+  centre        Centre?        @relation(fields: [centreId], references: [id])
+  cohorteId     String?
+  cohorte       Cohorte?       @relation(fields: [cohorteId], references: [id])
+  language      String         @default("de")
+  cefrLevel     String?
+  placedAt      DateTime?
+  streakDays    Int            @default(0)
+  lastReviewDay String?
+  totalPoints   Int            @default(0)
+  createdAt     DateTime       @default(now())
+  cardProgress  CardProgress[]
+  reviewLogs    ReviewLog[]
+  prepScores    PrepScore[]
+}
+
+model Theme {
+  id        String @id @default(cuid())
+  slug      String @unique
+  nameFr    String
+  nameDe    String
+  sortOrder Int
+  cards     Card[]
+}
+
+model Card {
+  id         String         @id @default(cuid())
+  themeId    String
+  theme      Theme          @relation(fields: [themeId], references: [id], onDelete: Cascade)
+  language   String         @default("de")
+  level      String
+  prompt     String
+  answer     String
+  context    String
+  hint       String?
+  createdAt  DateTime       @default(now())
+  progress   CardProgress[]
+  reviewLogs ReviewLog[]
+}
+
+model CardProgress {
+  id             String    @id @default(cuid())
+  userId         String
+  user           User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  cardId         String
+  card           Card      @relation(fields: [cardId], references: [id], onDelete: Cascade)
+  easeFactor     Float     @default(2.5)
+  intervalDays   Int       @default(0)
+  repetitions    Int       @default(0)
+  nextReviewAt   DateTime  @default(now())
+  lastReviewedAt DateTime?
+  createdAt      DateTime  @default(now())
+
+  @@unique([userId, cardId])
+  @@index([userId, nextReviewAt])
+}
+
+model ReviewLog {
+  id           String   @id @default(cuid())
+  userId       String
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  cardId       String
+  card         Card     @relation(fields: [cardId], references: [id], onDelete: Cascade)
+  quality      String
+  correct      Boolean
+  responseMs   Int?
+  pointsEarned Int      @default(0)
+  createdAt    DateTime @default(now())
+
+  @@index([userId, createdAt])
+}
+
+model Challenge {
+  id        String   @id @default(cuid())
+  cohorteId String
+  cohorte   Cohorte  @relation(fields: [cohorteId], references: [id], onDelete: Cascade)
+  title     String
+  goalCards Int
+  progress  Int      @default(0)
+  startsAt  DateTime
+  endsAt    DateTime
+  createdAt DateTime @default(now())
+
+  @@index([cohorteId, startsAt, endsAt])
+}
+
+model PrepScore {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  value     Int
+  createdAt DateTime @default(now())
+
+  @@index([userId, createdAt])
+}

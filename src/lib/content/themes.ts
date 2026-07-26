@@ -1,0 +1,14 @@
+export const THEMES = [
+  { slug: "identite", nameFr: "Identite & vie personnelle", nameDe: "Identitat", sortOrder: 1 },
+  { slug: "quotidien", nameFr: "Quotidien & maison", nameDe: "Zuhause", sortOrder: 2 },
+  { slug: "achats", nameFr: "Achats & alimentation", nameDe: "Einkaufen", sortOrder: 3 },
+  { slug: "sante", nameFr: "Sante & corps", nameDe: "Gesundheit", sortOrder: 4 },
+  { slug: "travail", nameFr: "Travail & carriere", nameDe: "Beruf", sortOrder: 5 },
+  { slug: "education", nameFr: "Education & apprentissage", nameDe: "Bildung", sortOrder: 6 },
+  { slug: "voyage", nameFr: "Voyage & mobilite", nameDe: "Reisen", sortOrder: 7 },
+  { slug: "loisirs", nameFr: "Loisirs & culture", nameDe: "Freizeit", sortOrder: 8 },
+  { slug: "societe", nameFr: "Societe & actualite", nameDe: "Gesellschaft", sortOrder: 9 },
+  { slug: "technologie", nameFr: "Technologie & communication", nameDe: "Digital", sortOrder: 10 },
+  { slug: "nature", nameFr: "Nature & environnement", nameDe: "Umwelt", sortOrder: 11 },
+  { slug: "admin", nameFr: "Administratif & vie pratique", nameDe: "Verwaltung", sortOrder: 12 },
+] as const;
