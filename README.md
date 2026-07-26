@@ -6,7 +6,7 @@ MVP aligne sur le cahier des charges (auth, placement CECR, banque theme x nivea
 ## Stack
 
 - Next.js 15 (App Router) + TypeScript + Tailwind CSS 4
-- Prisma 5 + SQLite (dev), schema portable vers Postgres
+- Prisma 5 + PostgreSQL (Prisma Postgres)
 - Auth.js (credentials)
 - Algorithme de repetition espacee type SM-2
 
@@ -14,12 +14,23 @@ MVP aligne sur le cahier des charges (auth, placement CECR, banque theme x nivea
 
 ```bash
 npm install
+# renseigne DATABASE_URL (Postgres) dans .env, voir .env.example
 npx prisma migrate dev
 npm run db:seed
 npm run dev
 ```
 
 Ouvre [http://localhost:3000](http://localhost:3000).
+
+## Deploiement (Netlify)
+
+1. Sur Netlify : `Add new site` > `Import from GitHub` > repo `merk`.
+2. Le build est pilote par `netlify.toml` (plugin `@netlify/plugin-nextjs`).
+3. Variables d'environnement a definir dans `Site settings` > `Environment variables` :
+   - `DATABASE_URL` : la connexion Postgres
+   - `NEXTAUTH_SECRET` : une longue chaine aleatoire
+   - `NEXTAUTH_URL` : l'URL publique du site (ex. `https://merk.netlify.app`)
+4. Applique le schema sur la base de prod une fois : `npx prisma migrate deploy` (puis `npm run db:seed` pour les donnees demo).
 
 ## Comptes demo
 
