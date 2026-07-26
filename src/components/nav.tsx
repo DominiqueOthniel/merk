@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { signOut, useSession } from "next-auth/react";
+import { Brand } from "@/components/brand";
 
 const studentLinks = [
   { href: "/review", label: "Reviser" },
@@ -49,9 +50,7 @@ export function StudentNav() {
 export function BrandHeader({ subtitle }: { subtitle?: string }) {
   return (
     <header className="mb-8 fade-up">
-      <p className="brand-mark text-[clamp(2.6rem,8vw,3.4rem)] text-[var(--forest-deep)]">
-        MERK.
-      </p>
+      <Brand size="small" />
       {subtitle ? (
         <p className="mt-3 max-w-[28ch] text-[1.05rem] leading-relaxed text-[var(--ink-soft)]">
           {subtitle}

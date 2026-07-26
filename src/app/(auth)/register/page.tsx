@@ -4,6 +4,7 @@ import Link from "next/link";
 import { FormEvent, useEffect, useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { Brand } from "@/components/brand";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
@@ -70,9 +71,7 @@ export default function RegisterPage() {
   return (
     <main className="merk-shell">
       <div className="fade-up">
-        <p className="brand-mark text-[clamp(3.4rem,12vw,4.8rem)] text-[var(--forest-deep)]">
-          MERK.
-        </p>
+        <Brand size="medium" />
         <h1 className="display mt-6 text-[clamp(2rem,6vw,2.6rem)]">
           Inscription eleve
         </h1>

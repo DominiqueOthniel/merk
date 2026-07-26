@@ -3,6 +3,7 @@
 import { FormEvent, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
+import { Brand } from "@/components/brand";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
@@ -50,9 +51,7 @@ export default function PlacementPage() {
   if (result) {
     return (
       <main className="merk-shell">
-        <p className="brand-mark fade-up text-[clamp(3.4rem,12vw,4.8rem)] text-[var(--forest-deep)]">
-          MERK.
-        </p>
+        <Brand size="medium" className="fade-up" />
         <div className="panel fade-up-delay mt-10">
           <p className="display text-[clamp(2.4rem,8vw,3.4rem)]">
             Niveau {result.level}
@@ -71,9 +70,7 @@ export default function PlacementPage() {
   return (
     <main className="merk-shell">
       <div className="fade-up">
-        <p className="brand-mark text-[clamp(3.4rem,12vw,4.8rem)] text-[var(--forest-deep)]">
-          MERK.
-        </p>
+        <Brand size="medium" />
         <h1 className="display mt-6 text-[clamp(2rem,6vw,2.6rem)]">
           Test de positionnement
         </h1>

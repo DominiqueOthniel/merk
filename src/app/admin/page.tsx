@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { signOut } from "next-auth/react";
+import { Brand } from "@/components/brand";
 import { Button } from "@/components/ui/button";
 
 type Overview = {
@@ -63,9 +64,7 @@ export default function AdminPage() {
     <main className="merk-wide">
       <header className="mb-10 flex flex-wrap items-end justify-between gap-4 fade-up">
         <div>
-          <p className="brand-mark text-[clamp(3rem,8vw,4.2rem)] text-[var(--forest-deep)]">
-            MERK.
-          </p>
+          <Brand size="medium" />
           <p className="mt-3 text-[1.1rem] text-[var(--ink-soft)]">
             Back-office · {data.centre.name}
           </p>

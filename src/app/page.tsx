@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getSession } from "@/lib/session";
+import { Brand } from "@/components/brand";
 
 export default async function HomePage() {
   const session = await getSession();
@@ -13,9 +14,7 @@ export default async function HomePage() {
   return (
     <main className="merk-shell flex min-h-[100dvh] flex-col justify-between py-[clamp(1.5rem,5vw,2.5rem)]">
       <div className="fade-up">
-        <p className="brand-mark text-[clamp(4.2rem,16vw,6.5rem)] text-[var(--forest-deep)]">
-          MERK.
-        </p>
+        <Brand size="large" />
         <p className="lede mt-5">
           Retiens ce que tu apprends entre deux seances. Doucement, chaque jour.
         </p>
