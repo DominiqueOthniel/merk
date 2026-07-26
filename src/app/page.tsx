@@ -1,10 +1,16 @@
-import Link from "next/link";
 import { redirect } from "next/navigation";
+import Link from "next/link";
 import { getSession } from "@/lib/session";
 import { Brand } from "@/components/brand";
 
 export default async function HomePage() {
-  const session = await getSession();
+  let session = null;
+  try {
+    session = await getSession();
+  } catch (error) {
+    console.error("Home session lookup failed", error);
+  }
+
   if (session?.user) {
     if (session.user.role === "CENTER_ADMIN") redirect("/admin");
     if (!session.user.placedAt) redirect("/placement");
