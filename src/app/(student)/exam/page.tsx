@@ -84,43 +84,46 @@ export default function ExamHubPage() {
     <>
       <BrandHeader subtitle="Mode avant examen · TELC Lesen et Sprachbausteine" />
 
-      <section className="panel fade-up mb-6">
-        <p className="eyebrow">Choisis ton niveau</p>
-        <div className="mt-4 grid grid-cols-3 gap-2.5">
-          {levelChips.map((item) => {
-            const active = level === item.id;
-            return (
-              <button
-                key={item.id}
-                type="button"
-                onClick={() => setLevel(item.id)}
-                className={`rounded-[1.25rem] px-3 py-4 text-center transition ${
-                  active
-                    ? "bg-[var(--forest)] text-white shadow-[0_10px_20px_rgba(26,107,72,0.25)]"
-                    : "bg-white/85 text-[var(--ink)] border border-[var(--line)]"
-                }`}
-              >
-                <span className="display block text-2xl">{item.label}</span>
-                {!item.available ? (
-                  <span className={`mt-1 block text-[0.75rem] ${active ? "text-white/80" : "text-[var(--ink-faint)]"}`}>
-                    Bientot
-                  </span>
-                ) : null}
-              </button>
-            );
-          })}
+      <section className="panel fade-up mb-6 lg:mb-8 lg:grid lg:grid-cols-[1fr_1.1fr] lg:items-center lg:gap-8">
+        <div>
+          <p className="eyebrow">Choisis ton niveau</p>
+          <div className="mt-4 grid grid-cols-3 gap-2.5 lg:max-w-md">
+            {levelChips.map((item) => {
+              const active = level === item.id;
+              return (
+                <button
+                  key={item.id}
+                  type="button"
+                  onClick={() => setLevel(item.id)}
+                  className={`rounded-[1.25rem] px-3 py-4 text-center transition ${
+                    active
+                      ? "bg-[var(--forest)] text-white shadow-[0_10px_20px_rgba(26,107,72,0.25)]"
+                      : "bg-white/85 text-[var(--ink)] border border-[var(--line)]"
+                  }`}
+                >
+                  <span className="display block text-2xl">{item.label}</span>
+                  {!item.available ? (
+                    <span className={`mt-1 block text-[0.75rem] ${active ? "text-white/80" : "text-[var(--ink-faint)]"}`}>
+                      Bientot
+                    </span>
+                  ) : null}
+                </button>
+              );
+            })}
+          </div>
         </div>
-
-        <p className="mt-5 text-[1.05rem] leading-relaxed text-[var(--ink-soft)]">
-          Lesen (titres) et Sprachbausteine (lacunes), format examen, avec repetition espacee.
-        </p>
-        {available ? (
-          <p className="mt-3 text-[1.02rem] font-semibold text-[var(--forest-deep)]">
-            {totalDue} item{totalDue > 1 ? "s" : ""} a revoir en {level}
+        <div className="mt-5 lg:mt-0">
+          <p className="text-[1.05rem] leading-relaxed text-[var(--ink-soft)] lg:text-[1.1rem]">
+            Lesen (titres) et Sprachbausteine (lacunes), format examen, avec repetition espacee.
           </p>
-        ) : (
-          <p className="mt-3 text-[1.02rem] text-[var(--ink-soft)]">{note}</p>
-        )}
+          {available ? (
+            <p className="mt-3 text-[1.02rem] font-semibold text-[var(--forest-deep)]">
+              {totalDue} item{totalDue > 1 ? "s" : ""} a revoir en {level}
+            </p>
+          ) : (
+            <p className="mt-3 text-[1.02rem] text-[var(--ink-soft)]">{note}</p>
+          )}
+        </div>
       </section>
 
       {loading ? (
@@ -130,16 +133,18 @@ export default function ExamHubPage() {
           Le niveau C1 arrivera dans MERK. Pour l instant, entraine-toi en B1 ou B2.
         </div>
       ) : (
-        <div className="space-y-6">
+        <div className="space-y-8">
           {sections.map((group) => (
             <section key={group.section}>
-              <h2 className="display text-[clamp(1.35rem,4vw,1.7rem)]">
-                {group.section}
-              </h2>
-              <p className="mt-1 text-[0.95rem] text-[var(--ink-faint)]">
-                {group.due} dus dans cette section
-              </p>
-              <div className="mt-3 space-y-2.5">
+              <div className="flex flex-wrap items-end justify-between gap-2">
+                <h2 className="display text-[clamp(1.35rem,4vw,1.7rem)]">
+                  {group.section}
+                </h2>
+                <p className="text-[0.95rem] text-[var(--ink-faint)]">
+                  {group.due} dus dans cette section
+                </p>
+              </div>
+              <div className="mt-3 grid gap-2.5 lg:grid-cols-2">
                 {group.sets.map((set) => (
                   <Link
                     key={set.sourceId}

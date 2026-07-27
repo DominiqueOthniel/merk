@@ -162,95 +162,99 @@ export function ReviewSession() {
         />
       </div>
 
-      <div className="panel fade-up">
-        <p className="eyebrow">Contexte</p>
-        <p className="mt-2 text-[1.08rem] leading-relaxed text-[var(--ink-soft)]">
-          {current.context}
-        </p>
-
-        <p className="display mt-8 text-[clamp(1.85rem,6.5vw,2.55rem)] leading-[1.25]">
-          {promptParts?.[0]}
-          <span className="mx-1.5 inline-block min-w-[5rem] border-b-[3px] border-[var(--forest)] px-1 text-center text-[var(--forest)]">
-            {phase === "quality" && check ? check.expected : "?"}
-          </span>
-          {promptParts?.[1]}
-        </p>
-
-        {current.hint ? (
-          <p className="mt-5 text-[1.02rem] text-[var(--ink-faint)]">
-            Indice : {current.hint}
+      <div className="panel fade-up lg:grid lg:grid-cols-[1.15fr_0.85fr] lg:gap-8 lg:items-start">
+        <div>
+          <p className="eyebrow">Contexte</p>
+          <p className="mt-2 text-[1.08rem] leading-relaxed text-[var(--ink-soft)] lg:text-[1.12rem]">
+            {current.context}
           </p>
-        ) : null}
 
-        {phase === "answer" ? (
-          <div className="mt-8 space-y-4">
-            <Input
-              autoFocus
-              value={answer}
-              onChange={(e) => setAnswer(e.target.value)}
-              placeholder="Ecris ta reponse"
-              onKeyDown={(e) => {
-                if (e.key === "Enter" && answer.trim()) verify();
-              }}
-            />
-            <AudioRecorder />
-            <Button className="w-full" disabled={!answer.trim() || busy} onClick={verify}>
-              Verifier
-            </Button>
-            <p className="text-center text-[0.98rem] text-[var(--ink-faint)]">
-              {remaining} carte{remaining > 1 ? "s" : ""} restante
-              {remaining > 1 ? "s" : ""}
+          <p className="display mt-8 text-[clamp(1.85rem,6.5vw,2.55rem)] leading-[1.25]">
+            {promptParts?.[0]}
+            <span className="mx-1.5 inline-block min-w-[5rem] border-b-[3px] border-[var(--forest)] px-1 text-center text-[var(--forest)]">
+              {phase === "quality" && check ? check.expected : "?"}
+            </span>
+            {promptParts?.[1]}
+          </p>
+
+          {current.hint ? (
+            <p className="mt-5 text-[1.02rem] text-[var(--ink-faint)]">
+              Indice : {current.hint}
             </p>
-          </div>
-        ) : null}
+          ) : null}
+        </div>
 
-        {phase === "quality" && check ? (
-          <div className="fade-up-delay mt-8 space-y-5">
-            <div
-              className={`rounded-[1.4rem] px-5 py-4 text-[1.05rem] leading-relaxed ${
-                check.correct
-                  ? "bg-[var(--forest-soft)] text-[var(--forest-deep)]"
-                  : "bg-rose-50 text-[var(--danger)]"
-              }`}
-            >
-              {check.correct
-                ? "Correct. Choisis la difficulte pour planifier la suite."
-                : `Attendu : ${check.expected}`}
-            </div>
-            <p className="text-[1.05rem] text-[var(--ink-soft)]">Comment c etait pour toi ?</p>
-            <div className="grid grid-cols-3 gap-2.5">
-              <Button
-                variant="secondary"
-                className="px-2 text-[0.95rem]"
-                disabled={busy}
-                onClick={() => rate("HARD")}
-              >
-                Difficile
+        <div className="mt-8 lg:mt-0">
+          {phase === "answer" ? (
+            <div className="space-y-4">
+              <Input
+                autoFocus
+                value={answer}
+                onChange={(e) => setAnswer(e.target.value)}
+                placeholder="Ecris ta reponse"
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" && answer.trim()) verify();
+                }}
+              />
+              <AudioRecorder />
+              <Button className="w-full" disabled={!answer.trim() || busy} onClick={verify}>
+                Verifier
               </Button>
-              <Button
-                variant="secondary"
-                className="px-2 text-[0.95rem]"
-                disabled={busy}
-                onClick={() => rate("MEDIUM")}
-              >
-                Moyen
-              </Button>
-              <Button
-                className="px-2 text-[0.95rem]"
-                disabled={busy}
-                onClick={() => rate("EASY")}
-              >
-                Facile
-              </Button>
-            </div>
-            {submitMeta ? (
-              <p className="text-[0.95rem] text-[var(--ink-faint)]">
-                +{submitMeta.points} pts · prep {submitMeta.prepScore} · serie{" "}
-                {submitMeta.streakDays}j
+              <p className="text-center text-[0.98rem] text-[var(--ink-faint)]">
+                {remaining} carte{remaining > 1 ? "s" : ""} restante
+                {remaining > 1 ? "s" : ""}
               </p>
-            ) : null}
-          </div>
-        ) : null}
+            </div>
+          ) : null}
+
+          {phase === "quality" && check ? (
+            <div className="fade-up-delay space-y-5">
+              <div
+                className={`rounded-[1.4rem] px-5 py-4 text-[1.05rem] leading-relaxed ${
+                  check.correct
+                    ? "bg-[var(--forest-soft)] text-[var(--forest-deep)]"
+                    : "bg-rose-50 text-[var(--danger)]"
+                }`}
+              >
+                {check.correct
+                  ? "Correct. Choisis la difficulte pour planifier la suite."
+                  : `Attendu : ${check.expected}`}
+              </div>
+              <p className="text-[1.05rem] text-[var(--ink-soft)]">Comment c etait pour toi ?</p>
+              <div className="grid grid-cols-3 gap-2.5">
+                <Button
+                  variant="secondary"
+                  className="px-2 text-[0.95rem]"
+                  disabled={busy}
+                  onClick={() => rate("HARD")}
+                >
+                  Difficile
+                </Button>
+                <Button
+                  variant="secondary"
+                  className="px-2 text-[0.95rem]"
+                  disabled={busy}
+                  onClick={() => rate("MEDIUM")}
+                >
+                  Moyen
+                </Button>
+                <Button
+                  className="px-2 text-[0.95rem]"
+                  disabled={busy}
+                  onClick={() => rate("EASY")}
+                >
+                  Facile
+                </Button>
+              </div>
+              {submitMeta ? (
+                <p className="text-[0.95rem] text-[var(--ink-faint)]">
+                  +{submitMeta.points} pts · prep {submitMeta.prepScore} · serie{" "}
+                  {submitMeta.streakDays}j
+                </p>
+              ) : null}
+            </div>
+          ) : null}
+        </div>
       </div>
     </div>
   );

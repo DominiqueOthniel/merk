@@ -21,6 +21,7 @@
   --shadow-soft: 0 10px 30px rgba(16, 32, 24, 0.06);
   --space: clamp(1.25rem, 4vw, 2rem);
   --shell: min(560px, 100%);
+  --rail: 15.5rem;
   --touch: 3.35rem;
 }
 
@@ -91,6 +92,12 @@ textarea {
   background: rgba(26, 107, 72, 0.22);
 }
 
+.merk-app {
+  position: relative;
+  z-index: 1;
+  min-height: 100dvh;
+}
+
 .merk-shell {
   position: relative;
   z-index: 1;
@@ -100,6 +107,11 @@ textarea {
   padding: calc(var(--space) + 0.35rem) var(--space) 7.5rem;
 }
 
+.merk-shell--narrow {
+  width: min(440px, 100%);
+  padding-bottom: calc(var(--space) + 1.5rem);
+}
+
 .merk-wide {
   position: relative;
   z-index: 1;
@@ -107,6 +119,14 @@ textarea {
   margin: 0 auto;
   min-height: 100dvh;
   padding: calc(var(--space) + 0.5rem) var(--space) 3.5rem;
+}
+
+.merk-rail {
+  display: none;
+}
+
+.merk-dock {
+  display: block;
 }
 
 .brand-mark {
@@ -298,10 +318,75 @@ textarea {
 
 @media (min-width: 768px) {
   :root {
-    --shell: min(640px, 100%);
+    --shell: min(680px, 100%);
   }
 
   body {
     font-size: 18px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --shell: min(980px, 100%);
+    --space: 2rem;
+  }
+
+  .merk-app {
+    display: grid;
+    grid-template-columns: var(--rail) minmax(0, 1fr);
+    align-items: stretch;
+  }
+
+  .merk-rail {
+    display: flex;
+    position: sticky;
+    top: 0;
+    height: 100dvh;
+    flex-direction: column;
+    padding: 1.6rem 1.1rem 1.4rem;
+    border-right: 1px solid rgba(22, 40, 28, 0.08);
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(18px);
+  }
+
+  .merk-dock {
+    display: none;
+  }
+
+  .merk-shell {
+    width: min(980px, 100%);
+    max-width: 980px;
+    margin: 0;
+    padding: 2rem 2.4rem 3rem;
+    justify-self: center;
+  }
+
+  .merk-shell--narrow {
+    width: min(440px, 100%);
+    margin: 0 auto;
+    padding-bottom: 2.5rem;
+  }
+
+  .merk-wide {
+    width: min(1120px, 100%);
+  }
+
+  .lede {
+    max-width: 36ch;
+  }
+}
+
+@media (min-width: 1280px) {
+  :root {
+    --shell: min(1080px, 100%);
+    --rail: 16.5rem;
+  }
+
+  .merk-shell {
+    width: min(1080px, 100%);
+    max-width: 1080px;
+    padding-left: 2.75rem;
+    padding-right: 2.75rem;
   }
 }

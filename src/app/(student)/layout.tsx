@@ -12,9 +12,9 @@ export default async function StudentLayout({
   if (session.user.role === "CENTER_ADMIN") redirect("/admin");
 
   return (
-    <>
-      <div className="merk-shell">{children}</div>
+    <div className="merk-app">
       <StudentNav />
-    </>
+      <div className="merk-shell">{children}</div>
+    </div>
   );
 }

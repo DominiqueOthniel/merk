@@ -50,7 +50,7 @@ export default function PlacementPage() {
 
   if (result) {
     return (
-      <main className="merk-shell">
+      <main className="merk-shell merk-shell--narrow">
         <Brand size="medium" className="fade-up" />
         <div className="panel fade-up-delay mt-10">
           <p className="display text-[clamp(2.4rem,8vw,3.4rem)]">
@@ -68,7 +68,7 @@ export default function PlacementPage() {
   }
 
   return (
-    <main className="merk-shell">
+    <main className="merk-shell merk-shell--narrow lg:!max-w-[720px]">
       <div className="fade-up">
         <Brand size="medium" />
         <h1 className="display mt-6 text-[clamp(2rem,6vw,2.6rem)]">

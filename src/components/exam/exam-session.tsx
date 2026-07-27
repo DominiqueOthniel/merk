@@ -191,83 +191,87 @@ export function ExamSession({ sourceId }: { sourceId: string }) {
           {instructionFor(format)}
         </p>
 
-        <div className="mt-5 max-h-[42vh] overflow-y-auto rounded-[1.25rem] bg-[rgba(216,235,224,0.35)] p-4 text-[1.05rem] leading-relaxed">
-          {isCloze
-            ? renderClozePassage(current.passage, current.gapN)
-            : current.passage}
+        <div className="mt-5 grid gap-5 lg:grid-cols-[1.2fr_0.8fr] lg:items-start lg:gap-7">
+          <div className="max-h-[42vh] overflow-y-auto rounded-[1.25rem] bg-[rgba(216,235,224,0.35)] p-4 text-[1.05rem] leading-relaxed lg:max-h-[min(68vh,36rem)] lg:p-5 lg:text-[1.08rem]">
+            {isCloze
+              ? renderClozePassage(current.passage, current.gapN)
+              : current.passage}
+          </div>
+
+          <div>
+            {phase === "pick" ? (
+              <div className="space-y-2.5">
+                <div
+                  className={
+                    format === "CLOZE_BANK"
+                      ? "flex flex-wrap gap-2"
+                      : "space-y-2.5"
+                  }
+                >
+                  {choices.map((choice) => {
+                    const active = selected === choice;
+                    if (format === "CLOZE_BANK") {
+                      return (
+                        <button
+                          key={choice}
+                          type="button"
+                          onClick={() => setSelected(choice)}
+                          className={`rounded-full border px-3.5 py-2 text-[0.98rem] transition ${
+                            active
+                              ? "border-[var(--forest)] bg-[var(--forest)] text-white"
+                              : "border-[var(--line)] bg-white/90 text-[var(--ink)] hover:bg-[var(--forest-soft)]/50"
+                          }`}
+                        >
+                          {choice}
+                        </button>
+                      );
+                    }
+                    return (
+                      <button
+                        key={choice}
+                        type="button"
+                        onClick={() => setSelected(choice)}
+                        className={`w-full rounded-[1.2rem] border px-4 py-3.5 text-left text-[0.98rem] leading-snug transition ${
+                          active
+                            ? "border-[var(--forest)] bg-[var(--forest-soft)] text-[var(--forest-deep)]"
+                            : "border-[var(--line)] bg-white/90 hover:bg-[var(--forest-soft)]/50"
+                        }`}
+                      >
+                        {choice}
+                      </button>
+                    );
+                  })}
+                </div>
+                <Button
+                  className="mt-3 w-full"
+                  disabled={!selected || busy}
+                  onClick={confirmPick}
+                >
+                  Valider
+                </Button>
+              </div>
+            ) : null}
+
+            {phase === "feedback" ? (
+              <div className="fade-up-delay space-y-4">
+                <div
+                  className={`rounded-[1.3rem] px-4 py-3 text-[1.02rem] ${
+                    correct
+                      ? "bg-[var(--forest-soft)] text-[var(--forest-deep)]"
+                      : "bg-rose-50 text-[var(--danger)]"
+                  }`}
+                >
+                  {correct
+                    ? feedbackOk(format)
+                    : feedbackBad(format, current.answer)}
+                </div>
+                <Button className="w-full" onClick={next} disabled={busy}>
+                  Continuer
+                </Button>
+              </div>
+            ) : null}
+          </div>
         </div>
-
-        {phase === "pick" ? (
-          <div className="mt-5 space-y-2.5">
-            <div
-              className={
-                format === "CLOZE_BANK"
-                  ? "flex flex-wrap gap-2"
-                  : "space-y-2.5"
-              }
-            >
-              {choices.map((choice) => {
-                const active = selected === choice;
-                if (format === "CLOZE_BANK") {
-                  return (
-                    <button
-                      key={choice}
-                      type="button"
-                      onClick={() => setSelected(choice)}
-                      className={`rounded-full border px-3.5 py-2 text-[0.98rem] transition ${
-                        active
-                          ? "border-[var(--forest)] bg-[var(--forest)] text-white"
-                          : "border-[var(--line)] bg-white/90 text-[var(--ink)] hover:bg-[var(--forest-soft)]/50"
-                      }`}
-                    >
-                      {choice}
-                    </button>
-                  );
-                }
-                return (
-                  <button
-                    key={choice}
-                    type="button"
-                    onClick={() => setSelected(choice)}
-                    className={`w-full rounded-[1.2rem] border px-4 py-3.5 text-left text-[0.98rem] leading-snug transition ${
-                      active
-                        ? "border-[var(--forest)] bg-[var(--forest-soft)] text-[var(--forest-deep)]"
-                        : "border-[var(--line)] bg-white/90 hover:bg-[var(--forest-soft)]/50"
-                    }`}
-                  >
-                    {choice}
-                  </button>
-                );
-              })}
-            </div>
-            <Button
-              className="mt-3 w-full"
-              disabled={!selected || busy}
-              onClick={confirmPick}
-            >
-              Valider
-            </Button>
-          </div>
-        ) : null}
-
-        {phase === "feedback" ? (
-          <div className="fade-up-delay mt-5 space-y-4">
-            <div
-              className={`rounded-[1.3rem] px-4 py-3 text-[1.02rem] ${
-                correct
-                  ? "bg-[var(--forest-soft)] text-[var(--forest-deep)]"
-                  : "bg-rose-50 text-[var(--danger)]"
-              }`}
-            >
-              {correct
-                ? feedbackOk(format)
-                : feedbackBad(format, current.answer)}
-            </div>
-            <Button className="w-full" onClick={next} disabled={busy}>
-              Continuer
-            </Button>
-          </div>
-        ) : null}
       </div>
     </div>
   );

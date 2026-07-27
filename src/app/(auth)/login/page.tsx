@@ -34,7 +34,7 @@ export default function LoginPage() {
   }
 
   return (
-    <main className="merk-shell">
+    <main className="merk-shell merk-shell--narrow">
       <div className="fade-up">
         <Brand size="medium" />
         <h1 className="display mt-6 text-[clamp(2rem,6vw,2.6rem)]">Connexion</h1>
