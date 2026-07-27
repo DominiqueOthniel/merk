@@ -9,6 +9,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
     "skill": "lesen",
     "level": "B2",
     "exam": "TELC",
+    "format": "MATCH",
     "options": [
       "Gemeinsam kaputte Geräte retten.",
       "Kaufsucht überwinden - diese Möglichkeiten gibt es.",
@@ -42,7 +43,8 @@ export const EXAM_TELC_B2: ExamExercise[] = [
         "passage": "Viele Menschen sind erstaunlich großzügig: Sie machen anderen gern Geschenke, spenden Geld für gute Zwecke oder opfern Zeit für ehrenamtliche Tätigkeiten. Aber was motiviert sie dazu? Die Wissenschaft liefert ganz unterschiedliche Erklärungsansätze. Eine Erklärung lautet, dass großzügige Menschen auf Gegenseitigkeit hoffen: Wer viel gibt, bekommt auch viel zurück. Eine Studie konnten nun aber zeigen, dass die Antwort vielleicht ganz einfach ist: Großzügigkeit mache eben glücklich. Dies fanden Forscher der Universität Lübeck heraus, Dieses enge Verknüpfung zwischen großzügigem Verhalten und Glücksgefühl zeige sich auch in Gehirn. So aktivieren ein solche Verhalten ein Hirnareal, das eng mit unserem Erholungszentrum verknüpft ist. Das Ergebnis ihrer Studie könne weitreichende Folge für die Gesellschaft haben. Wer glücklicher werden möchte, könne sich diese neuen Erkenntnisse zunutze machen: Denn wer für andere da ist, tut auch etwas für das eigene Wohlbefinden.",
         "title": "wer Engagement zeigt, steigert sein Glücksgefühl."
       }
-    ]
+    ],
+    "gaps": []
   },
   {
     "sourceId": "12",
@@ -51,6 +53,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
     "skill": "lesen",
     "level": "B2",
     "exam": "TELC",
+    "format": "MATCH",
     "options": [
       "Who gibt neue Empfehlungen für grippe-impfung heraus.",
       "Hinweise auf eingeschränkten Erfolg von Influenza-Impfungen.",
@@ -84,7 +87,8 @@ export const EXAM_TELC_B2: ExamExercise[] = [
         "passage": "Da sich Influenzaviren immer wieder verändern, unternimmt die Weltgesundheitsorganisation WHO jedes Jahr große Anstrengungen, um die gerade umlaufenden Grippeviren zu identifizieren, anhand derer Pharmaunternehmen dann gezielt Impfstoffe herstellen können. Die Entwicklung solcher Impfstoffe nimmt allerdings bis zu neun Monate in Anspruch. Daher kann es vorkommen, dass sich gerade aktive Influenza-Viren von denen, die für die Herstellung des Impfstoffes verwendet wurden, etwas unterscheiden. Prinzipiell ist also jedes Jahr eine erneute Impfung notwendig. Eine neue Studie liefert Anhaltspunkte dafür, dass die tatsächliche Wirksamkeit von Grippeimpfstoffen weit niedriger sein soll als bisher angenommen. Denn in der Studie zeigte sich, dass gängige Grippeimpfstoffe nur 59 von 100 Grippefällen verhindern konnten.",
         "title": "Hinweise auf eingeschränkten Erfolg von Influenza-Impfungen."
       }
-    ]
+    ],
+    "gaps": []
   },
   {
     "sourceId": "16",
@@ -93,6 +97,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
     "skill": "lesen",
     "level": "B2",
     "exam": "TELC",
+    "format": "MATCH",
     "options": [
       "Neue Kinderhandys auf den Markt gebracht.",
       "Profi - Tipps für bessere Urlaubsbilder.",
@@ -126,7 +131,8 @@ export const EXAM_TELC_B2: ExamExercise[] = [
         "passage": "Es gibt in Deutschland wohl kaum eine bessere Chance für die Einführung von Handy - TV als die Fußball - WM 2006. Doch ein rechtzeitiger Start ist ungewiss. Die Problemfelder sind vielschichtig. Drei Standards kämpfen darum, das erste deutsche Mobilfernsehen zu sein: UMTS, DMB und DVB - H. Und das möglichst pünktlich zum 9. Juni 2006, dem Start der Fußball - WM. Dieser Drei Kampf wird von Experten jedoch kritisch betrachtet. In Südostasien floriert dieser Markt doch schon seit vielen Monaten. In Korea beispielsweise gehört der mobile Fernsehgenuss zum All tag. Bis zu zwei Stunden täglich schauen Besitzer der kleinen TV - Handys dort unterwegs auf die Mini - Mattscheibe. Warum sollte dies mittelfristig nicht auch in Deutschland realisierbar sein? In einem sind sich Experten jedoch sicher. Handy - TV wird die Fernsehbranche verändern. Kenner sprechen von drei neuen Prime Times (Hauptfernsehzeiten), die durch die mobile Glotze entstehen: Der Weg zur Arbeit, die Mittagspause und der Heimweg. Dafür ist jedoch eine andere Art von Inhalten notwendig, vor allem kurz müssen sie sein, denn kaum jemand wird sich einen kompletten Spielfilm auf dem kleinen Bildschirm ansehen wollen.",
         "title": "Mobiler Fernsehgenuss wird zum Alltag."
       }
-    ]
+    ],
+    "gaps": []
   },
   {
     "sourceId": "17",
@@ -135,6 +141,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
     "skill": "lesen",
     "level": "B2",
     "exam": "TELC",
+    "format": "MATCH",
     "options": [
       "Doping für Drogenspürhunde.",
       "Durch den Geruchssinn die Welt neu erfahren.",
@@ -168,7 +175,8 @@ export const EXAM_TELC_B2: ExamExercise[] = [
         "passage": "Niesen ist eine Reaktion auf die Umwelt. Mal kitzelt Staub die Nase, mal reizt ein chemischer Stoff oder ein anderer Fremdkörper in der Luft unser Riechorgan. Sogar grelles Licht kann durch die Verbindung der Gesichtsnerven zum Niesen führen. Unwillkürlich wird ein Reflex ausgelöst, der die Nase \"säubern\" soll. Es kommt zu einem explosionsartigen Ausstoßen der Luft durch die Nase - dem Niesen. Allergiker niesen oft serienweise, bis der letzte Reiz aus der Nase entfernt ist. Auf die Reizmeldung hin holt der Körper tief Luft - bis die Lungen maximal gefüllt sind. Dann wird der Atem kurz angehalten. Und schließlich stößt der Körper in Sekundenschnelle die eingeatmete Luft wieder aus. Dabei kann diese leicht eine Geschwindigkeit von 150 bis 160 Stundenkilometern erreichen. Lautlos geht das Niesen selten vonstatten. Das \"Ha\" - oft gleich mehrfach vor dem befreienden \"Tschui\" hervorgestoßen - entsteht, weil beim Einatmen die Stimmbänder aufgemacht werden. Beim \"Tschui\" wird die Luft dann wieder ausgestoßen. Der Laut entsteht, weil gleichzeitig die Zunge hinter die Vorderzähne gepresst wird. Denn der Körper will, dass möglichst viel Luft durch die Nase und möglichst wenig durch den Mund entweicht, daher verschließt die Zunge der Luft teilweise den Weg.",
         "title": "Selbstreinigung für unser Riechorgan."
       }
-    ]
+    ],
+    "gaps": []
   },
   {
     "sourceId": "18",
@@ -177,6 +185,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
     "skill": "lesen",
     "level": "B2",
     "exam": "TELC",
+    "format": "MATCH",
     "options": [
       "Freie Plätze im Tanzkurs.",
       "Neue Lerntechniken präsentiert.",
@@ -210,7 +219,8 @@ export const EXAM_TELC_B2: ExamExercise[] = [
         "passage": "Montags Tennis, dienstags Klavierunterricht, mittwochs Jazztanz in der Gruppe und donnerstags Treffen der Astronomie-Gruppe. Was klingt wie der Terminkalender eines vielbeschäftigten Erwachsenen, ist heute oft eine ganz normale Woche im Leben von Kindern und Jugendlichen. Nicht genug damit, dass sie sechs oder sieben Stunden Schule haben, dann vielleicht noch Hausaufgaben machen und natürlich auch etwas essen müssen -in ihrer Freizeit haben sie dann gleich weitere Termine. Dabei suchen sich das viele Kinder und Jugendliche gar nicht selbst aus, sondern die Eltern wollen, dass Ihr Nachwuchs möglichst viel unternimmt. Einige hoffen, aus ihrem Sohn könnte ein neuer Spitzensportler werden, andere denken an eine Karriere als Musikerin, meist aber glauben die Eltern \"nur\", sie müssten ihre Kinder ständig beschäftigen. Sonst könnte es ihnen ja langweilig werden, und wer weiß, was sie dann machen. Viele Eltern haben Angst, dass ihre Kinder dann \"auf dumme Gedanken\" kommen oder dass sie zuhause nur vor dem Fernseher oder Computer sitzen, wenn sie nicht ständig etwas unternehmen. Ob der Freizeitstress für alle Beteiligten wirklich gut ist?",
         "title": "Keine Zeit für Langeweile."
       }
-    ]
+    ],
+    "gaps": []
   },
   {
     "sourceId": "25",
@@ -219,6 +229,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
     "skill": "lesen",
     "level": "B2",
     "exam": "TELC",
+    "format": "MATCH",
     "options": [
       "Limonade aus dem Wasserhahn.",
       "Limonade ist moderner als Wasser.",
@@ -252,7 +263,8 @@ export const EXAM_TELC_B2: ExamExercise[] = [
         "passage": "\"Wasser ist zum Waschen da\" lautete ein deutscher Schlager Mitte der1950er, in dem es weiter hieß: \"Auch zum Zähneputzen kann man es benutzen.\" Wasser zu trinken schien damals manchen Leuten nicht in die neue Wohlstandswelt zu passen. Süße Limonaden galten als besser als einfach nur Wasser. Dabei raten heute die meisten Ärzte zum Wassertrinken: \"Trinken Sie täglich mindestens 2,5 Liter davon\", stehtauch in nahezu allen medizinischen Ratgebern von heute. Mineralwasser hat, wie man heute wieder weiß, durch seine mineralischen Inhaltsstoffe Natrium, Kalium, Magnesium, Calcium und Spurenelemente für den menschlichen Körper viele Vorteile: Es gleicht den Mineral- und Flüssigkeitsverlust beim Schwitzen aus, es fördert die Verdauung und das alles ohne den Körper belastenden Zucker und ohne Kalorien. Ob aus der Heimat oder - wie in den jetzt modischen Wasserbars - von der Insel Hawaii oder vom Südpol: Wasser ist wieder zum Trinken da.",
         "title": "Viel Wasser trinken - Gesundheit tanken."
       }
-    ]
+    ],
+    "gaps": []
   },
   {
     "sourceId": "26",
@@ -261,6 +273,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
     "skill": "lesen",
     "level": "B2",
     "exam": "TELC",
+    "format": "MATCH",
     "options": [
       "An deutschen Grundschulen sind männliche Lehrkräfte selten.",
       "Bildungsexperten warnen: Deutsche Lehrer sind schlecht ausgebildet.",
@@ -294,7 +307,8 @@ export const EXAM_TELC_B2: ExamExercise[] = [
         "passage": "Mädchen haben tendenziell bessere Noten und stellen 56 Prozent der Abiturienten. Dagegen sind zwei Drittel der Schulabbrecher und drei Viertel der Sonderschüler Jungen. Liegt die Ursache in der Grundschule, wo von den knapp 200.000 Lehrkräften nur rund 26.000 männlich sind? An der Grundschule sind Männer eine Rarität. Wer sich dorthin verirrt, arbeitet allein unter Frauen. Im Schuljahr 1990/1991 unterrichtete noch ein Drittel Männer an Grundschulen, im Schuljahr 2006/2007 liegt der Frauenanteil an den Grundschullehrern bei 86,9 Prozent, während an weiterführenden Schulen das Geschlechterverhältnis nahezu ausgeglichen ist. Im Extremfall kann das bedeuten, dass Jungen bis zum Alter von 10 oder 12 Jahren in Krippe, Kindergarten und Grundschule ausschließlich von Frauen betreut und unterrichtet werden. Auch die Familienministerin vermisst die Männer an den Grundschulen. \"In den wichtigen frühen Jahren fehlen den Jungen männliche Vorbilder, an denen sie sich im Alltag ausrichten können\", sagte sie in einem Interview. Das gelte gerade für Kinder mit Migrationshintergrund. Gründe dafür sieht sie in der gesellschaftlichen Anerkennung des Berufs und in den Gehaltsstrukturen.",
         "title": "An deutschen Grundschulen sind männliche Lehrkräfte selten."
       }
-    ]
+    ],
+    "gaps": []
   },
   {
     "sourceId": "27",
@@ -303,6 +317,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
     "skill": "lesen",
     "level": "B2",
     "exam": "TELC",
+    "format": "MATCH",
     "options": [
       "Neue Heuschreckenart in Frankreich entdeckt Insektenart.",
       "Kleine Plagegeister können Krankheiten bringen.",
@@ -336,7 +351,8 @@ export const EXAM_TELC_B2: ExamExercise[] = [
         "passage": "Heute und morgen tagt in Göteborg die Internationale Nordseekonferenz (INK), an der Regierungsvertreter der acht Nordsee-Anrainerstaaten teilnehmen. Der World Wide Fund For Nature (WWF) kritisierte in diesem Zusammenhang, dass dies das letzte Treffen dieser Art sei. Künftig sollen Fragen der Nordsee auf europäischer Ebene behandelt werden. Der WWF befürchtet, dass die Berücksichtigung ökologischer Belange der Nordsee künftig im europäischen Rahmen vernachlässigt werde: \"Es sieht nicht gut aus für die Nordsee\", so fasste WWF-Meeresschützer Stefan Lutter diese Besorgnis in Worte. Der WWF ist der Ansicht, dass auf den Treffen der INK richtungsweisende Beschlüsse zum Nordseeschutz gefasst worden seien. Das Problem sei allerdings die Umsetzung dieser Beschlüsse in politisches Handeln in den Anrainerstaaten. Zu diesen Beschlüssen gehörte beispielsweise das 2001 vereinbarte Abkommen zum Verbot giftiger Schiffsfarben sowie ein weiteres Abkommen, das die Verunreinigung der Nordsee durch von Schiffen abgelassenes Ballastwasser bekämpfen sollte. Diese Abkommen wurden erst zum Teil umgesetzt. Der WWF befürchtet nun, dass diese wichtigen INK-Initiativen unter den Tisch fallen könnten. Anlässlich des letzten Treffens der Anrainerstaaten erneuerte der WWF seine Kritik an der Fischereipolitik. Das Ziel einer nachhaltigen Fischereipolitik stehe zwar auf der Tagesordnung der Konferenz, die alltägliche Praxis in der EU sei jedoch durch die \"Plünderung der Fischbestände\" gekennzeichnet. Die Kabeljaubestände stünden kurz vor dem Zusammenbruch, sagte der WWF-Fischereiexperte. Ein notwendiger Fangstopp für diese Fischart sei jedoch nicht geplant. Ein weiteres ungelöstes Problem sei das Beifang-Problem. Der WWF-Sprecher brachte dazu folgendes Rechenbeispiel: Auf jedes Kilo Plattfisch, das auf den Tellern lande, gingen über fünf Kilo ungenutzter Beifang in die Netze der Fangflotten.",
         "title": "Um die Zukunft der Nordsee ist es schlecht bestellt."
       }
-    ]
+    ],
+    "gaps": []
   },
   {
     "sourceId": "28",
@@ -345,6 +361,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
     "skill": "lesen",
     "level": "B2",
     "exam": "TELC",
+    "format": "MATCH",
     "options": [
       "Erneuerungskur für einen alten Markt.",
       "Junge Influencer werben für Bioprodukte.",
@@ -378,7 +395,8 @@ export const EXAM_TELC_B2: ExamExercise[] = [
         "passage": "Bis Herbst soll ein neues Marktkonzept für den altehrwürdigen Salzburger Grünmarkt vorliegen. Damit der Markt für Besucherinnen und Besucher wieder attraktiver wird, setzt die zuständige Stelle im Magistrat auf Nachhaltigkeit, Biologische Lebensmittel aus nachhaltiger Produktion, mi Idealfall aus der Region, sollen den Markt wieder zu einem Fixpunkt in der Altstadt werden lassen, Der für Märkte, Stadtnatur und Lebensqualität zuständige Vizebürgermeister hofft, dass der Markt dazu beitragen kann, ein positives Lebensgefühl zu vermitteln, Obwohl die Stadt die Verkaufsstände vor einigen Jahren aufwändig hatte restaurieren lassen, verzeichneten die Händler zuletzt einen deutlichen Rückgang an Kundschaft, Zudem haben einige von ihnen altersbedingt ihre Verkaufsstände aufgegeben, In diesem Zusammenhang wurde auch die beliebte Food Bloggerin Jasmin May engagiert. Sie sol dazu beitragen, das Konzept in der Öffentlichkeit bekannter zu machen, Wir werden das Projekt weiterverfolgen und von seinem Fortgang berichte.",
         "title": "Erneuerungskur für einen alten Markt."
       }
-    ]
+    ],
+    "gaps": []
   },
   {
     "sourceId": "39",
@@ -387,6 +405,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
     "skill": "lesen",
     "level": "B2",
     "exam": "TELC",
+    "format": "MATCH",
     "options": [
       "Jugend forscht - auch auf dem Meer.",
       "Jugend engagiert sich für den Umweltschutz/Schulerwettbewerb Umweltschutz.",
@@ -420,215 +439,3892 @@ export const EXAM_TELC_B2: ExamExercise[] = [
         "passage": "Mobbing ist kein neues Phänomen. Es ist auch in Schulen weitverbreitet. Da spricht zum Beispiel eine Lehrerin vor der Klasse negativ über eine Schülerin, weil sie etwas nicht versteht oder immer wieder krank ist. Oder die Mitschüler lachen oder lassen beleidigende Bemerkungen fallen, wenn ein bestimmter Schüler sich zu Wort meldet. Da lauern Jungen einer 4. Klasse einem schüchternen Mitschüler auf dem Schulweg auf und erpressen von ihm Geld oder Kleidung. Häufig sind die Erwachsenen ratlos oder schauen weg, während die Opfer die Schuld bei sich selbst suchen und zunehmend in eine soziale Isolation geraten. Lehrkräfte sind meist überrascht, wenn man sie auf Mobbing in einer Klasse anspricht. Denn die Schikanen geschehen oft zu subtil und meist außerhalb des Unterrichts, während der Pausen oder auf dem Schulweg. Sicherheitsrisiko für ihr Kind werden kann.",
         "title": "Psychoterror an der Schule."
       }
-    ]
+    ],
+    "gaps": []
   },
   {
-    "sourceId": "40",
-    "sourceTitle": "Sport ist Gesund",
-    "section": "Lesen Teil 1",
-    "skill": "lesen",
+    "sourceId": "30",
+    "sourceTitle": "Herr Martini",
+    "section": "Sprachbausteine Teil 1",
+    "skill": "sprachbausteine",
     "level": "B2",
     "exam": "TELC",
-    "options": [
-      "Sport ist gesund - wenn man einige wichtige Regeln beachtet.",
-      "Griechische Sportler so erfolgreich wie nie zuvor.",
-      "Fitness auch mit wenig Zeitaufwand erreichbar.",
-      "Geprüfte Qualität für Babys.",
-      "Bluthochdruck beschleunigt das Abnehmen.",
-      "Sportbegeisterte Eltern - und auch die Babys sind beim Joggen dabei.",
-      "Täglich kurze Sprints besser als langes Ausdauertraining.",
-      "Ein Leistungssport für jedes Alter.",
-      "Unüberschaubares Angebot an Kinderwagen überfordert junge Eltern.",
-      "Autoindustrie: In Zukunft Mobilität ohne Grenzen."
-    ],
-    "pairs": [
+    "format": "CLOZE_MCQ",
+    "options": [],
+    "pairs": [],
+    "passage": "Sehr geehrter Herr Martini, vielen Dank für Ihre Anfrage vom 16. Juni {{1}} der Studienreise Ihrer Schulklasse nach Frankfurt am Main im {{2}} Oktober. Die Unterkunft bei deutschen Gastfamilien ist prinzipiell möglich. Die Familien werden von uns sorgfältig {{3}} strengen Kriterien ausgewählt, die Sie in der beiliegenden Informationsbroschüre auf den Seiten 15 bis 17 finden. Pro Gastfamilie können ein oder zwei Schülerinnen bzw. Schüler untergebracht werden. Unsere Gastfamilien {{4}} Halbpension, d. h. in der Regel Frühstück und Abendessen, an. Alle Familien wohnen im näheren Umkreis der Schule, {{5}} der Weg von der Unterkunft zum Unterricht innerhalb von maximal 10 Minuten zu Fuß zurückgelegt werden kann. Zweimal pro Woche ist die Teilnahme am Schulunterricht Ihrer Partnerschule in Frankfurt, der Heinrich-Böll-Schule, in den Fächern Geografie, Kunst und Deutsch vorgesehen. Die Unterrichtssprache ist Deutsch. {{6}} Schülerinnen und Schülern der Partnerschule wird das Freizeit- und Kulturprogramm durchgeführt. Dazu gehört z. B. {{7}} der Gemäldegalerie \"Städel\", des Museums für Kunsthandwerk und des Deutschen Postmuseums. Auch ein Besuch beim Hessischen Rundfunk {{8}} . Jeweils dienstags und freitags werden Kulturabende veranstaltet, an denen die verschiedenen Aspekte und Unterschiede der deutschen und der italienischen Kultur {{9}} werden sollen. Weitere Informationen finden Sie in der beiliegenden Broschüre. Wir hoffen, dass Sie und Ihre Klasse einen erlebnisreichen und unvergesslichen Aufenthalt in Frankfurt {{10}} werden. Bei weiteren Fragen setzen Sie sich bitte mit uns in Verbindung. Mit freundlichen Grüßen Sibylle Lauterbacher Stiftung Schüleraustausch Frankfurt",
+    "gaps": [
       {
-        "passage": "An der Ostküste Attikas in Griechenland lag in der Antike der Orte Marathon. Dort siegte der griechische König Milthiades im Jahr 490 vor Christus über das Heer der Perser. Der Sage nach soll ein Soldat die 42,2 km lange Strecke nach Athen gerannt sein, um die Nachricht dieses für Griechenland wichtigen Sieges zu überbringen. Bei seiner Ankunft in Athen brach er, noch während er die Nachricht verkündete, vor Erschöpfung tot zusammen. Auf diese Legende geht eine sportliche Disziplin zurück: der Marathonlauf. Bereits seit 1896 ist er olympische Disziplin, seit 1984 auch für Frauen. Die Streckenlänge von 42195 m. wurde 1924 festgelegt. Der Marathonlauf gilt als einziger Leistungssport, der bis ins hohe Alter ausgeübt werden kann. Wissenschaftler erklären das mit der menschlichen Evolution. Der Mensch jagte in der Frühzeit seine Beute so lange vor sich her, bis diese vor Erschöpfung nicht mehr weiterkonnte. Die Fähigkeit, ausdauernd über lange Strecken zu rennen, ist also in den menschlichen Genen verankert.",
-        "title": "Ein Leistungssport für jedes Alter."
+        "n": 1,
+        "answer": "zu",
+        "choices": [
+          "an",
+          "von",
+          "zu"
+        ]
       },
       {
-        "passage": "Warum soll sich der Mensch nun auf Straßen und Wegen fortbewegen? Sich in Feld und Wald, über Stock und Stein fortzubewegen, ist mindestens ebenso interessant. Daher erfand die Autoindustrie den Geländewagen und die Fahrradindustrie das Mountainbike. Da fehlte eigentlich nur noch eine Neuentwicklung eines Gefährts, dessen Mobilitätsmöglichkeiten bisher relativ begrenzt waren: der Kinderwagen. Doch das ist jetzt auch vorbei: Im Trend liegt jetzt der Jogging-Stroller, ein Kinderwagen mit nur noch drei bereiften Rädern. Diese neuen Transportmittel für Babys können sportbegeisterte und von grenzenloser Mobilität träumende Eltern jetzt samt Kind beim Joggen oder beim Inlineskaten vor sich herschieben. Die Babys sollen begeistert sein von der Geschwindigkeit, die mit solchen Geräten erreichbar ist. Doch der die Gerätesicherheit prüfende TÜV, bei Fahrzeugbesitzern in Deutschland schon seit langem als Spielverderber bekannt, warnte vor den Jogging-Strollern: Sie haben einen ungünstigen Schwerpunkt auf der Hinterachse, d.h. sie kippen leicht nach hinten um, und sie können sich leicht selbständig machen - jedenfalls solange, bis die Babys das Bremsen gelernt haben.",
-        "title": "Sportbegeisterte Eltern - und auch die Babys sind beim Joggen dabei."
+        "n": 2,
+        "answer": "kommenden",
+        "choices": [
+          "ankommenden",
+          "gekommenen",
+          "kommenden"
+        ]
       },
       {
-        "passage": "Schweizer Forscher haben herausgefunden, dass nur 6 Minuten Hochleistungstraining pro Woche - also weniger als eine Minute pro Tag - ausreichen, um den Körper fit zu halten. In einem Versuch mit mehreren Probanden nahm eine Gruppe an einem traditionellen Ausdauertraining teil, mit je ein bis zwei Trainingsstunden täglich. Die zweite Gruppe führte täglich 60 Sekunden dauernde Radsprints durch, wobei die Teilnehmer quasi aus dem Stand Höchstgeschwindigkeit erzielen mussten. Das Resultat war überraschend: Beide Gruppen zeigten die gleichen gesundheitlichen Verbesserungen. Der Muskel nahmen gleich viel Sauerstoff auf, und auch die Werte des für die Sauerstoffaufnahme verantwortlichen Zitrat Enzyms waren gleich. Sehr kurze und hochintensive sportliche Übungen verbessern die Fitness genauso wie das zeitraubende traditionelle Ausdauertraining.",
-        "title": "Fitness auch mit wenig Zeitaufwand erreichbar."
+        "n": 3,
+        "answer": "nach",
+        "choices": [
+          "aus",
+          "mit",
+          "nach"
+        ]
       },
       {
-        "passage": "Mehr Bewegung als Ausgleich für zu langes Sitzen im Büro und in der Freizeit ist zurzeit angesagt, um Übergewicht, Bluthochdruck und Herz-Kreislauf-Erkrankungen vorzubeugen und um fit zu bleiben. Gerade für Einsteiger gibt es jedoch bei den die Ausdauer trainierenden Sportarten wie dem Joggen einige Grundregeln, die beachtet werden müssen, will man gesundheitliche Schäden vermeiden. Die ersten Trainingseinheiten sollen nicht länger als 20 bis 30 Minuten dauern und zweimal pro Woche durchgeführt werden. Der Puls sollte nie den Wert 200 minus Lebensalter überschreiten, bei einem 20-Jährigen kann er also bei 180, bei einem 60-Jährigen hingegen nur bei 140 liegen. Außerdem gilt für alle, die beim Sport abnehmen möchten: Je höher der Pulsschlag, desto weniger Fett wird verbrannt. Hoher Pulsschlag lässt Sporttreibenden langsamer abnehmen.",
-        "title": "Sport ist gesund - wenn man einige wichtige Regeln beachtet."
+        "n": 4,
+        "answer": "bieten",
+        "choices": [
+          "bieten",
+          "fordern",
+          "nehmen"
+        ]
       },
       {
-        "passage": "Viele frischgebackene Eltern stehen einem riesigen Angebot an Kinderwagen gegenüber, das in Kinderläden und Großmärkten feilgeboten wird. Doch welcher ist der richtige? Experten raten, beim Kauf dieses für die ersten Jahre mit dem Kleinkind wichtigen Gefährts auf ein paar Dinge zu achten. Erstens sollte die Matratze nicht zu weich sein, damit das Kind nicht einsinkt, wodurch die Atmung behindert werden kann. Zweitens sollten die Räder gefedert sein, um Erschütterungen auf unebenen Wegen auszugleichen. Ein hoher Wagen schützt die Babys vor dem Auspuff der Autos an Straßenkreuzungen. Zusammenklappbare Wagen passen in jeden Kofferraum und lassen sich fast überallhin mitnehmen. Der Wagen sollte vor allem kippsicher sein und keine scharfen Kanten haben, an denen sich die Kinder verletzen können. Vom TÜV geprüfte Kinderwagen erhalten ein Prüfzeichen. Damit haben die Eltern eine gewisse Sicherheit, dass der Kinderwagen auch nach Dauergebrauch nicht zu einem Sicherheitsrisiko für ihr Kind werden kann.",
-        "title": "Geprüfte Qualität für Babys."
+        "n": 5,
+        "answer": "so dass",
+        "choices": [
+          "so dass",
+          "weil",
+          "wenn"
+        ]
+      },
+      {
+        "n": 6,
+        "answer": "Gemeinsam mit",
+        "choices": [
+          "Gemeinsam mit",
+          "Verbunden von",
+          "Zusammen neben"
+        ]
+      },
+      {
+        "n": 7,
+        "answer": "der Besuch",
+        "choices": [
+          "die Ansicht",
+          "der Besuch",
+          "das Betrachten"
+        ]
+      },
+      {
+        "n": 8,
+        "answer": "ist geplant",
+        "choices": [
+          "hat geplant",
+          "ist geplant",
+          "wird geplant haben"
+        ]
+      },
+      {
+        "n": 9,
+        "answer": "besprochen",
+        "choices": [
+          "besprochen",
+          "gesprochen",
+          "versprochen"
+        ]
+      },
+      {
+        "n": 10,
+        "answer": "haben",
+        "choices": [
+          "haben",
+          "hatten",
+          "hätten"
+        ]
       }
     ]
   },
   {
-    "sourceId": "41",
-    "sourceTitle": "Inseln",
-    "section": "Lesen Teil 1",
-    "skill": "lesen",
+    "sourceId": "31",
+    "sourceTitle": "Judith oder Lina",
+    "section": "Sprachbausteine Teil 1",
+    "skill": "sprachbausteine",
     "level": "B2",
     "exam": "TELC",
-    "options": [
-      "Deutscher Forscher startet Expedition auf Vogelinsel in Südamerika.",
-      "Die beliebtesten Reiseziele unter den europäischen Inseln.",
-      "Fernreisen in eine unberührte Tierwelt.",
-      "Geführte Bootsausflüge zu einsamen Badebuchten.",
-      "Grüne Geisterinsel in Asien.",
-      "Immer mehr Reiseunternehmen streichen Thailand aus ihrem Angebot.",
-      "Inseln zählen weltweit zu den wichtigsten Reisedestinationen.",
-      "Nachhaltiger Tourismus auf chinesischen Inseln.",
-      "Tierparadies auf einer Nordseeinsel.",
-      "Umstrittener Umgang mit Tieren als Touristenmagnet."
-    ],
-    "pairs": [
+    "format": "CLOZE_MCQ",
+    "options": [],
+    "pairs": [],
+    "passage": "Hallo Judith oder Lina, wir habe uns ja lange nicht gesehen. Ich hoffe, du hattest einen richtig schönen Urlaub in Kroatien! Danke auch für deine Urlaubskartei! Die hat mich echt neidisch gemacht; ich habe ja erst im September Urlaub. {{1}} rufst du heute schon deine E-Mails ab and liest diese Nachricht von mir! Wir, als das gesamte Team, möchten {{2}} unserer Kollegin Elena zu ihrer Pensionierung gemeinsam etwas zum Abschied schenken. Ihre Abschiedsfeier ist ja {{3}} übermorgen abends im großen Konferenzraum unserer Firma. Bist du {{4}} einverstanden, dass wir ihr zusammen einen Gutschein und einen Blumenstrauß schenken? Jeder zahlt etwas 10 € dazu. Ich denke, das ist angemessen. Du erinnerst dich: {{5}} wir das letzte Mal gesammelt hatten, gab es Beschwerden wegen der Höhe des Betrags. Aber möglicherweise hast du eine bessere Idee. Michael und ich gehen dann nachmittags {{6}} in der Stadt einkaufen. Die Glückwunschkarte für Elena könntest du dann übermorgen noch {{7}} vor der Feier unterschreiben. Wir treffen uns ja alle vorher und gehen gemeinsam hin. In der Firma war heute nicht viel los. Aber in den letzten 14 Tagen hatten viele Kollegen Urlaub, {{8}} ich sehr viel zu tun hatte. Es gibt übrigens auch {{9}} neue Entwicklungen in der Firma, von denen ich dir dann übermorgen erzählen kann. Wahrscheinlich bist du nach der langen Fahrt sehr müde. Schlaf dich morgen gut aus; wir sehen uns dann auf Elenas Feier! Ich wünsche dir heute einen {{10}} Tag. Liebe Grüße, Cosima",
+    "gaps": [
       {
-        "passage": "Die Shengsi-Inseln liegen im Ostchinesischen Meer. Nicht einmal 20 der rund 400 Inseln sind bewohnt, und manche, auf denen einst Menschen lebten, wurden wieder verlassen. Ein altes Dorf auf der nun unbewohnten Insel Shengshan ist zu einer Sehenswürdigkeit geworden. Die ehemaligen Bewohner haben das Fischerdorf auf dem viereinhalb Quadratkilometer großen Insel längst verlassen. Sie sind aus wirtschaftlichen Gründen auf das Festland gezogen, da es dort einfacher für sie ist, ihren Fischfang zu verarbeiten und zu verkaufen. Das Dorf jedoch, dass sie zurückgelassen haben, ist in kürzester Zeit von der Natur zurückerobert worden. Farne und Gräser überwuchern Häuser und Wege. Die Grenzen zwischen den von Menschen geschaffenen Gebäuden und dem umgebenden Urwald verschwinden: Mauerwerk, überwuchert von wildem Wein; Grün, soweit das Auge reicht. An diesem Ort lebt keine Menschenseele mehr.",
-        "title": "Grüne Geisterinsel in Asien."
+        "n": 1,
+        "answer": "Hoffentlich",
+        "choices": [
+          "Zuversichtlich",
+          "Möglichst",
+          "Hoffentlich"
+        ]
       },
       {
-        "passage": "Der Reiseveranstalter TOURIMARS hat kürzlich eine Befragung durchgeführt, um herauszufinden, welche Inseln in Europa unter Reisenden besonders populär sind. Laut dieser Umfrage führt die griechische Insel Santorin die Liste an. Auf Platz zwei steht Madeira, die grüne Insel im Atlantik. Mit Kreta und Zakynthos schaffen es an dritter und vierter Stelle noch zwei weitere griechische Inseln in die Liste – übrigens wird die Attraktivität griechischer Inseln auch in anderen Umfragen bestätigt. Platz fünf nimmt die Badeinsel Fuerteventura ein. Rang sechs geht an die britische Kanalinsel Jersey. Mallorca folgt auf Platz sieben, gefolgt von der italienischen Insel Capri und der Kanareninsel Teneriffa. Gerade noch in die Top Ten schaffte es auch die französische Mittelmeerinsel Korsika, die sowohl für Wanderer als auch für Badeurlauber interessant ist. Für die Umfrage wurden Erfahrungsberichte von Urlaubern über einen Zeitraum von 12 Monaten ausgewertet. Sie bewerteten dabei die Hotels, Restaurants und Sehenswürdigkeiten der besuchten Inseln.",
-        "title": "Die beliebtesten Reiseziele unter den europäischen Inseln."
+        "n": 2,
+        "answer": "nämlich",
+        "choices": [
+          "vermutlich",
+          "nämlich",
+          "bestimmt"
+        ]
       },
       {
-        "passage": "Das ostfriesische Memmert ist für seltene Vögel reserviert. Auf der Düneninsel, die vor ein paar Jahrhunderten aus der Nordsee aufgetaucht ist, leben Zigtausende von Vögeln. Nur der Inselvogt lebt zeitweise dort. Von Anfang März bis Ende Oktober ist der Forscher das einzige menschliche Wesen auf der kleinen Vogelschutzinsel im Wattenmeer. Im Auftrag des Landes Niedersachsen ist der Inselvogt für den Schutz von Natur und Vögeln auf Memmert zuständig. Von Mai bis Ende Juli ist Brutzeit auf der Insel. 100.000 Tiere, Vertreter von 60 verschiedenen Vogelarten, kommen Jahr für Jahr zum Brüten nach Memmert. Während dieser Zeit besteht ein absolutes Betretungsverbot – ausgenommen für Personen, die in Seenot geraten sind oder eine schriftliche Genehmigung haben. Ab August, dem Ende der Brutzeit, haben auch Urlauber für kurze Zeit die Chance auf einen Besuch, aber ausschließlich im Rahmen einer geführten Expedition. Nur mit einem Experten dürfen sie die Düneninsel im Wattenmeer erkunden.",
-        "title": "Tierparadies auf einer Nordseeinsel."
+        "n": 3,
+        "answer": "schon",
+        "choices": [
+          "schon",
+          "fast",
+          "beinahe"
+        ]
       },
       {
-        "passage": "Die südamerikanischen Galapagosinseln locken nicht mit weißen Sandstränden und Palmen. Dennoch sind sie das Ziel so mancher Reisesehnsüchte. Für viele Menschen gelten die fernen Inseln als eine Art Paradies. Und tatsächlich kommt man wohl nirgendwo sonst ungezähmten Tieren so nahe wie auf diesen Inseln: Auf den unbewohnten Galapagosinseln verhalten sich die Tiere so, als gäbe es keine Menschen. Für die Besucher ist dabei die Zutraulichkeit der Tiere genauso faszinierend wie für die Entdeckungsreisenden früherer Jahrhunderte. Diese Zutraulichkeit haben sich die Tiere aufgrund des Fehlens natürlicher Feinde auf den Inseln bewahrt. Man kann das ganze Jahr über zu den Galapagosinseln reisen. Die bewohnten Inseln kann man dabei ganz gut allein besuchen. Anders sieht es bei den unbewohnten Inseln aus. Hier lassen die Behörden seit einigen Jahren nur eine begrenzte Zahl an Schiffen zu, und ohne Führer ist das Betreten nicht erlaubt. Die Inseln und ihre Tiere bleiben sich selbst überlassen, damit das Naturparadies auch weiterhin erhalten bleibt.",
-        "title": "Fernreisen in eine unberührte Tierwelt."
+        "n": 4,
+        "answer": "damit",
+        "choices": [
+          "damit",
+          "dafür",
+          "dadurch"
+        ]
       },
       {
-        "passage": "Dass Elefanten in Thailand teurer sein können als ein 3er-BMW in München, liegt an ihrem enormen wirtschaftlichen Potenzial: Sie sind eine der Hauptattraktionen der thailändischen Tourismusindustrie. Jeder dritte Besucher des Landes möchte mit Elefanten in Kontakt kommen oder hat das bereits getan, wie eine Umfrage einer Tierschutzgruppe zeigt. Die Organisation schätzt, dass in dem Land mehr als 2000 Elefanten im Einsatz sind, um die Nachfrage der Urlauber zu bedienen – so viele wie in keinem anderen Land der Welt. Was für die Besitzer ein gutes Geschäft ist, steht immer häufiger bei Tierschützern in der Kritik: Elefantenreiten sei die grausamste Tierattraktion der Welt. Sie sprechen von einer lebenslangen Qual für die Elefanten. Mehr als 100 Reiseveranstalter haben solche Angebote schon aus ihren Katalogen gestrichen. Dies feiern Tierschützer als Sieg: \"Elefanten sind Wildtiere, keine Entertainer.\" Dass die Lebensbedingungen der Tourismuselefanten nicht artgerecht sind, ist bekannt. Doch selbst wenn sie nicht mehr als Einnahmequelle dienen, wird das an ihren Lebensumständen wenig ändern.",
-        "title": "Umstrittener Umgang mit Tieren als Touristenmagnet."
+        "n": 5,
+        "answer": "Als",
+        "choices": [
+          "Wenn",
+          "Wann",
+          "Als"
+        ]
+      },
+      {
+        "n": 6,
+        "answer": "miteinander",
+        "choices": [
+          "zueinander",
+          "voneinander",
+          "miteinander"
+        ]
+      },
+      {
+        "n": 7,
+        "answer": "kurz",
+        "choices": [
+          "vor Kurzem",
+          "kürzlich",
+          "kurz"
+        ]
+      },
+      {
+        "n": 8,
+        "answer": "weshalb",
+        "choices": [
+          "weshalb",
+          "insofern",
+          "deshalb"
+        ]
+      },
+      {
+        "n": 9,
+        "answer": "vollkommen",
+        "choices": [
+          "vollkommen",
+          "sämtlich",
+          "erschöpfend"
+        ]
+      },
+      {
+        "n": 10,
+        "answer": "angenehmen",
+        "choices": [
+          "passenden",
+          "bequemen",
+          "angenehmen"
+        ]
       }
     ]
   },
   {
-    "sourceId": "42",
-    "sourceTitle": "In den Alpen",
-    "section": "Lesen Teil 1",
-    "skill": "lesen",
+    "sourceId": "32",
+    "sourceTitle": "Igor",
+    "section": "Sprachbausteine Teil 1",
+    "skill": "sprachbausteine",
     "level": "B2",
     "exam": "TELC",
-    "options": [
-      "Freizeitsport in den Alpen.",
-      "Mädchen geben mehr Geld für Zigaretten aus als Jungen.",
-      "Hochgebirge als Skiparadies.",
-      "Höhenluft - gut fürs Herz.",
-      "Junge Sportler. weniger suchtanfällig.",
-      "Mit der Zigarette an die frische Luft.",
-      "Rauchverbot in Sportvereinen.",
-      "Uni-Campus: rauchfreie Zone eingerichtet.",
-      "Zigaretten gegen Alleinsein.",
-      "Zum Leistungssport in die Berge."
-    ],
-    "pairs": [
+    "format": "CLOZE_MCQ",
+    "options": [],
+    "pairs": [],
+    "passage": "Lieber Igor, vielen Dank für deine Nachricht,{{1}} die ich mich sehr gefreut habe. Es ist echt eine tolle Idee im Sommer gemeinsam zu verreisen! Aber möchtest du wirklich mit dem Auto fahren? Ich würde lieber die Bahn nehmen, denn das ist umweltfreundlicher und {{2}} noch billiger Momentan bin ich nämlich mal wieder etwas knapp bei Kasse. Wir könnten doch eine Interrail-Tour machen. Mit einem Global Pass können wir in 30 Europäischen Ländern Zug {{3}} und zwar wann und wohin auch immer- allerdings nicht bei uns in Deutschland. Hier müssen wir extra zahlen. Aber wir haben es ja von mir aus nicht allzu weit bis zur Grenze. {{4}} wir noch keine 26 Jahre alt sind, können wir den Pass ausgesprochen günstig bekommen. Der Preis hängt {{5}} ab, wie lange wir unterwegs sein wollen. Wenn du lieber nur ein einziges Land bereisen möchtest, schlage ich vor, nach Frankreich zu fahren, Dann nämlich würden wir für ein Interrail-Ticket sogar noch weniger zahlen. Ich habe auch schon mit meiner Tante in Marseille {{6}} und sie hat gleich vorgeschlagen, {{7}} wir einige Tage bei ihr verbringen. Meine Cousins Jérôme und Matthieu, die in Paris studieren, haben Semesterferien und werden auch dort sein. Die beiden würden {{8}} freuen, mit uns um die Häuser /zu ziehen, und könnten uns sicherlich die angesagtesten Clubs der Stadt zeigen. Wegen {{9}} Sprachkenntnisse brauchst du dir nicht den Kopf zu zerbrechen, denn die beiden sprechen ziemlich gut Deutsch. Was hältst du davon? Hast du noch andere Vorschläge? Ich freue mich {{10}} schon sehr auf unsere gemeinsame Reise. Bis bald Thomas",
+    "gaps": [
       {
-        "passage": "Für Raucher wird es an der Universität in Köln ab dem kommenden Wintersemester eng. Denn nach zahllosen Beschwerden von der Universität als auch von Studierenden erweiterte nun die Universitätsverwaltung das bestehende Rauchverbot. Bisher erstreckte es sich nur auf Hörsäle und Seminarraume, Doch kaum waren die Veranstaltungen zu Ende. fand man Sich in den Fluren. Foyers und Cafeteria eingehüllt in dick Schwaden von Zigarettenqualm wieder Dieser Zustand war vielen Nichtrauchern schon seit Längerem ein Dorn im Auge. Unterstutzt von mehreren Untersuchungsberichten über die Gefahren des passiven Rauchens und von den guten Erfahrungen. die man an ausländischen Universitäten - vor allem in den USA - mit gemacht hat. Wollten die Nichtraucher diesen Zustand nicht langer hinnehmen, Das Rauchverbot gilt nun in allen Gebäuden einschließlich der Toiletten. Die Professoren und Studierenden, die das Qualmen auch künftig nicht lassen kennen. werden in ihren Rauchpausen im kommenden Winter irgendwo auf den Campus ganz sicher kalte Füße bekommen.",
-        "title": "Mit der Zigarette an die frische Luft."
+        "n": 1,
+        "answer": "über",
+        "choices": [
+          "mit",
+          "über",
+          "wegen"
+        ]
       },
       {
-        "passage": "Urlaub in den Bergen ist sehr gesund. Das fanden jetzt Wissenschaftler am Anatomischen Zentrum der Universität Köln heraus. Besonders die Höhenlagen um die 2.000 Meter wirken sich messbar auf die Gesundheit aus. Die \"dünnere Luft\" in Hochgebirgslagen bewirke eine Senkung des Blutdrucks und des Pulsschlages, eine verbesserte Leistungsfähigkeit des Herzens und damit eine Stärkung der Funktion von Herz, Lunge und Kreislauf. Wichtig sei es aber, in den ersten Tagen auf eine ausreichende Akklimatisierung zu achten. Denn etwa eine Woche benötige der Körper, um sich an die neuen klimatischen Bedingungen im Gebirge anzupassen. Während dieser Zeit solle man. so die Wissenschaftler, größere körperliche Anstrengungen und Extremsport vermeiden. Ab der zweiten Urlaubswoche habe man dann seine volle körperliche Leistungsfähigkeit erreicht.",
-        "title": "Höhenluft - gut fürs Herz."
+        "n": 2,
+        "answer": "außerdem",
+        "choices": [
+          "außerdem",
+          "sonst",
+          "weiterhin"
+        ]
       },
       {
-        "passage": "Schlechte Haut, übler Atem, leere Brieftasche. Das ist eigentlich ziemlich -uncool\". Und doch dauen es ziemlich lange, bis junge Raucher begriffen haben. dass Rauchen nicht halt, was viele Jugendliche in ihrer Phantasie damit verbinden: Freiheit und Attraktivität der Glimmstängel macht ‚cool‘ und begehrenswert. Stress und Leistungsdruck verfliegen angeblich, sobald man nur an der Zigarette zieht. Doch das Gegenteil ist der Fall: Die zuerst genannten Negativfolgen stellen sich oft schneller ein als gedacht. Häufig ist es aber dann schon zu spät. denn das Entwöhnen von der Sucht des Rauchens ist ein langwieriger und oft auch schmerzhafter Weg. Obwohl dies alles bekannt ist, finden es in Deutschland fast 50% aller Teenager zwischen 12 und 16 Jahren schick, Zigaretten zu konsumieren - ein eindeutig zu großem Anteil, warnen die Gesundheitsbehörden. Besonders groß ist der prozentuale Anteil der Raucher übrigens unter den jungen Mädchen. Als Raucherinnen fühlen sie sich erwachsen und der Cliquendruck - nahezu alle Freunde und Freundinnen rauchen auch - erzeugt oft ein vermeintliches Notwendigkeitsgefühl. auch zu rauchen.",
-        "title": "Mädchen geben mehr Geld für Zigaretten aus als Jungen."
+        "n": 3,
+        "answer": "fahren",
+        "choices": [
+          "fahren",
+          "kommen",
+          "nehmen"
+        ]
       },
       {
-        "passage": "Sport im Hochgebirge? Da denkt man zuallererst an Wintersport. Ski fahren, rodeln. eislaufen. Doch auch im Sommer ist das Hochgebirge ein Ort. an dem man sich vielfältig sportlich betätigen kann: Wandern. Klettern oder Schwimmen in einem der zahlreichen kristallklaren Bergseen erfreuen sich großer Beliebtheit bei Jung und Alt. In Deutschland ist Hochgebirgssport vor allem in den Alpenregionen im südlichen Bayern möglich. Es muss jedoch nicht unbedingt gleich Deutschlands höchster Berg - die Zugspitze - sein, die man als Ziel ansteuert. Auch rund um Oberstdorf. Füssen. Berchtesgaden oder rund um den Tegernsee bieten sich viele Möglichkeiten für sportliche Natureliebhaber wie für naturverbundene Sportler. Für die zumeist städtischen Urlauber. die hier vor allem Ruhe und Erholung vom Alltagsstress suchen. haben die deutschen Alpenqebiete außerdem den Vorteil. dass man keine weiten Wege zurücklegen muss, wenn einen das Heimweh nach der Stadt packt, nach Schwimmhallen. Fußballstadien oder Golfplätzen, Denn für die Stadtsportler ist es von keinem Alpenort weiter als eine gute Stunde in die bayerische Landeshauptstadt München.",
-        "title": "Freizeitsport in den Alpen."
+        "n": 4,
+        "answer": "da",
+        "choices": [
+          "da",
+          "darum",
+          "deshalb"
+        ]
       },
       {
-        "passage": "Sportvereine spielen eine immer wichtigere soziale Rolle für Junge Leute in Deutschland, das haben neueste Untersuchungen an den Tag gebracht. Ging man früher in einen Sportverein, um Fußball zu spielen, zu reiten oder zu turnen. geben die Clubs heute vielen Jugendlichen ein zweites Zuhause. Hier treffen sich Freunde, hier kümmern sich jemand um sie. hier haben sie eine Aufgabe. Zuhause fühlen sie sich einsam und überflüssig. Die Eltern arbeiten und sind nicht da, die Kommunikation mit dem Fernseher oder dem Computer ist eine recht einseitige Angelegenheit. Jugendliche, die in Sportvereinen Mitglied sind, sind geselliger, werden so zahlreiche Studien – weniger gewalttätig. leben gesundheitsbewusster, rauchen deutlich weniger als ihre Altersgenossen, die nicht im Verein sind, konsumieren erheblich weniger Alkohol gar Drogen. Das Zugehörigkeitsgefühl zum Verein und das Gefühl, etwas zu leisten. Tragen sehr stark dazu bei. dass den jungen Leuten gegen die Verführungen der Zigaretten. Und Alkoholindustrie resistent werden.",
-        "title": "Junge Sportler. weniger suchtanfällig."
+        "n": 5,
+        "answer": "davon",
+        "choices": [
+          "deshalb",
+          "damit",
+          "davon"
+        ]
+      },
+      {
+        "n": 6,
+        "answer": "gesprochen",
+        "choices": [
+          "besprochen",
+          "gesprochen",
+          "versprochen"
+        ]
+      },
+      {
+        "n": 7,
+        "answer": "dass",
+        "choices": [
+          "als",
+          "dass",
+          "wenn"
+        ]
+      },
+      {
+        "n": 8,
+        "answer": "sich",
+        "choices": [
+          "euch",
+          "sich",
+          "uns"
+        ]
+      },
+      {
+        "n": 9,
+        "answer": "der",
+        "choices": [
+          "das",
+          "der",
+          "die"
+        ]
+      },
+      {
+        "n": 10,
+        "answer": "jedenfalls",
+        "choices": [
+          "bestenfalls",
+          "jedenfalls",
+          "keinesfalls"
+        ]
       }
     ]
   },
   {
-    "sourceId": "143",
-    "sourceTitle": "In den Alpen 2",
-    "section": "Lesen Teil 1",
-    "skill": "lesen",
+    "sourceId": "33",
+    "sourceTitle": "Maria",
+    "section": "Sprachbausteine Teil 1",
+    "skill": "sprachbausteine",
     "level": "B2",
     "exam": "TELC",
-    "options": [
-      "Freizeitsport in den Alpen.",
-      "Mädchen geben mehr Geld für Zigaretten aus als Jungen.",
-      "Hochgebirge als Skiparadies.",
-      "Höhenluft - gut fürs Herz.",
-      "Verein wirken positiv auf Jugendliche.",
-      "Studenten engagieren sich gegen das Rauchen.",
-      "Rauchverbot in Sportvereinen.",
-      "Uni-Campus: rauchfreie Zone eingerichtet.",
-      "Zigaretten gegen Alleinsein.",
-      "Zum Leistungssport in die Berge."
-    ],
-    "pairs": [
+    "format": "CLOZE_MCQ",
+    "options": [],
+    "pairs": [],
+    "passage": "Hallo Maria Bevor Wieder der Arbeitsalltag beginnt. schicke ich dir {{1}} rasch einige Zeilen um dir von unserem Wochenende zu erzählen. Es ist so schade, dass du {{2}} deiner Grippe nicht dabei sein konntest! Wir haben dich alle sehr vermisst. {{3}}auf Mikro sind Alle mit dem Zug angereist und wir haben uns schon am Bahnhof getroffen. Nachdem wir unser Gepäck abgestellt {{4}}. haben wir gleich einen Rundgang durch den Ort gemacht. Lilo wusste viel Interessantes zu erzählen. Sie lebt ja schon einige Jahre dort und hat sich {{5}} ausgezeichnete Fremdenführerin erwiesen. Besonders beeindruckt hat uns der Wunderschöne Park, in dem gerade die Rhododendren blühten. Eine Wahre Pracht. Das hätte dir auch gefallen! später sind wir zum Amseisee gewandert, den man in kurzer Zeit vom Ort aus erreicht. Dort haben wir eine Bootsfahrt über den See gemacht. vom Boot aus hat man einen Wunderbaren Blick auf die beeindruckende Felsenlandschaft. Am Abend stand dann die Felsentbühne {{6}} dem Programm. Die Wanderung am nächsten Tag war {{7}} schön anstrengend. aber Wunderbar. {{8}} alle ziemlich erschöpft waren. haben wir nach dem Abendessen noch lange zusammen gegessen. Und über alte Zeiten geplaudert. Am nächsten Morgen nach unserem gemeinsamen Frühstück waren uns einig, dass wir bald wieder zusammen einen Ausflug machen {{9}}. Und nächste Mal musst du unbedingt dabei sein. Im Anhang schicke ich dir einige. Wie du siehst, war unser Treffen wirklich lustig! Ich hoffe, dass es dir {{10}} schon wieder besser geht. Liebe Grüße von uns allem Cem",
+    "gaps": [
       {
-        "passage": "Für Raucher wird es an der Universität in Köln ab dem kommenden Wintersemester eng. Denn nach zahllosen Beschwerden von der Universität als auch von Studierenden erweiterte nun die Universitätsverwaltung das bestehende Rauchverbot. Bisher erstreckte es sich nur auf Hörsäle und Seminarraume, Doch kaum waren die Veranstaltungen zu Ende. fand man Sich in den Fluren. Foyers und Cafeteria eingehüllt in dick Schwaden von Zigarettenqualm wieder Dieser Zustand war vielen Nichtrauchern schon seit Längerem ein Dorn im Auge. Unterstutzt von mehreren Untersuchungsberichten über die Gefahren des passiven Rauchens und von den guten Erfahrungen. die man an ausländischen Universitäten - vor allem in den USA - mit gemacht hat. Wollten die Nichtraucher diesen Zustand nicht langer hinnehmen, Das Rauchverbot gilt nun in allen Gebäuden einschließlich der Toiletten. Die Professoren und Studierenden, die das Qualmen auch künftig nicht lassen kennen. werden in ihren Rauchpausen im kommenden Winter irgendwo auf den Campus ganz sicher kalte Füße bekommen.",
-        "title": "Studenten engagieren sich gegen das Rauchen."
+        "n": 1,
+        "answer": "noch",
+        "choices": [
+          "momentan",
+          "noch",
+          "weiterhin"
+        ]
       },
       {
-        "passage": "Urlaub in den Bergen ist sehr gesund. Das fanden jetzt Wissenschaftler am Anatomischen Zentrum der Universität Köln heraus. Besonders die Höhenlagen um die 2.000 Meter wirken sich messbar auf die Gesundheit aus. Die \"dünnere Luft\" in Hochgebirgslagen bewirke eine Senkung des Blutdrucks und des Pulsschlages, eine verbesserte Leistungsfähigkeit des Herzens und damit eine Stärkung der Funktion von Herz, Lunge und Kreislauf. Wichtig sei es aber, in den ersten Tagen auf eine ausreichende Akklimatisierung zu achten. Denn etwa eine Woche benötige der Körper, um sich an die neuen klimatischen Bedingungen im Gebirge anzupassen. Während dieser Zeit solle man. so die Wissenschaftler, größere körperliche Anstrengungen und Extremsport vermeiden. Ab der zweiten Urlaubswoche habe man dann seine volle körperliche Leistungsfähigkeit erreicht.",
-        "title": "Höhenluft - gut fürs Herz."
+        "n": 2,
+        "answer": "wegen",
+        "choices": [
+          "deswegen",
+          "wegen",
+          "weil"
+        ]
       },
       {
-        "passage": "Schlechte Haut, übler Atem, leere Brieftasche. Das ist eigentlich ziemlich -uncool\". Und doch dauen es ziemlich lange, bis junge Raucher begriffen haben. dass Rauchen nicht halt, was viele Jugendliche in ihrer Phantasie damit verbinden: Freiheit und Attraktivität der Glimmstängel macht ‚cool‘ und begehrenswert. Stress und Leistungsdruck verfliegen angeblich, sobald man nur an der Zigarette zieht. Doch das Gegenteil ist der Fall: Die zuerst genannten Negativfolgen stellen sich oft schneller ein als gedacht. Häufig ist es aber dann schon zu spät. denn das Entwöhnen von der Sucht des Rauchens ist ein langwieriger und oft auch schmerzhafter Weg. Obwohl dies alles bekannt ist, finden es in Deutschland fast 50% aller Teenager zwischen 12 und 16 Jahren schick, Zigaretten zu konsumieren - ein eindeutig zu großem Anteil, warnen die Gesundheitsbehörden. Besonders groß ist der prozentuale Anteil der Raucher übrigens unter den jungen Mädchen. Als Raucherinnen fühlen sie sich erwachsen und der Cliquendruck - nahezu alle Freunde und Freundinnen rauchen auch - erzeugt oft ein vermeintliches Notwendigkeitsgefühl. auch zu rauchen.",
-        "title": "Mädchen geben mehr Geld für Zigaretten aus als Jungen."
+        "n": 3,
+        "answer": "bis",
+        "choices": [
+          "abgesehen",
+          "außer",
+          "bis"
+        ]
       },
       {
-        "passage": "Sport im Hochgebirge? Da denkt man zuallererst an Wintersport. Ski fahren, rodeln. eislaufen. Doch auch im Sommer ist das Hochgebirge ein Ort. an dem man sich vielfältig sportlich betätigen kann: Wandern. Klettern oder Schwimmen in einem der zahlreichen kristallklaren Bergseen erfreuen sich großer Beliebtheit bei Jung und Alt. In Deutschland ist Hochgebirgssport vor allem in den Alpenregionen im südlichen Bayern möglich. Es muss jedoch nicht unbedingt gleich Deutschlands höchster Berg - die Zugspitze - sein, die man als Ziel ansteuert. Auch rund um Oberstdorf. Füssen. Berchtesgaden oder rund um den Tegernsee bieten sich viele Möglichkeiten für sportliche Natureliebhaber wie für naturverbundene Sportler. Für die zumeist städtischen Urlauber. die hier vor allem Ruhe und Erholung vom Alltagsstress suchen. haben die deutschen Alpenqebiete außerdem den Vorteil. dass man keine weiten Wege zurücklegen muss, wenn einen das Heimweh nach der Stadt packt, nach Schwimmhallen. Fußballstadien oder Golfplätzen, Denn für die Stadtsportler ist es von keinem Alpenort weiter als eine gute Stunde in die bayerische Landeshauptstadt München.",
-        "title": "Freizeitsport in den Alpen."
+        "n": 4,
+        "answer": "hatten",
+        "choices": [
+          "haben",
+          "hatten",
+          "hätten"
+        ]
       },
       {
-        "passage": "Sportvereine spielen eine immer wichtigere soziale Rolle für Junge Leute in Deutschland, das haben neueste Untersuchungen an den Tag gebracht. Ging man früher in einen Sportverein, um Fußball zu spielen, zu reiten oder zu turnen. geben die Clubs heute vielen Jugendlichen ein zweites Zuhause. Hier treffen sich Freunde, hier kümmern sich jemand um sie. hier haben sie eine Aufgabe. Zuhause fühlen sie sich einsam und überflüssig. Die Eltern arbeiten und sind nicht da, die Kommunikation mit dem Fernseher oder dem Computer ist eine recht einseitige Angelegenheit. Jugendliche, die in Sportvereinen Mitglied sind, sind geselliger, werden so zahlreiche Studien – weniger gewalttätig. leben gesundheitsbewusster, rauchen deutlich weniger als ihre Altersgenossen, die nicht im Verein sind, konsumieren erheblich weniger Alkohol gar Drogen. Das Zugehörigkeitsgefühl zum Verein und das Gefühl, etwas zu leisten. Tragen sehr stark dazu bei. dass den jungen Leuten gegen die Verführungen der Zigaretten. Und Alkoholindustrie resistent werden.",
-        "title": "Verein wirken positiv auf Jugendliche."
+        "n": 5,
+        "answer": "als",
+        "choices": [
+          "als",
+          "für",
+          "zur"
+        ]
+      },
+      {
+        "n": 6,
+        "answer": "auf",
+        "choices": [
+          "auf",
+          "in",
+          "zu"
+        ]
+      },
+      {
+        "n": 7,
+        "answer": "ganz",
+        "choices": [
+          "absolut",
+          "ganz",
+          "vollkommen"
+        ]
+      },
+      {
+        "n": 8,
+        "answer": "obwohl",
+        "choices": [
+          "obwohl",
+          "trotzdem",
+          "ungeachtet"
+        ]
+      },
+      {
+        "n": 9,
+        "answer": "sollten",
+        "choices": [
+          "durften",
+          "konnten",
+          "sollten"
+        ]
+      },
+      {
+        "n": 10,
+        "answer": "inzwischen",
+        "choices": [
+          "inzwischen",
+          "während",
+          "zwischen"
+        ]
       }
     ]
   },
   {
-    "sourceId": "43",
-    "sourceTitle": "Kartoffel",
-    "section": "Lesen Teil 1",
-    "skill": "lesen",
+    "sourceId": "34",
+    "sourceTitle": "Ida",
+    "section": "Sprachbausteine Teil 1",
+    "skill": "sprachbausteine",
     "level": "B2",
     "exam": "TELC",
+    "format": "CLOZE_MCQ",
+    "options": [],
+    "pairs": [],
+    "passage": "Liebe Ida, nun ist es schon drei Monate her, dass ich nach Frankfurt gezogen bin. Es hat ziemlich lange gedauert, bis ich mich hier eingelebt habe. Am Anfang hatte ich mich auch gar nicht {{1}} die neue Stelle und das Leben in der Stadt gefreut. Dass ich mich für meine neue Arbeitsstelle umgezogen war, hatte mich eine Zeitlang sogar ein bisschen geärgert. Ich {{2}} ja auch täglich mit dem Zug fahren können, statt mir eine Wohnung in der Nähe der Firma zu suchen. Zuerst habe ich {{3}} in meiner neuen Wohnung auch gar nicht richtig wohlgefühlt. Aber nachdem ich meine Umzugskartons {{4}}, konnte ich endlich die Stadt richtig erkunden. Seit einiger Zeit gefällt es mir in Frankfurt nun richtig gut. Das liegt vor allem {{5}} dass ich eine neue Freundin gefunden habe. Annabelle wohnt in derselben Straße wie ich und wir haben uns auf einem Flohmarkt in unserem Stadtviertel kennengelernt. Sie hat dort ihre alten Bücher verkauft. Als wir {{6}} ins Gespräch kamen, haben wir festgestellt, dass wir ähnliche Interessen und Hobbys teilen: Sie mag ebenfalls ausgefallene Mode und moderne Kunst und wir gehen nun regelmäßig zusammen ins Schwimmbad. Mein Leben sieht nun also ganz anders aus {{7}} noch vor drei Monaten. Mit meiner neuen Stelle bin ich auch zufrieden, {{8}} ich oft Überstunden machen muss. Dafür herrscht jedoch ein angenehmes Betriebsklima {{9}} uns in der Abteilung. Jetzt habe ich viel von mir erzählt, aber Dich noch gar nicht gefragt, wie es Dir {{10}} geht. Gibt es etwas Neues bei Dir? Ich freue mich auf Deine nächste Mail! Herzliche Grüße Deine Emilia",
+    "gaps": [
+      {
+        "n": 1,
+        "answer": "auf",
+        "choices": [
+          "an",
+          "auf",
+          "wegen"
+        ]
+      },
+      {
+        "n": 2,
+        "answer": "hätte",
+        "choices": [
+          "habe",
+          "hätte",
+          "würde"
+        ]
+      },
+      {
+        "n": 3,
+        "answer": "mich",
+        "choices": [
+          "dich",
+          "uns",
+          "mich"
+        ]
+      },
+      {
+        "n": 4,
+        "answer": "ausgepakt hatte",
+        "choices": [
+          " ausgepakt habe",
+          "ausgepakt hatte",
+          "auspakte"
+        ]
+      },
+      {
+        "n": 5,
+        "answer": "daran",
+        "choices": [
+          "daran",
+          "daraf",
+          "darin"
+        ]
+      },
+      {
+        "n": 6,
+        "answer": "miteinander",
+        "choices": [
+          "einander",
+          "gegeneinander",
+          "miteinander"
+        ]
+      },
+      {
+        "n": 7,
+        "answer": "als",
+        "choices": [
+          "als",
+          "denn",
+          "wenn"
+        ]
+      },
+      {
+        "n": 8,
+        "answer": "obwohl",
+        "choices": [
+          "obwohl",
+          "trotzdem",
+          "während"
+        ]
+      },
+      {
+        "n": 9,
+        "answer": "bei",
+        "choices": [
+          "bei",
+          "mit",
+          "zu"
+        ]
+      },
+      {
+        "n": 10,
+        "answer": "eigentlich",
+        "choices": [
+          "eigentlich",
+          "hoffentlich",
+          "sichererlich"
+        ]
+      }
+    ]
+  },
+  {
+    "sourceId": "35",
+    "sourceTitle": "Andrea",
+    "section": "Sprachbausteine Teil 1",
+    "skill": "sprachbausteine",
+    "level": "B2",
+    "exam": "TELC",
+    "format": "CLOZE_MCQ",
+    "options": [],
+    "pairs": [],
+    "passage": "Liebe Andrea, vielen Dank für deine Nachricht. Entschuldige bitte, dass ich {{1}} jetzt antworte, aber ich konnte gestern meinen Laptop nicht verwenden. Ich hatte ihn zu Peter gebracht, damit er mir ein neues Betriebssystem installiert. Jetzt funktioniert alles {{2}}, so dass ich endlich meine Fotos sortieren konnte. Peter und ich haben uns die Fotos von deinem letzten Besuch hier angesehen. Es war so lustig, du musst bald wieder mal {{3}} uns kommen. Nun zu deiner Nachricht: Du suchst also einen Sommerjob im Bereich Touristik und wolltest wissen, ob ich einen Tipp für dich habe. Ich habe mich hier ein wenig umgehört, aber du bist {{4}} spät dran mit deiner Suche. Nur das Hotel \"Seeblick\" sucht noch jemanden für die Rezeption. Man braucht keine {{5}} Berufserfahrung; nur Englisch ist zwingende Voraussetzung, eine {{6}} Fremdsprache wäre noch besser. Das wäre für Juli und August, fünf Tage in der Woche. Du musst dich allerdings sehr bald {{7}} , am besten noch heute. Die Kontaktperson findest du auf der Webseite des Hotels. leider kenne ich die Hotelbesitzer nicht persönlich, {{8}} hätte ich mich natürlich sofort für dich eingesetzt. Ich werde {{9}} wieder im Kinder-Feriencamp arbeiten. Eigentlich wollte ich dieses Jahr ins Ausland, aber dann habe ich mich doch {{10}}, hier zu bleiben. Meine Mutter hat sich noch nicht richtig von ihrer Operation erholt, und ich lasse sie ungern allein. Also bewirb dich gleich - es wäre toll, wenn wir uns im Sommer viel sehen könnten. Falls es nicht klappt, hoffe ich doch, dass du uns bald besuchen kommst! In der Zwischenzeit alles Liebe Sophia",
+    "gaps": [
+      {
+        "n": 1,
+        "answer": "erst",
+        "choices": [
+          "erst",
+          "gleich",
+          "zuerst"
+        ]
+      },
+      {
+        "n": 2,
+        "answer": "bestens",
+        "choices": [
+          "am besten",
+          "bestenfalls",
+          "bestens"
+        ]
+      },
+      {
+        "n": 3,
+        "answer": "zu",
+        "choices": [
+          "bei",
+          "mit",
+          "zu"
+        ]
+      },
+      {
+        "n": 4,
+        "answer": "ziemlich",
+        "choices": [
+          "fast",
+          "ungefähr",
+          "ziemlich"
+        ]
+      },
+      {
+        "n": 5,
+        "answer": "besondere",
+        "choices": [
+          "besondere",
+          "geringe",
+          "gute"
+        ]
+      },
+      {
+        "n": 6,
+        "answer": "weitere",
+        "choices": [
+          "künftige",
+          "nächste",
+          "weitere"
+        ]
+      },
+      {
+        "n": 7,
+        "answer": "bewerben",
+        "choices": [
+          "anwerben",
+          "bewerben",
+          "umwerben"
+        ]
+      },
+      {
+        "n": 8,
+        "answer": "sonst",
+        "choices": [
+          "außerdem",
+          "damals",
+          "sonst"
+        ]
+      },
+      {
+        "n": 9,
+        "answer": "übrigens",
+        "choices": [
+          "deshalb",
+          "trotzdem",
+          "übrigens"
+        ]
+      },
+      {
+        "n": 10,
+        "answer": "entschieden",
+        "choices": [
+          "ausgemacht",
+          "beschlossen",
+          "entschieden"
+        ]
+      }
+    ]
+  },
+  {
+    "sourceId": "91",
+    "sourceTitle": "Andrea 2",
+    "section": "Sprachbausteine Teil 1",
+    "skill": "sprachbausteine",
+    "level": "B2",
+    "exam": "TELC",
+    "format": "CLOZE_MCQ",
+    "options": [],
+    "pairs": [],
+    "passage": "Liebe Andrea, vielen Dank für deine Nachricht. Entschuldige bitte, dass ich {{1}} jetzt antworte, aber ich konnte gestern meinen Laptop nicht verwenden. Ich hatte ihn zu Peter gebracht, damit er mir ein neues Betriebssystem installiert. Jetzt funktioniert alles {{2}}, so dass ich endlich meine Fotos sortieren konnte. Peter und ich haben uns die Fotos von deinem letzten Besuch hier angesehen. Es war so lustig, du musst bald wieder mal {{3}} uns kommen. Nun zu deiner Nachricht: Du suchst also einen Sommerjob im Bereich Touristik und wolltest wissen, ob ich einen Tipp für dich habe. Ich habe mich hier ein wenig umgehört, {{4}} du bist ziemlich spät dran mit deiner Suche. Nur das Hotel \"Seeblick\" sucht noch jemanden für die Rezeption. Man braucht keine {{5}} Berufserfahrung; nur Englisch ist zwingende Voraussetzung, eine {{6}} Fremdsprache wäre noch besser. Das wäre für Juli und August, fünf Tage in der Woche. Du musst dich allerdings sehr bald {{7}} , am besten noch heute. Die Kontaktperson findest du auf der Webseite des Hotels. {{8}} kenne ich die Hotelbesitzer nicht persönlich, sonst hätte ich mich natürlich sofort für dich eingesetzt. Ich werde {{9}} wieder im Kinder-Feriencamp arbeiten. Eigentlich wollte ich dieses Jahr ins Ausland, aber dann habe ich mich doch {{10}}, hier zu bleiben. Meine Mutter hat sich noch nicht richtig von ihrer Operation erholt, und ich lasse sie ungern allein. Also bewirb dich gleich - es wäre toll, wenn wir uns im Sommer viel sehen könnten. Falls es nicht klappt, hoffe ich doch, dass du uns bald besuchen kommst! In der Zwischenzeit alles Liebe Sophia",
+    "gaps": [
+      {
+        "n": 1,
+        "answer": "erst",
+        "choices": [
+          "erst",
+          "gleich",
+          "zuerst"
+        ]
+      },
+      {
+        "n": 2,
+        "answer": "bestens",
+        "choices": [
+          "am besten",
+          "bestenfalls",
+          "bestens"
+        ]
+      },
+      {
+        "n": 3,
+        "answer": "zu",
+        "choices": [
+          "bei",
+          "mit",
+          "zu"
+        ]
+      },
+      {
+        "n": 4,
+        "answer": "aber",
+        "choices": [
+          "aber",
+          "denn",
+          "oder"
+        ]
+      },
+      {
+        "n": 5,
+        "answer": "besondere",
+        "choices": [
+          "besondere",
+          "geringe",
+          "gute"
+        ]
+      },
+      {
+        "n": 6,
+        "answer": "weitere",
+        "choices": [
+          "künftige",
+          "nächste",
+          "weitere"
+        ]
+      },
+      {
+        "n": 7,
+        "answer": "bewerben",
+        "choices": [
+          "anwerben",
+          "bewerben",
+          "umwerben"
+        ]
+      },
+      {
+        "n": 8,
+        "answer": "leider",
+        "choices": [
+          "Bedauerliche",
+          "leider",
+          "schade"
+        ]
+      },
+      {
+        "n": 9,
+        "answer": "übrigens",
+        "choices": [
+          "deshalb",
+          "trotzdem",
+          "übrigens"
+        ]
+      },
+      {
+        "n": 10,
+        "answer": "entschieden",
+        "choices": [
+          "ausgemacht",
+          "beschlossen",
+          "entschieden"
+        ]
+      }
+    ]
+  },
+  {
+    "sourceId": "36",
+    "sourceTitle": "Autorinnen und Autoren",
+    "section": "Sprachbausteine Teil 1",
+    "skill": "sprachbausteine",
+    "level": "B2",
+    "exam": "TELC",
+    "format": "CLOZE_MCQ",
+    "options": [],
+    "pairs": [],
+    "passage": "Liebe Autorinnen und Autoren, weihnachten ist nicht mehr weit, und bevor wir uns alle in die wohlverdienten Feiertage verabschieden, möchte ich euch noch einmal an den Redaktionsschluss für unsere Vereinszeitung erinnern, den wir für den 10. Januar festgelegt haben. {{1}} ihr alle wisst, kann Claudia, unsere fleißige Layouterin, sich erst dann an die Arbeit machen, wenn alle Texte und Bilder {{2}}. Die fertige Datei muss bis spätestens 22. Januar in der Druckerei sein, damit das Heft pünktlich zum 1. Februar fertig sein kann. Ein gutes Layout ist auch {{3}} Interesse der Autorinnen und Autoren. Ist es schlecht, schenkt man dem Artikel automatisch weniger Beachtung. Liefert also bitte eure Beiträge rechtzeitig {{4}}. Für die Bildbearbeitung ist wie immer Florian zuständig. Bitte die Bilder im TIF- oder im JPG-Format liefern und bitte den Bildnachweis anführen, wenn die Bilder nicht von euch selbst stammen. Für eure eigenen Bilder liegt das Copyright natürlich {{5}} euch. Leider sind die Verkaufszahlen unserer Vereinszeitung im letzten Jahr {{6}} zurückgegangen. Deshalb möchten wir euch alle noch einmal herzlich {{7}} bitten, nur Themen zu wählen, die unsere Vereinsmitglieder betreffen und sie auch wirklich {{8}}. Das heißt nicht, {{9}} man große Themen wie Politik oder Gesellschaft nicht behandeln kann, aber sie sollten leserfreundlich verpackt sein. Wir verstehen uns ausdrücklich {{10}} unabhängige Zeitung und möchten uns keinen Maulkorb umhängen lassen. Trotzdem sollten die Beiträge im Rahmen sachlicher Meinungsäußerungen bleiben. In diesem Sinne freut sich die Redaktion auf zahlreiche Artikel! Beste Grüße und viel Erfolg Eure Redaktion",
+    "gaps": [
+      {
+        "n": 1,
+        "answer": "wie",
+        "choices": [
+          "wie",
+          "was",
+          "wann"
+        ]
+      },
+      {
+        "n": 2,
+        "answer": "vorliegen",
+        "choices": [
+          "vorliegen",
+          "unterligegen",
+          "liegen lassen"
+        ]
+      },
+      {
+        "n": 3,
+        "answer": "im",
+        "choices": [
+          "von",
+          "ohne",
+          "im"
+        ]
+      },
+      {
+        "n": 4,
+        "answer": "ab",
+        "choices": [
+          "zu",
+          "ein",
+          "ab"
+        ]
+      },
+      {
+        "n": 5,
+        "answer": "bei",
+        "choices": [
+          "mit",
+          "für",
+          "bei"
+        ]
+      },
+      {
+        "n": 6,
+        "answer": "stark",
+        "choices": [
+          "unerschütterlich",
+          "stark",
+          "fest"
+        ]
+      },
+      {
+        "n": 7,
+        "answer": "darum",
+        "choices": [
+          "deswegen",
+          "darum",
+          "dafür"
+        ]
+      },
+      {
+        "n": 8,
+        "answer": "ansprechen",
+        "choices": [
+          "besprechen",
+          "aussprechen",
+          "ansprechen"
+        ]
+      },
+      {
+        "n": 9,
+        "answer": "dass",
+        "choices": [
+          "ob",
+          "dass",
+          "damit"
+        ]
+      },
+      {
+        "n": 10,
+        "answer": "als",
+        "choices": [
+          "sowie",
+          "als ob",
+          "als"
+        ]
+      }
+    ]
+  },
+  {
+    "sourceId": "37",
+    "sourceTitle": "Geissler oder Dippold",
+    "section": "Sprachbausteine Teil 1",
+    "skill": "sprachbausteine",
+    "level": "B2",
+    "exam": "TELC",
+    "format": "CLOZE_MCQ",
+    "options": [],
+    "pairs": [],
+    "passage": "Liebe Familie Geissler, oder Dippold, vielen Dank für Ihre Antwort {{1}} meine Bewerbung als Au-pair-Mädchen. Danke schön auch für die Fotos von den Kindern. Ich bin schon sehr gespannt und freue mich sehr Ihre Familie im September kennenzulernen! Im Juni schließe ich meine Schulausbildung {{2}} und möchte auch noch mein Deutsch {{3}} verbessern. Dafür werde ich im Sommer noch einen Sprachkurs an einer Sommerschule in meiner Heimat {{4}}. Anschließend fahre ich mit meiner Familie für drei Wochen in Urlaub ans Meer. ich habe noch eine Frage {{5}} Sie. Sie schreiben, dass Sie für die Weihnachtsferien einen Skiurlaub planen, bei dem ich mitfahren kann, wenn ich möchte. Ich habe aber keinen Ski und Skibekleidung. Kann ich mir diese Sachen bei {{6}} ausleihen? In meiner Heimat werde ich sie kaum jemals wieder brauchen. Aber ich bin immer offen für Neues und möchte das Skilaufen gern einmal ausprobieren. Danke schön, {{7}} Sie mich am Flughafen abholen kommen. Ich habe meinen Flug nach Frankfurt {{8}} gebucht. Am 2.9. werde ich sehr früh in Frankfurt laden, nämlich um 5:15 Uhr. Ich schlage {{9}}, dass wir uns erst gegen 7:30 Uhr in einem Café treffen. Vielleicht komme ich ja mit Verspätung oder muss länger auf mein Gepäck warten. Dann müssen Sie nicht so früh da sein. Bitte schreiben Sie mir, wenn Sie noch etwas über mich wissen möchten! Ich schicke einige Fotos mit der Mail, damit die Kinder schon ein bisschen {{10}} von mir sehen. Viele Grüße Ihre Asja",
+    "gaps": [
+      {
+        "n": 1,
+        "answer": "auf",
+        "choices": [
+          "wegen",
+          "von",
+          "auf"
+        ]
+      },
+      {
+        "n": 2,
+        "answer": "ab",
+        "choices": [
+          "zu",
+          "aus",
+          "ab"
+        ]
+      },
+      {
+        "n": 3,
+        "answer": "ein bisschen",
+        "choices": [
+          "kaum",
+          "fast",
+          "ein bisschen"
+        ]
+      },
+      {
+        "n": 4,
+        "answer": "machen",
+        "choices": [
+          "unterrichten",
+          "machen",
+          "lernen"
+        ]
+      },
+      {
+        "n": 5,
+        "answer": "an",
+        "choices": [
+          "über",
+          "für",
+          "an"
+        ]
+      },
+      {
+        "n": 6,
+        "answer": "irgandjemandem",
+        "choices": [
+          "irgendwo",
+          "irgandjemandem",
+          "irgendetwas"
+        ]
+      },
+      {
+        "n": 7,
+        "answer": "dass",
+        "choices": [
+          "falls",
+          "dass",
+          "dafür"
+        ]
+      },
+      {
+        "n": 8,
+        "answer": "schon",
+        "choices": [
+          "schon",
+          "noch",
+          "bevor"
+        ]
+      },
+      {
+        "n": 9,
+        "answer": "vor",
+        "choices": [
+          "zu",
+          "vor",
+          "nach"
+        ]
+      },
+      {
+        "n": 10,
+        "answer": "mehr",
+        "choices": [
+          "weniger",
+          "viel",
+          "mehr"
+        ]
+      }
+    ]
+  },
+  {
+    "sourceId": "38",
+    "sourceTitle": "Herr Dr. Dobromil",
+    "section": "Sprachbausteine Teil 1",
+    "skill": "sprachbausteine",
+    "level": "B2",
+    "exam": "TELC",
+    "format": "CLOZE_MCQ",
+    "options": [],
+    "pairs": [],
+    "passage": "Sehr geehrter Herr Dr. Dobromil, mit {{1}} Interesse habe ich Ihr Stellenangebot in der Essener Zeitung gelesen,{{2}} Sie eine Teilzeit-Mitarbeiterin in Ihrem Antiquitätengeschäft suchen. Es reizt mich eine verantwortungsvolle Aufgabe in einem so renommierten Geschäft wie dem {{3}} übernehmen {{4}}. Nach dem Abitur am Kreisgymnasium in Velbert begann ich eine dreijährige Schreinerlehre {{5}} der Firma Eichelbohrer & Co und besuchte die Kreisberufsschule in Velbert. Nach erfolgreichem Abschluss meiner Berufsausbildung arbeitete ich {{6}} bei Stutz & Partner - Möbeldesign in Düsseldorf. Danach schrieb ich mich an der Fachhochschule Köln im Fachbereich Möbeldesign ein und {{7}} meine Liebe zu antiquarischen Möbelstücken. Meine Spezialität ist das stilgenaue Restaurieren und Aufarbeiten antiquarischer Möbel insbesondere aus dem Biedermeier und dem Jugendstil. Aufgrund meiner Berufserfahrung und meines Studiums konnte ich umfangreiche Kenntnisse erwerben, {{8}} Möbelstile und die Herstellungskunst in den verschiedensten Epochen 9 in Nord 9 in Südeuropa angeht. Mein Studium lässt mir genügend Zeit, eine Teilzeitstelle zu übernehmen, die darüber hinaus meinen beruflichen Fähigkeiten und Neigungen entspricht. Aus diesem Grund habe ich mich entschlossen, {{10}}, und bewerbe mich um die von Ihnen angebotene Teilzeitstelle. Ich freue mich auf ein persönliches Gespräch. Mit freundlichen Grüßen, Sabina Holzinger",
+    "gaps": [
+      {
+        "n": 1,
+        "answer": "allergrößtem",
+        "choices": [
+          "allergrößte",
+          "allergrößtem",
+          "allergrößten"
+        ]
+      },
+      {
+        "n": 2,
+        "answer": "in dem",
+        "choices": [
+          "an dem",
+          "auf dem",
+          "in dem"
+        ]
+      },
+      {
+        "n": 3,
+        "answer": "Ihren",
+        "choices": [
+          "Ihrem",
+          "Ihren",
+          "Ihres"
+        ]
+      },
+      {
+        "n": 4,
+        "answer": "zu können",
+        "choices": [
+          "können",
+          "könnte",
+          "zu können"
+        ]
+      },
+      {
+        "n": 5,
+        "answer": "bei",
+        "choices": [
+          "an",
+          "bei",
+          "mit"
+        ]
+      },
+      {
+        "n": 6,
+        "answer": "ein Jahr lang",
+        "choices": [
+          "ein Jahr lang",
+          "durch ein Jahr",
+          "seit einem Jahr"
+        ]
+      },
+      {
+        "n": 7,
+        "answer": "entdeckte",
+        "choices": [
+          "entdeckte",
+          "erfand",
+          "merkte"
+        ]
+      },
+      {
+        "n": 8,
+        "answer": "was",
+        "choices": [
+          "das",
+          "was",
+          "welches"
+        ]
+      },
+      {
+        "n": 9,
+        "answer": "sowohl---als auch",
+        "choices": [
+          "sowohl---als auch",
+          "teils---teils",
+          "weder---noch"
+        ]
+      },
+      {
+        "n": 10,
+        "answer": "auf Ihre Anzeige zu antworten",
+        "choices": [
+          " auf Ihre Anzeige antworten",
+          "auf Ihre Anzeige zu antworten",
+          "um auf Ihre Anzeige zu antworten"
+        ]
+      }
+    ]
+  },
+  {
+    "sourceId": "1",
+    "sourceTitle": "Theater für Kinder und Jugendliche",
+    "section": "Sprachbausteine Teil 2",
+    "skill": "sprachbausteine",
+    "level": "B2",
+    "exam": "TELC",
+    "format": "CLOZE_BANK",
     "options": [
-      "Das ideale Gemüse für schwer Arbeitende.",
-      "Ein schlankes Gemüse für schlanke Leute.",
-      "Gesunde Ernährung mit Aloe Vera.",
-      "Gesundes Leben schützt vor Zivilisationskrankheiten.",
-      "Gesundheitskrisen durch fettreiche Ernährung.",
-      "Kartoffelrezepte als Zeitungsbeilage.",
-      "Pflanzliche Kosmetik für gesunde Haut.",
-      "Tolle Figur durch ausgewogene Ernährung.",
-      "Von der Wildpflanze zum International geschätzten Nahrungsmittel.",
-      "WHO untersucht Zusammenhang von Krebs und Herzinfarkt."
+      "aber",
+      "dazu",
+      "am",
+      "ab",
+      "auf",
+      "da",
+      "es",
+      "seit",
+      "darum",
+      "vor",
+      "trotz",
+      "sondern",
+      "um",
+      "wegen",
+      "ohne",
+      "${droppedWord}",
+      "${wordText}"
     ],
-    "pairs": [
+    "pairs": [],
+    "passage": "Theater fördert nicht nur die Kreativität, {{1}} auch die Körpererfahrung von Kindern. Der Verein \"Jugendhilfe Düsseldorf e. V.\" arbeitet {{2}} vielen Jahren in der Jugendförderung, und deshalb unterstützt er auch ein neues Theaterprojekt für Kinder. Üben und spielen werden die Teilnehmer im Jugendzentrum. Das Jugendzentrum ist eine Einrichtung des städtischen Jugendamtes und kümmert sich um Kinder, Jugendliche und junge Volljährige, die {{3}} familiärer und anderer Probleme Hilfe benötigen. Bis zu zwanzig Mädchen und Jungen werden {{4}} dem kommenden Jahr die Welt des Theaters kennenlernen. {{5}} Ende des Projekts werden die Nachwuchsschauspieler bei einem Theaterfestival auftreten, was sicher ein Höhepunkt für alle Teilnehmer sein wird. Geleitet wird die Gruppe vom Schauspieler Wolfgang Neuhausen. Er arbeitet mit dem Jugendzentrum zusammen und wird von zwei Theaterpädagogen unterstützt. Allen Mitarbeitern ist {{6}} wichtig, dass die Kinder auf der Bühne Anerkennung für ihre Leistung bekommen. Ohne die finanzielle Unterstützung wäre das Vorhaben unmöglich, {{7}} bei der Stadt keine Gelder vorhanden waren. Dieses Theaterprojekt ist nicht das erste, das gefördert wird. Im vergangenen Jahr erhielt das Theaterprojekt \"Schiller - das wilde, freie Leben\" finanzielle Unterstützung. Allerdings ist nicht nur Geld wichtig: Der Verein kümmert sich auch {{8}} , die Projekte bekannt zu machen. In verschiedenen Theaterhäusern der Stadt werden Plakate aufgehängt, mit denen der Verein für das Jugendtheater wirbt. Man hofft, {{9}} diese Weise noch mehr Unterstützer zu finden. Auch unsere Leser können die Jugendlichen unterstützen: Aktuell sammelt das Jugendzentrum Spenden, {{10}} weitere Projekte finanzieren zu können. Außerdem werden für die Theaterproben und die Aufführungen noch ehrenamtliche Helfer gesucht.",
+    "bank": [
+      "aber",
+      "dazu",
+      "am",
+      "ab",
+      "auf",
+      "da",
+      "es",
+      "seit",
+      "darum",
+      "vor",
+      "trotz",
+      "sondern",
+      "um",
+      "wegen",
+      "ohne",
+      "${droppedWord}",
+      "${wordText}"
+    ],
+    "gaps": [
       {
-        "passage": "Über zehntausend wissenschaftliche Studien wurden in den vergangenen Jahren im Auftrag der Weltgesundheitsorganisation WHO durchgeführt. um herauszubekommen. warum manche Menschen erheblich seltener an lebensgefährlichen Krankheiten wie Krebs oder Herzinfarkt erkranken als andere. Die Zahl dieser Erkrankungen hat nämlich in den Industriestaaten inzwischen einen traurigen Höhepunkt erreicht. Die Forscher fanden heraus. dass mit wenigen Tricks viele gesunder leben und damit ihr Leben verlängern könnten. Das Risiko eines Herzinfarkts kann man zum Beispiel durch den täglichen Verzehr eines Apfels und tägliches zwanzigminütiges Radfahren erheblich reduzieren. Die Entstehung von Krebs hemmt zum Beispiel der tägliche Genuss eines Löffels reinen Olivenöls oder eine große Tasse grünen Tees. Gegen Stress hilft Vitamin-C-reiche Ernährung und regelmäßiges Schwimmen.",
-        "title": "Gesundes Leben schützt vor Zivilisationskrankheiten."
+        "n": 1,
+        "answer": "sondern",
+        "choices": [
+          "aber",
+          "dazu",
+          "am",
+          "ab",
+          "auf",
+          "da",
+          "es",
+          "seit",
+          "darum",
+          "vor",
+          "trotz",
+          "sondern",
+          "um",
+          "wegen",
+          "ohne",
+          "${droppedWord}",
+          "${wordText}"
+        ]
       },
       {
-        "passage": "Am Mittelmeer und in Mexico wächst die Aloe-Vera-Pflanze, der in der heutigen Naturmedizin eine wachsende Rolle zukommt. Durch die dickfleischigen Blätter dieser Pflanze ist für Schädlinge kein Hindurchkommen, deshalb kann sie in Plantagen ohne chemische Schutzmittel angebaut werden. Unter der dicken Haut der Pflanze befindet sich eine gelartige Flüssigkeit, deren Aufgabe darin besteht, Wasser möglichst lange zu speichern - schließlich ist die Pflanze in extrem trockenen Landschaften beheimatet. Dieses Gel ist sehr vitamin- und mineralstoffreich. In der Wundheilung ist Aloe Gel sehr effektiv. Kosmetisch wird es für Cremes benutzt, die Harterkrankungen und leichte Verbrennungen wie zum Beispiel Sonnenbrand lindem, Feuchtigkeit spenden und die Haut straffen.",
-        "title": "Pflanzliche Kosmetik für gesunde Haut."
+        "n": 2,
+        "answer": "seit",
+        "choices": [
+          "aber",
+          "dazu",
+          "am",
+          "ab",
+          "auf",
+          "da",
+          "es",
+          "seit",
+          "darum",
+          "vor",
+          "trotz",
+          "sondern",
+          "um",
+          "wegen",
+          "ohne",
+          "${droppedWord}",
+          "${wordText}"
+        ]
       },
       {
-        "passage": "Eine der ältesten bekannten Gemüsesorten ist der Spargel. Schon vor 5000 Jahren war er bei den Chinesen Geschätzt wurde er vor allem in der Medizin als Herzschutzmittel und zur Stärkung der körpereigenen Abwehrkräfte: Spargel hält gesund. Heute schätzen wir am Spargel besonders. Dass er nicht dick macht. Die körperlich hart arbeitende Bevölkerung früherer Zeiten schätzte ihn deshalb nicht sehr, weil er kaum Energie lieferte. Im Südwesten Deutschlands wächst der Spargel von Mitte April bis zum Johannistag. dem 24. Juni. Besonders rund um Mainz. Darmstadt. Bruchsal und in der Pfalz erntet man das stangenförmige Gemüse. In Deutschland ist allerdings der weiße Spargel. der unter der Erde wächst. populärer als sein oberirdischer Bruder, der grüne Spargel.",
-        "title": "Ein schlankes Gemüse für schlanke Leute."
+        "n": 3,
+        "answer": "wegen",
+        "choices": [
+          "aber",
+          "dazu",
+          "am",
+          "ab",
+          "auf",
+          "da",
+          "es",
+          "seit",
+          "darum",
+          "vor",
+          "trotz",
+          "sondern",
+          "um",
+          "wegen",
+          "ohne",
+          "${droppedWord}",
+          "${wordText}"
+        ]
       },
       {
-        "passage": "Schlank sein ist \"in\". Deshalb versuchen Millionen Menschen nicht nur in Deutschland immer weder ihre Pfunde loszuwerden. und so purzeln Sie von einer Diät zur nächsten. immer mit dem gleichen Erfolg: Nach dem Abnehmen nehmen sie genauso schnell wieder zu. Und bei vielen kommt mit dem Gewichtsverlust die Krankheit. denn die meisten Diäten Sind sehr einseitig und entziehen dem Körper viele für sein Wohlbefinden wichtige Nährstoffe. Hier setzt eine neue Theorie an: Sie unterscheidet Nahrungsmittel in Fett Hörter, das Fett im Körper speichern, und Fettburner, die dem Körper helfen. zu viel Fett und damit Kilos zu verwerten. Frisches Gemüse, Obst, Fisch und Geflügel versorgen den Körper mit Energie und helfen ihm dabei. die Nahrungsstoffe optimal zu verwerten. Iss dich schlank. lautet das Motto der Fatburnertheorie. Aber ist es nur eine neue Theorie oder hilft sie uns wirklich schlank zu werden?",
-        "title": "Tolle Figur durch ausgewogene Ernährung."
+        "n": 4,
+        "answer": "ab",
+        "choices": [
+          "aber",
+          "dazu",
+          "am",
+          "ab",
+          "auf",
+          "da",
+          "es",
+          "seit",
+          "darum",
+          "vor",
+          "trotz",
+          "sondern",
+          "um",
+          "wegen",
+          "ohne",
+          "${droppedWord}",
+          "${wordText}"
+        ]
       },
       {
-        "passage": "Als typische deutsch gilt sie, doch rund um den Globus ist sie eines der Basislebensmittel schlechthin. In Österreich nennt man sie Erdapfel, an der Mosel heißt sie Grumbeere. Gemeint ist die überaus populäre Kartoffel. Hunderte verschiedener Sorten gibt es auf der Welt, doch ihr Ursprung liegt in Südamerika. Präkolumbianische Kulturen begannen damit, die bis dahin wild wachsende Urform der Kartoffel systematisch anzubauen. Die englischen Seehelden Sir Francis Drake und Sir Walter Raleigh sollen sie im 16. Jahrhundert nach Europa mitgebracht haben. Etwa zur gleichen Zeit wurde sie in Spanien und Portugal bekannt. Dennoch ist das Klischee von der \"deutschen\" Kartoffel nicht ganz falsch, denn zu vielen traditionellen Gerichten wird die Knolle gekocht oder in der Form von Bratkartoffeln, Kartoffelknödeln oder Pommes frites als Beilage gereicht. Informationen rund um die Kartoffel in wem.rheinzeitung.de/Kartoffel",
-        "title": "Von der Wildpflanze zum International geschätzten Nahrungsmittel."
+        "n": 5,
+        "answer": "am",
+        "choices": [
+          "aber",
+          "dazu",
+          "am",
+          "ab",
+          "auf",
+          "da",
+          "es",
+          "seit",
+          "darum",
+          "vor",
+          "trotz",
+          "sondern",
+          "um",
+          "wegen",
+          "ohne",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 6,
+        "answer": "es",
+        "choices": [
+          "aber",
+          "dazu",
+          "am",
+          "ab",
+          "auf",
+          "da",
+          "es",
+          "seit",
+          "darum",
+          "vor",
+          "trotz",
+          "sondern",
+          "um",
+          "wegen",
+          "ohne",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 7,
+        "answer": "da",
+        "choices": [
+          "aber",
+          "dazu",
+          "am",
+          "ab",
+          "auf",
+          "da",
+          "es",
+          "seit",
+          "darum",
+          "vor",
+          "trotz",
+          "sondern",
+          "um",
+          "wegen",
+          "ohne",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 8,
+        "answer": "darum",
+        "choices": [
+          "aber",
+          "dazu",
+          "am",
+          "ab",
+          "auf",
+          "da",
+          "es",
+          "seit",
+          "darum",
+          "vor",
+          "trotz",
+          "sondern",
+          "um",
+          "wegen",
+          "ohne",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 9,
+        "answer": "auf",
+        "choices": [
+          "aber",
+          "dazu",
+          "am",
+          "ab",
+          "auf",
+          "da",
+          "es",
+          "seit",
+          "darum",
+          "vor",
+          "trotz",
+          "sondern",
+          "um",
+          "wegen",
+          "ohne",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 10,
+        "answer": "um",
+        "choices": [
+          "aber",
+          "dazu",
+          "am",
+          "ab",
+          "auf",
+          "da",
+          "es",
+          "seit",
+          "darum",
+          "vor",
+          "trotz",
+          "sondern",
+          "um",
+          "wegen",
+          "ohne",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      }
+    ]
+  },
+  {
+    "sourceId": "2",
+    "sourceTitle": "Im Restaurant",
+    "section": "Sprachbausteine Teil 2",
+    "skill": "sprachbausteine",
+    "level": "B2",
+    "exam": "TELC",
+    "format": "CLOZE_BANK",
+    "options": [
+      "als",
+      "behält",
+      "bereit",
+      "bleibt",
+      "dagegen",
+      "fertig",
+      "gehören",
+      "jeder",
+      "klar",
+      "mancher",
+      "mit",
+      "takt",
+      "tipp",
+      "was",
+      "wink",
+      "${droppedWord}",
+      "${wordText}"
+    ],
+    "pairs": [],
+    "passage": "Eine unterhaltsame, schöne und gesellige Zeit. Das stellt man sich unter einem guten Essen vor. Störend wirkt da der anschauliche Erlebnisbericht der letzten Operation im Krankenhaus oder das Klingeln des Handys. Sowohl Gastgeber als Gast sollen alles dafür tun, dass das gemeinsame Essen Freude macht. Das Handy stellt man selbstverständlich ab. Das Essen beginnt, wenn der Gastgeber zur Serviette greift oder zum Gruß sein Glas erhebt. Besonders bei Kindern ein unbeliebtes Thema: die richtige Körperhaltung beim Essen. Die Arme {{1}} nicht auf den Tisch und die Hände nicht unter den Tisch. Mal sitzt gerade, ohne unruhig hin und her zu rücken. Die Beine werden nebeneinander gestellt, nicht übereinander gelegt. Die Schuhe {{2}} in jedem Fall an. Nur keine Angst vor guten Restaurants mit ihrem Luxus! Denn je besser die Küche, umso aufmerksamer ist in der Regel das Personal. Doch schon bei der Anrede der Bedienung steht so {{3}} vor einem Problem. Die Bedienung {{4}} “Fräulein” an den Tisch zu rufen, ist in Zeiten dert Gleichberechtigung veraltet. \"Herr Ober\" oder\" Bedienung\" ist {{5}} noch möglich, aber auch schon etwas ungewöhnlich. Am besten versucht man sich Blickkontakt zu verschaffen, um mit einem kleinen {{6}} mit der Hand den Kellner an den Tisch zu bitten. Zudem gibt es zwischen Gast und Service eine Zeichensprache. Schließt der Gast die Speisekarte und legt sie auf den Tisch, ist dies für den Kellner das Signal, die Bestellung aufzunehmen. Ist man mit dem Essen {{7}}, legt man das Besteck parallel nebeneinander auf den rechten Tellerrand. Der Kellner wir dann abräumen. Macht man hingegen nur eine Pause, wird es gekreuzt oder offen auf den Teller gelegt. Beim Bezahlen ist {{8}} gefragt. Übernimmt ein Gastgeber die Kosten, macht er dies dem Kellner {{9}}. Ein \"Bringen Sie mir bitte die Rechnung\" reicht da völlig aus. Möchte man hingegen getrennt bezahlen, {{10}} durchaus üblich ist, teilt man dies ebenfalls rechtzeitig der Bedienung mit. In Deutschland gibt man, je nach Zufriedenheit mit dem Service und der Höhe der Gesamtsumme zwischen drei und zehn Prozent Trinkgeld. Ist man mit dem Service unzufrieden gewesen, gibt man kein Trinkgeld.",
+    "bank": [
+      "als",
+      "behält",
+      "bereit",
+      "bleibt",
+      "dagegen",
+      "fertig",
+      "gehören",
+      "jeder",
+      "klar",
+      "mancher",
+      "mit",
+      "takt",
+      "tipp",
+      "was",
+      "wink",
+      "${droppedWord}",
+      "${wordText}"
+    ],
+    "gaps": [
+      {
+        "n": 1,
+        "answer": "gehören",
+        "choices": [
+          "als",
+          "behält",
+          "bereit",
+          "bleibt",
+          "dagegen",
+          "fertig",
+          "gehören",
+          "jeder",
+          "klar",
+          "mancher",
+          "mit",
+          "takt",
+          "tipp",
+          "was",
+          "wink",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 2,
+        "answer": "behält",
+        "choices": [
+          "als",
+          "behält",
+          "bereit",
+          "bleibt",
+          "dagegen",
+          "fertig",
+          "gehören",
+          "jeder",
+          "klar",
+          "mancher",
+          "mit",
+          "takt",
+          "tipp",
+          "was",
+          "wink",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 3,
+        "answer": "mancher",
+        "choices": [
+          "als",
+          "behält",
+          "bereit",
+          "bleibt",
+          "dagegen",
+          "fertig",
+          "gehören",
+          "jeder",
+          "klar",
+          "mancher",
+          "mit",
+          "takt",
+          "tipp",
+          "was",
+          "wink",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 4,
+        "answer": "mit",
+        "choices": [
+          "als",
+          "behält",
+          "bereit",
+          "bleibt",
+          "dagegen",
+          "fertig",
+          "gehören",
+          "jeder",
+          "klar",
+          "mancher",
+          "mit",
+          "takt",
+          "tipp",
+          "was",
+          "wink",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 5,
+        "answer": "dagegen",
+        "choices": [
+          "als",
+          "behält",
+          "bereit",
+          "bleibt",
+          "dagegen",
+          "fertig",
+          "gehören",
+          "jeder",
+          "klar",
+          "mancher",
+          "mit",
+          "takt",
+          "tipp",
+          "was",
+          "wink",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 6,
+        "answer": "wink",
+        "choices": [
+          "als",
+          "behält",
+          "bereit",
+          "bleibt",
+          "dagegen",
+          "fertig",
+          "gehören",
+          "jeder",
+          "klar",
+          "mancher",
+          "mit",
+          "takt",
+          "tipp",
+          "was",
+          "wink",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 7,
+        "answer": "fertig",
+        "choices": [
+          "als",
+          "behält",
+          "bereit",
+          "bleibt",
+          "dagegen",
+          "fertig",
+          "gehören",
+          "jeder",
+          "klar",
+          "mancher",
+          "mit",
+          "takt",
+          "tipp",
+          "was",
+          "wink",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 8,
+        "answer": "takt",
+        "choices": [
+          "als",
+          "behält",
+          "bereit",
+          "bleibt",
+          "dagegen",
+          "fertig",
+          "gehören",
+          "jeder",
+          "klar",
+          "mancher",
+          "mit",
+          "takt",
+          "tipp",
+          "was",
+          "wink",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 9,
+        "answer": "klar",
+        "choices": [
+          "als",
+          "behält",
+          "bereit",
+          "bleibt",
+          "dagegen",
+          "fertig",
+          "gehören",
+          "jeder",
+          "klar",
+          "mancher",
+          "mit",
+          "takt",
+          "tipp",
+          "was",
+          "wink",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 10,
+        "answer": "was",
+        "choices": [
+          "als",
+          "behält",
+          "bereit",
+          "bleibt",
+          "dagegen",
+          "fertig",
+          "gehören",
+          "jeder",
+          "klar",
+          "mancher",
+          "mit",
+          "takt",
+          "tipp",
+          "was",
+          "wink",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      }
+    ]
+  },
+  {
+    "sourceId": "3",
+    "sourceTitle": "Das Fahrrad: ernsthafte Konkurrenz fürs Auto?",
+    "section": "Sprachbausteine Teil 2",
+    "skill": "sprachbausteine",
+    "level": "B2",
+    "exam": "TELC",
+    "format": "CLOZE_BANK",
+    "options": [
+      "auf",
+      "kaum",
+      "vorbei",
+      "zumeist",
+      "dann",
+      "an",
+      "müssen",
+      "denn",
+      "sollen",
+      "innerhalb",
+      "statt",
+      "beinahe",
+      "vor",
+      "fast",
+      "dürfen",
+      "dafür",
+      "${droppedWord}",
+      "${wordText}"
+    ],
+    "pairs": [],
+    "passage": "Welches Fortbewegungsmittel, denken Sie, wird in Deutschland am häufigsten benutzt? Natürlich das Automobil. Volkswagen, Porsche, Mercedes Benz, BMW, Audi: In {{1}} einem anderen Land gibt es so viele Automobilfabriken wie in Deutschland, spielt die Automobilindustrie eine so große Rolle. Nahezu jeder Haushalt verfügt über mindestens ein Auto, das Auto spielt im Leben der Deutschen eine große Rolle, sowohl als Fortbewegungsmittel zum Arbeitsplatz oder in den Urlaub als auch als Statussymbol: Zeig mir dein Auto und ich weiß, wer du bist. Doch hat das Autofahren auch Schattenseiten. Mangelnde Bewegungsmöglichkeiten, gesundheitliche Probleme und Stress bringen zumindest in den Großstädten immer mehr Autofahrer dazu, sich vom Automobil freizumachen und {{2}} ein anderes Verkehrsmittel umzusteigen, das in dem Ruf steht, gesünder zu sein als das Auto: das Fahrrad. Nicht nur in der Freizeit, sondern auch auf dem Weg zum Arbeitsplatz wird das Rad benutzt. \"Ich habe keine Lust, Morgen für Morgen im Stau zu stehen und Zeit zu verlieren\", sagt Bettina Meier (25): \"Da ist es viel entspannender, auf den {{3}} gut ausgebauten Fahrradwegen an den im Stau wartenden Fahrzeugen {{4}} und ausgeruht am Arbeitsplatz anzukommen.\" Dass Fahrradfahren um einiges gesünder ist, als hinter dem Lenkrad zu sitzen, bestätigen auch die Mediziner. Wer Fahrrad fährt {{5}} zu sitzen, bringt seinen Blutkreislauf in Schwung, stärkt die Abwehrkräfte des Körpers und trainiert seinen Körper. Auch die Bewegung an der frischen Luft tut Menschen gut, die sich sonst die meiste Zeit {{6}} geschlossener Räume in Büros, Schulen oder Fabriken aufhalten {{7}}. Auch die Geschäftswelt hat die Fahrradfahrer als Kunden entdeckt. Ein breites Angebot {{8}} Zubehör für Fahrräder von schicken Radfelgen über sportliche Mehrganggetriebe, mit denen Berge kein Problem mehr darstellen, bis zur Designer-Trinkflasche machen aus dem einfachen Fahrrad ein exklusives Fahrzeug. Und natürlich darf bei keinem Fahrradfahrer eine aufwändige Sicherheitsausstattung mehr fehlen: Schutzhelme, Ellenbogen- und Knieschützer, die das Fahrrad im Falle eines Unfalls fast so sicher wie einen Panzer machen {{9}}. Nur wenn es regnet - und das passiert in Deutschland leider nicht so selten -, {{10}} sind die Autoschlangen wieder länger. {{11}} einen praktischen Wetterschutz für Radfahrer haben die Geschäfte noch nicht im Angebot.",
+    "bank": [
+      "auf",
+      "kaum",
+      "vorbei",
+      "zumeist",
+      "dann",
+      "an",
+      "müssen",
+      "denn",
+      "sollen",
+      "innerhalb",
+      "statt",
+      "beinahe",
+      "vor",
+      "fast",
+      "dürfen",
+      "dafür",
+      "${droppedWord}",
+      "${wordText}"
+    ],
+    "gaps": [
+      {
+        "n": 1,
+        "answer": "kaum",
+        "choices": [
+          "auf",
+          "kaum",
+          "vorbei",
+          "zumeist",
+          "dann",
+          "an",
+          "müssen",
+          "denn",
+          "sollen",
+          "innerhalb",
+          "statt",
+          "beinahe",
+          "vor",
+          "fast",
+          "dürfen",
+          "dafür",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 2,
+        "answer": "auf",
+        "choices": [
+          "auf",
+          "kaum",
+          "vorbei",
+          "zumeist",
+          "dann",
+          "an",
+          "müssen",
+          "denn",
+          "sollen",
+          "innerhalb",
+          "statt",
+          "beinahe",
+          "vor",
+          "fast",
+          "dürfen",
+          "dafür",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 3,
+        "answer": "zumeist",
+        "choices": [
+          "auf",
+          "kaum",
+          "vorbei",
+          "zumeist",
+          "dann",
+          "an",
+          "müssen",
+          "denn",
+          "sollen",
+          "innerhalb",
+          "statt",
+          "beinahe",
+          "vor",
+          "fast",
+          "dürfen",
+          "dafür",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 4,
+        "answer": "vorbei",
+        "choices": [
+          "auf",
+          "kaum",
+          "vorbei",
+          "zumeist",
+          "dann",
+          "an",
+          "müssen",
+          "denn",
+          "sollen",
+          "innerhalb",
+          "statt",
+          "beinahe",
+          "vor",
+          "fast",
+          "dürfen",
+          "dafür",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 5,
+        "answer": "statt",
+        "choices": [
+          "auf",
+          "kaum",
+          "vorbei",
+          "zumeist",
+          "dann",
+          "an",
+          "müssen",
+          "denn",
+          "sollen",
+          "innerhalb",
+          "statt",
+          "beinahe",
+          "vor",
+          "fast",
+          "dürfen",
+          "dafür",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 6,
+        "answer": "innerhalb",
+        "choices": [
+          "auf",
+          "kaum",
+          "vorbei",
+          "zumeist",
+          "dann",
+          "an",
+          "müssen",
+          "denn",
+          "sollen",
+          "innerhalb",
+          "statt",
+          "beinahe",
+          "vor",
+          "fast",
+          "dürfen",
+          "dafür",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 7,
+        "answer": "müssen",
+        "choices": [
+          "auf",
+          "kaum",
+          "vorbei",
+          "zumeist",
+          "dann",
+          "an",
+          "müssen",
+          "denn",
+          "sollen",
+          "innerhalb",
+          "statt",
+          "beinahe",
+          "vor",
+          "fast",
+          "dürfen",
+          "dafür",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 8,
+        "answer": "an",
+        "choices": [
+          "auf",
+          "kaum",
+          "vorbei",
+          "zumeist",
+          "dann",
+          "an",
+          "müssen",
+          "denn",
+          "sollen",
+          "innerhalb",
+          "statt",
+          "beinahe",
+          "vor",
+          "fast",
+          "dürfen",
+          "dafür",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 9,
+        "answer": "sollen",
+        "choices": [
+          "auf",
+          "kaum",
+          "vorbei",
+          "zumeist",
+          "dann",
+          "an",
+          "müssen",
+          "denn",
+          "sollen",
+          "innerhalb",
+          "statt",
+          "beinahe",
+          "vor",
+          "fast",
+          "dürfen",
+          "dafür",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 10,
+        "answer": "dann",
+        "choices": [
+          "auf",
+          "kaum",
+          "vorbei",
+          "zumeist",
+          "dann",
+          "an",
+          "müssen",
+          "denn",
+          "sollen",
+          "innerhalb",
+          "statt",
+          "beinahe",
+          "vor",
+          "fast",
+          "dürfen",
+          "dafür",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 11,
+        "answer": "denn",
+        "choices": [
+          "auf",
+          "kaum",
+          "vorbei",
+          "zumeist",
+          "dann",
+          "an",
+          "müssen",
+          "denn",
+          "sollen",
+          "innerhalb",
+          "statt",
+          "beinahe",
+          "vor",
+          "fast",
+          "dürfen",
+          "dafür",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      }
+    ]
+  },
+  {
+    "sourceId": "14",
+    "sourceTitle": "Haustieren",
+    "section": "Sprachbausteine Teil 2",
+    "skill": "sprachbausteine",
+    "level": "B2",
+    "exam": "TELC",
+    "format": "CLOZE_BANK",
+    "options": [
+      "zwar",
+      "wurden",
+      "wie",
+      "weniger",
+      "waren",
+      "vergangenen",
+      "um",
+      "geringeres",
+      "gegenteil",
+      "gegensatz",
+      "früheren",
+      "durch",
+      "dieselbe",
+      "deutlich",
+      "als",
+      "${droppedWord}",
+      "${wordText}"
+    ],
+    "pairs": [],
+    "passage": "Kleine Kinder, die in der Gesellschaft von Haustieren wie Hund und Katze leben, sind einer Studie aus Finnland zufolge seltener krank {{1}} Kinder in Haushalten ohne Tiere. Die Studie wurde in der {{2}} Woche in einem amerikanischen Fachmagazin veröffentlicht. Es wurden {{3}} keine Erklärungen für diese Tatsache geliefert, aber die Vermutung wurde geäußert, dass der Kontakt zu Hunden das Immunsystem der Kleinkinder stärke. Hunde haben nämlich {{4}} die täglichen Spaziergänge draußen viel Kontakt zu möglichen Krankheitserregern und trainieren vielleicht so das Immunsystem der Kinder. Auch Katzen, die die Möglichkeit haben, nach draußen zu gehen, haben demnach {{5}} Wirkung auf die Gesundheit der Kinder, wenngleich in geringerem Maße. Für die Studie {{6}} in Finnland 397 Babys über den Zeitraum von der neunten Lebenswoche bis zu ihrem ersten Geburtstag beobachtet. Dabei hatten die mit Hund oder Katze aufwachsenden Kinder ein um 30 % {{7}} Risiko für Erkrankungen der Atemwege. Es fiel auf, dass bei diesen Kindern Ohrenentzündungen {{8}} auftraten. Die Studie kommt daher zu dem Schluss, dass die Gesundheit von Kindern in Gesellschaft von Tieren {{9}} besser sei. Frühere Untersuchungen aus den USA hatten das genaue {{10}} der jetzigen Ergebnisse ergeben. Ob diese Unterschiede mit den unterschiedlichen Lebens- und Umweltbedingungen der beiden Länder zusammenhängen, ist noch unklar.",
+    "bank": [
+      "zwar",
+      "wurden",
+      "wie",
+      "weniger",
+      "waren",
+      "vergangenen",
+      "um",
+      "geringeres",
+      "gegenteil",
+      "gegensatz",
+      "früheren",
+      "durch",
+      "dieselbe",
+      "deutlich",
+      "als",
+      "${droppedWord}",
+      "${wordText}"
+    ],
+    "gaps": [
+      {
+        "n": 1,
+        "answer": "als",
+        "choices": [
+          "zwar",
+          "wurden",
+          "wie",
+          "weniger",
+          "waren",
+          "vergangenen",
+          "um",
+          "geringeres",
+          "gegenteil",
+          "gegensatz",
+          "früheren",
+          "durch",
+          "dieselbe",
+          "deutlich",
+          "als",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 2,
+        "answer": "vergangenen",
+        "choices": [
+          "zwar",
+          "wurden",
+          "wie",
+          "weniger",
+          "waren",
+          "vergangenen",
+          "um",
+          "geringeres",
+          "gegenteil",
+          "gegensatz",
+          "früheren",
+          "durch",
+          "dieselbe",
+          "deutlich",
+          "als",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 3,
+        "answer": "zwar",
+        "choices": [
+          "zwar",
+          "wurden",
+          "wie",
+          "weniger",
+          "waren",
+          "vergangenen",
+          "um",
+          "geringeres",
+          "gegenteil",
+          "gegensatz",
+          "früheren",
+          "durch",
+          "dieselbe",
+          "deutlich",
+          "als",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 4,
+        "answer": "durch",
+        "choices": [
+          "zwar",
+          "wurden",
+          "wie",
+          "weniger",
+          "waren",
+          "vergangenen",
+          "um",
+          "geringeres",
+          "gegenteil",
+          "gegensatz",
+          "früheren",
+          "durch",
+          "dieselbe",
+          "deutlich",
+          "als",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 5,
+        "answer": "dieselbe",
+        "choices": [
+          "zwar",
+          "wurden",
+          "wie",
+          "weniger",
+          "waren",
+          "vergangenen",
+          "um",
+          "geringeres",
+          "gegenteil",
+          "gegensatz",
+          "früheren",
+          "durch",
+          "dieselbe",
+          "deutlich",
+          "als",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 6,
+        "answer": "wurden",
+        "choices": [
+          "zwar",
+          "wurden",
+          "wie",
+          "weniger",
+          "waren",
+          "vergangenen",
+          "um",
+          "geringeres",
+          "gegenteil",
+          "gegensatz",
+          "früheren",
+          "durch",
+          "dieselbe",
+          "deutlich",
+          "als",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 7,
+        "answer": "geringeres",
+        "choices": [
+          "zwar",
+          "wurden",
+          "wie",
+          "weniger",
+          "waren",
+          "vergangenen",
+          "um",
+          "geringeres",
+          "gegenteil",
+          "gegensatz",
+          "früheren",
+          "durch",
+          "dieselbe",
+          "deutlich",
+          "als",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 8,
+        "answer": "weniger",
+        "choices": [
+          "zwar",
+          "wurden",
+          "wie",
+          "weniger",
+          "waren",
+          "vergangenen",
+          "um",
+          "geringeres",
+          "gegenteil",
+          "gegensatz",
+          "früheren",
+          "durch",
+          "dieselbe",
+          "deutlich",
+          "als",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 9,
+        "answer": "deutlich",
+        "choices": [
+          "zwar",
+          "wurden",
+          "wie",
+          "weniger",
+          "waren",
+          "vergangenen",
+          "um",
+          "geringeres",
+          "gegenteil",
+          "gegensatz",
+          "früheren",
+          "durch",
+          "dieselbe",
+          "deutlich",
+          "als",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 10,
+        "answer": "gegenteil",
+        "choices": [
+          "zwar",
+          "wurden",
+          "wie",
+          "weniger",
+          "waren",
+          "vergangenen",
+          "um",
+          "geringeres",
+          "gegenteil",
+          "gegensatz",
+          "früheren",
+          "durch",
+          "dieselbe",
+          "deutlich",
+          "als",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      }
+    ]
+  },
+  {
+    "sourceId": "48",
+    "sourceTitle": "Liebesgrüße aus der Kühltruhe",
+    "section": "Sprachbausteine Teil 2",
+    "skill": "sprachbausteine",
+    "level": "B2",
+    "exam": "TELC",
+    "format": "CLOZE_BANK",
+    "options": [
+      "anhand",
+      "anstrengend",
+      "auf",
+      "aus",
+      "eher",
+      "fast",
+      "folglich",
+      "in",
+      "kaum",
+      "langweilig",
+      "sowie",
+      "von",
+      "wegen",
+      "wohl",
+      "zu",
+      "${droppedWord}",
+      "${wordText}"
+    ],
+    "pairs": [],
+    "passage": "Wer sich einen Mann angeln will, sollte einen Blick in dessen Tiefkühlfach werfen. Einer Studie zufolge kann man {{1}} des Inhalts des Tiefkühlfachs den Charakter seines Besitzers erkennen. Die Meinungsforscher unterscheiden fünf Kategorien {{2}} Single-Männern: den spontanen Typ, den Bequemen, den Kreativen, {{3}} den Cocktail- und den Gourmet-Typen. Am häufigsten gibt es in Deutschland den spontanen Typ. Er hat neben kompletten Gerichten auch tiefgekühlte Produkte wie Brokkoli Gemüse oder Putenfilet in der Truhe, {{4}} denen er eine Mahlzeit zusammenstellen kann. Dieser Typ liebt die Abwechslung auf dem Teller und auch sonst im Leben. Da wird es vermutlich auch in der Liebe nicht langweilig. Hauptgewinn für jede Frau ist aber der Gourmet-Typ. In seinem Tiefkühlfach liegen Produkte wie Garnelen, Muscheln oder Ente. Dieser Typ liebt es, Frauen zu verwöhnen. Der Nachteil liegt {{5}} der Hand: Dieser Typ Single-Mann ist selten. Was man in der Tiefkühltruhe von bequemen Single-Männern findet, kann man leicht erraten, denn diese Männer haben gar keine Lust zu kochen. Ihnen ist es sogar zu {{6}}, zwei Tüten zu öffnen statt nur einer. {{7}} kaufen diese Männer an den häufigsten kompletten Gerichten, die sie nur noch in die Mikrowelle oder den Backofen stellen müssen. Aber ob sie so das Herz einer Frau erobern können? Zumindest Frauen sehen das wohl {{8}} skeptisch. Doch egal, {{9}} welcher Kategorie ein Mann gehört - eines haben alle gemeinsam: Sie kaufen immer mehr Tiefkühlkost. Warum das so ist, kann die Studie nicht beantworten - da kann man nur raten: Einige haben vermutlich wenig Zeit zum Kochen, andere {{10}} eher keine Lust. Dabei wäre das doch der beste Weg, um eine Frau zu erobern.",
+    "bank": [
+      "anhand",
+      "anstrengend",
+      "auf",
+      "aus",
+      "eher",
+      "fast",
+      "folglich",
+      "in",
+      "kaum",
+      "langweilig",
+      "sowie",
+      "von",
+      "wegen",
+      "wohl",
+      "zu",
+      "${droppedWord}",
+      "${wordText}"
+    ],
+    "gaps": [
+      {
+        "n": 1,
+        "answer": "anhand",
+        "choices": [
+          "anhand",
+          "anstrengend",
+          "auf",
+          "aus",
+          "eher",
+          "fast",
+          "folglich",
+          "in",
+          "kaum",
+          "langweilig",
+          "sowie",
+          "von",
+          "wegen",
+          "wohl",
+          "zu",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 2,
+        "answer": "von",
+        "choices": [
+          "anhand",
+          "anstrengend",
+          "auf",
+          "aus",
+          "eher",
+          "fast",
+          "folglich",
+          "in",
+          "kaum",
+          "langweilig",
+          "sowie",
+          "von",
+          "wegen",
+          "wohl",
+          "zu",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 3,
+        "answer": "sowie",
+        "choices": [
+          "anhand",
+          "anstrengend",
+          "auf",
+          "aus",
+          "eher",
+          "fast",
+          "folglich",
+          "in",
+          "kaum",
+          "langweilig",
+          "sowie",
+          "von",
+          "wegen",
+          "wohl",
+          "zu",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 4,
+        "answer": "aus",
+        "choices": [
+          "anhand",
+          "anstrengend",
+          "auf",
+          "aus",
+          "eher",
+          "fast",
+          "folglich",
+          "in",
+          "kaum",
+          "langweilig",
+          "sowie",
+          "von",
+          "wegen",
+          "wohl",
+          "zu",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 5,
+        "answer": "auf",
+        "choices": [
+          "anhand",
+          "anstrengend",
+          "auf",
+          "aus",
+          "eher",
+          "fast",
+          "folglich",
+          "in",
+          "kaum",
+          "langweilig",
+          "sowie",
+          "von",
+          "wegen",
+          "wohl",
+          "zu",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 6,
+        "answer": "anstrengend",
+        "choices": [
+          "anhand",
+          "anstrengend",
+          "auf",
+          "aus",
+          "eher",
+          "fast",
+          "folglich",
+          "in",
+          "kaum",
+          "langweilig",
+          "sowie",
+          "von",
+          "wegen",
+          "wohl",
+          "zu",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 7,
+        "answer": "folglich",
+        "choices": [
+          "anhand",
+          "anstrengend",
+          "auf",
+          "aus",
+          "eher",
+          "fast",
+          "folglich",
+          "in",
+          "kaum",
+          "langweilig",
+          "sowie",
+          "von",
+          "wegen",
+          "wohl",
+          "zu",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 8,
+        "answer": "eher",
+        "choices": [
+          "anhand",
+          "anstrengend",
+          "auf",
+          "aus",
+          "eher",
+          "fast",
+          "folglich",
+          "in",
+          "kaum",
+          "langweilig",
+          "sowie",
+          "von",
+          "wegen",
+          "wohl",
+          "zu",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 9,
+        "answer": "zu",
+        "choices": [
+          "anhand",
+          "anstrengend",
+          "auf",
+          "aus",
+          "eher",
+          "fast",
+          "folglich",
+          "in",
+          "kaum",
+          "langweilig",
+          "sowie",
+          "von",
+          "wegen",
+          "wohl",
+          "zu",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 10,
+        "answer": "wohl",
+        "choices": [
+          "anhand",
+          "anstrengend",
+          "auf",
+          "aus",
+          "eher",
+          "fast",
+          "folglich",
+          "in",
+          "kaum",
+          "langweilig",
+          "sowie",
+          "von",
+          "wegen",
+          "wohl",
+          "zu",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      }
+    ]
+  },
+  {
+    "sourceId": "49",
+    "sourceTitle": "Braunbären",
+    "section": "Sprachbausteine Teil 2",
+    "skill": "sprachbausteine",
+    "level": "B2",
+    "exam": "TELC",
+    "format": "CLOZE_BANK",
+    "options": [
+      "während",
+      "vorkommen",
+      "um",
+      "sowie",
+      "sodass",
+      "noch",
+      "nahkommen",
+      "kam",
+      "ging",
+      "eingriffe",
+      "denn",
+      "dass",
+      "dafür",
+      "dadurch",
+      "begriffe",
+      "${droppedWord}",
+      "${wordText}"
+    ],
+    "pairs": [],
+    "passage": "Klimatische Veränderungen seit der letzten Kaltzeit könnten für den stetigen Rückgang der Braunbären Zahl in Europa verantwortlich sein. Wie eine aktuelle Studie nahelegt, vor allem steigende Wintertemperaturen {{1}} der vergangen 12000 Jahre die Fortpflanzungsrate der Tiere verringert, was entscheidend zu deren Verschwinden beigetragen hat. Zudem wurden durch die Klimaveränderung größere Fliehen für den Ackerbau nutzbar. {{2}} wurde der Lebensraum der Tiere verkleinert. Es ist längst unumstritten, {{3}} das Verschwinden der der Braunbären mit der Landnutzung durch den Menschen zusammenhängt. Ein internationales Experten Team untersuchte nun die Rolle des Klimas beim Rückgang der Bären zahl. In den letzten Jahren ist Winter Temperatur in weiten Teilen Europas {{4}} zwei bis vier Grad angestiegen. In der Folge bekamen die Braunbären weniger {{5}}, und ihre Zahl schrumpfte. Der Grund {{6}} ist, dass Braunbären bei steigenden Wintertemperaturen in mehr Energie für ihre Winterruhe verbrauchen. Braunbärenweibchen benötigen ihre Energie Reserven auch für die Fortpflanzung, {{7}} sie bringen im Winter ihre Jungen zur Welt. Wird mehr Energie für die Winterruhe verbraucht, bleibt nicht so viel für die Fortpflanzung übrig, und gibt es weniger Nachwuchs. steigende Wintertemperaturen könnten auch in direkt für das Schicksal des Braunbären wörtlich gewesen sein. Wärmer Winter begünstigten nämlich auch die menschlichen {{8}} in die Naturlandschaften und damit in den Lebensraum der Braunbären. Am Ende der letzten Eiszeit war der Braunbär {{9}} überall in Europa heimlich großes Aussterben gab es in Südwesteuropa vor 70 7 bis 0 Jahren. Richtig begrab {{10}} es mit dem Braunbären aber vor etwa Jahre, als sich verringerte.",
+    "bank": [
+      "während",
+      "vorkommen",
+      "um",
+      "sowie",
+      "sodass",
+      "noch",
+      "nahkommen",
+      "kam",
+      "ging",
+      "eingriffe",
+      "denn",
+      "dass",
+      "dafür",
+      "dadurch",
+      "begriffe",
+      "${droppedWord}",
+      "${wordText}"
+    ],
+    "gaps": [
+      {
+        "n": 1,
+        "answer": "während",
+        "choices": [
+          "während",
+          "vorkommen",
+          "um",
+          "sowie",
+          "sodass",
+          "noch",
+          "nahkommen",
+          "kam",
+          "ging",
+          "eingriffe",
+          "denn",
+          "dass",
+          "dafür",
+          "dadurch",
+          "begriffe",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 2,
+        "answer": "dadurch",
+        "choices": [
+          "während",
+          "vorkommen",
+          "um",
+          "sowie",
+          "sodass",
+          "noch",
+          "nahkommen",
+          "kam",
+          "ging",
+          "eingriffe",
+          "denn",
+          "dass",
+          "dafür",
+          "dadurch",
+          "begriffe",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 3,
+        "answer": "dass",
+        "choices": [
+          "während",
+          "vorkommen",
+          "um",
+          "sowie",
+          "sodass",
+          "noch",
+          "nahkommen",
+          "kam",
+          "ging",
+          "eingriffe",
+          "denn",
+          "dass",
+          "dafür",
+          "dadurch",
+          "begriffe",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 4,
+        "answer": "um",
+        "choices": [
+          "während",
+          "vorkommen",
+          "um",
+          "sowie",
+          "sodass",
+          "noch",
+          "nahkommen",
+          "kam",
+          "ging",
+          "eingriffe",
+          "denn",
+          "dass",
+          "dafür",
+          "dadurch",
+          "begriffe",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 5,
+        "answer": "nahkommen",
+        "choices": [
+          "während",
+          "vorkommen",
+          "um",
+          "sowie",
+          "sodass",
+          "noch",
+          "nahkommen",
+          "kam",
+          "ging",
+          "eingriffe",
+          "denn",
+          "dass",
+          "dafür",
+          "dadurch",
+          "begriffe",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 6,
+        "answer": "dafür",
+        "choices": [
+          "während",
+          "vorkommen",
+          "um",
+          "sowie",
+          "sodass",
+          "noch",
+          "nahkommen",
+          "kam",
+          "ging",
+          "eingriffe",
+          "denn",
+          "dass",
+          "dafür",
+          "dadurch",
+          "begriffe",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 7,
+        "answer": "denn",
+        "choices": [
+          "während",
+          "vorkommen",
+          "um",
+          "sowie",
+          "sodass",
+          "noch",
+          "nahkommen",
+          "kam",
+          "ging",
+          "eingriffe",
+          "denn",
+          "dass",
+          "dafür",
+          "dadurch",
+          "begriffe",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 8,
+        "answer": "eingriffe",
+        "choices": [
+          "während",
+          "vorkommen",
+          "um",
+          "sowie",
+          "sodass",
+          "noch",
+          "nahkommen",
+          "kam",
+          "ging",
+          "eingriffe",
+          "denn",
+          "dass",
+          "dafür",
+          "dadurch",
+          "begriffe",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 9,
+        "answer": "noch",
+        "choices": [
+          "während",
+          "vorkommen",
+          "um",
+          "sowie",
+          "sodass",
+          "noch",
+          "nahkommen",
+          "kam",
+          "ging",
+          "eingriffe",
+          "denn",
+          "dass",
+          "dafür",
+          "dadurch",
+          "begriffe",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 10,
+        "answer": "ging",
+        "choices": [
+          "während",
+          "vorkommen",
+          "um",
+          "sowie",
+          "sodass",
+          "noch",
+          "nahkommen",
+          "kam",
+          "ging",
+          "eingriffe",
+          "denn",
+          "dass",
+          "dafür",
+          "dadurch",
+          "begriffe",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      }
+    ]
+  },
+  {
+    "sourceId": "50",
+    "sourceTitle": "Ausbildung",
+    "section": "Sprachbausteine Teil 2",
+    "skill": "sprachbausteine",
+    "level": "B2",
+    "exam": "TELC",
+    "format": "CLOZE_BANK",
+    "options": [
+      "auswahl",
+      "chance",
+      "da",
+      "dagegen",
+      "denn",
+      "durften",
+      "könnten",
+      "möchte",
+      "sollte",
+      "sondern",
+      "trotzdem",
+      "übernehmen",
+      "verfügung",
+      "warum",
+      "ziehen",
+      "${droppedWord}",
+      "${wordText}"
+    ],
+    "pairs": [],
+    "passage": "Die gelernte Krankenschwester Jaqueline Delgado drückt mit 38 Jahren noch einmal die Schulbank. {{1}} sie hat sich für einen beruflichen Neustart entschieden. Da ihr früherer Beruf ihr keinen Spaß mehr machte, begann sie eine Berufsausbildung bei der Polizei. Ihr Ziel: Sie {{2}} in den Streifendienst gehen. Mit 30 noch einmal einen neuen Job zu erlernen — lange Zeit war das kaum möglich. Arbeitgeber suchten nur junge Berufseinsteiger. {{3}} es heute in vielen Branchen aber an Nachwuchs fehlt, geben sie öfter auch Älteren eine {{4}}. Thomas Neuendorfer, der stellvertretende Sprecher der Polizei Berlin, erklärt, {{5}} sein Arbeitgeber gerne Altere ausbildet: \"Sie haben in ihrem Berufsleben Erfahrungen gesammelt, die der Polizei und auch den Bürgern der Stadt zu Gute kommen\". Sie seien häufig emotional reifer, außerdem bereit, Verantwortung zu {{6}}, und motiviert, die Ausbildung erfolgreich abzuschließen. Zudem {{7}} sie die Jüngeren unterstützen und ihnen als Vorbild dienen. Davon profitierten dann auch die Arbeitgeber. Gegen die Einstellung von Älteren spreche nur. dass sie dem Unternehmen kürzer vor {{8}} stehen. {{9}} haben ältere Azubis in vielen Bereichen Möglichkeiten: in kaufmännischen oder in gewerblich-technischen im Gesundheitswesen vor allem in der Gastronomie. Wenn das Azubi-Gehalt nicht für den Lebensunterhalt reicht, hilft die Arbeitsagentur. Der Betrag wird dabei nicht nach dem Alter festgelegt, {{10}} es wird der individuelle, konkrete Bedarf ermittelt. Im August schließt Delgado ihre Ausbildung ab. In dem künftigen Polizei—Job wird Sie ihr medizinisches Wissen, ihre Menschenkenntnis sowie ihre spanischen und englischen Sprachkenntnisse wohlt gut gebrauchen können.",
+    "bank": [
+      "auswahl",
+      "chance",
+      "da",
+      "dagegen",
+      "denn",
+      "durften",
+      "könnten",
+      "möchte",
+      "sollte",
+      "sondern",
+      "trotzdem",
+      "übernehmen",
+      "verfügung",
+      "warum",
+      "ziehen",
+      "${droppedWord}",
+      "${wordText}"
+    ],
+    "gaps": [
+      {
+        "n": 1,
+        "answer": "denn",
+        "choices": [
+          "auswahl",
+          "chance",
+          "da",
+          "dagegen",
+          "denn",
+          "durften",
+          "könnten",
+          "möchte",
+          "sollte",
+          "sondern",
+          "trotzdem",
+          "übernehmen",
+          "verfügung",
+          "warum",
+          "ziehen",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 2,
+        "answer": "möchte",
+        "choices": [
+          "auswahl",
+          "chance",
+          "da",
+          "dagegen",
+          "denn",
+          "durften",
+          "könnten",
+          "möchte",
+          "sollte",
+          "sondern",
+          "trotzdem",
+          "übernehmen",
+          "verfügung",
+          "warum",
+          "ziehen",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 3,
+        "answer": "da",
+        "choices": [
+          "auswahl",
+          "chance",
+          "da",
+          "dagegen",
+          "denn",
+          "durften",
+          "könnten",
+          "möchte",
+          "sollte",
+          "sondern",
+          "trotzdem",
+          "übernehmen",
+          "verfügung",
+          "warum",
+          "ziehen",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 4,
+        "answer": "chance",
+        "choices": [
+          "auswahl",
+          "chance",
+          "da",
+          "dagegen",
+          "denn",
+          "durften",
+          "könnten",
+          "möchte",
+          "sollte",
+          "sondern",
+          "trotzdem",
+          "übernehmen",
+          "verfügung",
+          "warum",
+          "ziehen",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 5,
+        "answer": "warum",
+        "choices": [
+          "auswahl",
+          "chance",
+          "da",
+          "dagegen",
+          "denn",
+          "durften",
+          "könnten",
+          "möchte",
+          "sollte",
+          "sondern",
+          "trotzdem",
+          "übernehmen",
+          "verfügung",
+          "warum",
+          "ziehen",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 6,
+        "answer": "übernehmen",
+        "choices": [
+          "auswahl",
+          "chance",
+          "da",
+          "dagegen",
+          "denn",
+          "durften",
+          "könnten",
+          "möchte",
+          "sollte",
+          "sondern",
+          "trotzdem",
+          "übernehmen",
+          "verfügung",
+          "warum",
+          "ziehen",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 7,
+        "answer": "könnten",
+        "choices": [
+          "auswahl",
+          "chance",
+          "da",
+          "dagegen",
+          "denn",
+          "durften",
+          "könnten",
+          "möchte",
+          "sollte",
+          "sondern",
+          "trotzdem",
+          "übernehmen",
+          "verfügung",
+          "warum",
+          "ziehen",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 8,
+        "answer": "verfügung",
+        "choices": [
+          "auswahl",
+          "chance",
+          "da",
+          "dagegen",
+          "denn",
+          "durften",
+          "könnten",
+          "möchte",
+          "sollte",
+          "sondern",
+          "trotzdem",
+          "übernehmen",
+          "verfügung",
+          "warum",
+          "ziehen",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 9,
+        "answer": "trotzdem",
+        "choices": [
+          "auswahl",
+          "chance",
+          "da",
+          "dagegen",
+          "denn",
+          "durften",
+          "könnten",
+          "möchte",
+          "sollte",
+          "sondern",
+          "trotzdem",
+          "übernehmen",
+          "verfügung",
+          "warum",
+          "ziehen",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 10,
+        "answer": "sondern",
+        "choices": [
+          "auswahl",
+          "chance",
+          "da",
+          "dagegen",
+          "denn",
+          "durften",
+          "könnten",
+          "möchte",
+          "sollte",
+          "sondern",
+          "trotzdem",
+          "übernehmen",
+          "verfügung",
+          "warum",
+          "ziehen",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      }
+    ]
+  },
+  {
+    "sourceId": "51",
+    "sourceTitle": "Skipiste",
+    "section": "Sprachbausteine Teil 2",
+    "skill": "sprachbausteine",
+    "level": "B2",
+    "exam": "TELC",
+    "format": "CLOZE_BANK",
+    "options": [
+      "zwar",
+      "vorsehen",
+      "stelle",
+      "sollte",
+      "so",
+      "rechnen",
+      "rand",
+      "kann",
+      "gültig",
+      "gelten",
+      "einordnen",
+      "darf",
+      "anpassen",
+      "angeben",
+      "allerdings",
+      "${droppedWord}",
+      "${wordText}"
+    ],
+    "pairs": [],
+    "passage": "Wer beim Skifahren fahrlässig einen anderen Sportler verletzt oder gefährdet, muss auch mit rechtlichen Folgen {{1}}. Das Strafgesetzbuch ist sowohl auf der Straße als auch auf der Piste {{2}}. Laut Gesetz gibt es Freiheitsstrafen bis zu 3 Monaten oder eine entsprechende Geldstrafe. Bei schwerer Körperverletzung sieht das Gesetz Freiheitsstrafen bis zu 6 Monaten {{3}}. Der deutsche Skiverband hat eine Pistenordnung erarbeitet, die bei gerichtlichen Entscheidungen angewandt wird. Jeder Wintersportler {{4}} diese Regeln kennen: Jeder Skifahrer muss sich stets {{5}} verhalten, dass er keinen anderen gefährdet oder schädigt. Er muss die Zeichen und Hinweisschilder an der Piste kennen und beachten. Er muss die eigene Geschwindigkeit und Fahrweise seinem Können und dem Gelände sowie den herrschenden Wetterverhältnissen {{6}}. Ein von hinten kommendem Skifahrer muss seine Fahrspur so wählen, dass er vor ihm fahrende Skifahrer nicht gefährdet. Überholen darf man rechts oder links, {{7}} immer in einem Abstand, der dem überholten Skifahrer genug Raum für seine Bewegungen lässt. Aufsteigende Skifahrer dürfen nur den {{8}} einer Abfahrtstrecke benützen. Dasselbe gilt für einen Skifahrer, der zu Fuß absteigt. Bei schlechten Sichtverhältnissen ist die Benutzung des Pistenrands verboten und der Skifahrer muss diesen verlassen. Niemand sollte sich an unübersichtlichen oder engen Stellen aufhalten. Gestürzte Skifahrer müssen eine solche {{9}} so schnell wie möglich freimachen. Bei Unfällen ist jeder zur Hilfeleistung verpflichtet. Jeder Zeuge oder Verantwortliche muss bei einem Unfall außerdem seine Personalie {{10}}. Durch Beachtung dieser Regeln ist die Sicherheit auf den Pisten deutlich gestiegen.",
+    "bank": [
+      "zwar",
+      "vorsehen",
+      "stelle",
+      "sollte",
+      "so",
+      "rechnen",
+      "rand",
+      "kann",
+      "gültig",
+      "gelten",
+      "einordnen",
+      "darf",
+      "anpassen",
+      "angeben",
+      "allerdings",
+      "${droppedWord}",
+      "${wordText}"
+    ],
+    "gaps": [
+      {
+        "n": 1,
+        "answer": "rechnen",
+        "choices": [
+          "zwar",
+          "vorsehen",
+          "stelle",
+          "sollte",
+          "so",
+          "rechnen",
+          "rand",
+          "kann",
+          "gültig",
+          "gelten",
+          "einordnen",
+          "darf",
+          "anpassen",
+          "angeben",
+          "allerdings",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 2,
+        "answer": "gültig",
+        "choices": [
+          "zwar",
+          "vorsehen",
+          "stelle",
+          "sollte",
+          "so",
+          "rechnen",
+          "rand",
+          "kann",
+          "gültig",
+          "gelten",
+          "einordnen",
+          "darf",
+          "anpassen",
+          "angeben",
+          "allerdings",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 3,
+        "answer": "vorsehen",
+        "choices": [
+          "zwar",
+          "vorsehen",
+          "stelle",
+          "sollte",
+          "so",
+          "rechnen",
+          "rand",
+          "kann",
+          "gültig",
+          "gelten",
+          "einordnen",
+          "darf",
+          "anpassen",
+          "angeben",
+          "allerdings",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 4,
+        "answer": "sollte",
+        "choices": [
+          "zwar",
+          "vorsehen",
+          "stelle",
+          "sollte",
+          "so",
+          "rechnen",
+          "rand",
+          "kann",
+          "gültig",
+          "gelten",
+          "einordnen",
+          "darf",
+          "anpassen",
+          "angeben",
+          "allerdings",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 5,
+        "answer": "so",
+        "choices": [
+          "zwar",
+          "vorsehen",
+          "stelle",
+          "sollte",
+          "so",
+          "rechnen",
+          "rand",
+          "kann",
+          "gültig",
+          "gelten",
+          "einordnen",
+          "darf",
+          "anpassen",
+          "angeben",
+          "allerdings",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 6,
+        "answer": "anpassen",
+        "choices": [
+          "zwar",
+          "vorsehen",
+          "stelle",
+          "sollte",
+          "so",
+          "rechnen",
+          "rand",
+          "kann",
+          "gültig",
+          "gelten",
+          "einordnen",
+          "darf",
+          "anpassen",
+          "angeben",
+          "allerdings",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 7,
+        "answer": "allerdings",
+        "choices": [
+          "zwar",
+          "vorsehen",
+          "stelle",
+          "sollte",
+          "so",
+          "rechnen",
+          "rand",
+          "kann",
+          "gültig",
+          "gelten",
+          "einordnen",
+          "darf",
+          "anpassen",
+          "angeben",
+          "allerdings",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 8,
+        "answer": "rand",
+        "choices": [
+          "zwar",
+          "vorsehen",
+          "stelle",
+          "sollte",
+          "so",
+          "rechnen",
+          "rand",
+          "kann",
+          "gültig",
+          "gelten",
+          "einordnen",
+          "darf",
+          "anpassen",
+          "angeben",
+          "allerdings",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 9,
+        "answer": "stelle",
+        "choices": [
+          "zwar",
+          "vorsehen",
+          "stelle",
+          "sollte",
+          "so",
+          "rechnen",
+          "rand",
+          "kann",
+          "gültig",
+          "gelten",
+          "einordnen",
+          "darf",
+          "anpassen",
+          "angeben",
+          "allerdings",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 10,
+        "answer": "angeben",
+        "choices": [
+          "zwar",
+          "vorsehen",
+          "stelle",
+          "sollte",
+          "so",
+          "rechnen",
+          "rand",
+          "kann",
+          "gültig",
+          "gelten",
+          "einordnen",
+          "darf",
+          "anpassen",
+          "angeben",
+          "allerdings",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      }
+    ]
+  },
+  {
+    "sourceId": "52",
+    "sourceTitle": "Jugend diskutiert",
+    "section": "Sprachbausteine Teil 2",
+    "skill": "sprachbausteine",
+    "level": "B2",
+    "exam": "TELC",
+    "format": "CLOZE_BANK",
+    "options": [
+      "als",
+      "an",
+      "außerdem",
+      "bei",
+      "darunter",
+      "die",
+      "nachdem",
+      "obwohl",
+      "seit",
+      "vor",
+      "warum",
+      "was",
+      "weil",
+      "wer",
+      "wie",
+      "${droppedWord}",
+      "${wordText}"
+    ],
+    "pairs": [],
+    "passage": "Den Wettbewerber \"Jugend diskutiert\" gibt es bereits {{1}} Herbst 2002. Für das kommende Jahr werden nun wieder Schülerinnen und Schüler gesucht, die an dem Wettbewerb teilnehmen möchten. {{2}} immer bereiten sich die Teilnehmer dann im Unterricht auf \"Jugend diskutiert\" vor. Du fragst dich, {{3}} du teilnehmen solltest? Ganz einfach: \"Jugend diskutiert\" bringt dich weiter! Sich einmischen, mitreden, überzeugen - bei der Vorbereitung im Unterricht trainierst du viele Fähigkeiten, die dir in der Schule und im Alltag helfen. Im Austausch mit den anderen entwickelst du deine Persönlichkeit weiter und profitierst langfristig. {{4}} bietet dir \"Jugend diskutiert\" die Chance, im Wettstreit mit anderen weiterzukommen. Zuerst werden die besten einer Schule ermittelt, die {{5}} Regionalwettbewerben teilnehmen. Die Sieger der Regionalwettbewerbe treten im Bundesfinale an. {{6}} Preise kann man professionelle Trainings gewinnen. {{7}} \"Jugend diskutiert\" kannst du viel lernen. Du hast bessere Chancen im Unterricht und bei Referaten, denn du trainierst, frei zu sprechen und Dinge anschaulich und verständlich zu beschreiben. Du gewinnst mehr Selbstbewusstsein, {{8}} du lernst, wie man das Wort ergreift und auf sich aufmerksam macht. Du kannst überzeugen, da du eigene Argumente finden und die Argumente anderer genau prüfen kannst. Die Sichtweisen der anderen zeigen dir darüber hinaus, {{9}} du vielleicht selbst noch nicht gesehen hast. Du überzeugst bei Auftritten, Prüfungen und Bewerbungen, da du sicher auftrittst. {{10}} das alles im Unterricht gelernt hat, kann gemeinsam mit anderen viel bewegen! Schließlich ist der Wettbewerb \"Jugend diskutiert\" auch eine Chance, Jugendliche aus ganz Deutschland kennenzulernen und neue Freundschaften zu knüpfen. Weitere Informationen zu Anmeldung und Teilnahme gibt es im Internet.",
+    "bank": [
+      "als",
+      "an",
+      "außerdem",
+      "bei",
+      "darunter",
+      "die",
+      "nachdem",
+      "obwohl",
+      "seit",
+      "vor",
+      "warum",
+      "was",
+      "weil",
+      "wer",
+      "wie",
+      "${droppedWord}",
+      "${wordText}"
+    ],
+    "gaps": [
+      {
+        "n": 1,
+        "answer": "seit",
+        "choices": [
+          "als",
+          "an",
+          "außerdem",
+          "bei",
+          "darunter",
+          "die",
+          "nachdem",
+          "obwohl",
+          "seit",
+          "vor",
+          "warum",
+          "was",
+          "weil",
+          "wer",
+          "wie",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 2,
+        "answer": "wie",
+        "choices": [
+          "als",
+          "an",
+          "außerdem",
+          "bei",
+          "darunter",
+          "die",
+          "nachdem",
+          "obwohl",
+          "seit",
+          "vor",
+          "warum",
+          "was",
+          "weil",
+          "wer",
+          "wie",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 3,
+        "answer": "warum",
+        "choices": [
+          "als",
+          "an",
+          "außerdem",
+          "bei",
+          "darunter",
+          "die",
+          "nachdem",
+          "obwohl",
+          "seit",
+          "vor",
+          "warum",
+          "was",
+          "weil",
+          "wer",
+          "wie",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 4,
+        "answer": "außerdem",
+        "choices": [
+          "als",
+          "an",
+          "außerdem",
+          "bei",
+          "darunter",
+          "die",
+          "nachdem",
+          "obwohl",
+          "seit",
+          "vor",
+          "warum",
+          "was",
+          "weil",
+          "wer",
+          "wie",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 5,
+        "answer": "an",
+        "choices": [
+          "als",
+          "an",
+          "außerdem",
+          "bei",
+          "darunter",
+          "die",
+          "nachdem",
+          "obwohl",
+          "seit",
+          "vor",
+          "warum",
+          "was",
+          "weil",
+          "wer",
+          "wie",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 6,
+        "answer": "als",
+        "choices": [
+          "als",
+          "an",
+          "außerdem",
+          "bei",
+          "darunter",
+          "die",
+          "nachdem",
+          "obwohl",
+          "seit",
+          "vor",
+          "warum",
+          "was",
+          "weil",
+          "wer",
+          "wie",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 7,
+        "answer": "bei",
+        "choices": [
+          "als",
+          "an",
+          "außerdem",
+          "bei",
+          "darunter",
+          "die",
+          "nachdem",
+          "obwohl",
+          "seit",
+          "vor",
+          "warum",
+          "was",
+          "weil",
+          "wer",
+          "wie",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 8,
+        "answer": "weil",
+        "choices": [
+          "als",
+          "an",
+          "außerdem",
+          "bei",
+          "darunter",
+          "die",
+          "nachdem",
+          "obwohl",
+          "seit",
+          "vor",
+          "warum",
+          "was",
+          "weil",
+          "wer",
+          "wie",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 9,
+        "answer": "was",
+        "choices": [
+          "als",
+          "an",
+          "außerdem",
+          "bei",
+          "darunter",
+          "die",
+          "nachdem",
+          "obwohl",
+          "seit",
+          "vor",
+          "warum",
+          "was",
+          "weil",
+          "wer",
+          "wie",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 10,
+        "answer": "wer",
+        "choices": [
+          "als",
+          "an",
+          "außerdem",
+          "bei",
+          "darunter",
+          "die",
+          "nachdem",
+          "obwohl",
+          "seit",
+          "vor",
+          "warum",
+          "was",
+          "weil",
+          "wer",
+          "wie",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      }
+    ]
+  },
+  {
+    "sourceId": "53",
+    "sourceTitle": "Manipulierte Bilder",
+    "section": "Sprachbausteine Teil 2",
+    "skill": "sprachbausteine",
+    "level": "B2",
+    "exam": "TELC",
+    "format": "CLOZE_BANK",
+    "options": [
+      "aber",
+      "abgrenzen",
+      "als",
+      "diesen",
+      "flut",
+      "korrekt",
+      "meisten",
+      "recht",
+      "reisend",
+      "somit",
+      "stellt",
+      "unlogische",
+      "unterscheiden",
+      "verschieden",
+      "zwar",
+      "${droppedWord}",
+      "${wordText}"
+    ],
+    "pairs": [],
+    "passage": "Im Internet, in sozialen Netzwerken und der Werbung werden wir mit einer {{1}}. Von Fotos konfrontiert. Klar ist: Viele von ihnen sind keine wirklichen Originale, Bildbearbeitungsprogramme machen es sogar für Laien {{2}}. einfach, Fotos zu verändern Meist sind die Manipulationen harmlos, {{3}} die Möglichkeiten der Bildbearbeitung lassen Sich natürlich auch für Betrügereien oder Meinungsmache missbrauchen. In diesem Zusammenhang {{4}} sich die Frage, inwieweit Betrachtern solche Manipulationen auffallen. Können Sie erkennen, dass an einem Bild etwas merkwürdig ist, oder sogar die manipulierte Stelle finden {{5}} Fragen sind nun Forscher der University of Warwick (UK) nachgegangen. Sie entwickelten dazu ein Online-Testsystem, bei dem die Teilnehmer den manipulierten Bereich auf Fotos erkennen sollten. Die Auswertungen ergaben: Die {{6}} Teilnehmer waren nur eher zufällig in der Lage, ein manipuliertes Bild zu identifizieren. Oft hatten sie das vage Gefühl, dass mit einem der Bilder etwas nicht stimmt. Nur in 454 Prozent der Fälle konnten sie tatsächlich. {{7}} bestimmen, wo das Bild verändert worden war. Selbst ein falscher Schattenwurf oder andere {{8}} Abweichungen wurden nicht besser erkannt als nachvollziehbare Manipulationen wie beispielsweise künstliche Farbveränderungen. Bilder haben einen starken Einfluss auf unsere Erinnerungen, so die Forscher. Können Menschen also nicht zwischen echten und gefälschten Details auf Fotos, {{9}} so können manipulierte Bilder entscheidend beeinflussen, woran wir uns zu erinnern glauben. Die Ergebnisse dokumentierten {{10}} Wir können recht leicht auf Fake-Fotos und damit auch auf ihre manipulierten Botschaften reinfallen. Aufbauend auf ihren Ergebnissen wollen die Forscher nun konkrete Ratschläge erarbeiten, die dem Betrachter helfen sollen, Fotomanipulationen besser zu erkennen.",
+    "bank": [
+      "aber",
+      "abgrenzen",
+      "als",
+      "diesen",
+      "flut",
+      "korrekt",
+      "meisten",
+      "recht",
+      "reisend",
+      "somit",
+      "stellt",
+      "unlogische",
+      "unterscheiden",
+      "verschieden",
+      "zwar",
+      "${droppedWord}",
+      "${wordText}"
+    ],
+    "gaps": [
+      {
+        "n": 1,
+        "answer": "flut",
+        "choices": [
+          "aber",
+          "abgrenzen",
+          "als",
+          "diesen",
+          "flut",
+          "korrekt",
+          "meisten",
+          "recht",
+          "reisend",
+          "somit",
+          "stellt",
+          "unlogische",
+          "unterscheiden",
+          "verschieden",
+          "zwar",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 2,
+        "answer": "recht",
+        "choices": [
+          "aber",
+          "abgrenzen",
+          "als",
+          "diesen",
+          "flut",
+          "korrekt",
+          "meisten",
+          "recht",
+          "reisend",
+          "somit",
+          "stellt",
+          "unlogische",
+          "unterscheiden",
+          "verschieden",
+          "zwar",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 3,
+        "answer": "aber",
+        "choices": [
+          "aber",
+          "abgrenzen",
+          "als",
+          "diesen",
+          "flut",
+          "korrekt",
+          "meisten",
+          "recht",
+          "reisend",
+          "somit",
+          "stellt",
+          "unlogische",
+          "unterscheiden",
+          "verschieden",
+          "zwar",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 4,
+        "answer": "stellt",
+        "choices": [
+          "aber",
+          "abgrenzen",
+          "als",
+          "diesen",
+          "flut",
+          "korrekt",
+          "meisten",
+          "recht",
+          "reisend",
+          "somit",
+          "stellt",
+          "unlogische",
+          "unterscheiden",
+          "verschieden",
+          "zwar",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 5,
+        "answer": "diesen",
+        "choices": [
+          "aber",
+          "abgrenzen",
+          "als",
+          "diesen",
+          "flut",
+          "korrekt",
+          "meisten",
+          "recht",
+          "reisend",
+          "somit",
+          "stellt",
+          "unlogische",
+          "unterscheiden",
+          "verschieden",
+          "zwar",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 6,
+        "answer": "meisten",
+        "choices": [
+          "aber",
+          "abgrenzen",
+          "als",
+          "diesen",
+          "flut",
+          "korrekt",
+          "meisten",
+          "recht",
+          "reisend",
+          "somit",
+          "stellt",
+          "unlogische",
+          "unterscheiden",
+          "verschieden",
+          "zwar",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 7,
+        "answer": "korrekt",
+        "choices": [
+          "aber",
+          "abgrenzen",
+          "als",
+          "diesen",
+          "flut",
+          "korrekt",
+          "meisten",
+          "recht",
+          "reisend",
+          "somit",
+          "stellt",
+          "unlogische",
+          "unterscheiden",
+          "verschieden",
+          "zwar",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 8,
+        "answer": "unlogische",
+        "choices": [
+          "aber",
+          "abgrenzen",
+          "als",
+          "diesen",
+          "flut",
+          "korrekt",
+          "meisten",
+          "recht",
+          "reisend",
+          "somit",
+          "stellt",
+          "unlogische",
+          "unterscheiden",
+          "verschieden",
+          "zwar",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 9,
+        "answer": "unterscheiden",
+        "choices": [
+          "aber",
+          "abgrenzen",
+          "als",
+          "diesen",
+          "flut",
+          "korrekt",
+          "meisten",
+          "recht",
+          "reisend",
+          "somit",
+          "stellt",
+          "unlogische",
+          "unterscheiden",
+          "verschieden",
+          "zwar",
+          "${droppedWord}",
+          "${wordText}"
+        ]
+      },
+      {
+        "n": 10,
+        "answer": "somit",
+        "choices": [
+          "aber",
+          "abgrenzen",
+          "als",
+          "diesen",
+          "flut",
+          "korrekt",
+          "meisten",
+          "recht",
+          "reisend",
+          "somit",
+          "stellt",
+          "unlogische",
+          "unterscheiden",
+          "verschieden",
+          "zwar",
+          "${droppedWord}",
+          "${wordText}"
+        ]
       }
     ]
   }

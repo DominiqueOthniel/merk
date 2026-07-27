@@ -1,9 +1,14 @@
 import { EXAM_TELC_B1 } from "./exam-telc-b1";
 import { EXAM_TELC_B2 } from "./exam-telc-b2";
 import type { ExamExercise } from "./exam-types";
-import { EXAM_LEVELS } from "./exam-types";
+import {
+  EXAM_CARD_KINDS,
+  EXAM_LEVELS,
+  exerciseCardKind,
+  exerciseItemCount,
+} from "./exam-types";
 
-export { EXAM_LEVELS };
+export { EXAM_CARD_KINDS, EXAM_LEVELS, exerciseCardKind, exerciseItemCount };
 export type { ExamExercise, ExamLevelInfo } from "./exam-types";
 
 export const EXAM_ALL: ExamExercise[] = [...EXAM_TELC_B1, ...EXAM_TELC_B2];

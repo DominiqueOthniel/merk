@@ -9,6 +9,7 @@ type ExamSet = {
   title: string;
   section: string;
   skill: string;
+  format?: string;
   pairCount: number;
   dueCount: number;
   doneCount: number;
@@ -81,7 +82,7 @@ export default function ExamHubPage() {
 
   return (
     <>
-      <BrandHeader subtitle="Mode avant examen · TELC Lesen" />
+      <BrandHeader subtitle="Mode avant examen · TELC Lesen et Sprachbausteine" />
 
       <section className="panel fade-up mb-6">
         <p className="eyebrow">Choisis ton niveau</p>
@@ -111,7 +112,7 @@ export default function ExamHubPage() {
         </div>
 
         <p className="mt-5 text-[1.05rem] leading-relaxed text-[var(--ink-soft)]">
-          Associe titre et texte, format examen, avec repetition espacee.
+          Lesen (titres) et Sprachbausteine (lacunes), format examen, avec repetition espacee.
         </p>
         {available ? (
           <p className="mt-3 text-[1.02rem] font-semibold text-[var(--forest-deep)]">
@@ -148,7 +149,10 @@ export default function ExamHubPage() {
                     <div>
                       <p className="font-semibold">{set.title}</p>
                       <p className="mt-1 text-[0.92rem] text-[var(--ink-soft)]">
-                        {set.pairCount} textes · {set.doneCount} deja vus
+                        {set.format === "MATCH" || !set.format
+                          ? `${set.pairCount} textes`
+                          : `${set.pairCount} lacunes`}{" "}
+                        · {set.doneCount} deja vus
                       </p>
                     </div>
                     <span

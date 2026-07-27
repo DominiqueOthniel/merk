@@ -2,7 +2,12 @@ import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/db";
-import { EXAM_LEVELS, getExamExercises } from "@/lib/content/exam-catalog";
+import {
+  EXAM_CARD_KINDS,
+  EXAM_LEVELS,
+  exerciseItemCount,
+  getExamExercises,
+} from "@/lib/content/exam-catalog";
 
 export async function GET(req: Request) {
   const session = await getServerSession(authOptions);
@@ -32,7 +37,7 @@ export async function GET(req: Request) {
   for (const exercise of exercises) {
     const cards = await prisma.card.findMany({
       where: {
-        kind: "MATCH",
+        kind: { in: [...EXAM_CARD_KINDS] },
         level: exercise.level,
         sourceRef: { startsWith: `deuropa:${exercise.sourceId}:` },
       },
@@ -53,8 +58,9 @@ export async function GET(req: Request) {
       title: exercise.sourceTitle,
       section: exercise.section,
       skill: exercise.skill,
+      format: exercise.format,
       level: exercise.level,
-      pairCount: exercise.pairs.length,
+      pairCount: exerciseItemCount(exercise),
       dueCount: due,
       doneCount: done,
       totalAssigned: cards.length,
@@ -73,7 +79,7 @@ export async function GET(req: Request) {
       },
       {}
     )
-  );
+  ).sort((a, b) => a.section.localeCompare(b.section, "de"));
 
   return NextResponse.json({
     exam: "TELC",

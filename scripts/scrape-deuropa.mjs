@@ -2,9 +2,25 @@ import fs from "node:fs";
 import path from "node:path";
 
 const LEVELS = [
-  { id: "B1", index: "https://deuropa.app/indexb1.html", out: "exam-telc-b1.ts", constName: "EXAM_TELC_B1" },
-  { id: "B2", index: "https://deuropa.app/indexb2.html", out: "exam-telc-b2.ts", constName: "EXAM_TELC_B2" },
+  {
+    id: "B1",
+    index: "https://deuropa.app/indexb1.html",
+    out: "exam-telc-b1.ts",
+    constName: "EXAM_TELC_B1",
+  },
+  {
+    id: "B2",
+    index: "https://deuropa.app/indexb2.html",
+    out: "exam-telc-b2.ts",
+    constName: "EXAM_TELC_B2",
+  },
 ];
+
+const LIMITS = {
+  lesen1: 10,
+  sprach1: 10,
+  sprach2: 10,
+};
 
 async function fetchText(url) {
   const res = await fetch(url, {
@@ -27,6 +43,8 @@ function decodeHtml(s) {
     .replace(/&ouml;/g, "ö")
     .replace(/&Ouml;/g, "Ö")
     .replace(/&szlig;/g, "ß")
+    .replace(/\{\{/g, "{{")
+    .replace(/\}\}/g, "}}")
     .replace(/<[^>]+>/g, " ")
     .replace(/\s+/g, " ")
     .trim();
@@ -79,21 +97,128 @@ function extractMatchingQuiz(html, meta, level) {
     }
   }
 
-  const skill = /Sprachbausteine/i.test(meta.section)
-    ? "sprachbausteine"
-    : /Hören|Hoeren|Horen/i.test(meta.section)
-      ? "horen"
-      : "lesen";
+  return {
+    sourceId: String(meta.sourceId),
+    sourceTitle: meta.title,
+    section: meta.section,
+    skill: "lesen",
+    level,
+    exam: "TELC",
+    format: "MATCH",
+    options: [...new Set(options.length ? options : pairs.map((p) => p.title))],
+    pairs,
+    gaps: [],
+  };
+}
+
+function extractClozeMcq(html, meta, level) {
+  const letterHtml =
+    html.match(/<div class="letter">([\s\S]*?)<\/div>\s*<div class="choices">/)?.[1] || "";
+  if (!letterHtml) return null;
+
+  const marked = letterHtml.replace(
+    /<span class="blank"[^>]*id="blank(\d+)"[^>]*>[\s\S]*?<\/span>/gi,
+    "{{$1}}"
+  );
+  const passage = decodeHtml(marked);
+  if (!passage.includes("{{")) return null;
+
+  const answers = {};
+  const ansBlock = html.match(/correctAnswers\s*=\s*\{([\s\S]*?)\}/);
+  if (ansBlock) {
+    for (const m of ansBlock[1].matchAll(/(\d+)\s*:\s*"([^"]+)"/g)) {
+      answers[Number(m[1])] = m[2];
+    }
+  }
+
+  const choicesByGap = new Map();
+  const radioRe =
+    /<input[^>]*type="radio"[^>]*(?:name="q(\d+)"[^>]*value="([^"]+)"|value="([^"]+)"[^>]*name="q(\d+)")[^>]*>/gi;
+  let rm;
+  while ((rm = radioRe.exec(html))) {
+    const n = Number(rm[1] || rm[4]);
+    const value = rm[2] || rm[3];
+    if (!n || !value) continue;
+    if (!choicesByGap.has(n)) choicesByGap.set(n, []);
+    choicesByGap.get(n).push(value);
+  }
+
+  const gapNums = [
+    ...new Set([...Object.keys(answers).map(Number), ...choicesByGap.keys()]),
+  ].sort((a, b) => a - b);
+
+  const gaps = [];
+  for (const n of gapNums) {
+    const choices = [...new Set(choicesByGap.get(n) || [])];
+    const answer = answers[n];
+    if (!answer || choices.length < 2) continue;
+    if (!choices.includes(answer)) choices.push(answer);
+    gaps.push({ n, answer, choices });
+  }
+
+  if (gaps.length === 0) return null;
 
   return {
     sourceId: String(meta.sourceId),
     sourceTitle: meta.title,
     section: meta.section,
-    skill,
+    skill: "sprachbausteine",
     level,
     exam: "TELC",
-    options: [...new Set(options.length ? options : pairs.map((p) => p.title))],
-    pairs,
+    format: "CLOZE_MCQ",
+    options: [],
+    pairs: [],
+    passage,
+    gaps,
+  };
+}
+
+function extractClozeBank(html, meta, level) {
+  const quizText =
+    html.match(/<div class="quiz-text">([\s\S]*?)<\/div>\s*<div class="word-bank-container">/)?.[1] ||
+    html.match(/<div class="quiz-text">([\s\S]*?)<\/div>/)?.[1] ||
+    "";
+  if (!quizText.includes("data-answer")) return null;
+
+  let gapN = 0;
+  const gaps = [];
+  const marked = quizText.replace(
+    /<span class="blank"[^>]*data-answer="([^"]+)"[^>]*>[\s\S]*?<\/span>/gi,
+    (_all, answer) => {
+      gapN += 1;
+      gaps.push({ n: gapN, answer, choices: [] });
+      return `{{${gapN}}}`;
+    }
+  );
+  const passage = decodeHtml(marked);
+  if (gaps.length === 0) return null;
+
+  const bank = [
+    ...new Set(
+      [...html.matchAll(/data-word="([^"]+)"/gi)].map((m) => m[1]).filter(Boolean)
+    ),
+  ];
+  if (bank.length === 0) {
+    bank.push(...gaps.map((g) => g.answer));
+  }
+
+  for (const gap of gaps) {
+    gap.choices = bank;
+  }
+
+  return {
+    sourceId: String(meta.sourceId),
+    sourceTitle: meta.title,
+    section: meta.section,
+    skill: "sprachbausteine",
+    level,
+    exam: "TELC",
+    format: "CLOZE_BANK",
+    options: bank,
+    pairs: [],
+    passage,
+    bank,
+    gaps,
   };
 }
 
@@ -106,32 +231,46 @@ export const ${constName}: ExamExercise[] = ${body} as ExamExercise[];
 `;
 }
 
+async function scrapeItems(items, level, parser, label) {
+  const quizzes = [];
+  for (const item of items) {
+    try {
+      const html = await fetchText(item.url);
+      const parsed = parser(html, item, level);
+      const count =
+        parsed?.format === "MATCH" ? parsed.pairs?.length || 0 : parsed?.gaps?.length || 0;
+      if (!parsed || count === 0) {
+        console.warn(`SKIP empty ${label} ${item.sourceId} ${item.title}`);
+        continue;
+      }
+      quizzes.push(parsed);
+      console.log(`OK ${label} ${item.sourceId} ${item.title} items=${count}`);
+      await new Promise((r) => setTimeout(r, 100));
+    } catch (e) {
+      console.warn(`FAIL ${item.url}`, e.message);
+    }
+  }
+  return quizzes;
+}
+
 async function scrapeLevel(levelCfg) {
   console.log(`\n=== ${levelCfg.id} ===`);
   const catalog = extractCatalog(await fetchText(levelCfg.index));
   console.log(`Catalog: ${catalog.length}`);
 
-  const lesen1 = catalog.filter((c) => /Lesen Teil 1/i.test(c.section));
-  const selected = lesen1.slice(0, 15);
+  const lesen1 = catalog.filter((c) => /Lesen Teil 1/i.test(c.section)).slice(0, LIMITS.lesen1);
+  const sprach1 = catalog
+    .filter((c) => /Sprachbausteine Teil 1/i.test(c.section))
+    .slice(0, LIMITS.sprach1);
+  const sprach2 = catalog
+    .filter((c) => /Sprachbausteine Teil 2/i.test(c.section))
+    .slice(0, LIMITS.sprach2);
 
-  const quizzes = [];
-  for (const item of selected) {
-    try {
-      const html = await fetchText(item.url);
-      const parsed = extractMatchingQuiz(html, item, levelCfg.id);
-      if (parsed.pairs.length === 0) {
-        console.warn(`SKIP empty ${item.sourceId} ${item.title}`);
-        continue;
-      }
-      quizzes.push(parsed);
-      console.log(
-        `OK ${item.sourceId} ${item.title} pairs=${parsed.pairs.length}`
-      );
-      await new Promise((r) => setTimeout(r, 120));
-    } catch (e) {
-      console.warn(`FAIL ${item.url}`, e.message);
-    }
-  }
+  const quizzes = [
+    ...(await scrapeItems(lesen1, levelCfg.id, extractMatchingQuiz, "Lesen1")),
+    ...(await scrapeItems(sprach1, levelCfg.id, extractClozeMcq, "Sprach1")),
+    ...(await scrapeItems(sprach2, levelCfg.id, extractClozeBank, "Sprach2")),
+  ];
 
   const outPath = path.join(process.cwd(), "src", "lib", "content", levelCfg.out);
   fs.writeFileSync(outPath, toTsModule(quizzes, levelCfg.constName, levelCfg.id), "utf8");

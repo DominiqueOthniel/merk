@@ -2,7 +2,11 @@ import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/db";
-import { getExamExercise } from "@/lib/content/exam-catalog";
+import {
+  EXAM_CARD_KINDS,
+  exerciseItemCount,
+  getExamExercise,
+} from "@/lib/content/exam-catalog";
 
 type Ctx = { params: Promise<{ sourceId: string }> };
 
@@ -19,11 +23,13 @@ export async function GET(_req: Request, ctx: Ctx) {
   }
 
   const now = new Date();
+  const where = {
+    kind: { in: [...EXAM_CARD_KINDS] },
+    sourceRef: { startsWith: `deuropa:${sourceId}:` },
+  };
+
   let cards = await prisma.card.findMany({
-    where: {
-      kind: "MATCH",
-      sourceRef: { startsWith: `deuropa:${sourceId}:` },
-    },
+    where,
     include: {
       progress: { where: { userId: session.user.id } },
     },
@@ -43,10 +49,7 @@ export async function GET(_req: Request, ctx: Ctx) {
   }
 
   cards = await prisma.card.findMany({
-    where: {
-      kind: "MATCH",
-      sourceRef: { startsWith: `deuropa:${sourceId}:` },
-    },
+    where,
     include: {
       progress: { where: { userId: session.user.id } },
     },
@@ -65,14 +68,25 @@ export async function GET(_req: Request, ctx: Ctx) {
     section: exercise.section,
     skill: exercise.skill,
     level: exercise.level,
+    format: exercise.format,
+    passage: exercise.passage ?? null,
+    itemCount: exerciseItemCount(exercise),
     options: exercise.options,
-    items: dueFirst.map((card) => ({
-      progressId: card.progress[0]?.id,
-      cardId: card.id,
-      passage: card.context,
-      answer: card.answer,
-      options: card.options ? (JSON.parse(card.options) as string[]) : exercise.options,
-      due: (card.progress[0]?.nextReviewAt ?? now) <= now,
-    })),
+    items: dueFirst.map((card) => {
+      const gapMatch = card.sourceRef?.match(/:(\d+)$/);
+      const gapN = gapMatch ? Number(gapMatch[1]) : null;
+      return {
+        progressId: card.progress[0]?.id,
+        cardId: card.id,
+        kind: card.kind,
+        gapN,
+        passage: card.context,
+        answer: card.answer,
+        options: card.options
+          ? (JSON.parse(card.options) as string[])
+          : exercise.options,
+        due: (card.progress[0]?.nextReviewAt ?? now) <= now,
+      };
+    }),
   });
 }
