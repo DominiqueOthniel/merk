@@ -38,6 +38,10 @@ yarn-error.log*
 prisma/*.db
 prisma/*.db-journal
 
+# scrape artifacts
+scripts/sample-*.html
+scripts/deuropa-raw.json
+
 # local agent / editor tooling
 .agents/
 .claude/

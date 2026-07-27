@@ -7,8 +7,8 @@ import { Brand } from "@/components/brand";
 
 const studentLinks = [
   { href: "/review", label: "Reviser" },
+  { href: "/exam", label: "Examen" },
   { href: "/dashboard", label: "Carnet" },
-  { href: "/challenge", label: "Defi" },
 ];
 
 export function StudentNav() {

@@ -96,6 +96,9 @@ export default function DashboardPage() {
             ? `Reviser ${data.dueCount} carte${data.dueCount > 1 ? "s" : ""}`
             : "Ouvrir la revision"}
         </Link>
+        <Link href="/exam" className="btn-link btn-link-secondary mt-3">
+          Mode avant examen TELC
+        </Link>
       </section>
 
       <section className="fade-up-delay mt-5 grid grid-cols-2 gap-4">

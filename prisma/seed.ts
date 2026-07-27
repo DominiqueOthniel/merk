@@ -2,6 +2,7 @@ import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcryptjs";
 import { THEMES } from "../src/lib/content/themes";
 import { CARDS_DE } from "../src/lib/content/cards-de";
+import { EXAM_TELC_B1 } from "../src/lib/content/exam-telc-b1";
 import type { CefrLevel } from "../src/lib/types";
 
 const prisma = new PrismaClient();
@@ -30,7 +31,7 @@ async function main() {
 
   const cohorte = await prisma.cohorte.create({
     data: {
-      name: "A2 Abendgruppe",
+      name: "B1 Abendgruppe",
       centreId: centre.id,
       nextSessionAt: nextSession,
     },
@@ -58,7 +59,7 @@ async function main() {
       centreId: centre.id,
       cohorteId: cohorte.id,
       language: "de",
-      cefrLevel: "A2",
+      cefrLevel: "B1",
       placedAt: new Date(),
       streakDays: 3,
       lastReviewDay: null,
@@ -75,7 +76,7 @@ async function main() {
       centreId: centre.id,
       cohorteId: cohorte.id,
       language: "de",
-      cefrLevel: "A2",
+      cefrLevel: "B1",
       placedAt: new Date(),
       streakDays: 1,
       totalPoints: 80,
@@ -104,6 +105,7 @@ async function main() {
         themeId,
         language: "de",
         level: c.level,
+        kind: "CLOZE",
         prompt: c.prompt,
         answer: c.answer,
         context: c.context,
@@ -113,7 +115,32 @@ async function main() {
     createdCards.push(card);
   }
 
-  const levelsForStudent: CefrLevel[] = ["A1", "A2"];
+  const examThemeId = themeMap.get("examen-telc-b1");
+  let examCardCount = 0;
+  if (examThemeId) {
+    for (const exercise of EXAM_TELC_B1) {
+      for (const [idx, pair] of exercise.pairs.entries()) {
+        const card = await prisma.card.create({
+          data: {
+            themeId: examThemeId,
+            language: "de",
+            level: "B1",
+            kind: "MATCH",
+            prompt: "Quel titre correspond a ce texte ?",
+            answer: pair.title,
+            context: pair.passage,
+            hint: `${exercise.section} · ${exercise.sourceTitle}`,
+            options: JSON.stringify(exercise.options),
+            sourceRef: `deuropa:${exercise.sourceId}:${idx}`,
+          },
+        });
+        createdCards.push(card);
+        examCardCount += 1;
+      }
+    }
+  }
+
+  const levelsForStudent: CefrLevel[] = ["A1", "A2", "B1"];
   const assignable = createdCards.filter((c) =>
     levelsForStudent.includes(c.level as CefrLevel)
   );
@@ -122,9 +149,9 @@ async function main() {
   for (const user of [student, student2]) {
     for (let i = 0; i < assignable.length; i++) {
       const card = assignable[i];
-      const dueSoon = i < 12;
+      const dueSoon = card.kind === "MATCH" ? i % 4 === 0 : i < 12;
       const next = new Date(now);
-      if (!dueSoon) next.setDate(next.getDate() + 3 + (i % 5));
+      if (!dueSoon) next.setDate(next.getDate() + 2 + (i % 5));
       await prisma.cardProgress.create({
         data: {
           userId: user.id,
@@ -166,6 +193,8 @@ async function main() {
     student2: student2.email,
     password: "merk1234",
     cards: createdCards.length,
+    examCards: examCardCount,
+    examSets: EXAM_TELC_B1.length,
   });
 }
 

@@ -65,13 +65,19 @@ model Card {
   theme      Theme          @relation(fields: [themeId], references: [id], onDelete: Cascade)
   language   String         @default("de")
   level      String
+  kind       String         @default("CLOZE")
   prompt     String
   answer     String
   context    String
   hint       String?
+  options    String?
+  sourceRef  String?
   createdAt  DateTime       @default(now())
   progress   CardProgress[]
   reviewLogs ReviewLog[]
+
+  @@index([kind, level])
+  @@index([sourceRef])
 }
 
 model CardProgress {
