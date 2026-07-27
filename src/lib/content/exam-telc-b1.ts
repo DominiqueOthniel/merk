@@ -1,16 +1,5 @@
 /* Auto-imported TELC B1 practice content adapted from public Deuropa exercises. */
-export type ExamPair = { passage: string; title: string };
-
-export type ExamExercise = {
-  sourceId: string;
-  sourceTitle: string;
-  section: string;
-  skill: "lesen" | "sprachbausteine" | "horen";
-  level: string;
-  exam: string;
-  options: string[];
-  pairs: ExamPair[];
-};
+import type { ExamExercise } from "./exam-types";
 
 export const EXAM_TELC_B1: ExamExercise[] = [
   {

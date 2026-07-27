@@ -2,21 +2,38 @@ import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/db";
-import { EXAM_TELC_B1 } from "@/lib/content/exam-telc-b1";
+import { EXAM_LEVELS, getExamExercises } from "@/lib/content/exam-catalog";
 
-export async function GET() {
+export async function GET(req: Request) {
   const session = await getServerSession(authOptions);
   if (!session?.user?.id) {
     return NextResponse.json({ error: "Non authentifie" }, { status: 401 });
   }
 
+  const level = new URL(req.url).searchParams.get("level") || "B1";
+  const levelInfo = EXAM_LEVELS.find((l) => l.id === level) ?? EXAM_LEVELS[0];
+
+  if (!levelInfo.available) {
+    return NextResponse.json({
+      exam: "TELC",
+      level: levelInfo.id,
+      levels: EXAM_LEVELS,
+      available: false,
+      note: levelInfo.note,
+      sections: [],
+      totalDue: 0,
+    });
+  }
+
+  const exercises = getExamExercises(levelInfo.id);
   const now = new Date();
   const sets = [];
 
-  for (const exercise of EXAM_TELC_B1) {
+  for (const exercise of exercises) {
     const cards = await prisma.card.findMany({
       where: {
         kind: "MATCH",
+        level: exercise.level,
         sourceRef: { startsWith: `deuropa:${exercise.sourceId}:` },
       },
       include: {
@@ -60,7 +77,9 @@ export async function GET() {
 
   return NextResponse.json({
     exam: "TELC",
-    level: "B1",
+    level: levelInfo.id,
+    levels: EXAM_LEVELS,
+    available: true,
     sections: bySection,
     totalDue: sets.reduce((s, x) => s + x.dueCount, 0),
   });

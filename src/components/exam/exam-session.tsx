@@ -26,6 +26,7 @@ export function ExamSession({ sourceId }: { sourceId: string }) {
   const router = useRouter();
   const [title, setTitle] = useState("");
   const [section, setSection] = useState("");
+  const [level, setLevel] = useState("B1");
   const [items, setItems] = useState<Item[]>([]);
   const [index, setIndex] = useState(0);
   const [selected, setSelected] = useState<string | null>(null);
@@ -41,6 +42,7 @@ export function ExamSession({ sourceId }: { sourceId: string }) {
       .then((data) => {
         setTitle(data.title ?? "");
         setSection(data.section ?? "");
+        setLevel(data.level ?? "B1");
         setItems(data.items ?? []);
         setLoading(false);
       })
@@ -130,7 +132,7 @@ export function ExamSession({ sourceId }: { sourceId: string }) {
       </div>
 
       <div className="panel fade-up">
-        <p className="eyebrow">TELC B1 · {title}</p>
+        <p className="eyebrow">TELC {level} · {title}</p>
         <p className="mt-3 text-[1.02rem] font-semibold text-[var(--forest-deep)]">
           Choisis le titre qui correspond au texte
         </p>

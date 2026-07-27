@@ -2,7 +2,7 @@ import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcryptjs";
 import { THEMES } from "../src/lib/content/themes";
 import { CARDS_DE } from "../src/lib/content/cards-de";
-import { EXAM_TELC_B1 } from "../src/lib/content/exam-telc-b1";
+import { EXAM_ALL } from "../src/lib/content/exam-catalog";
 import type { CefrLevel } from "../src/lib/types";
 
 const prisma = new PrismaClient();
@@ -115,32 +115,35 @@ async function main() {
     createdCards.push(card);
   }
 
-  const examThemeId = themeMap.get("examen-telc-b1");
+  const examThemeByLevel: Record<string, string | undefined> = {
+    B1: themeMap.get("examen-telc-b1"),
+    B2: themeMap.get("examen-telc-b2"),
+  };
   let examCardCount = 0;
-  if (examThemeId) {
-    for (const exercise of EXAM_TELC_B1) {
-      for (const [idx, pair] of exercise.pairs.entries()) {
-        const card = await prisma.card.create({
-          data: {
-            themeId: examThemeId,
-            language: "de",
-            level: "B1",
-            kind: "MATCH",
-            prompt: "Quel titre correspond a ce texte ?",
-            answer: pair.title,
-            context: pair.passage,
-            hint: `${exercise.section} · ${exercise.sourceTitle}`,
-            options: JSON.stringify(exercise.options),
-            sourceRef: `deuropa:${exercise.sourceId}:${idx}`,
-          },
-        });
-        createdCards.push(card);
-        examCardCount += 1;
-      }
+  for (const exercise of EXAM_ALL) {
+    const examThemeId = examThemeByLevel[exercise.level];
+    if (!examThemeId) continue;
+    for (const [idx, pair] of exercise.pairs.entries()) {
+      const card = await prisma.card.create({
+        data: {
+          themeId: examThemeId,
+          language: "de",
+          level: exercise.level,
+          kind: "MATCH",
+          prompt: "Quel titre correspond a ce texte ?",
+          answer: pair.title,
+          context: pair.passage,
+          hint: `${exercise.section} · ${exercise.sourceTitle}`,
+          options: JSON.stringify(exercise.options),
+          sourceRef: `deuropa:${exercise.sourceId}:${idx}`,
+        },
+      });
+      createdCards.push(card);
+      examCardCount += 1;
     }
   }
 
-  const levelsForStudent: CefrLevel[] = ["A1", "A2", "B1"];
+  const levelsForStudent: CefrLevel[] = ["A1", "A2", "B1", "B2"];
   const assignable = createdCards.filter((c) =>
     levelsForStudent.includes(c.level as CefrLevel)
   );
@@ -194,7 +197,7 @@ async function main() {
     password: "merk1234",
     cards: createdCards.length,
     examCards: examCardCount,
-    examSets: EXAM_TELC_B1.length,
+    examSets: EXAM_ALL.length,
   });
 }
 

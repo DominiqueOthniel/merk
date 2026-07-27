@@ -20,42 +20,114 @@ type SectionGroup = {
   sets: ExamSet[];
 };
 
+type ExamLevel = "B1" | "B2" | "C1";
+
+type LevelInfo = {
+  id: ExamLevel;
+  label: string;
+  available: boolean;
+  note?: string;
+};
+
+const LEVEL_FALLBACK: LevelInfo[] = [
+  { id: "B1", label: "B1", available: true },
+  { id: "B2", label: "B2", available: true },
+  { id: "C1", label: "C1", available: false },
+];
+
+function toExamLevel(value: string): ExamLevel | null {
+  if (value === "B1" || value === "B2" || value === "C1") return value;
+  return null;
+}
+
 export default function ExamHubPage() {
+  const [level, setLevel] = useState<ExamLevel>("B1");
+  const [levels, setLevels] = useState<LevelInfo[]>([]);
   const [sections, setSections] = useState<SectionGroup[]>([]);
   const [totalDue, setTotalDue] = useState(0);
+  const [available, setAvailable] = useState(true);
+  const [note, setNote] = useState<string | undefined>();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/api/exam/sets")
+    setLoading(true);
+    fetch(`/api/exam/sets?level=${level}`)
       .then((r) => r.json())
       .then((data) => {
+        const rawLevels = Array.isArray(data.levels) ? data.levels : [];
+        const parsed: LevelInfo[] = rawLevels
+          .map((item: { id?: string; label?: string; available?: boolean; note?: string }) => {
+            const id = toExamLevel(String(item.id ?? ""));
+            if (!id) return null;
+            return {
+              id,
+              label: item.label ?? id,
+              available: Boolean(item.available),
+              note: item.note,
+            };
+          })
+          .filter(Boolean) as LevelInfo[];
+        setLevels(parsed.length ? parsed : LEVEL_FALLBACK);
         setSections(data.sections ?? []);
         setTotalDue(data.totalDue ?? 0);
+        setAvailable(data.available !== false);
+        setNote(data.note);
         setLoading(false);
       })
       .catch(() => setLoading(false));
-  }, []);
+  }, [level]);
+
+  const levelChips = levels.length ? levels : LEVEL_FALLBACK;
 
   return (
     <>
-      <BrandHeader subtitle="Mode avant examen · TELC B1 Lesen" />
+      <BrandHeader subtitle="Mode avant examen · TELC Lesen" />
 
       <section className="panel fade-up mb-6">
-        <p className="eyebrow">Preparation intensive</p>
-        <p className="display mt-2 text-[clamp(1.7rem,5.5vw,2.2rem)]">
-          Associe titre et texte
+        <p className="eyebrow">Choisis ton niveau</p>
+        <div className="mt-4 grid grid-cols-3 gap-2.5">
+          {levelChips.map((item) => {
+            const active = level === item.id;
+            return (
+              <button
+                key={item.id}
+                type="button"
+                onClick={() => setLevel(item.id)}
+                className={`rounded-[1.25rem] px-3 py-4 text-center transition ${
+                  active
+                    ? "bg-[var(--forest)] text-white shadow-[0_10px_20px_rgba(26,107,72,0.25)]"
+                    : "bg-white/85 text-[var(--ink)] border border-[var(--line)]"
+                }`}
+              >
+                <span className="display block text-2xl">{item.label}</span>
+                {!item.available ? (
+                  <span className={`mt-1 block text-[0.75rem] ${active ? "text-white/80" : "text-[var(--ink-faint)]"}`}>
+                    Bientot
+                  </span>
+                ) : null}
+              </button>
+            );
+          })}
+        </div>
+
+        <p className="mt-5 text-[1.05rem] leading-relaxed text-[var(--ink-soft)]">
+          Associe titre et texte, format examen, avec repetition espacee.
         </p>
-        <p className="mt-3 text-[1.05rem] leading-relaxed text-[var(--ink-soft)]">
-          Contenu format examen, rejoue avec repetition espacee. Mobile : un
-          texte, un choix, pas de glisser-deposer.
-        </p>
-        <p className="mt-4 text-[1.02rem] font-semibold text-[var(--forest-deep)]">
-          {totalDue} item{totalDue > 1 ? "s" : ""} a revoir
-        </p>
+        {available ? (
+          <p className="mt-3 text-[1.02rem] font-semibold text-[var(--forest-deep)]">
+            {totalDue} item{totalDue > 1 ? "s" : ""} a revoir en {level}
+          </p>
+        ) : (
+          <p className="mt-3 text-[1.02rem] text-[var(--ink-soft)]">{note}</p>
+        )}
       </section>
 
       {loading ? (
         <p className="text-[var(--ink-soft)]">Chargement...</p>
+      ) : !available ? (
+        <div className="surface px-5 py-6 text-[1.05rem] text-[var(--ink-soft)]">
+          Le niveau C1 arrivera dans MERK. Pour l instant, entraine-toi en B1 ou B2.
+        </div>
       ) : (
         <div className="space-y-6">
           {sections.map((group) => (
