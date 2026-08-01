@@ -36,25 +36,24 @@ export async function GET(_req: Request, ctx: Ctx) {
     orderBy: { sourceRef: "asc" },
   });
 
-  for (const card of cards) {
-    if (!card.progress[0]) {
-      await prisma.cardProgress.create({
-        data: {
-          userId: session.user.id,
-          cardId: card.id,
-          nextReviewAt: now,
-        },
-      });
-    }
+  const missing = cards.filter((card) => !card.progress[0]);
+  if (missing.length) {
+    await prisma.cardProgress.createMany({
+      data: missing.map((card) => ({
+        userId: session.user.id,
+        cardId: card.id,
+        nextReviewAt: now,
+      })),
+      skipDuplicates: true,
+    });
+    cards = await prisma.card.findMany({
+      where,
+      include: {
+        progress: { where: { userId: session.user.id } },
+      },
+      orderBy: { sourceRef: "asc" },
+    });
   }
-
-  cards = await prisma.card.findMany({
-    where,
-    include: {
-      progress: { where: { userId: session.user.id } },
-    },
-    orderBy: { sourceRef: "asc" },
-  });
 
   const dueFirst = [...cards].sort((a, b) => {
     const aDue = a.progress[0]?.nextReviewAt ?? now;
@@ -70,6 +69,7 @@ export async function GET(_req: Request, ctx: Ctx) {
     level: exercise.level,
     format: exercise.format,
     passage: exercise.passage ?? null,
+    audioUrl: exercise.audioUrl ?? null,
     itemCount: exerciseItemCount(exercise),
     options: exercise.options,
     items: dueFirst.map((card) => {
@@ -86,6 +86,7 @@ export async function GET(_req: Request, ctx: Ctx) {
         cardId: card.id,
         kind: card.kind,
         gapN,
+        prompt: card.prompt,
         passage: card.context,
         answer: card.answer,
         options: options.includes(card.answer)

@@ -2,12 +2,13 @@ import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcryptjs";
 import { THEMES } from "../src/lib/content/themes";
 import { CARDS_DE } from "../src/lib/content/cards-de";
-import { EXAM_ALL } from "../src/lib/content/exam-catalog";
+import { getExamAll } from "../src/lib/content/exam-catalog";
 import type { CefrLevel } from "../src/lib/types";
 
 const prisma = new PrismaClient();
 
 async function main() {
+  const EXAM_ALL = getExamAll();
   await prisma.reviewLog.deleteMany();
   await prisma.cardProgress.deleteMany();
   await prisma.prepScore.deleteMany();
@@ -119,53 +120,78 @@ async function main() {
     B1: themeMap.get("examen-telc-b1"),
     B2: themeMap.get("examen-telc-b2"),
   };
-  let examCardCount = 0;
+
+  const examRows: {
+    themeId: string;
+    language: string;
+    level: string;
+    kind: string;
+    prompt: string;
+    answer: string;
+    context: string;
+    hint: string;
+    options: string;
+    sourceRef: string;
+  }[] = [];
+
   for (const exercise of EXAM_ALL) {
     const examThemeId = examThemeByLevel[exercise.level];
     if (!examThemeId) continue;
 
     if (exercise.format === "MATCH") {
       for (const [idx, pair] of exercise.pairs.entries()) {
-        const card = await prisma.card.create({
-          data: {
-            themeId: examThemeId,
-            language: "de",
-            level: exercise.level,
-            kind: "MATCH",
-            prompt: "Quel titre correspond a ce texte ?",
-            answer: pair.title,
-            context: pair.passage,
-            hint: `${exercise.section} · ${exercise.sourceTitle}`,
-            options: JSON.stringify(exercise.options),
-            sourceRef: `deuropa:${exercise.sourceId}:${idx}`,
-          },
+        examRows.push({
+          themeId: examThemeId,
+          language: "de",
+          level: exercise.level,
+          kind: "MATCH",
+          prompt: /Teil 3/i.test(exercise.section)
+            ? "Quelle situation correspond a cette annonce ?"
+            : "Quel titre correspond a ce texte ?",
+          answer: pair.title,
+          context: pair.passage,
+          hint: `${exercise.section} · ${exercise.sourceTitle}`,
+          options: JSON.stringify(exercise.options),
+          sourceRef: `deuropa:${exercise.sourceId}:${idx}`,
         });
-        createdCards.push(card);
-        examCardCount += 1;
       }
       continue;
     }
 
     for (const gap of exercise.gaps ?? []) {
-      const kind = exercise.format === "CLOZE_BANK" ? "CLOZE_BANK" : "CLOZE_MCQ";
-      const card = await prisma.card.create({
-        data: {
-          themeId: examThemeId,
-          language: "de",
-          level: exercise.level,
-          kind,
-          prompt: `Complete la lacune ${gap.n}`,
-          answer: gap.answer,
-          context: exercise.passage ?? "",
-          hint: `${exercise.section} · ${exercise.sourceTitle} · #${gap.n}`,
-          options: JSON.stringify(gap.choices),
-          sourceRef: `deuropa:${exercise.sourceId}:${gap.n}`,
-        },
+      const prompt =
+        exercise.format === "READING_MCQ"
+          ? gap.prompt || `Question ${gap.n}`
+          : exercise.format === "TF"
+            ? gap.prompt || `Aussage ${gap.n}`
+            : exercise.format === "WRITE"
+              ? gap.prompt || "Redige selon la consigne"
+              : `Complete la lacune ${gap.n}`;
+      examRows.push({
+        themeId: examThemeId,
+        language: "de",
+        level: exercise.level,
+        kind: exercise.format,
+        prompt,
+        answer: gap.answer,
+        context: exercise.passage ?? "",
+        hint: `${exercise.section} · ${exercise.sourceTitle} · #${gap.n}`,
+        options: JSON.stringify(gap.choices),
+        sourceRef: `deuropa:${exercise.sourceId}:${gap.n}`,
       });
-      createdCards.push(card);
-      examCardCount += 1;
     }
   }
+
+  for (let i = 0; i < examRows.length; i += 200) {
+    const chunk = examRows.slice(i, i + 200);
+    await prisma.card.createMany({ data: chunk });
+  }
+  const examCardCount = examRows.length;
+  const examCards = await prisma.card.findMany({
+    where: { sourceRef: { startsWith: "deuropa:" } },
+    select: { id: true, kind: true, level: true },
+  });
+  createdCards.push(...examCards);
 
   const levelsForStudent: CefrLevel[] = ["A1", "A2", "B1", "B2"];
   const assignable = createdCards.filter((c) =>
@@ -173,27 +199,35 @@ async function main() {
   );
 
   const now = new Date();
+  const examKinds = new Set([
+    "MATCH",
+    "CLOZE_MCQ",
+    "CLOZE_BANK",
+    "READING_MCQ",
+    "TF",
+    "WRITE",
+  ]);
+  const progressRows = [];
   for (const user of [student, student2]) {
     for (let i = 0; i < assignable.length; i++) {
       const card = assignable[i];
-      const examKind =
-        card.kind === "MATCH" ||
-        card.kind === "CLOZE_MCQ" ||
-        card.kind === "CLOZE_BANK";
-      const dueSoon = examKind ? i % 4 === 0 : i < 12;
+      const dueSoon = examKinds.has(card.kind) ? i % 5 === 0 : i < 12;
       const next = new Date(now);
       if (!dueSoon) next.setDate(next.getDate() + 2 + (i % 5));
-      await prisma.cardProgress.create({
-        data: {
-          userId: user.id,
-          cardId: card.id,
-          easeFactor: 2.5,
-          intervalDays: dueSoon ? 0 : 3,
-          repetitions: dueSoon ? 0 : 1,
-          nextReviewAt: next,
-        },
+      progressRows.push({
+        userId: user.id,
+        cardId: card.id,
+        easeFactor: 2.5,
+        intervalDays: dueSoon ? 0 : 3,
+        repetitions: dueSoon ? 0 : 1,
+        nextReviewAt: next,
       });
     }
+  }
+  for (let i = 0; i < progressRows.length; i += 300) {
+    await prisma.cardProgress.createMany({
+      data: progressRows.slice(i, i + 300),
+    });
   }
 
   const startsAt = new Date();

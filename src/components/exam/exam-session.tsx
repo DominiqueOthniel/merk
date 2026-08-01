@@ -3,14 +3,14 @@
 import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
-
-type ExamFormat = "MATCH" | "CLOZE_MCQ" | "CLOZE_BANK";
+import type { ExamFormat } from "@/lib/content/exam-types";
 
 type Item = {
   progressId: string;
   cardId: string;
   kind: string;
   gapN: number | null;
+  prompt?: string;
   passage: string;
   answer: string;
   options: string[];
@@ -48,26 +48,36 @@ function renderClozePassage(passage: string, activeGap: number | null) {
   });
 }
 
-function instructionFor(format: ExamFormat) {
+function instructionFor(format: ExamFormat, section: string) {
   if (format === "CLOZE_MCQ") return "Choisis la bonne forme pour la lacune active.";
   if (format === "CLOZE_BANK") return "Choisis le mot de la banque qui complete la lacune.";
+  if (format === "READING_MCQ") return "Lis le texte puis reponds a la question.";
+  if (format === "TF") return "Indique si l affirmation est richtig ou falsch.";
+  if (format === "WRITE") return "Redige selon la consigne, puis marque comme termine.";
+  if (/Teil 3/i.test(section)) return "Choisis la situation qui correspond a cette annonce.";
   return "Choisis le titre qui correspond au texte.";
 }
 
 function feedbackOk(format: ExamFormat) {
-  if (format === "MATCH") return "Bon titre.";
+  if (format === "MATCH") return "Bonne association.";
+  if (format === "WRITE") return "Serie ecrite enregistree.";
   return "Bonne reponse.";
 }
 
 function feedbackBad(format: ExamFormat, answer: string) {
-  if (format === "MATCH") return `Titre attendu : ${answer}`;
+  if (format === "MATCH") return `Attendu : ${answer}`;
+  if (format === "TF") return `Attendu : ${answer}`;
   return `Reponse attendue : ${answer}`;
 }
 
 function doneLabel(format: ExamFormat, score: { ok: number; total: number }) {
   if (score.total === 0) return "Aucun item dans cette serie.";
+  if (format === "WRITE") return "Consigne traitee.";
   if (format === "MATCH") {
-    return `${score.ok}/${score.total} titres correctement associes.`;
+    return `${score.ok}/${score.total} associations correctes.`;
+  }
+  if (format === "TF" || format === "READING_MCQ") {
+    return `${score.ok}/${score.total} reponses correctes.`;
   }
   return `${score.ok}/${score.total} lacunes correctement completees.`;
 }
@@ -78,9 +88,12 @@ export function ExamSession({ sourceId }: { sourceId: string }) {
   const [section, setSection] = useState("");
   const [level, setLevel] = useState("B1");
   const [format, setFormat] = useState<ExamFormat>("MATCH");
+  const [sharedPassage, setSharedPassage] = useState<string | null>(null);
+  const [audioUrl, setAudioUrl] = useState<string | null>(null);
   const [items, setItems] = useState<Item[]>([]);
   const [index, setIndex] = useState(0);
   const [selected, setSelected] = useState<string | null>(null);
+  const [writeNote, setWriteNote] = useState("");
   const [phase, setPhase] = useState<"pick" | "feedback" | "done">("pick");
   const [correct, setCorrect] = useState(false);
   const [busy, setBusy] = useState(false);
@@ -88,13 +101,15 @@ export function ExamSession({ sourceId }: { sourceId: string }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`/api/exam/${sourceId}`)
+    fetch(`/api/exam/${encodeURIComponent(sourceId)}`)
       .then((r) => r.json())
       .then((data) => {
         setTitle(data.title ?? "");
         setSection(data.section ?? "");
         setLevel(data.level ?? "B1");
         setFormat((data.format as ExamFormat) || "MATCH");
+        setSharedPassage(data.passage ?? null);
+        setAudioUrl(data.audioUrl ?? null);
         setItems(data.items ?? []);
         setLoading(false);
       })
@@ -103,6 +118,9 @@ export function ExamSession({ sourceId }: { sourceId: string }) {
 
   const current = items[index];
   const isCloze = format === "CLOZE_MCQ" || format === "CLOZE_BANK";
+  const isReading = format === "READING_MCQ";
+  const isTf = format === "TF";
+  const isWrite = format === "WRITE";
 
   const choices = useMemo(() => {
     if (!current) return [];
@@ -112,15 +130,19 @@ export function ExamSession({ sourceId }: { sourceId: string }) {
     const pool = real.includes(current.answer)
       ? real
       : [...real, current.answer];
-    if (format === "CLOZE_MCQ") return shuffle(pool);
-    if (format === "CLOZE_BANK") return shuffle(pool);
+    if (isTf) return ["richtig", "falsch"];
+    if (format === "CLOZE_MCQ" || format === "CLOZE_BANK" || isReading) {
+      return shuffle(pool);
+    }
     return shuffle(pool).slice(0, Math.min(8, pool.length));
-  }, [current, format]);
+  }, [current, format, isReading, isTf]);
 
-  async function confirmPick() {
-    if (!current || !selected || !current.progressId || busy) return;
+  async function confirmPick(forced?: string) {
+    const value = forced ?? selected;
+    if (!current || !value || !current.progressId || busy) return;
     setBusy(true);
-    const isCorrect = selected.trim() === current.answer.trim();
+    const isCorrect =
+      format === "WRITE" ? true : value.trim() === current.answer.trim();
     setCorrect(isCorrect);
     setPhase("feedback");
     setScore((s) => ({ ok: s.ok + (isCorrect ? 1 : 0), total: s.total + 1 }));
@@ -131,7 +153,7 @@ export function ExamSession({ sourceId }: { sourceId: string }) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           progressId: current.progressId,
-          answer: selected,
+          answer: format === "WRITE" ? "done" : value,
           quality: isCorrect ? "MEDIUM" : "HARD",
         }),
       });
@@ -149,6 +171,7 @@ export function ExamSession({ sourceId }: { sourceId: string }) {
     }
     setIndex((i) => i + 1);
     setSelected(null);
+    setWriteNote("");
     setPhase("pick");
   }
 
@@ -163,7 +186,7 @@ export function ExamSession({ sourceId }: { sourceId: string }) {
         <p className="mt-3 text-[1.1rem] text-[var(--ink-soft)]">
           {doneLabel(format, score)}
         </p>
-        <div className="mt-8 flex flex-col gap-3">
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <Button onClick={() => router.push("/exam")}>Retour aux series</Button>
           <Button variant="secondary" onClick={() => router.push("/review")}>
             Revision du jour
@@ -191,67 +214,101 @@ export function ExamSession({ sourceId }: { sourceId: string }) {
       <div className="panel fade-up">
         <p className="eyebrow">TELC {level} · {title}</p>
         <p className="mt-3 text-[1.02rem] font-semibold text-[var(--forest-deep)]">
-          {instructionFor(format)}
+          {instructionFor(format, section)}
         </p>
 
+        {audioUrl ? (
+          <audio className="mt-4 w-full" controls src={audioUrl} preload="none" />
+        ) : null}
+
         <div className="mt-5 grid gap-5 lg:grid-cols-[1.2fr_0.8fr] lg:items-start lg:gap-7">
-          <div className="max-h-[42vh] overflow-y-auto rounded-[1.25rem] bg-[rgba(216,235,224,0.35)] p-4 text-[1.05rem] leading-relaxed lg:max-h-[min(68vh,36rem)] lg:p-5 lg:text-[1.08rem]">
-            {isCloze
-              ? renderClozePassage(current.passage, current.gapN)
-              : current.passage}
+          <div className="space-y-4">
+            {(isCloze || isReading || isWrite || isTf) && (sharedPassage || current.passage) ? (
+              <div className="max-h-[42vh] overflow-y-auto rounded-[1.25rem] bg-[rgba(216,235,224,0.35)] p-4 text-[1.05rem] leading-relaxed lg:max-h-[min(68vh,36rem)] lg:p-5 lg:text-[1.08rem]">
+                {isCloze
+                  ? renderClozePassage(current.passage, current.gapN)
+                  : sharedPassage || current.passage}
+              </div>
+            ) : null}
+
+            {!isCloze && !isReading && !isWrite && !isTf ? (
+              <div className="max-h-[42vh] overflow-y-auto rounded-[1.25rem] bg-[rgba(216,235,224,0.35)] p-4 text-[1.05rem] leading-relaxed lg:max-h-[min(68vh,36rem)] lg:p-5">
+                {current.passage}
+              </div>
+            ) : null}
+
+            {(isReading || isTf) && current.prompt ? (
+              <p className="rounded-[1.2rem] border border-[var(--line)] bg-white/80 px-4 py-3 text-[1.05rem] font-semibold">
+                {current.prompt}
+              </p>
+            ) : null}
           </div>
 
           <div>
             {phase === "pick" ? (
               <div className="space-y-2.5">
-                <div
-                  className={
-                    format === "CLOZE_BANK"
-                      ? "flex flex-wrap gap-2"
-                      : "space-y-2.5"
-                  }
-                >
-                  {choices.map((choice) => {
-                    const active = selected === choice;
-                    if (format === "CLOZE_BANK") {
-                      return (
-                        <button
-                          key={choice}
-                          type="button"
-                          onClick={() => setSelected(choice)}
-                          className={`rounded-full border px-3.5 py-2 text-[0.98rem] transition ${
-                            active
-                              ? "border-[var(--forest)] bg-[var(--forest)] text-white"
-                              : "border-[var(--line)] bg-white/90 text-[var(--ink)] hover:bg-[var(--forest-soft)]/50"
-                          }`}
-                        >
-                          {choice}
-                        </button>
-                      );
-                    }
-                    return (
-                      <button
-                        key={choice}
-                        type="button"
-                        onClick={() => setSelected(choice)}
-                        className={`w-full rounded-[1.2rem] border px-4 py-3.5 text-left text-[0.98rem] leading-snug transition ${
-                          active
-                            ? "border-[var(--forest)] bg-[var(--forest-soft)] text-[var(--forest-deep)]"
-                            : "border-[var(--line)] bg-white/90 hover:bg-[var(--forest-soft)]/50"
-                        }`}
-                      >
-                        {choice}
-                      </button>
-                    );
-                  })}
-                </div>
-                <Button
-                  className="mt-3 w-full"
-                  disabled={!selected || busy}
-                  onClick={confirmPick}
-                >
-                  Valider
-                </Button>
+                {isWrite ? (
+                  <>
+                    <textarea
+                      value={writeNote}
+                      onChange={(e) => setWriteNote(e.target.value)}
+                      rows={10}
+                      placeholder="Ecris ici ton brouillon (non corrige automatiquement)."
+                      className="w-full rounded-[1.25rem] border border-[var(--line)] bg-white/90 px-4 py-3 text-[1.02rem] outline-none focus:border-[var(--forest)] focus:ring-4 focus:ring-[rgba(26,107,72,0.12)]"
+                    />
+                    <Button
+                      className="mt-3 w-full"
+                      disabled={busy || writeNote.trim().length < 40}
+                      onClick={() => confirmPick("done")}
+                    >
+                      Marquer comme termine
+                    </Button>
+                  </>
+                ) : (
+                  <>
+                    <div
+                      className={
+                        format === "CLOZE_BANK" || isTf
+                          ? "flex flex-wrap gap-2"
+                          : "space-y-2.5"
+                      }
+                    >
+                      {choices.map((choice) => {
+                        const active = selected === choice;
+                        const pill = format === "CLOZE_BANK" || isTf;
+                        return (
+                          <button
+                            key={choice}
+                            type="button"
+                            onClick={() => setSelected(choice)}
+                            className={
+                              pill
+                                ? `rounded-full border px-3.5 py-2 text-[0.98rem] transition ${
+                                    active
+                                      ? "border-[var(--forest)] bg-[var(--forest)] text-white"
+                                      : "border-[var(--line)] bg-white/90 text-[var(--ink)] hover:bg-[var(--forest-soft)]/50"
+                                  }`
+                                : `w-full rounded-[1.2rem] border px-4 py-3.5 text-left text-[0.98rem] leading-snug transition ${
+                                    active
+                                      ? "border-[var(--forest)] bg-[var(--forest-soft)] text-[var(--forest-deep)]"
+                                      : "border-[var(--line)] bg-white/90 hover:bg-[var(--forest-soft)]/50"
+                                  }`
+                            }
+                          >
+                            {choice}
+                          </button>
+                        );
+                      })}
+                    </div>
+                    <Button
+                      className="mt-3 w-full"
+                      disabled={!selected || busy}
+                      onClick={() => confirmPick()}
+                    >
+                      Valider
+                    </Button>
+                  </>
+                )}
               </div>
             ) : null}
 

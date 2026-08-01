@@ -82,7 +82,7 @@ export default function ExamHubPage() {
 
   return (
     <>
-      <BrandHeader subtitle="Mode avant examen · TELC Lesen et Sprachbausteine" />
+      <BrandHeader subtitle="Mode avant examen · catalogue TELC complet" />
 
       <section className="panel fade-up mb-6 lg:mb-8 lg:grid lg:grid-cols-[1fr_1.1fr] lg:items-center lg:gap-8">
         <div>
@@ -114,7 +114,7 @@ export default function ExamHubPage() {
         </div>
         <div className="mt-5 lg:mt-0">
           <p className="text-[1.05rem] leading-relaxed text-[var(--ink-soft)] lg:text-[1.1rem]">
-            Lesen (titres) et Sprachbausteine (lacunes), format examen, avec repetition espacee.
+            Lesen, Sprachbausteine, Horen et Schreiben : formats examen, avec repetition espacee.
           </p>
           {available ? (
             <p className="mt-3 text-[1.02rem] font-semibold text-[var(--forest-deep)]">
@@ -148,15 +148,19 @@ export default function ExamHubPage() {
                 {group.sets.map((set) => (
                   <Link
                     key={set.sourceId}
-                    href={`/exam/${set.sourceId}`}
+                    href={`/exam/${encodeURIComponent(set.sourceId)}`}
                     className="surface flex items-center justify-between gap-3 px-4 py-4 transition hover:bg-[var(--forest-soft)]/40"
                   >
                     <div>
                       <p className="font-semibold">{set.title}</p>
                       <p className="mt-1 text-[0.92rem] text-[var(--ink-soft)]">
-                        {set.format === "MATCH" || !set.format
-                          ? `${set.pairCount} textes`
-                          : `${set.pairCount} lacunes`}{" "}
+                        {set.format === "MATCH"
+                          ? `${set.pairCount} items`
+                          : set.format === "TF" || set.format === "READING_MCQ"
+                            ? `${set.pairCount} questions`
+                            : set.format === "WRITE"
+                              ? "Production ecrite"
+                              : `${set.pairCount} lacunes`}{" "}
                         · {set.doneCount} deja vus
                       </p>
                     </div>

@@ -7,6 +7,7 @@ import {
   EXAM_LEVELS,
   exerciseItemCount,
   getExamExercises,
+  sectionSortKey,
 } from "@/lib/content/exam-catalog";
 
 export async function GET(req: Request) {
@@ -79,7 +80,11 @@ export async function GET(req: Request) {
       },
       {}
     )
-  ).sort((a, b) => a.section.localeCompare(b.section, "de"));
+  ).sort(
+    (a, b) =>
+      sectionSortKey(a.section) - sectionSortKey(b.section) ||
+      a.section.localeCompare(b.section, "de")
+  );
 
   return NextResponse.json({
     exam: "TELC",

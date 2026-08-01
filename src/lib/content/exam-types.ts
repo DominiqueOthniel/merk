@@ -4,15 +4,22 @@ export type ExamGap = {
   n: number;
   answer: string;
   choices: string[];
+  prompt?: string;
 };
 
-export type ExamFormat = "MATCH" | "CLOZE_MCQ" | "CLOZE_BANK";
+export type ExamFormat =
+  | "MATCH"
+  | "CLOZE_MCQ"
+  | "CLOZE_BANK"
+  | "READING_MCQ"
+  | "TF"
+  | "WRITE";
 
 export type ExamExercise = {
   sourceId: string;
   sourceTitle: string;
   section: string;
-  skill: "lesen" | "sprachbausteine" | "horen";
+  skill: "lesen" | "sprachbausteine" | "horen" | "schreiben";
   level: string;
   exam: string;
   format: ExamFormat;
@@ -21,6 +28,7 @@ export type ExamExercise = {
   passage?: string;
   bank?: string[];
   gaps?: ExamGap[];
+  audioUrl?: string | null;
 };
 
 export type ExamLevelInfo = {
@@ -41,7 +49,14 @@ export const EXAM_LEVELS: ExamLevelInfo[] = [
   },
 ];
 
-export const EXAM_CARD_KINDS = ["MATCH", "CLOZE_MCQ", "CLOZE_BANK"] as const;
+export const EXAM_CARD_KINDS = [
+  "MATCH",
+  "CLOZE_MCQ",
+  "CLOZE_BANK",
+  "READING_MCQ",
+  "TF",
+  "WRITE",
+] as const;
 
 export function exerciseItemCount(exercise: ExamExercise): number {
   if (exercise.format === "MATCH") return exercise.pairs?.length ?? 0;
@@ -49,7 +64,40 @@ export function exerciseItemCount(exercise: ExamExercise): number {
 }
 
 export function exerciseCardKind(exercise: ExamExercise): string {
-  if (exercise.format === "CLOZE_MCQ") return "CLOZE_MCQ";
-  if (exercise.format === "CLOZE_BANK") return "CLOZE_BANK";
-  return "MATCH";
+  return exercise.format;
+}
+
+export function formatLabel(format: ExamFormat): string {
+  switch (format) {
+    case "MATCH":
+      return "Association";
+    case "CLOZE_MCQ":
+      return "Lacunes MCQ";
+    case "CLOZE_BANK":
+      return "Banque de mots";
+    case "READING_MCQ":
+      return "Lecture QCM";
+    case "TF":
+      return "Richtig / Falsch";
+    case "WRITE":
+      return "Production ecrite";
+    default:
+      return format;
+  }
+}
+
+export function sectionSortKey(section: string): number {
+  const order = [
+    "Lesen Teil 1",
+    "Lesen Teil 2",
+    "Lesen Teil 3",
+    "Sprachbausteine Teil 1",
+    "Sprachbausteine Teil 2",
+    "Hören",
+    "Schreiben",
+  ];
+  const idx = order.findIndex(
+    (s) => section === s || section.startsWith(s) || section.includes(s)
+  );
+  return idx === -1 ? 99 : idx;
 }
