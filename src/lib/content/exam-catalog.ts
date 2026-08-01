@@ -29,7 +29,11 @@ function loadJson(name: string): ExamExercise[] {
 
 export function getExamAll(): ExamExercise[] {
   if (!cached) {
-    cached = [...loadJson("telc-b1.json"), ...loadJson("telc-b2.json")];
+    cached = [
+      ...loadJson("telc-b1.json"),
+      ...loadJson("telc-b2.json"),
+      ...loadJson("telc-c1.json"),
+    ];
   }
   return cached;
 }

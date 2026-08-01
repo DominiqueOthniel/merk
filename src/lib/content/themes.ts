@@ -11,6 +11,7 @@ export const THEMES = [
   { slug: "technologie", nameFr: "Technologie & communication", nameDe: "Digital", sortOrder: 10 },
   { slug: "nature", nameFr: "Nature & environnement", nameDe: "Umwelt", sortOrder: 11 },
   { slug: "admin", nameFr: "Administratif & vie pratique", nameDe: "Verwaltung", sortOrder: 12 },
-  { slug: "examen-telc-b1", nameFr: "Examen TELC B1", nameDe: "TELC B1 Lesen", sortOrder: 13 },
-  { slug: "examen-telc-b2", nameFr: "Examen TELC B2", nameDe: "TELC B2 Lesen", sortOrder: 14 },
+  { slug: "examen-telc-b1", nameFr: "Examen TELC B1", nameDe: "TELC B1", sortOrder: 13 },
+  { slug: "examen-telc-b2", nameFr: "Examen TELC B2", nameDe: "TELC B2", sortOrder: 14 },
+  { slug: "examen-telc-c1", nameFr: "Examen TELC C1", nameDe: "TELC C1", sortOrder: 15 },
 ] as const;

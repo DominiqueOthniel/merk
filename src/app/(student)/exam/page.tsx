@@ -33,7 +33,7 @@ type LevelInfo = {
 const LEVEL_FALLBACK: LevelInfo[] = [
   { id: "B1", label: "B1", available: true },
   { id: "B2", label: "B2", available: true },
-  { id: "C1", label: "C1", available: false },
+  { id: "C1", label: "C1", available: true },
 ];
 
 function toExamLevel(value: string): ExamLevel | null {
@@ -114,7 +114,9 @@ export default function ExamHubPage() {
         </div>
         <div className="mt-5 lg:mt-0">
           <p className="text-[1.05rem] leading-relaxed text-[var(--ink-soft)] lg:text-[1.1rem]">
-            Lesen, Sprachbausteine, Horen et Schreiben : formats examen, avec repetition espacee.
+            {level === "C1"
+              ? "C1 selon la structure telc : Lesen, Sprachbausteine (4 options), Horen, Schreiben et Sprechen."
+              : "Lesen, Sprachbausteine, Horen et Schreiben : formats examen, avec repetition espacee."}
           </p>
           {available ? (
             <p className="mt-3 text-[1.02rem] font-semibold text-[var(--forest-deep)]">
@@ -130,7 +132,7 @@ export default function ExamHubPage() {
         <p className="text-[var(--ink-soft)]">Chargement...</p>
       ) : !available ? (
         <div className="surface px-5 py-6 text-[1.05rem] text-[var(--ink-soft)]">
-          Le niveau C1 arrivera dans MERK. Pour l instant, entraine-toi en B1 ou B2.
+          {note || "Ce niveau n est pas encore disponible."}
         </div>
       ) : (
         <div className="space-y-8">

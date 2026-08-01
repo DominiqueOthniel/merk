@@ -9,6 +9,7 @@ const nextConfig: NextConfig = {
     "/api/exam/**/*": ["./content/exam/**/*"],
     "/api/**/*": ["./content/exam/**/*"],
     "/*": ["./content/exam/**/*"],
+    "/**/*": ["./content/exam/**/*"],
   },
 };
 

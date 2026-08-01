@@ -44,8 +44,8 @@ export const EXAM_LEVELS: ExamLevelInfo[] = [
   {
     id: "C1",
     label: "C1",
-    available: false,
-    note: "Contenu C1 bientot. Sur Deuropa il est hors app (Telegram).",
+    available: true,
+    note: "Format telc Deutsch C1. Contenu MERK original aligne sur les types d epreuves officiels.",
   },
 ];
 
@@ -93,8 +93,10 @@ export function sectionSortKey(section: string): number {
     "Lesen Teil 3",
     "Sprachbausteine Teil 1",
     "Sprachbausteine Teil 2",
+    "Sprachbausteine",
     "Hören",
     "Schreiben",
+    "Sprechen",
   ];
   const idx = order.findIndex(
     (s) => section === s || section.startsWith(s) || section.includes(s)

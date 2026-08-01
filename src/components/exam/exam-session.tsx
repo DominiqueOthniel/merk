@@ -48,12 +48,24 @@ function renderClozePassage(passage: string, activeGap: number | null) {
   });
 }
 
-function instructionFor(format: ExamFormat, section: string) {
+function instructionFor(
+  format: ExamFormat,
+  section: string,
+  options: string[] = []
+) {
   if (format === "CLOZE_MCQ") return "Choisis la bonne forme pour la lacune active.";
   if (format === "CLOZE_BANK") return "Choisis le mot de la banque qui complete la lacune.";
   if (format === "READING_MCQ") return "Lis le texte puis reponds a la question.";
-  if (format === "TF") return "Indique si l affirmation est richtig ou falsch.";
-  if (format === "WRITE") return "Redige selon la consigne, puis marque comme termine.";
+  if (format === "TF") {
+    return options.includes("nicht im Text")
+      ? "Indique richtig, falsch ou nicht im Text."
+      : "Indique si l affirmation est richtig ou falsch.";
+  }
+  if (format === "WRITE") {
+    return /Sprechen/i.test(section)
+      ? "Prepare ta prise de parole, puis marque comme pret."
+      : "Redige selon la consigne, puis marque comme termine.";
+  }
   if (/Teil 3/i.test(section)) return "Choisis la situation qui correspond a cette annonce.";
   return "Choisis le titre qui correspond au texte.";
 }
@@ -130,7 +142,12 @@ export function ExamSession({ sourceId }: { sourceId: string }) {
     const pool = real.includes(current.answer)
       ? real
       : [...real, current.answer];
-    if (isTf) return ["richtig", "falsch"];
+    if (isTf) {
+      const tf = ["richtig", "falsch", "nicht im Text"].filter((x) =>
+        pool.includes(x)
+      );
+      return tf.length ? tf : ["richtig", "falsch"];
+    }
     if (format === "CLOZE_MCQ" || format === "CLOZE_BANK" || isReading) {
       return shuffle(pool);
     }
@@ -214,7 +231,7 @@ export function ExamSession({ sourceId }: { sourceId: string }) {
       <div className="panel fade-up">
         <p className="eyebrow">TELC {level} · {title}</p>
         <p className="mt-3 text-[1.02rem] font-semibold text-[var(--forest-deep)]">
-          {instructionFor(format, section)}
+          {instructionFor(format, section, current.options)}
         </p>
 
         {audioUrl ? (

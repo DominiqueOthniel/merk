@@ -119,6 +119,7 @@ async function main() {
   const examThemeByLevel: Record<string, string | undefined> = {
     B1: themeMap.get("examen-telc-b1"),
     B2: themeMap.get("examen-telc-b2"),
+    C1: themeMap.get("examen-telc-c1"),
   };
 
   const examRows: {
@@ -193,7 +194,7 @@ async function main() {
   });
   createdCards.push(...examCards);
 
-  const levelsForStudent: CefrLevel[] = ["A1", "A2", "B1", "B2"];
+  const levelsForStudent: CefrLevel[] = ["A1", "A2", "B1", "B2", "C1"];
   const assignable = createdCards.filter((c) =>
     levelsForStudent.includes(c.level as CefrLevel)
   );
