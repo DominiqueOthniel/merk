@@ -1505,9 +1505,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
       "sondern",
       "um",
       "wegen",
-      "ohne",
-      "${droppedWord}",
-      "${wordText}"
+      "ohne"
     ],
     "pairs": [],
     "passage": "Theater fördert nicht nur die Kreativität, {{1}} auch die Körpererfahrung von Kindern. Der Verein \"Jugendhilfe Düsseldorf e. V.\" arbeitet {{2}} vielen Jahren in der Jugendförderung, und deshalb unterstützt er auch ein neues Theaterprojekt für Kinder. Üben und spielen werden die Teilnehmer im Jugendzentrum. Das Jugendzentrum ist eine Einrichtung des städtischen Jugendamtes und kümmert sich um Kinder, Jugendliche und junge Volljährige, die {{3}} familiärer und anderer Probleme Hilfe benötigen. Bis zu zwanzig Mädchen und Jungen werden {{4}} dem kommenden Jahr die Welt des Theaters kennenlernen. {{5}} Ende des Projekts werden die Nachwuchsschauspieler bei einem Theaterfestival auftreten, was sicher ein Höhepunkt für alle Teilnehmer sein wird. Geleitet wird die Gruppe vom Schauspieler Wolfgang Neuhausen. Er arbeitet mit dem Jugendzentrum zusammen und wird von zwei Theaterpädagogen unterstützt. Allen Mitarbeitern ist {{6}} wichtig, dass die Kinder auf der Bühne Anerkennung für ihre Leistung bekommen. Ohne die finanzielle Unterstützung wäre das Vorhaben unmöglich, {{7}} bei der Stadt keine Gelder vorhanden waren. Dieses Theaterprojekt ist nicht das erste, das gefördert wird. Im vergangenen Jahr erhielt das Theaterprojekt \"Schiller - das wilde, freie Leben\" finanzielle Unterstützung. Allerdings ist nicht nur Geld wichtig: Der Verein kümmert sich auch {{8}} , die Projekte bekannt zu machen. In verschiedenen Theaterhäusern der Stadt werden Plakate aufgehängt, mit denen der Verein für das Jugendtheater wirbt. Man hofft, {{9}} diese Weise noch mehr Unterstützer zu finden. Auch unsere Leser können die Jugendlichen unterstützen: Aktuell sammelt das Jugendzentrum Spenden, {{10}} weitere Projekte finanzieren zu können. Außerdem werden für die Theaterproben und die Aufführungen noch ehrenamtliche Helfer gesucht.",
@@ -1526,9 +1524,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
       "sondern",
       "um",
       "wegen",
-      "ohne",
-      "${droppedWord}",
-      "${wordText}"
+      "ohne"
     ],
     "gaps": [
       {
@@ -1549,9 +1545,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "sondern",
           "um",
           "wegen",
-          "ohne",
-          "${droppedWord}",
-          "${wordText}"
+          "ohne"
         ]
       },
       {
@@ -1572,9 +1566,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "sondern",
           "um",
           "wegen",
-          "ohne",
-          "${droppedWord}",
-          "${wordText}"
+          "ohne"
         ]
       },
       {
@@ -1595,9 +1587,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "sondern",
           "um",
           "wegen",
-          "ohne",
-          "${droppedWord}",
-          "${wordText}"
+          "ohne"
         ]
       },
       {
@@ -1618,9 +1608,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "sondern",
           "um",
           "wegen",
-          "ohne",
-          "${droppedWord}",
-          "${wordText}"
+          "ohne"
         ]
       },
       {
@@ -1641,9 +1629,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "sondern",
           "um",
           "wegen",
-          "ohne",
-          "${droppedWord}",
-          "${wordText}"
+          "ohne"
         ]
       },
       {
@@ -1664,9 +1650,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "sondern",
           "um",
           "wegen",
-          "ohne",
-          "${droppedWord}",
-          "${wordText}"
+          "ohne"
         ]
       },
       {
@@ -1687,9 +1671,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "sondern",
           "um",
           "wegen",
-          "ohne",
-          "${droppedWord}",
-          "${wordText}"
+          "ohne"
         ]
       },
       {
@@ -1710,9 +1692,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "sondern",
           "um",
           "wegen",
-          "ohne",
-          "${droppedWord}",
-          "${wordText}"
+          "ohne"
         ]
       },
       {
@@ -1733,9 +1713,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "sondern",
           "um",
           "wegen",
-          "ohne",
-          "${droppedWord}",
-          "${wordText}"
+          "ohne"
         ]
       },
       {
@@ -1756,9 +1734,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "sondern",
           "um",
           "wegen",
-          "ohne",
-          "${droppedWord}",
-          "${wordText}"
+          "ohne"
         ]
       }
     ]
@@ -1786,9 +1762,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
       "takt",
       "tipp",
       "was",
-      "wink",
-      "${droppedWord}",
-      "${wordText}"
+      "wink"
     ],
     "pairs": [],
     "passage": "Eine unterhaltsame, schöne und gesellige Zeit. Das stellt man sich unter einem guten Essen vor. Störend wirkt da der anschauliche Erlebnisbericht der letzten Operation im Krankenhaus oder das Klingeln des Handys. Sowohl Gastgeber als Gast sollen alles dafür tun, dass das gemeinsame Essen Freude macht. Das Handy stellt man selbstverständlich ab. Das Essen beginnt, wenn der Gastgeber zur Serviette greift oder zum Gruß sein Glas erhebt. Besonders bei Kindern ein unbeliebtes Thema: die richtige Körperhaltung beim Essen. Die Arme {{1}} nicht auf den Tisch und die Hände nicht unter den Tisch. Mal sitzt gerade, ohne unruhig hin und her zu rücken. Die Beine werden nebeneinander gestellt, nicht übereinander gelegt. Die Schuhe {{2}} in jedem Fall an. Nur keine Angst vor guten Restaurants mit ihrem Luxus! Denn je besser die Küche, umso aufmerksamer ist in der Regel das Personal. Doch schon bei der Anrede der Bedienung steht so {{3}} vor einem Problem. Die Bedienung {{4}} “Fräulein” an den Tisch zu rufen, ist in Zeiten dert Gleichberechtigung veraltet. \"Herr Ober\" oder\" Bedienung\" ist {{5}} noch möglich, aber auch schon etwas ungewöhnlich. Am besten versucht man sich Blickkontakt zu verschaffen, um mit einem kleinen {{6}} mit der Hand den Kellner an den Tisch zu bitten. Zudem gibt es zwischen Gast und Service eine Zeichensprache. Schließt der Gast die Speisekarte und legt sie auf den Tisch, ist dies für den Kellner das Signal, die Bestellung aufzunehmen. Ist man mit dem Essen {{7}}, legt man das Besteck parallel nebeneinander auf den rechten Tellerrand. Der Kellner wir dann abräumen. Macht man hingegen nur eine Pause, wird es gekreuzt oder offen auf den Teller gelegt. Beim Bezahlen ist {{8}} gefragt. Übernimmt ein Gastgeber die Kosten, macht er dies dem Kellner {{9}}. Ein \"Bringen Sie mir bitte die Rechnung\" reicht da völlig aus. Möchte man hingegen getrennt bezahlen, {{10}} durchaus üblich ist, teilt man dies ebenfalls rechtzeitig der Bedienung mit. In Deutschland gibt man, je nach Zufriedenheit mit dem Service und der Höhe der Gesamtsumme zwischen drei und zehn Prozent Trinkgeld. Ist man mit dem Service unzufrieden gewesen, gibt man kein Trinkgeld.",
@@ -1807,9 +1781,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
       "takt",
       "tipp",
       "was",
-      "wink",
-      "${droppedWord}",
-      "${wordText}"
+      "wink"
     ],
     "gaps": [
       {
@@ -1830,9 +1802,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "takt",
           "tipp",
           "was",
-          "wink",
-          "${droppedWord}",
-          "${wordText}"
+          "wink"
         ]
       },
       {
@@ -1853,9 +1823,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "takt",
           "tipp",
           "was",
-          "wink",
-          "${droppedWord}",
-          "${wordText}"
+          "wink"
         ]
       },
       {
@@ -1876,9 +1844,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "takt",
           "tipp",
           "was",
-          "wink",
-          "${droppedWord}",
-          "${wordText}"
+          "wink"
         ]
       },
       {
@@ -1899,9 +1865,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "takt",
           "tipp",
           "was",
-          "wink",
-          "${droppedWord}",
-          "${wordText}"
+          "wink"
         ]
       },
       {
@@ -1922,9 +1886,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "takt",
           "tipp",
           "was",
-          "wink",
-          "${droppedWord}",
-          "${wordText}"
+          "wink"
         ]
       },
       {
@@ -1945,9 +1907,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "takt",
           "tipp",
           "was",
-          "wink",
-          "${droppedWord}",
-          "${wordText}"
+          "wink"
         ]
       },
       {
@@ -1968,9 +1928,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "takt",
           "tipp",
           "was",
-          "wink",
-          "${droppedWord}",
-          "${wordText}"
+          "wink"
         ]
       },
       {
@@ -1991,9 +1949,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "takt",
           "tipp",
           "was",
-          "wink",
-          "${droppedWord}",
-          "${wordText}"
+          "wink"
         ]
       },
       {
@@ -2014,9 +1970,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "takt",
           "tipp",
           "was",
-          "wink",
-          "${droppedWord}",
-          "${wordText}"
+          "wink"
         ]
       },
       {
@@ -2037,9 +1991,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "takt",
           "tipp",
           "was",
-          "wink",
-          "${droppedWord}",
-          "${wordText}"
+          "wink"
         ]
       }
     ]
@@ -2068,9 +2020,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
       "vor",
       "fast",
       "dürfen",
-      "dafür",
-      "${droppedWord}",
-      "${wordText}"
+      "dafür"
     ],
     "pairs": [],
     "passage": "Welches Fortbewegungsmittel, denken Sie, wird in Deutschland am häufigsten benutzt? Natürlich das Automobil. Volkswagen, Porsche, Mercedes Benz, BMW, Audi: In {{1}} einem anderen Land gibt es so viele Automobilfabriken wie in Deutschland, spielt die Automobilindustrie eine so große Rolle. Nahezu jeder Haushalt verfügt über mindestens ein Auto, das Auto spielt im Leben der Deutschen eine große Rolle, sowohl als Fortbewegungsmittel zum Arbeitsplatz oder in den Urlaub als auch als Statussymbol: Zeig mir dein Auto und ich weiß, wer du bist. Doch hat das Autofahren auch Schattenseiten. Mangelnde Bewegungsmöglichkeiten, gesundheitliche Probleme und Stress bringen zumindest in den Großstädten immer mehr Autofahrer dazu, sich vom Automobil freizumachen und {{2}} ein anderes Verkehrsmittel umzusteigen, das in dem Ruf steht, gesünder zu sein als das Auto: das Fahrrad. Nicht nur in der Freizeit, sondern auch auf dem Weg zum Arbeitsplatz wird das Rad benutzt. \"Ich habe keine Lust, Morgen für Morgen im Stau zu stehen und Zeit zu verlieren\", sagt Bettina Meier (25): \"Da ist es viel entspannender, auf den {{3}} gut ausgebauten Fahrradwegen an den im Stau wartenden Fahrzeugen {{4}} und ausgeruht am Arbeitsplatz anzukommen.\" Dass Fahrradfahren um einiges gesünder ist, als hinter dem Lenkrad zu sitzen, bestätigen auch die Mediziner. Wer Fahrrad fährt {{5}} zu sitzen, bringt seinen Blutkreislauf in Schwung, stärkt die Abwehrkräfte des Körpers und trainiert seinen Körper. Auch die Bewegung an der frischen Luft tut Menschen gut, die sich sonst die meiste Zeit {{6}} geschlossener Räume in Büros, Schulen oder Fabriken aufhalten {{7}}. Auch die Geschäftswelt hat die Fahrradfahrer als Kunden entdeckt. Ein breites Angebot {{8}} Zubehör für Fahrräder von schicken Radfelgen über sportliche Mehrganggetriebe, mit denen Berge kein Problem mehr darstellen, bis zur Designer-Trinkflasche machen aus dem einfachen Fahrrad ein exklusives Fahrzeug. Und natürlich darf bei keinem Fahrradfahrer eine aufwändige Sicherheitsausstattung mehr fehlen: Schutzhelme, Ellenbogen- und Knieschützer, die das Fahrrad im Falle eines Unfalls fast so sicher wie einen Panzer machen {{9}}. Nur wenn es regnet - und das passiert in Deutschland leider nicht so selten -, {{10}} sind die Autoschlangen wieder länger. {{11}} einen praktischen Wetterschutz für Radfahrer haben die Geschäfte noch nicht im Angebot.",
@@ -2090,9 +2040,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
       "vor",
       "fast",
       "dürfen",
-      "dafür",
-      "${droppedWord}",
-      "${wordText}"
+      "dafür"
     ],
     "gaps": [
       {
@@ -2114,9 +2062,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "vor",
           "fast",
           "dürfen",
-          "dafür",
-          "${droppedWord}",
-          "${wordText}"
+          "dafür"
         ]
       },
       {
@@ -2138,9 +2084,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "vor",
           "fast",
           "dürfen",
-          "dafür",
-          "${droppedWord}",
-          "${wordText}"
+          "dafür"
         ]
       },
       {
@@ -2162,9 +2106,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "vor",
           "fast",
           "dürfen",
-          "dafür",
-          "${droppedWord}",
-          "${wordText}"
+          "dafür"
         ]
       },
       {
@@ -2186,9 +2128,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "vor",
           "fast",
           "dürfen",
-          "dafür",
-          "${droppedWord}",
-          "${wordText}"
+          "dafür"
         ]
       },
       {
@@ -2210,9 +2150,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "vor",
           "fast",
           "dürfen",
-          "dafür",
-          "${droppedWord}",
-          "${wordText}"
+          "dafür"
         ]
       },
       {
@@ -2234,9 +2172,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "vor",
           "fast",
           "dürfen",
-          "dafür",
-          "${droppedWord}",
-          "${wordText}"
+          "dafür"
         ]
       },
       {
@@ -2258,9 +2194,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "vor",
           "fast",
           "dürfen",
-          "dafür",
-          "${droppedWord}",
-          "${wordText}"
+          "dafür"
         ]
       },
       {
@@ -2282,9 +2216,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "vor",
           "fast",
           "dürfen",
-          "dafür",
-          "${droppedWord}",
-          "${wordText}"
+          "dafür"
         ]
       },
       {
@@ -2306,9 +2238,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "vor",
           "fast",
           "dürfen",
-          "dafür",
-          "${droppedWord}",
-          "${wordText}"
+          "dafür"
         ]
       },
       {
@@ -2330,9 +2260,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "vor",
           "fast",
           "dürfen",
-          "dafür",
-          "${droppedWord}",
-          "${wordText}"
+          "dafür"
         ]
       },
       {
@@ -2354,9 +2282,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "vor",
           "fast",
           "dürfen",
-          "dafür",
-          "${droppedWord}",
-          "${wordText}"
+          "dafür"
         ]
       }
     ]
@@ -2384,9 +2310,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
       "durch",
       "dieselbe",
       "deutlich",
-      "als",
-      "${droppedWord}",
-      "${wordText}"
+      "als"
     ],
     "pairs": [],
     "passage": "Kleine Kinder, die in der Gesellschaft von Haustieren wie Hund und Katze leben, sind einer Studie aus Finnland zufolge seltener krank {{1}} Kinder in Haushalten ohne Tiere. Die Studie wurde in der {{2}} Woche in einem amerikanischen Fachmagazin veröffentlicht. Es wurden {{3}} keine Erklärungen für diese Tatsache geliefert, aber die Vermutung wurde geäußert, dass der Kontakt zu Hunden das Immunsystem der Kleinkinder stärke. Hunde haben nämlich {{4}} die täglichen Spaziergänge draußen viel Kontakt zu möglichen Krankheitserregern und trainieren vielleicht so das Immunsystem der Kinder. Auch Katzen, die die Möglichkeit haben, nach draußen zu gehen, haben demnach {{5}} Wirkung auf die Gesundheit der Kinder, wenngleich in geringerem Maße. Für die Studie {{6}} in Finnland 397 Babys über den Zeitraum von der neunten Lebenswoche bis zu ihrem ersten Geburtstag beobachtet. Dabei hatten die mit Hund oder Katze aufwachsenden Kinder ein um 30 % {{7}} Risiko für Erkrankungen der Atemwege. Es fiel auf, dass bei diesen Kindern Ohrenentzündungen {{8}} auftraten. Die Studie kommt daher zu dem Schluss, dass die Gesundheit von Kindern in Gesellschaft von Tieren {{9}} besser sei. Frühere Untersuchungen aus den USA hatten das genaue {{10}} der jetzigen Ergebnisse ergeben. Ob diese Unterschiede mit den unterschiedlichen Lebens- und Umweltbedingungen der beiden Länder zusammenhängen, ist noch unklar.",
@@ -2405,9 +2329,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
       "durch",
       "dieselbe",
       "deutlich",
-      "als",
-      "${droppedWord}",
-      "${wordText}"
+      "als"
     ],
     "gaps": [
       {
@@ -2428,9 +2350,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "durch",
           "dieselbe",
           "deutlich",
-          "als",
-          "${droppedWord}",
-          "${wordText}"
+          "als"
         ]
       },
       {
@@ -2451,9 +2371,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "durch",
           "dieselbe",
           "deutlich",
-          "als",
-          "${droppedWord}",
-          "${wordText}"
+          "als"
         ]
       },
       {
@@ -2474,9 +2392,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "durch",
           "dieselbe",
           "deutlich",
-          "als",
-          "${droppedWord}",
-          "${wordText}"
+          "als"
         ]
       },
       {
@@ -2497,9 +2413,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "durch",
           "dieselbe",
           "deutlich",
-          "als",
-          "${droppedWord}",
-          "${wordText}"
+          "als"
         ]
       },
       {
@@ -2520,9 +2434,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "durch",
           "dieselbe",
           "deutlich",
-          "als",
-          "${droppedWord}",
-          "${wordText}"
+          "als"
         ]
       },
       {
@@ -2543,9 +2455,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "durch",
           "dieselbe",
           "deutlich",
-          "als",
-          "${droppedWord}",
-          "${wordText}"
+          "als"
         ]
       },
       {
@@ -2566,9 +2476,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "durch",
           "dieselbe",
           "deutlich",
-          "als",
-          "${droppedWord}",
-          "${wordText}"
+          "als"
         ]
       },
       {
@@ -2589,9 +2497,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "durch",
           "dieselbe",
           "deutlich",
-          "als",
-          "${droppedWord}",
-          "${wordText}"
+          "als"
         ]
       },
       {
@@ -2612,9 +2518,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "durch",
           "dieselbe",
           "deutlich",
-          "als",
-          "${droppedWord}",
-          "${wordText}"
+          "als"
         ]
       },
       {
@@ -2635,9 +2539,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "durch",
           "dieselbe",
           "deutlich",
-          "als",
-          "${droppedWord}",
-          "${wordText}"
+          "als"
         ]
       }
     ]
@@ -2665,9 +2567,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
       "von",
       "wegen",
       "wohl",
-      "zu",
-      "${droppedWord}",
-      "${wordText}"
+      "zu"
     ],
     "pairs": [],
     "passage": "Wer sich einen Mann angeln will, sollte einen Blick in dessen Tiefkühlfach werfen. Einer Studie zufolge kann man {{1}} des Inhalts des Tiefkühlfachs den Charakter seines Besitzers erkennen. Die Meinungsforscher unterscheiden fünf Kategorien {{2}} Single-Männern: den spontanen Typ, den Bequemen, den Kreativen, {{3}} den Cocktail- und den Gourmet-Typen. Am häufigsten gibt es in Deutschland den spontanen Typ. Er hat neben kompletten Gerichten auch tiefgekühlte Produkte wie Brokkoli Gemüse oder Putenfilet in der Truhe, {{4}} denen er eine Mahlzeit zusammenstellen kann. Dieser Typ liebt die Abwechslung auf dem Teller und auch sonst im Leben. Da wird es vermutlich auch in der Liebe nicht langweilig. Hauptgewinn für jede Frau ist aber der Gourmet-Typ. In seinem Tiefkühlfach liegen Produkte wie Garnelen, Muscheln oder Ente. Dieser Typ liebt es, Frauen zu verwöhnen. Der Nachteil liegt {{5}} der Hand: Dieser Typ Single-Mann ist selten. Was man in der Tiefkühltruhe von bequemen Single-Männern findet, kann man leicht erraten, denn diese Männer haben gar keine Lust zu kochen. Ihnen ist es sogar zu {{6}}, zwei Tüten zu öffnen statt nur einer. {{7}} kaufen diese Männer an den häufigsten kompletten Gerichten, die sie nur noch in die Mikrowelle oder den Backofen stellen müssen. Aber ob sie so das Herz einer Frau erobern können? Zumindest Frauen sehen das wohl {{8}} skeptisch. Doch egal, {{9}} welcher Kategorie ein Mann gehört - eines haben alle gemeinsam: Sie kaufen immer mehr Tiefkühlkost. Warum das so ist, kann die Studie nicht beantworten - da kann man nur raten: Einige haben vermutlich wenig Zeit zum Kochen, andere {{10}} eher keine Lust. Dabei wäre das doch der beste Weg, um eine Frau zu erobern.",
@@ -2686,9 +2586,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
       "von",
       "wegen",
       "wohl",
-      "zu",
-      "${droppedWord}",
-      "${wordText}"
+      "zu"
     ],
     "gaps": [
       {
@@ -2709,9 +2607,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "von",
           "wegen",
           "wohl",
-          "zu",
-          "${droppedWord}",
-          "${wordText}"
+          "zu"
         ]
       },
       {
@@ -2732,9 +2628,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "von",
           "wegen",
           "wohl",
-          "zu",
-          "${droppedWord}",
-          "${wordText}"
+          "zu"
         ]
       },
       {
@@ -2755,9 +2649,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "von",
           "wegen",
           "wohl",
-          "zu",
-          "${droppedWord}",
-          "${wordText}"
+          "zu"
         ]
       },
       {
@@ -2778,9 +2670,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "von",
           "wegen",
           "wohl",
-          "zu",
-          "${droppedWord}",
-          "${wordText}"
+          "zu"
         ]
       },
       {
@@ -2801,9 +2691,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "von",
           "wegen",
           "wohl",
-          "zu",
-          "${droppedWord}",
-          "${wordText}"
+          "zu"
         ]
       },
       {
@@ -2824,9 +2712,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "von",
           "wegen",
           "wohl",
-          "zu",
-          "${droppedWord}",
-          "${wordText}"
+          "zu"
         ]
       },
       {
@@ -2847,9 +2733,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "von",
           "wegen",
           "wohl",
-          "zu",
-          "${droppedWord}",
-          "${wordText}"
+          "zu"
         ]
       },
       {
@@ -2870,9 +2754,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "von",
           "wegen",
           "wohl",
-          "zu",
-          "${droppedWord}",
-          "${wordText}"
+          "zu"
         ]
       },
       {
@@ -2893,9 +2775,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "von",
           "wegen",
           "wohl",
-          "zu",
-          "${droppedWord}",
-          "${wordText}"
+          "zu"
         ]
       },
       {
@@ -2916,9 +2796,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "von",
           "wegen",
           "wohl",
-          "zu",
-          "${droppedWord}",
-          "${wordText}"
+          "zu"
         ]
       }
     ]
@@ -2946,9 +2824,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
       "dass",
       "dafür",
       "dadurch",
-      "begriffe",
-      "${droppedWord}",
-      "${wordText}"
+      "begriffe"
     ],
     "pairs": [],
     "passage": "Klimatische Veränderungen seit der letzten Kaltzeit könnten für den stetigen Rückgang der Braunbären Zahl in Europa verantwortlich sein. Wie eine aktuelle Studie nahelegt, vor allem steigende Wintertemperaturen {{1}} der vergangen 12000 Jahre die Fortpflanzungsrate der Tiere verringert, was entscheidend zu deren Verschwinden beigetragen hat. Zudem wurden durch die Klimaveränderung größere Fliehen für den Ackerbau nutzbar. {{2}} wurde der Lebensraum der Tiere verkleinert. Es ist längst unumstritten, {{3}} das Verschwinden der der Braunbären mit der Landnutzung durch den Menschen zusammenhängt. Ein internationales Experten Team untersuchte nun die Rolle des Klimas beim Rückgang der Bären zahl. In den letzten Jahren ist Winter Temperatur in weiten Teilen Europas {{4}} zwei bis vier Grad angestiegen. In der Folge bekamen die Braunbären weniger {{5}}, und ihre Zahl schrumpfte. Der Grund {{6}} ist, dass Braunbären bei steigenden Wintertemperaturen in mehr Energie für ihre Winterruhe verbrauchen. Braunbärenweibchen benötigen ihre Energie Reserven auch für die Fortpflanzung, {{7}} sie bringen im Winter ihre Jungen zur Welt. Wird mehr Energie für die Winterruhe verbraucht, bleibt nicht so viel für die Fortpflanzung übrig, und gibt es weniger Nachwuchs. steigende Wintertemperaturen könnten auch in direkt für das Schicksal des Braunbären wörtlich gewesen sein. Wärmer Winter begünstigten nämlich auch die menschlichen {{8}} in die Naturlandschaften und damit in den Lebensraum der Braunbären. Am Ende der letzten Eiszeit war der Braunbär {{9}} überall in Europa heimlich großes Aussterben gab es in Südwesteuropa vor 70 7 bis 0 Jahren. Richtig begrab {{10}} es mit dem Braunbären aber vor etwa Jahre, als sich verringerte.",
@@ -2967,9 +2843,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
       "dass",
       "dafür",
       "dadurch",
-      "begriffe",
-      "${droppedWord}",
-      "${wordText}"
+      "begriffe"
     ],
     "gaps": [
       {
@@ -2990,9 +2864,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "dass",
           "dafür",
           "dadurch",
-          "begriffe",
-          "${droppedWord}",
-          "${wordText}"
+          "begriffe"
         ]
       },
       {
@@ -3013,9 +2885,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "dass",
           "dafür",
           "dadurch",
-          "begriffe",
-          "${droppedWord}",
-          "${wordText}"
+          "begriffe"
         ]
       },
       {
@@ -3036,9 +2906,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "dass",
           "dafür",
           "dadurch",
-          "begriffe",
-          "${droppedWord}",
-          "${wordText}"
+          "begriffe"
         ]
       },
       {
@@ -3059,9 +2927,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "dass",
           "dafür",
           "dadurch",
-          "begriffe",
-          "${droppedWord}",
-          "${wordText}"
+          "begriffe"
         ]
       },
       {
@@ -3082,9 +2948,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "dass",
           "dafür",
           "dadurch",
-          "begriffe",
-          "${droppedWord}",
-          "${wordText}"
+          "begriffe"
         ]
       },
       {
@@ -3105,9 +2969,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "dass",
           "dafür",
           "dadurch",
-          "begriffe",
-          "${droppedWord}",
-          "${wordText}"
+          "begriffe"
         ]
       },
       {
@@ -3128,9 +2990,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "dass",
           "dafür",
           "dadurch",
-          "begriffe",
-          "${droppedWord}",
-          "${wordText}"
+          "begriffe"
         ]
       },
       {
@@ -3151,9 +3011,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "dass",
           "dafür",
           "dadurch",
-          "begriffe",
-          "${droppedWord}",
-          "${wordText}"
+          "begriffe"
         ]
       },
       {
@@ -3174,9 +3032,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "dass",
           "dafür",
           "dadurch",
-          "begriffe",
-          "${droppedWord}",
-          "${wordText}"
+          "begriffe"
         ]
       },
       {
@@ -3197,9 +3053,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "dass",
           "dafür",
           "dadurch",
-          "begriffe",
-          "${droppedWord}",
-          "${wordText}"
+          "begriffe"
         ]
       }
     ]
@@ -3227,9 +3081,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
       "übernehmen",
       "verfügung",
       "warum",
-      "ziehen",
-      "${droppedWord}",
-      "${wordText}"
+      "ziehen"
     ],
     "pairs": [],
     "passage": "Die gelernte Krankenschwester Jaqueline Delgado drückt mit 38 Jahren noch einmal die Schulbank. {{1}} sie hat sich für einen beruflichen Neustart entschieden. Da ihr früherer Beruf ihr keinen Spaß mehr machte, begann sie eine Berufsausbildung bei der Polizei. Ihr Ziel: Sie {{2}} in den Streifendienst gehen. Mit 30 noch einmal einen neuen Job zu erlernen — lange Zeit war das kaum möglich. Arbeitgeber suchten nur junge Berufseinsteiger. {{3}} es heute in vielen Branchen aber an Nachwuchs fehlt, geben sie öfter auch Älteren eine {{4}}. Thomas Neuendorfer, der stellvertretende Sprecher der Polizei Berlin, erklärt, {{5}} sein Arbeitgeber gerne Altere ausbildet: \"Sie haben in ihrem Berufsleben Erfahrungen gesammelt, die der Polizei und auch den Bürgern der Stadt zu Gute kommen\". Sie seien häufig emotional reifer, außerdem bereit, Verantwortung zu {{6}}, und motiviert, die Ausbildung erfolgreich abzuschließen. Zudem {{7}} sie die Jüngeren unterstützen und ihnen als Vorbild dienen. Davon profitierten dann auch die Arbeitgeber. Gegen die Einstellung von Älteren spreche nur. dass sie dem Unternehmen kürzer vor {{8}} stehen. {{9}} haben ältere Azubis in vielen Bereichen Möglichkeiten: in kaufmännischen oder in gewerblich-technischen im Gesundheitswesen vor allem in der Gastronomie. Wenn das Azubi-Gehalt nicht für den Lebensunterhalt reicht, hilft die Arbeitsagentur. Der Betrag wird dabei nicht nach dem Alter festgelegt, {{10}} es wird der individuelle, konkrete Bedarf ermittelt. Im August schließt Delgado ihre Ausbildung ab. In dem künftigen Polizei—Job wird Sie ihr medizinisches Wissen, ihre Menschenkenntnis sowie ihre spanischen und englischen Sprachkenntnisse wohlt gut gebrauchen können.",
@@ -3248,9 +3100,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
       "übernehmen",
       "verfügung",
       "warum",
-      "ziehen",
-      "${droppedWord}",
-      "${wordText}"
+      "ziehen"
     ],
     "gaps": [
       {
@@ -3271,9 +3121,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "übernehmen",
           "verfügung",
           "warum",
-          "ziehen",
-          "${droppedWord}",
-          "${wordText}"
+          "ziehen"
         ]
       },
       {
@@ -3294,9 +3142,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "übernehmen",
           "verfügung",
           "warum",
-          "ziehen",
-          "${droppedWord}",
-          "${wordText}"
+          "ziehen"
         ]
       },
       {
@@ -3317,9 +3163,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "übernehmen",
           "verfügung",
           "warum",
-          "ziehen",
-          "${droppedWord}",
-          "${wordText}"
+          "ziehen"
         ]
       },
       {
@@ -3340,9 +3184,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "übernehmen",
           "verfügung",
           "warum",
-          "ziehen",
-          "${droppedWord}",
-          "${wordText}"
+          "ziehen"
         ]
       },
       {
@@ -3363,9 +3205,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "übernehmen",
           "verfügung",
           "warum",
-          "ziehen",
-          "${droppedWord}",
-          "${wordText}"
+          "ziehen"
         ]
       },
       {
@@ -3386,9 +3226,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "übernehmen",
           "verfügung",
           "warum",
-          "ziehen",
-          "${droppedWord}",
-          "${wordText}"
+          "ziehen"
         ]
       },
       {
@@ -3409,9 +3247,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "übernehmen",
           "verfügung",
           "warum",
-          "ziehen",
-          "${droppedWord}",
-          "${wordText}"
+          "ziehen"
         ]
       },
       {
@@ -3432,9 +3268,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "übernehmen",
           "verfügung",
           "warum",
-          "ziehen",
-          "${droppedWord}",
-          "${wordText}"
+          "ziehen"
         ]
       },
       {
@@ -3455,9 +3289,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "übernehmen",
           "verfügung",
           "warum",
-          "ziehen",
-          "${droppedWord}",
-          "${wordText}"
+          "ziehen"
         ]
       },
       {
@@ -3478,9 +3310,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "übernehmen",
           "verfügung",
           "warum",
-          "ziehen",
-          "${droppedWord}",
-          "${wordText}"
+          "ziehen"
         ]
       }
     ]
@@ -3508,9 +3338,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
       "darf",
       "anpassen",
       "angeben",
-      "allerdings",
-      "${droppedWord}",
-      "${wordText}"
+      "allerdings"
     ],
     "pairs": [],
     "passage": "Wer beim Skifahren fahrlässig einen anderen Sportler verletzt oder gefährdet, muss auch mit rechtlichen Folgen {{1}}. Das Strafgesetzbuch ist sowohl auf der Straße als auch auf der Piste {{2}}. Laut Gesetz gibt es Freiheitsstrafen bis zu 3 Monaten oder eine entsprechende Geldstrafe. Bei schwerer Körperverletzung sieht das Gesetz Freiheitsstrafen bis zu 6 Monaten {{3}}. Der deutsche Skiverband hat eine Pistenordnung erarbeitet, die bei gerichtlichen Entscheidungen angewandt wird. Jeder Wintersportler {{4}} diese Regeln kennen: Jeder Skifahrer muss sich stets {{5}} verhalten, dass er keinen anderen gefährdet oder schädigt. Er muss die Zeichen und Hinweisschilder an der Piste kennen und beachten. Er muss die eigene Geschwindigkeit und Fahrweise seinem Können und dem Gelände sowie den herrschenden Wetterverhältnissen {{6}}. Ein von hinten kommendem Skifahrer muss seine Fahrspur so wählen, dass er vor ihm fahrende Skifahrer nicht gefährdet. Überholen darf man rechts oder links, {{7}} immer in einem Abstand, der dem überholten Skifahrer genug Raum für seine Bewegungen lässt. Aufsteigende Skifahrer dürfen nur den {{8}} einer Abfahrtstrecke benützen. Dasselbe gilt für einen Skifahrer, der zu Fuß absteigt. Bei schlechten Sichtverhältnissen ist die Benutzung des Pistenrands verboten und der Skifahrer muss diesen verlassen. Niemand sollte sich an unübersichtlichen oder engen Stellen aufhalten. Gestürzte Skifahrer müssen eine solche {{9}} so schnell wie möglich freimachen. Bei Unfällen ist jeder zur Hilfeleistung verpflichtet. Jeder Zeuge oder Verantwortliche muss bei einem Unfall außerdem seine Personalie {{10}}. Durch Beachtung dieser Regeln ist die Sicherheit auf den Pisten deutlich gestiegen.",
@@ -3529,9 +3357,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
       "darf",
       "anpassen",
       "angeben",
-      "allerdings",
-      "${droppedWord}",
-      "${wordText}"
+      "allerdings"
     ],
     "gaps": [
       {
@@ -3552,9 +3378,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "darf",
           "anpassen",
           "angeben",
-          "allerdings",
-          "${droppedWord}",
-          "${wordText}"
+          "allerdings"
         ]
       },
       {
@@ -3575,9 +3399,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "darf",
           "anpassen",
           "angeben",
-          "allerdings",
-          "${droppedWord}",
-          "${wordText}"
+          "allerdings"
         ]
       },
       {
@@ -3598,9 +3420,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "darf",
           "anpassen",
           "angeben",
-          "allerdings",
-          "${droppedWord}",
-          "${wordText}"
+          "allerdings"
         ]
       },
       {
@@ -3621,9 +3441,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "darf",
           "anpassen",
           "angeben",
-          "allerdings",
-          "${droppedWord}",
-          "${wordText}"
+          "allerdings"
         ]
       },
       {
@@ -3644,9 +3462,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "darf",
           "anpassen",
           "angeben",
-          "allerdings",
-          "${droppedWord}",
-          "${wordText}"
+          "allerdings"
         ]
       },
       {
@@ -3667,9 +3483,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "darf",
           "anpassen",
           "angeben",
-          "allerdings",
-          "${droppedWord}",
-          "${wordText}"
+          "allerdings"
         ]
       },
       {
@@ -3690,9 +3504,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "darf",
           "anpassen",
           "angeben",
-          "allerdings",
-          "${droppedWord}",
-          "${wordText}"
+          "allerdings"
         ]
       },
       {
@@ -3713,9 +3525,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "darf",
           "anpassen",
           "angeben",
-          "allerdings",
-          "${droppedWord}",
-          "${wordText}"
+          "allerdings"
         ]
       },
       {
@@ -3736,9 +3546,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "darf",
           "anpassen",
           "angeben",
-          "allerdings",
-          "${droppedWord}",
-          "${wordText}"
+          "allerdings"
         ]
       },
       {
@@ -3759,9 +3567,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "darf",
           "anpassen",
           "angeben",
-          "allerdings",
-          "${droppedWord}",
-          "${wordText}"
+          "allerdings"
         ]
       }
     ]
@@ -3789,9 +3595,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
       "was",
       "weil",
       "wer",
-      "wie",
-      "${droppedWord}",
-      "${wordText}"
+      "wie"
     ],
     "pairs": [],
     "passage": "Den Wettbewerber \"Jugend diskutiert\" gibt es bereits {{1}} Herbst 2002. Für das kommende Jahr werden nun wieder Schülerinnen und Schüler gesucht, die an dem Wettbewerb teilnehmen möchten. {{2}} immer bereiten sich die Teilnehmer dann im Unterricht auf \"Jugend diskutiert\" vor. Du fragst dich, {{3}} du teilnehmen solltest? Ganz einfach: \"Jugend diskutiert\" bringt dich weiter! Sich einmischen, mitreden, überzeugen - bei der Vorbereitung im Unterricht trainierst du viele Fähigkeiten, die dir in der Schule und im Alltag helfen. Im Austausch mit den anderen entwickelst du deine Persönlichkeit weiter und profitierst langfristig. {{4}} bietet dir \"Jugend diskutiert\" die Chance, im Wettstreit mit anderen weiterzukommen. Zuerst werden die besten einer Schule ermittelt, die {{5}} Regionalwettbewerben teilnehmen. Die Sieger der Regionalwettbewerbe treten im Bundesfinale an. {{6}} Preise kann man professionelle Trainings gewinnen. {{7}} \"Jugend diskutiert\" kannst du viel lernen. Du hast bessere Chancen im Unterricht und bei Referaten, denn du trainierst, frei zu sprechen und Dinge anschaulich und verständlich zu beschreiben. Du gewinnst mehr Selbstbewusstsein, {{8}} du lernst, wie man das Wort ergreift und auf sich aufmerksam macht. Du kannst überzeugen, da du eigene Argumente finden und die Argumente anderer genau prüfen kannst. Die Sichtweisen der anderen zeigen dir darüber hinaus, {{9}} du vielleicht selbst noch nicht gesehen hast. Du überzeugst bei Auftritten, Prüfungen und Bewerbungen, da du sicher auftrittst. {{10}} das alles im Unterricht gelernt hat, kann gemeinsam mit anderen viel bewegen! Schließlich ist der Wettbewerb \"Jugend diskutiert\" auch eine Chance, Jugendliche aus ganz Deutschland kennenzulernen und neue Freundschaften zu knüpfen. Weitere Informationen zu Anmeldung und Teilnahme gibt es im Internet.",
@@ -3810,9 +3614,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
       "was",
       "weil",
       "wer",
-      "wie",
-      "${droppedWord}",
-      "${wordText}"
+      "wie"
     ],
     "gaps": [
       {
@@ -3833,9 +3635,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "was",
           "weil",
           "wer",
-          "wie",
-          "${droppedWord}",
-          "${wordText}"
+          "wie"
         ]
       },
       {
@@ -3856,9 +3656,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "was",
           "weil",
           "wer",
-          "wie",
-          "${droppedWord}",
-          "${wordText}"
+          "wie"
         ]
       },
       {
@@ -3879,9 +3677,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "was",
           "weil",
           "wer",
-          "wie",
-          "${droppedWord}",
-          "${wordText}"
+          "wie"
         ]
       },
       {
@@ -3902,9 +3698,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "was",
           "weil",
           "wer",
-          "wie",
-          "${droppedWord}",
-          "${wordText}"
+          "wie"
         ]
       },
       {
@@ -3925,9 +3719,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "was",
           "weil",
           "wer",
-          "wie",
-          "${droppedWord}",
-          "${wordText}"
+          "wie"
         ]
       },
       {
@@ -3948,9 +3740,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "was",
           "weil",
           "wer",
-          "wie",
-          "${droppedWord}",
-          "${wordText}"
+          "wie"
         ]
       },
       {
@@ -3971,9 +3761,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "was",
           "weil",
           "wer",
-          "wie",
-          "${droppedWord}",
-          "${wordText}"
+          "wie"
         ]
       },
       {
@@ -3994,9 +3782,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "was",
           "weil",
           "wer",
-          "wie",
-          "${droppedWord}",
-          "${wordText}"
+          "wie"
         ]
       },
       {
@@ -4017,9 +3803,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "was",
           "weil",
           "wer",
-          "wie",
-          "${droppedWord}",
-          "${wordText}"
+          "wie"
         ]
       },
       {
@@ -4040,9 +3824,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "was",
           "weil",
           "wer",
-          "wie",
-          "${droppedWord}",
-          "${wordText}"
+          "wie"
         ]
       }
     ]
@@ -4070,9 +3852,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
       "unlogische",
       "unterscheiden",
       "verschieden",
-      "zwar",
-      "${droppedWord}",
-      "${wordText}"
+      "zwar"
     ],
     "pairs": [],
     "passage": "Im Internet, in sozialen Netzwerken und der Werbung werden wir mit einer {{1}}. Von Fotos konfrontiert. Klar ist: Viele von ihnen sind keine wirklichen Originale, Bildbearbeitungsprogramme machen es sogar für Laien {{2}}. einfach, Fotos zu verändern Meist sind die Manipulationen harmlos, {{3}} die Möglichkeiten der Bildbearbeitung lassen Sich natürlich auch für Betrügereien oder Meinungsmache missbrauchen. In diesem Zusammenhang {{4}} sich die Frage, inwieweit Betrachtern solche Manipulationen auffallen. Können Sie erkennen, dass an einem Bild etwas merkwürdig ist, oder sogar die manipulierte Stelle finden {{5}} Fragen sind nun Forscher der University of Warwick (UK) nachgegangen. Sie entwickelten dazu ein Online-Testsystem, bei dem die Teilnehmer den manipulierten Bereich auf Fotos erkennen sollten. Die Auswertungen ergaben: Die {{6}} Teilnehmer waren nur eher zufällig in der Lage, ein manipuliertes Bild zu identifizieren. Oft hatten sie das vage Gefühl, dass mit einem der Bilder etwas nicht stimmt. Nur in 454 Prozent der Fälle konnten sie tatsächlich. {{7}} bestimmen, wo das Bild verändert worden war. Selbst ein falscher Schattenwurf oder andere {{8}} Abweichungen wurden nicht besser erkannt als nachvollziehbare Manipulationen wie beispielsweise künstliche Farbveränderungen. Bilder haben einen starken Einfluss auf unsere Erinnerungen, so die Forscher. Können Menschen also nicht zwischen echten und gefälschten Details auf Fotos, {{9}} so können manipulierte Bilder entscheidend beeinflussen, woran wir uns zu erinnern glauben. Die Ergebnisse dokumentierten {{10}} Wir können recht leicht auf Fake-Fotos und damit auch auf ihre manipulierten Botschaften reinfallen. Aufbauend auf ihren Ergebnissen wollen die Forscher nun konkrete Ratschläge erarbeiten, die dem Betrachter helfen sollen, Fotomanipulationen besser zu erkennen.",
@@ -4091,9 +3871,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
       "unlogische",
       "unterscheiden",
       "verschieden",
-      "zwar",
-      "${droppedWord}",
-      "${wordText}"
+      "zwar"
     ],
     "gaps": [
       {
@@ -4114,9 +3892,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "unlogische",
           "unterscheiden",
           "verschieden",
-          "zwar",
-          "${droppedWord}",
-          "${wordText}"
+          "zwar"
         ]
       },
       {
@@ -4137,9 +3913,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "unlogische",
           "unterscheiden",
           "verschieden",
-          "zwar",
-          "${droppedWord}",
-          "${wordText}"
+          "zwar"
         ]
       },
       {
@@ -4160,9 +3934,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "unlogische",
           "unterscheiden",
           "verschieden",
-          "zwar",
-          "${droppedWord}",
-          "${wordText}"
+          "zwar"
         ]
       },
       {
@@ -4183,9 +3955,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "unlogische",
           "unterscheiden",
           "verschieden",
-          "zwar",
-          "${droppedWord}",
-          "${wordText}"
+          "zwar"
         ]
       },
       {
@@ -4206,9 +3976,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "unlogische",
           "unterscheiden",
           "verschieden",
-          "zwar",
-          "${droppedWord}",
-          "${wordText}"
+          "zwar"
         ]
       },
       {
@@ -4229,9 +3997,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "unlogische",
           "unterscheiden",
           "verschieden",
-          "zwar",
-          "${droppedWord}",
-          "${wordText}"
+          "zwar"
         ]
       },
       {
@@ -4252,9 +4018,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "unlogische",
           "unterscheiden",
           "verschieden",
-          "zwar",
-          "${droppedWord}",
-          "${wordText}"
+          "zwar"
         ]
       },
       {
@@ -4275,9 +4039,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "unlogische",
           "unterscheiden",
           "verschieden",
-          "zwar",
-          "${droppedWord}",
-          "${wordText}"
+          "zwar"
         ]
       },
       {
@@ -4298,9 +4060,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "unlogische",
           "unterscheiden",
           "verschieden",
-          "zwar",
-          "${droppedWord}",
-          "${wordText}"
+          "zwar"
         ]
       },
       {
@@ -4321,9 +4081,7 @@ export const EXAM_TELC_B2: ExamExercise[] = [
           "unlogische",
           "unterscheiden",
           "verschieden",
-          "zwar",
-          "${droppedWord}",
-          "${wordText}"
+          "zwar"
         ]
       }
     ]

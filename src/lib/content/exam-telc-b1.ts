@@ -1505,9 +1505,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
       "pro",
       "während",
       "wäre",
-      "würden",
-      "${droppedWord}",
-      "${wordText}"
+      "würden"
     ],
     "pairs": [],
     "passage": "Sehr geehrte Herr Blanco Ruiz, ich schreibe Ihnen auf die Anzeige, die {{1}} in der heutigen Bild – Zeitung aufgefallen ist. Da ich {{2}} einige Monate beruflich nach Südamerika gehe, muss ich sehr schnell Spanisch lernen. Für einen richtigen Sprachkurs habe ich leider {{3}} Zeit. Aber Ihre Methode interessiert mich, vor allem die Sprachübungen {{4}} den CDs. Ich denke, damit könnte ich ganz {{5}}. Ich arbeite {{6}} liebsten mit meinem PC. Sie schreiben, {{7}} Ihr Programm besonders die alltägliche Kommunikation fördert. Wie lange wird es dauern, {{8}} ich mich meinen Geschäftsfreunden richtig unterhalten kann? Und wie viele Stunden {{9}} Woche sollte man mindestens üben? Können Sie mir eine Musterlektion schicken ich? {{10}} gerne ausprobieren, wie ihre Methode funktioniert. Mit freundlichen Grüßen Ihre KARIN ÜBERSCHÄR",
@@ -1526,9 +1524,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
       "pro",
       "während",
       "wäre",
-      "würden",
-      "${droppedWord}",
-      "${wordText}"
+      "würden"
     ],
     "gaps": [
       {
@@ -1549,9 +1545,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "pro",
           "während",
           "wäre",
-          "würden",
-          "${droppedWord}",
-          "${wordText}"
+          "würden"
         ]
       },
       {
@@ -1572,9 +1566,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "pro",
           "während",
           "wäre",
-          "würden",
-          "${droppedWord}",
-          "${wordText}"
+          "würden"
         ]
       },
       {
@@ -1595,9 +1587,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "pro",
           "während",
           "wäre",
-          "würden",
-          "${droppedWord}",
-          "${wordText}"
+          "würden"
         ]
       },
       {
@@ -1618,9 +1608,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "pro",
           "während",
           "wäre",
-          "würden",
-          "${droppedWord}",
-          "${wordText}"
+          "würden"
         ]
       },
       {
@@ -1641,9 +1629,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "pro",
           "während",
           "wäre",
-          "würden",
-          "${droppedWord}",
-          "${wordText}"
+          "würden"
         ]
       },
       {
@@ -1664,9 +1650,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "pro",
           "während",
           "wäre",
-          "würden",
-          "${droppedWord}",
-          "${wordText}"
+          "würden"
         ]
       },
       {
@@ -1687,9 +1671,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "pro",
           "während",
           "wäre",
-          "würden",
-          "${droppedWord}",
-          "${wordText}"
+          "würden"
         ]
       },
       {
@@ -1710,9 +1692,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "pro",
           "während",
           "wäre",
-          "würden",
-          "${droppedWord}",
-          "${wordText}"
+          "würden"
         ]
       },
       {
@@ -1733,9 +1713,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "pro",
           "während",
           "wäre",
-          "würden",
-          "${droppedWord}",
-          "${wordText}"
+          "würden"
         ]
       },
       {
@@ -1756,9 +1734,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "pro",
           "während",
           "wäre",
-          "würden",
-          "${droppedWord}",
-          "${wordText}"
+          "würden"
         ]
       }
     ]
@@ -1786,9 +1762,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
       "ÜBER",
       "VORAUS",
       "WENN",
-      "WOCHENENDE",
-      "${droppedWord}",
-      "${wordText}"
+      "WOCHENENDE"
     ],
     "pairs": [],
     "passage": "Sehr geehrter Herr Maier, ich habe Ihre Anzeige in der Zeitung vom letzten {{1}} gelesen und interessiere mich sehr {{2}} das Angebot. Ich {{3}} mit meiner Mutter und ihrer Schwester, die beide schon etwas ältere Damen sind, im September ein paar {{4}} Urlaub machen und benötige daher einige Informationen. Ist die Benutzung des Hallenbads und der Sauna im Preis enthalten oder {{5}} wir diese extra bezahlen? Weiters würde mich noch interessieren, {{6}} Pensionisten eine Ermäßigung bekommen. Sie schreiben darüber leider {{7}} in Ihrer Anzeige. {{8}} möchte ich wissen, ob man in der Gegend um das Hotel einfache Wanderungen unternehmen kann. Ich wäre Ihnen sehr dankbar, {{9}} Sie mir Bildmaterial zum Hotel und der Landschaft sowie eine Preisliste zukommen lassen könnten. Ich bedanke mich im {{10}} für die Informationen. Mit freundlichen Grüßen ANNELIESE SCHNEEBERGER",
@@ -1807,9 +1781,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
       "ÜBER",
       "VORAUS",
       "WENN",
-      "WOCHENENDE",
-      "${droppedWord}",
-      "${wordText}"
+      "WOCHENENDE"
     ],
     "gaps": [
       {
@@ -1830,9 +1802,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "ÜBER",
           "VORAUS",
           "WENN",
-          "WOCHENENDE",
-          "${droppedWord}",
-          "${wordText}"
+          "WOCHENENDE"
         ]
       },
       {
@@ -1853,9 +1823,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "ÜBER",
           "VORAUS",
           "WENN",
-          "WOCHENENDE",
-          "${droppedWord}",
-          "${wordText}"
+          "WOCHENENDE"
         ]
       },
       {
@@ -1876,9 +1844,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "ÜBER",
           "VORAUS",
           "WENN",
-          "WOCHENENDE",
-          "${droppedWord}",
-          "${wordText}"
+          "WOCHENENDE"
         ]
       },
       {
@@ -1899,9 +1865,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "ÜBER",
           "VORAUS",
           "WENN",
-          "WOCHENENDE",
-          "${droppedWord}",
-          "${wordText}"
+          "WOCHENENDE"
         ]
       },
       {
@@ -1922,9 +1886,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "ÜBER",
           "VORAUS",
           "WENN",
-          "WOCHENENDE",
-          "${droppedWord}",
-          "${wordText}"
+          "WOCHENENDE"
         ]
       },
       {
@@ -1945,9 +1907,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "ÜBER",
           "VORAUS",
           "WENN",
-          "WOCHENENDE",
-          "${droppedWord}",
-          "${wordText}"
+          "WOCHENENDE"
         ]
       },
       {
@@ -1968,9 +1928,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "ÜBER",
           "VORAUS",
           "WENN",
-          "WOCHENENDE",
-          "${droppedWord}",
-          "${wordText}"
+          "WOCHENENDE"
         ]
       },
       {
@@ -1991,9 +1949,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "ÜBER",
           "VORAUS",
           "WENN",
-          "WOCHENENDE",
-          "${droppedWord}",
-          "${wordText}"
+          "WOCHENENDE"
         ]
       },
       {
@@ -2014,9 +1970,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "ÜBER",
           "VORAUS",
           "WENN",
-          "WOCHENENDE",
-          "${droppedWord}",
-          "${wordText}"
+          "WOCHENENDE"
         ]
       },
       {
@@ -2037,9 +1991,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "ÜBER",
           "VORAUS",
           "WENN",
-          "WOCHENENDE",
-          "${droppedWord}",
-          "${wordText}"
+          "WOCHENENDE"
         ]
       }
     ]
@@ -2067,9 +2019,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
       "OB",
       "RICHTIGE",
       "WERDEN",
-      "ZU",
-      "${droppedWord}",
-      "${wordText}"
+      "ZU"
     ],
     "pairs": [],
     "passage": "Frankfurter Allianz Bahnstr. 99 Max Kuhne Tel.: 069-951670 Frankfurt, den .... Neuer Berater für Ihre Versicherungen Sehr geehrter Herr Frankel, wir möchten Sie darüber informieren, {{1}} Ihre Versicherungen künftig von Herrn Max Kuhne bearbeitet werden. Ihm wurden {{2}} Unterlangen übergeben. Alle Kundendaten {{3}} selbstverständlich streng vertraulich behandelt. Wenn Sie also {{4}} zu Ihren Versicherungen haben, wenden Sie sich in Zukunft bitte an Herrn Kuhne. Er berät und {{5}} Sie gern. Auch im Schadensfall {{6}} er Ihnen schnell und zuverlässig weiter. Im Übrigen möchten wir uns {{7}} einen Fehler in unserer letzten Beitragsrechnung entschuldigen. Leider ist {{8}} die Adresse von Herrn Kuhne nicht korrekt. Seine {{9}} Anschrift und Telefonnummer finden Sie auf diesem Brief oben rechts. Wir danken {{10}} für Ihr Vertrauen. Mit freundlichen Grüßen Ihre Frankfurter Allianz",
@@ -2088,9 +2038,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
       "OB",
       "RICHTIGE",
       "WERDEN",
-      "ZU",
-      "${droppedWord}",
-      "${wordText}"
+      "ZU"
     ],
     "gaps": [
       {
@@ -2111,9 +2059,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "OB",
           "RICHTIGE",
           "WERDEN",
-          "ZU",
-          "${droppedWord}",
-          "${wordText}"
+          "ZU"
         ]
       },
       {
@@ -2134,9 +2080,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "OB",
           "RICHTIGE",
           "WERDEN",
-          "ZU",
-          "${droppedWord}",
-          "${wordText}"
+          "ZU"
         ]
       },
       {
@@ -2157,9 +2101,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "OB",
           "RICHTIGE",
           "WERDEN",
-          "ZU",
-          "${droppedWord}",
-          "${wordText}"
+          "ZU"
         ]
       },
       {
@@ -2180,9 +2122,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "OB",
           "RICHTIGE",
           "WERDEN",
-          "ZU",
-          "${droppedWord}",
-          "${wordText}"
+          "ZU"
         ]
       },
       {
@@ -2203,9 +2143,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "OB",
           "RICHTIGE",
           "WERDEN",
-          "ZU",
-          "${droppedWord}",
-          "${wordText}"
+          "ZU"
         ]
       },
       {
@@ -2226,9 +2164,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "OB",
           "RICHTIGE",
           "WERDEN",
-          "ZU",
-          "${droppedWord}",
-          "${wordText}"
+          "ZU"
         ]
       },
       {
@@ -2249,9 +2185,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "OB",
           "RICHTIGE",
           "WERDEN",
-          "ZU",
-          "${droppedWord}",
-          "${wordText}"
+          "ZU"
         ]
       },
       {
@@ -2272,9 +2206,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "OB",
           "RICHTIGE",
           "WERDEN",
-          "ZU",
-          "${droppedWord}",
-          "${wordText}"
+          "ZU"
         ]
       },
       {
@@ -2295,9 +2227,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "OB",
           "RICHTIGE",
           "WERDEN",
-          "ZU",
-          "${droppedWord}",
-          "${wordText}"
+          "ZU"
         ]
       },
       {
@@ -2318,9 +2248,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "OB",
           "RICHTIGE",
           "WERDEN",
-          "ZU",
-          "${droppedWord}",
-          "${wordText}"
+          "ZU"
         ]
       }
     ]
@@ -2348,9 +2276,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
       "SONDERN",
       "VORNE",
       "WANN",
-      "WERDE",
-      "${droppedWord}",
-      "${wordText}"
+      "WERDE"
     ],
     "pairs": [],
     "passage": "Sehr geehrte Damen und Herren, vielen Dank für die {{1}} Zusendung der Informationsmaterialien. Ich interessiere mich sowohl für das Seminar Schutz gegen Computerviren als {{2}} für Einführung ins Internet. Dazu habe ich noch {{3}} Fragen: Ist die Veranstaltung Einführung ins Internet auch wirklich für Anfänger gedacht? Da ich noch gar keine Erfahrung habe, möchte ich mich {{4}} jetzt auf das Seminar vorbereiten. {{5}} Sie mir die Schulungsunterlagen bereits vorher schicken? Gibt es für die {{6}} Seminare noch genügend freie Plätze? Bis {{7}} muss ich mich spätestens anmelden? Und nun noch eine Frage zur Bezahlung: Auslandsüberweisungen sind sehr teuer, daher {{8}} ich wissen, {{9}} man im Voraus bezahlen muss oder auch vor Ort bar bezahlen kann. {{10}} ich auch eine Kursbestätigung am Ende des Seminars erhalten? Mit freundlichen Grüßen WILLY GATES",
@@ -2369,9 +2295,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
       "SONDERN",
       "VORNE",
       "WANN",
-      "WERDE",
-      "${droppedWord}",
-      "${wordText}"
+      "WERDE"
     ],
     "gaps": [
       {
@@ -2392,9 +2316,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "SONDERN",
           "VORNE",
           "WANN",
-          "WERDE",
-          "${droppedWord}",
-          "${wordText}"
+          "WERDE"
         ]
       },
       {
@@ -2415,9 +2337,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "SONDERN",
           "VORNE",
           "WANN",
-          "WERDE",
-          "${droppedWord}",
-          "${wordText}"
+          "WERDE"
         ]
       },
       {
@@ -2438,9 +2358,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "SONDERN",
           "VORNE",
           "WANN",
-          "WERDE",
-          "${droppedWord}",
-          "${wordText}"
+          "WERDE"
         ]
       },
       {
@@ -2461,9 +2379,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "SONDERN",
           "VORNE",
           "WANN",
-          "WERDE",
-          "${droppedWord}",
-          "${wordText}"
+          "WERDE"
         ]
       },
       {
@@ -2484,9 +2400,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "SONDERN",
           "VORNE",
           "WANN",
-          "WERDE",
-          "${droppedWord}",
-          "${wordText}"
+          "WERDE"
         ]
       },
       {
@@ -2507,9 +2421,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "SONDERN",
           "VORNE",
           "WANN",
-          "WERDE",
-          "${droppedWord}",
-          "${wordText}"
+          "WERDE"
         ]
       },
       {
@@ -2530,9 +2442,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "SONDERN",
           "VORNE",
           "WANN",
-          "WERDE",
-          "${droppedWord}",
-          "${wordText}"
+          "WERDE"
         ]
       },
       {
@@ -2553,9 +2463,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "SONDERN",
           "VORNE",
           "WANN",
-          "WERDE",
-          "${droppedWord}",
-          "${wordText}"
+          "WERDE"
         ]
       },
       {
@@ -2576,9 +2484,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "SONDERN",
           "VORNE",
           "WANN",
-          "WERDE",
-          "${droppedWord}",
-          "${wordText}"
+          "WERDE"
         ]
       },
       {
@@ -2599,9 +2505,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "SONDERN",
           "VORNE",
           "WANN",
-          "WERDE",
-          "${droppedWord}",
-          "${wordText}"
+          "WERDE"
         ]
       }
     ]
@@ -2629,9 +2533,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
       "OBWOHL",
       "UNTER",
       "VOR",
-      "WANN",
-      "${droppedWord}",
-      "${wordText}"
+      "WANN"
     ],
     "pairs": [],
     "passage": "Sehr geehrte Damen und Herren, mit großem Interesse und auch mit Hoffnung habe ich Ihre Anzeige gelesen. leider {{1}} ich Sie im Moment nicht anrufen, da das Telefon immer belegt ist. {{2}} schreibe ich Ihnen diese Mail. Mein Sohn Matthias macht {{3}} zwei Jahren sein Abitur, {{4}} seine Leistungen sind zurzeit nicht so gut. Ich mache {{5}} vor allem bei den Fächern Physik und Mathematik große Sorgen. Matthias ist nicht dumm, aber er ist etwas faul und denkt, er brauche {{6}} Fächer nicht. Fragen wollte ich nun, {{7}} es bei Ihnen auch individuelle Physik – und Mathematiknachhilfe gibt. Und {{8}} finden die Stunden statt? Am späten Nachmittag oder am frühen Abend? Mir wäre es jedenfalls sehr wichtig, dass Sie meinem Sohn helfen {{9}}. Ab 19.30 Uhr bin ich telefonisch {{10}} der Nummer 0428-1734 zu erreichen. Mit freundlichen Grüßen JOSEF MARTINELL",
@@ -2650,9 +2552,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
       "OBWOHL",
       "UNTER",
       "VOR",
-      "WANN",
-      "${droppedWord}",
-      "${wordText}"
+      "WANN"
     ],
     "gaps": [
       {
@@ -2673,9 +2573,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "OBWOHL",
           "UNTER",
           "VOR",
-          "WANN",
-          "${droppedWord}",
-          "${wordText}"
+          "WANN"
         ]
       },
       {
@@ -2696,9 +2594,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "OBWOHL",
           "UNTER",
           "VOR",
-          "WANN",
-          "${droppedWord}",
-          "${wordText}"
+          "WANN"
         ]
       },
       {
@@ -2719,9 +2615,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "OBWOHL",
           "UNTER",
           "VOR",
-          "WANN",
-          "${droppedWord}",
-          "${wordText}"
+          "WANN"
         ]
       },
       {
@@ -2742,9 +2636,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "OBWOHL",
           "UNTER",
           "VOR",
-          "WANN",
-          "${droppedWord}",
-          "${wordText}"
+          "WANN"
         ]
       },
       {
@@ -2765,9 +2657,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "OBWOHL",
           "UNTER",
           "VOR",
-          "WANN",
-          "${droppedWord}",
-          "${wordText}"
+          "WANN"
         ]
       },
       {
@@ -2788,9 +2678,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "OBWOHL",
           "UNTER",
           "VOR",
-          "WANN",
-          "${droppedWord}",
-          "${wordText}"
+          "WANN"
         ]
       },
       {
@@ -2811,9 +2699,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "OBWOHL",
           "UNTER",
           "VOR",
-          "WANN",
-          "${droppedWord}",
-          "${wordText}"
+          "WANN"
         ]
       },
       {
@@ -2834,9 +2720,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "OBWOHL",
           "UNTER",
           "VOR",
-          "WANN",
-          "${droppedWord}",
-          "${wordText}"
+          "WANN"
         ]
       },
       {
@@ -2857,9 +2741,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "OBWOHL",
           "UNTER",
           "VOR",
-          "WANN",
-          "${droppedWord}",
-          "${wordText}"
+          "WANN"
         ]
       },
       {
@@ -2880,9 +2762,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "OBWOHL",
           "UNTER",
           "VOR",
-          "WANN",
-          "${droppedWord}",
-          "${wordText}"
+          "WANN"
         ]
       }
     ]
@@ -2910,9 +2790,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
       "WEIL",
       "WENN",
       "WIE",
-      "ZU",
-      "${droppedWord}",
-      "${wordText}"
+      "ZU"
     ],
     "pairs": [],
     "passage": "Sehr geehrte Damen und Herren, ich habe Ihre Anzeige gelesen und interessiere mich sehr für Ihr Angebot. Ich komme aus Kroatien und möchte {{1}} den nächsten Sommerferien mein Deutsch verbessern. Klagenfurt ist für mich der ideale Ort, {{2}} das nicht so weit weg von meiner Heimatstadt Zagreb ist. Da kann ich an den Wochenenden vielleicht auch {{3}} nach Hause fahren. Nun aber zu meiner Person: Ich bin 24 Jahre alt und habe in der Schule vier Jahre lang Deutsch gelernt. Ich kann zwar {{4}} ganz gut schreiben, {{5}} ich habe immer wieder Probleme beim freien Sprechen. Im Herbst möchte ich in Hamburg ein Studium beginnen, für das ich ebenfalls gute Deutschkenntnisse brauche. Am liebsten wäre mir ein vierwöchiger Deutschkurs, {{6}} nur vormittags stattfindet, {{7}} ich nachmittags etwas anderes machen kann. Ich hätte den ganzen August bis Mitte September Zeit. {{8}} Sie einen passenden Kurs für mich haben, schicken Sie mir bitte sobald {{9}} möglich nähere Informationen zu. Mich interessieren auch Ihre Freizeitprogramme, Spezialkurse, die Unterkunftsmöglichkeiten und natürlich die Preise. Bitte empfehlen Sie mir auch ein {{10}} gute Webseiten über Klagenfurt und den Wörthersee. Vielen Dank im Voraus und freundliche Grüße Ivica Palic",
@@ -2931,9 +2809,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
       "WEIL",
       "WENN",
       "WIE",
-      "ZU",
-      "${droppedWord}",
-      "${wordText}"
+      "ZU"
     ],
     "gaps": [
       {
@@ -2954,9 +2830,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "WEIL",
           "WENN",
           "WIE",
-          "ZU",
-          "${droppedWord}",
-          "${wordText}"
+          "ZU"
         ]
       },
       {
@@ -2977,9 +2851,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "WEIL",
           "WENN",
           "WIE",
-          "ZU",
-          "${droppedWord}",
-          "${wordText}"
+          "ZU"
         ]
       },
       {
@@ -3000,9 +2872,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "WEIL",
           "WENN",
           "WIE",
-          "ZU",
-          "${droppedWord}",
-          "${wordText}"
+          "ZU"
         ]
       },
       {
@@ -3023,9 +2893,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "WEIL",
           "WENN",
           "WIE",
-          "ZU",
-          "${droppedWord}",
-          "${wordText}"
+          "ZU"
         ]
       },
       {
@@ -3046,9 +2914,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "WEIL",
           "WENN",
           "WIE",
-          "ZU",
-          "${droppedWord}",
-          "${wordText}"
+          "ZU"
         ]
       },
       {
@@ -3069,9 +2935,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "WEIL",
           "WENN",
           "WIE",
-          "ZU",
-          "${droppedWord}",
-          "${wordText}"
+          "ZU"
         ]
       },
       {
@@ -3092,9 +2956,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "WEIL",
           "WENN",
           "WIE",
-          "ZU",
-          "${droppedWord}",
-          "${wordText}"
+          "ZU"
         ]
       },
       {
@@ -3115,9 +2977,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "WEIL",
           "WENN",
           "WIE",
-          "ZU",
-          "${droppedWord}",
-          "${wordText}"
+          "ZU"
         ]
       },
       {
@@ -3138,9 +2998,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "WEIL",
           "WENN",
           "WIE",
-          "ZU",
-          "${droppedWord}",
-          "${wordText}"
+          "ZU"
         ]
       },
       {
@@ -3161,9 +3019,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "WEIL",
           "WENN",
           "WIE",
-          "ZU",
-          "${droppedWord}",
-          "${wordText}"
+          "ZU"
         ]
       }
     ]
@@ -3191,9 +3047,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
       "TÄGLICH",
       "WIE HOCH",
       "WIE VIEL",
-      "ZWAR",
-      "${droppedWord}",
-      "${wordText}"
+      "ZWAR"
     ],
     "pairs": [],
     "passage": "Sehr geehrter Herr Gauberger, ihre Anzeige habe ich mit Interesse gelesen. Ich bin {{1}} lange Rentner und bekomme monatlich nur wenig Geld. Wenn ich die Möglichkeit {{2}} , noch ein wenig zu verdienen, würde mir das sehr helfen. Ich bin {{3}} schon 72 Jahre alt, aber noch bei sehr guter Gesundheit. Daher denke ich, dass ich die Arbeit {{4}} Probleme machen kann. Seit über dreißig Jahren treibe ich {{5}} Tag Sport. Auch das frühe Aufstehen macht mir gar {{6}} aus. Einige Fragen hätte ich trotzdem noch: Müssen die Zeitungen {{7}} ausgetragen werden und wie lange ist man unterwegs? Außerdem möchte ich natürlich wissen, {{8}} man verdient. Ich bin gerne bereit, mich bei {{9}} vorzustellen, damit Sie sehen können, dass ich für die Tätigkeit {{10}} bin. Mit freundlichen Grüßen EBERHARD SPITZWEG",
@@ -3212,9 +3066,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
       "TÄGLICH",
       "WIE HOCH",
       "WIE VIEL",
-      "ZWAR",
-      "${droppedWord}",
-      "${wordText}"
+      "ZWAR"
     ],
     "gaps": [
       {
@@ -3235,9 +3087,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "TÄGLICH",
           "WIE HOCH",
           "WIE VIEL",
-          "ZWAR",
-          "${droppedWord}",
-          "${wordText}"
+          "ZWAR"
         ]
       },
       {
@@ -3258,9 +3108,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "TÄGLICH",
           "WIE HOCH",
           "WIE VIEL",
-          "ZWAR",
-          "${droppedWord}",
-          "${wordText}"
+          "ZWAR"
         ]
       },
       {
@@ -3281,9 +3129,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "TÄGLICH",
           "WIE HOCH",
           "WIE VIEL",
-          "ZWAR",
-          "${droppedWord}",
-          "${wordText}"
+          "ZWAR"
         ]
       },
       {
@@ -3304,9 +3150,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "TÄGLICH",
           "WIE HOCH",
           "WIE VIEL",
-          "ZWAR",
-          "${droppedWord}",
-          "${wordText}"
+          "ZWAR"
         ]
       },
       {
@@ -3327,9 +3171,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "TÄGLICH",
           "WIE HOCH",
           "WIE VIEL",
-          "ZWAR",
-          "${droppedWord}",
-          "${wordText}"
+          "ZWAR"
         ]
       },
       {
@@ -3350,9 +3192,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "TÄGLICH",
           "WIE HOCH",
           "WIE VIEL",
-          "ZWAR",
-          "${droppedWord}",
-          "${wordText}"
+          "ZWAR"
         ]
       },
       {
@@ -3373,9 +3213,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "TÄGLICH",
           "WIE HOCH",
           "WIE VIEL",
-          "ZWAR",
-          "${droppedWord}",
-          "${wordText}"
+          "ZWAR"
         ]
       },
       {
@@ -3396,9 +3234,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "TÄGLICH",
           "WIE HOCH",
           "WIE VIEL",
-          "ZWAR",
-          "${droppedWord}",
-          "${wordText}"
+          "ZWAR"
         ]
       },
       {
@@ -3419,9 +3255,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "TÄGLICH",
           "WIE HOCH",
           "WIE VIEL",
-          "ZWAR",
-          "${droppedWord}",
-          "${wordText}"
+          "ZWAR"
         ]
       },
       {
@@ -3442,9 +3276,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "TÄGLICH",
           "WIE HOCH",
           "WIE VIEL",
-          "ZWAR",
-          "${droppedWord}",
-          "${wordText}"
+          "ZWAR"
         ]
       }
     ]
@@ -3472,9 +3304,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
       "UNBEKANNT",
       "VOR",
       "WÜRDE",
-      "ZWISCHEN",
-      "${droppedWord}",
-      "${wordText}"
+      "ZWISCHEN"
     ],
     "pairs": [],
     "passage": "Sehr geehrte Frau Bauer, ich habe Ihre Anzeige in der Neuen Presse gelesen und bin an dem Filmprojekt sehr {{1}}. ich war schon {{2}} für einige Wochen im Ausland. Vor allem im Sommer habe ich während meines Studiums viele Sprachkurse besucht. Länger als ein halbes Jahr habe ich {{3}} einmal im Ausland gelebt, und zwar {{4}} zwei Jahren. Mein Chef machte mir damals das Angebot, acht Monate im Tochterunternehmen der Firma in Portugal zu {{5}} , was ich dann auch getan habe. Am Anfang war es sehr schwer, weil ich niemanden kannte und alles sehr neu und {{6}} für mich war. Eigentlich wollte ich so schnell wie {{7}} wieder zurück. Aber dann habe ich nette Kollegen kennen gelernt, die mir auch über die Kultur und das Leben in Portugal {{8}} haben. Ich glaube, dass meine Erfahrungen für viele andere Menschen, die auch im Ausland leben wollen, sehr interessant sein könnten, und ich {{9}} gerne auch vor der Kamera darüber erzählen. {{10}} Sie noch weitere Fragen an mich haben, können Sie mich gerne anrufen, meine Telefonnummer ist 07612/64788980. Ich würde mich freuen, bald von Ihnen zu hören. Mit freundlichen Grüßen KAROLINE POINTNER",
@@ -3493,9 +3323,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
       "UNBEKANNT",
       "VOR",
       "WÜRDE",
-      "ZWISCHEN",
-      "${droppedWord}",
-      "${wordText}"
+      "ZWISCHEN"
     ],
     "gaps": [
       {
@@ -3516,9 +3344,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "UNBEKANNT",
           "VOR",
           "WÜRDE",
-          "ZWISCHEN",
-          "${droppedWord}",
-          "${wordText}"
+          "ZWISCHEN"
         ]
       },
       {
@@ -3539,9 +3365,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "UNBEKANNT",
           "VOR",
           "WÜRDE",
-          "ZWISCHEN",
-          "${droppedWord}",
-          "${wordText}"
+          "ZWISCHEN"
         ]
       },
       {
@@ -3562,9 +3386,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "UNBEKANNT",
           "VOR",
           "WÜRDE",
-          "ZWISCHEN",
-          "${droppedWord}",
-          "${wordText}"
+          "ZWISCHEN"
         ]
       },
       {
@@ -3585,9 +3407,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "UNBEKANNT",
           "VOR",
           "WÜRDE",
-          "ZWISCHEN",
-          "${droppedWord}",
-          "${wordText}"
+          "ZWISCHEN"
         ]
       },
       {
@@ -3608,9 +3428,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "UNBEKANNT",
           "VOR",
           "WÜRDE",
-          "ZWISCHEN",
-          "${droppedWord}",
-          "${wordText}"
+          "ZWISCHEN"
         ]
       },
       {
@@ -3631,9 +3449,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "UNBEKANNT",
           "VOR",
           "WÜRDE",
-          "ZWISCHEN",
-          "${droppedWord}",
-          "${wordText}"
+          "ZWISCHEN"
         ]
       },
       {
@@ -3654,9 +3470,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "UNBEKANNT",
           "VOR",
           "WÜRDE",
-          "ZWISCHEN",
-          "${droppedWord}",
-          "${wordText}"
+          "ZWISCHEN"
         ]
       },
       {
@@ -3677,9 +3491,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "UNBEKANNT",
           "VOR",
           "WÜRDE",
-          "ZWISCHEN",
-          "${droppedWord}",
-          "${wordText}"
+          "ZWISCHEN"
         ]
       },
       {
@@ -3700,9 +3512,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "UNBEKANNT",
           "VOR",
           "WÜRDE",
-          "ZWISCHEN",
-          "${droppedWord}",
-          "${wordText}"
+          "ZWISCHEN"
         ]
       },
       {
@@ -3723,9 +3533,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "UNBEKANNT",
           "VOR",
           "WÜRDE",
-          "ZWISCHEN",
-          "${droppedWord}",
-          "${wordText}"
+          "ZWISCHEN"
         ]
       }
     ]
@@ -3753,9 +3561,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
       "UNTER",
       "WÄRE",
       "WELCHE",
-      "WENN",
-      "${droppedWord}",
-      "${wordText}"
+      "WENN"
     ],
     "pairs": [],
     "passage": "Sehr geehrte Damen und Herren, seit längerem plane ich eine Wanderreise in die Sahara-Länder. Nun ist mir beim Lesen der Zeitschrift Berge die Anzeige von Geo-Tours aufgefallen, denn {{1}} steht, dass Sie auf Erlebnisreisen in Wüstenregionen spezialisiert sind. Vielleicht haben Sie das richtige Angebot für uns - {{2}} für mich und meine 17-Jährige Tochter. Unsere Vorstellungen sind im Einzelnen diese: Zuerst eine Wanderreise, etwa 10 Tage, möglichst leichte Tageswanderungen(ca. 4 – 5 Stunden), und {{3}} ein Erholungsurlaub am Meer. Bieten Sie solche Kombinationen an? Und {{4}} ja, zu welchem Preis? Zur Wanderreise {{5}} ich noch folgende Fragen: Wird das Gepäck von einem Übernachtungsort zum nächsten transportiert? Schläft man immer {{6}} freiem Himmel? Ich {{7}} auch wissen, wie die Reisegruppen zusammengesetzt sind, {{8}} Sprache die Reiseleiterin/ der Reiseleiter spricht und ob ein Arzt {{9}} ist. Ich freue mich auf Ihr {{10}}. Mit freundlichen Grüßen ANNETTE LUCHSINGER",
@@ -3774,9 +3580,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
       "UNTER",
       "WÄRE",
       "WELCHE",
-      "WENN",
-      "${droppedWord}",
-      "${wordText}"
+      "WENN"
     ],
     "gaps": [
       {
@@ -3797,9 +3601,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "UNTER",
           "WÄRE",
           "WELCHE",
-          "WENN",
-          "${droppedWord}",
-          "${wordText}"
+          "WENN"
         ]
       },
       {
@@ -3820,9 +3622,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "UNTER",
           "WÄRE",
           "WELCHE",
-          "WENN",
-          "${droppedWord}",
-          "${wordText}"
+          "WENN"
         ]
       },
       {
@@ -3843,9 +3643,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "UNTER",
           "WÄRE",
           "WELCHE",
-          "WENN",
-          "${droppedWord}",
-          "${wordText}"
+          "WENN"
         ]
       },
       {
@@ -3866,9 +3664,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "UNTER",
           "WÄRE",
           "WELCHE",
-          "WENN",
-          "${droppedWord}",
-          "${wordText}"
+          "WENN"
         ]
       },
       {
@@ -3889,9 +3685,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "UNTER",
           "WÄRE",
           "WELCHE",
-          "WENN",
-          "${droppedWord}",
-          "${wordText}"
+          "WENN"
         ]
       },
       {
@@ -3912,9 +3706,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "UNTER",
           "WÄRE",
           "WELCHE",
-          "WENN",
-          "${droppedWord}",
-          "${wordText}"
+          "WENN"
         ]
       },
       {
@@ -3935,9 +3727,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "UNTER",
           "WÄRE",
           "WELCHE",
-          "WENN",
-          "${droppedWord}",
-          "${wordText}"
+          "WENN"
         ]
       },
       {
@@ -3958,9 +3748,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "UNTER",
           "WÄRE",
           "WELCHE",
-          "WENN",
-          "${droppedWord}",
-          "${wordText}"
+          "WENN"
         ]
       },
       {
@@ -3981,9 +3769,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "UNTER",
           "WÄRE",
           "WELCHE",
-          "WENN",
-          "${droppedWord}",
-          "${wordText}"
+          "WENN"
         ]
       },
       {
@@ -4004,9 +3790,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "UNTER",
           "WÄRE",
           "WELCHE",
-          "WENN",
-          "${droppedWord}",
-          "${wordText}"
+          "WENN"
         ]
       }
     ]
@@ -4034,9 +3818,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
       "TECHNISCH",
       "ÜBER",
       "UNSER",
-      "WENN",
-      "${droppedWord}",
-      "${wordText}"
+      "WENN"
     ],
     "pairs": [],
     "passage": "Das Lotterie – Systemspiel Otto – Suhr- Allee 100. D- 10120 Berlin Sehr geehrte Lottospieler, wer möchte nicht auch {{1}} bei sechs Richtigen im Lotto dabei sein? Vertrauen Sie beim Lottospiel nicht {{2}} auf das Glück, denn Sie {{3}} Ihre Chancen selbst strak verbessern, {{4}} Sie mit unserem Lotterie-System spielen – und das für nur 5 Euro in der Woche! {{5}} allein zu spielen, spielen Sie mit uns in einer starken Spielergemeinschaft. Dadurch erhöhen sich {{6}} automatisch Ihre Chancen! Und was Sie gewinnen können? {{7}} unserem Quantum-System spielen Sie mit einer Chance auf einen Gewinn von 1 Million Euro! Alle Gewinne erhalten Sie umgehend und ungekürzt zu 100%- das {{8}} wir Ihnen! Davon habe ich mich selbst überzeugt! Spielen Sie mit uns das Quantum – System: {{9}} 700 Quantum – Systemspielgruppen haben zusammen schon über sieben Millionen Euro gewonnen. Herzliche Grüße Ihre SABINE MEIER-PÜTZ PS: Als besondere Gewinnchance erhalten Sie heute das. Vier-Richtige-Gratisspiel. {{10}} Sie hier unbedingt mit und gewinnen Sie! Ich drücke Ihnen die Daumen……",
@@ -4055,9 +3837,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
       "TECHNISCH",
       "ÜBER",
       "UNSER",
-      "WENN",
-      "${droppedWord}",
-      "${wordText}"
+      "WENN"
     ],
     "gaps": [
       {
@@ -4078,9 +3858,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "TECHNISCH",
           "ÜBER",
           "UNSER",
-          "WENN",
-          "${droppedWord}",
-          "${wordText}"
+          "WENN"
         ]
       },
       {
@@ -4101,9 +3879,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "TECHNISCH",
           "ÜBER",
           "UNSER",
-          "WENN",
-          "${droppedWord}",
-          "${wordText}"
+          "WENN"
         ]
       },
       {
@@ -4124,9 +3900,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "TECHNISCH",
           "ÜBER",
           "UNSER",
-          "WENN",
-          "${droppedWord}",
-          "${wordText}"
+          "WENN"
         ]
       },
       {
@@ -4147,9 +3921,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "TECHNISCH",
           "ÜBER",
           "UNSER",
-          "WENN",
-          "${droppedWord}",
-          "${wordText}"
+          "WENN"
         ]
       },
       {
@@ -4170,9 +3942,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "TECHNISCH",
           "ÜBER",
           "UNSER",
-          "WENN",
-          "${droppedWord}",
-          "${wordText}"
+          "WENN"
         ]
       },
       {
@@ -4193,9 +3963,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "TECHNISCH",
           "ÜBER",
           "UNSER",
-          "WENN",
-          "${droppedWord}",
-          "${wordText}"
+          "WENN"
         ]
       },
       {
@@ -4216,9 +3984,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "TECHNISCH",
           "ÜBER",
           "UNSER",
-          "WENN",
-          "${droppedWord}",
-          "${wordText}"
+          "WENN"
         ]
       },
       {
@@ -4239,9 +4005,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "TECHNISCH",
           "ÜBER",
           "UNSER",
-          "WENN",
-          "${droppedWord}",
-          "${wordText}"
+          "WENN"
         ]
       },
       {
@@ -4262,9 +4026,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "TECHNISCH",
           "ÜBER",
           "UNSER",
-          "WENN",
-          "${droppedWord}",
-          "${wordText}"
+          "WENN"
         ]
       },
       {
@@ -4285,9 +4047,7 @@ export const EXAM_TELC_B1: ExamExercise[] = [
           "TECHNISCH",
           "ÜBER",
           "UNSER",
-          "WENN",
-          "${droppedWord}",
-          "${wordText}"
+          "WENN"
         ]
       }
     ]

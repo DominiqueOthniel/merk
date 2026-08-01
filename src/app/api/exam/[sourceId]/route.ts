@@ -75,6 +75,12 @@ export async function GET(_req: Request, ctx: Ctx) {
     items: dueFirst.map((card) => {
       const gapMatch = card.sourceRef?.match(/:(\d+)$/);
       const gapN = gapMatch ? Number(gapMatch[1]) : null;
+      const rawOptions = card.options
+        ? (JSON.parse(card.options) as string[])
+        : exercise.options;
+      const options = rawOptions.filter(
+        (w) => w && !w.includes("${") && !/droppedWord|wordText/i.test(w)
+      );
       return {
         progressId: card.progress[0]?.id,
         cardId: card.id,
@@ -82,9 +88,9 @@ export async function GET(_req: Request, ctx: Ctx) {
         gapN,
         passage: card.context,
         answer: card.answer,
-        options: card.options
-          ? (JSON.parse(card.options) as string[])
-          : exercise.options,
+        options: options.includes(card.answer)
+          ? options
+          : [...options, card.answer],
         due: (card.progress[0]?.nextReviewAt ?? now) <= now,
       };
     }),

@@ -173,10 +173,21 @@ function extractClozeMcq(html, meta, level) {
   };
 }
 
+function isRealWord(word) {
+  return (
+    typeof word === "string" &&
+    word.trim().length > 0 &&
+    !word.includes("${") &&
+    !/droppedWord|wordText/i.test(word)
+  );
+}
+
 function extractClozeBank(html, meta, level) {
+  // Scripts contain template strings like data-word="${droppedWord}"; strip them first.
+  const page = html.replace(/<script\b[\s\S]*?<\/script>/gi, " ");
   const quizText =
-    html.match(/<div class="quiz-text">([\s\S]*?)<\/div>\s*<div class="word-bank-container">/)?.[1] ||
-    html.match(/<div class="quiz-text">([\s\S]*?)<\/div>/)?.[1] ||
+    page.match(/<div class="quiz-text">([\s\S]*?)<\/div>\s*<div class="word-bank-container">/)?.[1] ||
+    page.match(/<div class="quiz-text">([\s\S]*?)<\/div>/)?.[1] ||
     "";
   if (!quizText.includes("data-answer")) return null;
 
@@ -193,17 +204,23 @@ function extractClozeBank(html, meta, level) {
   const passage = decodeHtml(marked);
   if (gaps.length === 0) return null;
 
+  const bankHtml =
+    page.match(/<div class="word-bank">([\s\S]*?)<\/div>/)?.[1] ||
+    page.match(/<div class="word-bank-container">([\s\S]*?)<\/div>/)?.[1] ||
+    "";
   const bank = [
     ...new Set(
-      [...html.matchAll(/data-word="([^"]+)"/gi)].map((m) => m[1]).filter(Boolean)
+      [...bankHtml.matchAll(/data-word="([^"]+)"/gi)]
+        .map((m) => m[1])
+        .filter(isRealWord)
     ),
   ];
   if (bank.length === 0) {
-    bank.push(...gaps.map((g) => g.answer));
+    bank.push(...gaps.map((g) => g.answer).filter(isRealWord));
   }
 
   for (const gap of gaps) {
-    gap.choices = bank;
+    gap.choices = bank.includes(gap.answer) ? bank : [...bank, gap.answer];
   }
 
   return {

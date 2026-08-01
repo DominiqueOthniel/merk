@@ -106,9 +106,12 @@ export function ExamSession({ sourceId }: { sourceId: string }) {
 
   const choices = useMemo(() => {
     if (!current) return [];
-    const pool = current.options.includes(current.answer)
-      ? current.options
-      : [...current.options, current.answer];
+    const real = current.options.filter(
+      (w) => w && !w.includes("${") && !/droppedWord|wordText/i.test(w)
+    );
+    const pool = real.includes(current.answer)
+      ? real
+      : [...real, current.answer];
     if (format === "CLOZE_MCQ") return shuffle(pool);
     if (format === "CLOZE_BANK") return shuffle(pool);
     return shuffle(pool).slice(0, Math.min(8, pool.length));
