@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { RecordingLive } from "@/components/ui/recording-live";
 import { speakMaxSeconds } from "@/lib/content/exam-types";
 
 type Feedback = {
@@ -48,10 +49,13 @@ export function ExamSpeakPanel({
   const [analyzing, setAnalyzing] = useState(false);
   const [feedback, setFeedback] = useState<Feedback | null>(null);
   const [feedbackError, setFeedbackError] = useState<string | null>(null);
+  const [levels, setLevels] = useState<number[]>([0.2, 0.2, 0.2, 0.2, 0.2]);
   const mediaRef = useRef<MediaRecorder | null>(null);
   const chunks = useRef<Blob[]>([]);
   const timerRef = useRef<number | null>(null);
   const streamRef = useRef<MediaStream | null>(null);
+  const rafRef = useRef<number | null>(null);
+  const audioCtxRef = useRef<AudioContext | null>(null);
 
   useEffect(() => {
     if (typeof window === "undefined" || !navigator.mediaDevices) {
@@ -83,8 +87,16 @@ export function ExamSpeakPanel({
       window.clearInterval(timerRef.current);
       timerRef.current = null;
     }
+    if (rafRef.current) {
+      cancelAnimationFrame(rafRef.current);
+      rafRef.current = null;
+    }
     streamRef.current?.getTracks().forEach((t) => t.stop());
     streamRef.current = null;
+    if (audioCtxRef.current) {
+      void audioCtxRef.current.close().catch(() => undefined);
+      audioCtxRef.current = null;
+    }
     if (mediaRef.current && mediaRef.current.state !== "inactive") {
       try {
         mediaRef.current.stop();
@@ -95,12 +107,42 @@ export function ExamSpeakPanel({
     mediaRef.current = null;
   }
 
+  function startMeter(stream: MediaStream) {
+    try {
+      const ctx = new AudioContext();
+      audioCtxRef.current = ctx;
+      const source = ctx.createMediaStreamSource(stream);
+      const analyser = ctx.createAnalyser();
+      analyser.fftSize = 256;
+      source.connect(analyser);
+      const data = new Uint8Array(analyser.frequencyBinCount);
+      const tick = () => {
+        analyser.getByteFrequencyData(data);
+        const bands = 5;
+        const slice = Math.floor(data.length / bands);
+        const next: number[] = [];
+        for (let i = 0; i < bands; i += 1) {
+          let sum = 0;
+          for (let j = 0; j < slice; j += 1) sum += data[i * slice + j] || 0;
+          next.push(Math.max(0.15, Math.min(1, sum / slice / 140)));
+        }
+        setLevels(next);
+        rafRef.current = requestAnimationFrame(tick);
+      };
+      rafRef.current = requestAnimationFrame(tick);
+    } catch {
+      setLevels([0.4, 0.7, 0.55, 0.85, 0.5]);
+    }
+  }
+
   async function start() {
     if (!supported || recording) return;
     setFeedback(null);
     setFeedbackError(null);
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      const stream = await navigator.mediaDevices.getUserMedia({
+        audio: { echoCancellation: true, noiseSuppression: true },
+      });
       streamRef.current = stream;
       const mime = MediaRecorder.isTypeSupported("audio/webm;codecs=opus")
         ? "audio/webm;codecs=opus"
@@ -123,6 +165,14 @@ export function ExamSpeakPanel({
           if (prev) URL.revokeObjectURL(prev);
           return URL.createObjectURL(blob);
         });
+        if (rafRef.current) {
+          cancelAnimationFrame(rafRef.current);
+          rafRef.current = null;
+        }
+        if (audioCtxRef.current) {
+          void audioCtxRef.current.close().catch(() => undefined);
+          audioCtxRef.current = null;
+        }
         stream.getTracks().forEach((t) => t.stop());
         streamRef.current = null;
       };
@@ -130,6 +180,7 @@ export function ExamSpeakPanel({
       recorder.start(250);
       setRecording(true);
       setElapsed(0);
+      startMeter(stream);
       timerRef.current = window.setInterval(() => {
         setElapsed((n) => {
           const next = n + 1;
@@ -148,6 +199,10 @@ export function ExamSpeakPanel({
     if (timerRef.current) {
       window.clearInterval(timerRef.current);
       timerRef.current = null;
+    }
+    if (rafRef.current) {
+      cancelAnimationFrame(rafRef.current);
+      rafRef.current = null;
     }
     if (mediaRef.current && mediaRef.current.state !== "inactive") {
       mediaRef.current.stop();
@@ -217,13 +272,19 @@ export function ExamSpeakPanel({
         className="w-full rounded-[1.25rem] border border-[var(--line)] bg-white/90 px-4 py-3 text-[1.02rem] outline-none focus:border-[var(--forest)] focus:ring-4 focus:ring-[rgba(26,107,72,0.12)]"
       />
 
-      <div className="rounded-[1.4rem] border border-dashed border-[var(--line)] bg-white/70 px-4 py-4">
+      <div
+        className={`rounded-[1.4rem] border px-4 py-4 ${
+          recording
+            ? "border-[var(--danger)] bg-[rgba(220,80,80,0.06)]"
+            : "border-dashed border-[var(--line)] bg-white/70"
+        }`}
+      >
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
             <p className="font-semibold text-[var(--forest-deep)]">Micro</p>
             <p className="mt-1 text-[0.92rem] text-[var(--ink-soft)]">
               {recording
-                ? `Enregistrement... ${mm}:${ss} restantes`
+                ? `${mm}:${ss} restantes`
                 : audioBlob
                   ? `Prise enregistree (${elapsed || "?"} s). Tu peux reecouter ou recommencer.`
                   : `Temps limite : ${Math.round(maxSeconds / 60)} min.`}
@@ -246,13 +307,19 @@ export function ExamSpeakPanel({
             )}
           </div>
         </div>
+        {recording ? (
+          <RecordingLive
+            levels={levels}
+            label={`Enregistrement... ${mm}:${ss} restantes`}
+          />
+        ) : null}
         {!supported ? (
           <p className="mt-3 text-[0.95rem] text-[var(--warn)]">
             Micro non disponible sur cet appareil.
           </p>
         ) : null}
-        {audioUrl ? (
-          <audio className="mt-4 w-full" controls src={audioUrl} />
+        {audioUrl && !recording ? (
+          <audio className="mt-4 w-full" controls src={audioUrl} preload="metadata" />
         ) : null}
       </div>
 

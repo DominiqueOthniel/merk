@@ -602,6 +602,37 @@ button.surface:hover {
   }
 }
 
+@keyframes recPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.35);
+    opacity: 0.55;
+  }
+}
+
+@keyframes recWave {
+  0%,
+  100% {
+    transform: scaleY(0.35);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+.rec-dot {
+  animation: recPulse 1s ease-in-out infinite;
+}
+
+.rec-wave-bar {
+  transform-origin: center bottom;
+  animation: recWave 0.9s ease-in-out infinite;
+}
+
 .progress-pulse {
   animation: pulseBar 2.4s ease-in-out infinite;
 }
