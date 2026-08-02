@@ -82,6 +82,8 @@ html[data-exam="goethe"] {
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 html,
@@ -246,6 +248,35 @@ a,
   font-weight: 700;
   letter-spacing: -0.055em;
   line-height: 0.92;
+}
+
+.exam-listen__player {
+  display: block;
+  width: 100%;
+  min-height: 2.75rem;
+  border-radius: 999px;
+}
+
+.exam-passage {
+  max-height: min(42vh, 22rem);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  border-radius: 1.25rem;
+  background: color-mix(in srgb, var(--forest-soft) 45%, transparent);
+  padding: 1rem;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+@media (min-width: 1024px) {
+  .exam-passage {
+    max-height: min(68vh, 36rem);
+    padding: 1.25rem;
+    font-size: 1.08rem;
+  }
 }
 
 .display {

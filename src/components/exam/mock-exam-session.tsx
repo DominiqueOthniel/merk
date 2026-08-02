@@ -292,7 +292,7 @@ export function MockExamSession({ level }: { level: string }) {
         </div>
 
         {current.passage && current.skill !== "horen" ? (
-          <div className="mt-4 max-h-[36vh] overflow-y-auto rounded-[1.25rem] bg-[var(--forest-soft)]/45 p-4 text-[1.02rem] leading-relaxed whitespace-pre-wrap">
+          <div className="exam-passage mt-4">
             {current.passage}
           </div>
         ) : null}

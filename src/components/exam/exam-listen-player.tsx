@@ -2,7 +2,12 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { playAudioUrl, proxyAudioUrl } from "@/lib/media/play-audio";
+import {
+  applyInlinePlayback,
+  isLikelyIOS,
+  playDomAudio,
+  proxyAudioUrl,
+} from "@/lib/media/play-audio";
 
 type Props = {
   script: string;
@@ -23,44 +28,61 @@ export function ExamListenPlayer({
   );
   const [error, setError] = useState<string | null>(null);
   const [mode, setMode] = useState<"source" | "tts" | null>(null);
-  const [fallbackSrc, setFallbackSrc] = useState<string | null>(null);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [hint, setHint] = useState<string | null>(null);
+  const playerRef = useRef<HTMLAudioElement | null>(null);
   const objectUrlRef = useRef<string | null>(null);
-  const utterRef = useRef<SpeechSynthesisUtterance | null>(null);
+  const countedPlayRef = useRef(false);
 
   useEffect(() => {
-    stopAll();
+    stopPlayback();
     setPlaysLeft(maxPlays);
     setStatus("idle");
     setError(null);
     setMode(null);
-    setFallbackSrc(null);
+    setHint(null);
+    countedPlayRef.current = false;
+    if (playerRef.current) {
+      applyInlinePlayback(playerRef.current);
+      playerRef.current.removeAttribute("src");
+      try {
+        playerRef.current.load();
+      } catch {
+        /* ignore */
+      }
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [audioUrl, script, title, maxPlays]);
 
   useEffect(() => {
     return () => {
-      stopAll();
+      stopPlayback();
       if (objectUrlRef.current) URL.revokeObjectURL(objectUrlRef.current);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  function stopAll() {
-    if (audioRef.current) {
-      audioRef.current.pause();
+  function stopPlayback() {
+    const el = playerRef.current;
+    if (el) {
       try {
-        audioRef.current.removeAttribute("src");
-        audioRef.current.load();
+        el.pause();
       } catch {
         /* ignore */
       }
-      audioRef.current = null;
     }
     if (typeof window !== "undefined" && "speechSynthesis" in window) {
       window.speechSynthesis.cancel();
     }
-    utterRef.current = null;
+  }
+
+  function markPlayStarted(nextMode: "source" | "tts") {
+    if (!countedPlayRef.current) {
+      countedPlayRef.current = true;
+      setPlaysLeft((n) => Math.max(0, n - 1));
+    }
+    setMode(nextMode);
+    setStatus("playing");
+    setError(null);
   }
 
   function pickGermanVoice(): SpeechSynthesisVoice | null {
@@ -82,7 +104,6 @@ export function ExamListenPlayer({
       setStatus("idle");
       return;
     }
-
     const speak = () => {
       const utter = new SpeechSynthesisUtterance(text);
       utter.lang = "de-DE";
@@ -91,109 +112,108 @@ export function ExamListenPlayer({
       if (voice) utter.voice = voice;
       utter.onend = () => setStatus("done");
       utter.onerror = () => {
-        setError("Lecture interrompue. Reessaie avec le bouton Ecouter.");
+        setError("Lecture interrompue. Utilise le lecteur ci-dessous.");
         setStatus("idle");
       };
-      utterRef.current = utter;
-      setMode("tts");
-      setStatus("playing");
+      markPlayStarted("tts");
       window.speechSynthesis.speak(utter);
     };
-
-    const voices = window.speechSynthesis.getVoices();
-    if (!voices.length) {
+    if (!window.speechSynthesis.getVoices().length) {
       window.speechSynthesis.onvoiceschanged = () => speak();
       window.speechSynthesis.getVoices();
     }
     speak();
   }
 
-  async function playFromUrl(url: string, nextMode: "source" | "tts"): Promise<boolean> {
-    try {
-      const audio = await playAudioUrl(url, {
-        onEnded: () => setStatus("done"),
-      });
-      audioRef.current = audio;
-      setMode(nextMode);
-      setPlaysLeft((n) => n - 1);
-      setStatus("playing");
-      setFallbackSrc(null);
-      return true;
-    } catch {
-      setFallbackSrc(url);
-      return false;
-    }
+  async function playOnElement(url: string, nextMode: "source" | "tts") {
+    const el = playerRef.current;
+    if (!el) throw new Error("no player");
+    await playDomAudio(el, url);
+    markPlayStarted(nextMode);
   }
 
-  async function playTts(text: string): Promise<boolean> {
-    if (!text.trim()) return false;
-
+  async function prepareTtsBlob(text: string): Promise<string | null> {
     const res = await fetch("/api/exam/tts", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ text }),
     });
-
     const contentType = res.headers.get("content-type") || "";
-
     if (res.ok && contentType.includes("audio")) {
       const blob = await res.blob();
       if (objectUrlRef.current) URL.revokeObjectURL(objectUrlRef.current);
       const url = URL.createObjectURL(blob);
       objectUrlRef.current = url;
-      const ok = await playFromUrl(url, "tts");
-      if (ok) return true;
-      // iOS a parfois besoin d un 2e tap sur le lecteur natif
-      setFallbackSrc(url);
-      setMode("tts");
-      setError("Tape lecture sur le lecteur audio ci-dessous (requis sur certains mobiles).");
-      return false;
+      return url;
     }
-
     const data = (await res.json()) as {
       mode?: string;
       text?: string;
       error?: string;
     };
     if (data.mode === "browser" && data.text) {
-      setPlaysLeft((n) => n - 1);
       playBrowser(data.text);
-      return true;
+      return null;
     }
-
-    setError(data.error || "Audio indisponible");
-    return false;
+    throw new Error(data.error || "Audio indisponible");
   }
 
   async function play() {
     if (playsLeft <= 0 || status === "loading" || status === "playing") return;
     setError(null);
-    setFallbackSrc(null);
+    setHint(null);
     setStatus("loading");
-    stopAll();
+    countedPlayRef.current = false;
+    stopPlayback();
 
     try {
       if (audioUrl) {
         const proxied = proxyAudioUrl(audioUrl);
-        const ok = await playFromUrl(proxied, "source");
-        if (ok) return;
-        // fallback direct puis TTS
-        const direct = await playFromUrl(audioUrl, "source");
-        if (direct) return;
+        try {
+          await playOnElement(proxied, "source");
+          return;
+        } catch {
+          try {
+            await playOnElement(audioUrl, "source");
+            return;
+          } catch {
+            /* fall through to TTS */
+          }
+        }
       }
 
       if (script.trim()) {
-        const ok = await playTts(script);
-        if (ok) return;
-        // playTts a pu afficher un lecteur natif (fallback iOS)
-        setStatus("idle");
-        return;
+        try {
+          const url = await prepareTtsBlob(script);
+          if (!url) {
+            // browser TTS deja lance
+            return;
+          }
+          try {
+            await playOnElement(url, "tts");
+            return;
+          } catch {
+            setHint(
+              isLikelyIOS()
+                ? "Sur iPhone, appuie sur lecture dans le lecteur audio ci-dessous."
+                : "Appuie sur lecture dans le lecteur audio ci-dessous.",
+            );
+            setStatus("idle");
+            setMode("tts");
+            return;
+          }
+        } catch (e) {
+          setError(e instanceof Error ? e.message : "Audio indisponible");
+          setStatus("idle");
+          return;
+        }
       }
-      if (audioUrl) {
-        setError("Audio source indisponible pour le moment.");
-      } else {
-        setError("Audio indisponible");
-      }
+
+      setError(
+        audioUrl
+          ? "Audio source indisponible pour le moment."
+          : "Audio indisponible",
+      );
       setStatus("idle");
     } catch {
       setError("Reseau indisponible pour l audio.");
@@ -202,7 +222,7 @@ export function ExamListenPlayer({
   }
 
   function stop() {
-    stopAll();
+    stopPlayback();
     setStatus("idle");
   }
 
@@ -211,9 +231,9 @@ export function ExamListenPlayer({
     : "Synthese vocale (pas d audio original pour cet exercice).";
 
   return (
-    <div className="rounded-[1.4rem] border border-[var(--line)] bg-[var(--forest-soft)]/55 px-4 py-4 lg:px-5">
+    <div className="exam-listen rounded-[1.4rem] border border-[var(--line)] bg-[var(--forest-soft)]/55 px-4 py-4 lg:px-5">
       <div className="flex flex-wrap items-start justify-between gap-3">
-        <div>
+        <div className="min-w-0 flex-1">
           <p className="eyebrow">Horen · Audio</p>
           <p className="mt-1 text-[1.05rem] font-semibold text-[var(--forest-deep)]">
             {title}
@@ -232,7 +252,7 @@ export function ExamListenPlayer({
           ) : (
             <Button
               type="button"
-              onClick={play}
+              onClick={() => void play()}
               disabled={playsLeft <= 0 || status === "loading"}
             >
               {status === "loading"
@@ -244,25 +264,36 @@ export function ExamListenPlayer({
           )}
         </div>
       </div>
+
+      <audio
+        ref={playerRef}
+        className="exam-listen__player mt-4 w-full"
+        controls
+        playsInline
+        preload="metadata"
+        onPlay={() => {
+          if (status !== "playing") {
+            markPlayStarted(mode ?? (audioUrl ? "source" : "tts"));
+          }
+          setHint(null);
+        }}
+        onPause={() => {
+          if (status === "playing") setStatus("idle");
+        }}
+        onEnded={() => setStatus("done")}
+        onError={() => {
+          if (status === "loading" || status === "playing") {
+            setError("Lecture impossible. Reessaie Ecouter ou le bouton play.");
+            setStatus("idle");
+          }
+        }}
+      />
+
       {error ? (
         <p className="mt-3 text-[0.95rem] text-[var(--danger)]">{error}</p>
       ) : null}
-      {fallbackSrc ? (
-        <audio
-          className="mt-3 w-full"
-          controls
-          playsInline
-          preload="auto"
-          src={fallbackSrc}
-          onPlay={() => {
-            if (playsLeft > 0 && status !== "playing") {
-              setPlaysLeft((n) => Math.max(0, n - 1));
-            }
-            setStatus("playing");
-            setError(null);
-          }}
-          onEnded={() => setStatus("done")}
-        />
+      {hint ? (
+        <p className="mt-3 text-[0.95rem] text-[var(--forest-deep)]">{hint}</p>
       ) : null}
       {status === "playing" ? (
         <p className="mt-3 text-[0.92rem] font-medium text-[var(--forest)]">

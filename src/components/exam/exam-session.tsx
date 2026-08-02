@@ -265,7 +265,7 @@ export function ExamSession({ sourceId }: { sourceId: string }) {
         {isSpeak ? (
           <div className="mt-5 space-y-4">
             {(sharedPassage || current.passage) && phase === "pick" ? (
-              <div className="max-h-[36vh] overflow-y-auto rounded-[1.25rem] bg-[var(--forest-soft)]/45 p-4 text-[1.05rem] leading-relaxed whitespace-pre-wrap lg:max-h-[min(48vh,28rem)] lg:p-5">
+              <div className="exam-passage">
                 {sharedPassage || current.passage}
               </div>
             ) : null}
@@ -298,7 +298,7 @@ export function ExamSession({ sourceId }: { sourceId: string }) {
               {!isListen &&
               (isCloze || isReading || isWrite || isTf) &&
               (sharedPassage || current.passage) ? (
-                <div className="max-h-[42vh] overflow-y-auto rounded-[1.25rem] bg-[var(--forest-soft)]/45 p-4 text-[1.05rem] leading-relaxed lg:max-h-[min(68vh,36rem)] lg:p-5 lg:text-[1.08rem]">
+                <div className="exam-passage">
                   {isCloze
                     ? renderClozePassage(current.passage, current.gapN)
                     : sharedPassage || current.passage}
@@ -306,9 +306,7 @@ export function ExamSession({ sourceId }: { sourceId: string }) {
               ) : null}
 
               {!isListen && !isCloze && !isReading && !isWrite && !isTf ? (
-                <div className="max-h-[42vh] overflow-y-auto rounded-[1.25rem] bg-[var(--forest-soft)]/45 p-4 text-[1.05rem] leading-relaxed lg:max-h-[min(68vh,36rem)] lg:p-5">
-                  {current.passage}
-                </div>
+                <div className="exam-passage">{current.passage}</div>
               ) : null}
 
               {(isReading || isTf) && current.prompt ? (
@@ -336,7 +334,7 @@ export function ExamSession({ sourceId }: { sourceId: string }) {
                         onChange={(e) => setWriteNote(e.target.value)}
                         rows={10}
                         placeholder="Ecris ici ton brouillon (non corrige automatiquement)."
-                        className="w-full rounded-[1.25rem] border border-[var(--line)] bg-white/90 px-4 py-3 text-[1.02rem] outline-none focus:border-[var(--forest)] focus:ring-4 focus:ring-[rgba(26,107,72,0.12)]"
+                        className="w-full rounded-[1.25rem] border border-[var(--line)] bg-white/90 px-4 py-3 text-[16px] leading-relaxed outline-none focus:border-[var(--forest)] focus:ring-4 focus:ring-[rgba(26,107,72,0.12)]"
                       />
                       <Button
                         className="mt-3 w-full"

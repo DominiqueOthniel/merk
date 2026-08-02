@@ -30,14 +30,16 @@ export async function GET(req: Request) {
   }
 
   try {
+    const range = req.headers.get("range");
     const upstream = await fetch(target.href, {
       headers: {
         "User-Agent": "MERK-AudioProxy/1.0",
         Accept: "audio/*,*/*",
+        ...(range ? { Range: range } : {}),
       },
       cache: "force-cache",
     });
-    if (!upstream.ok) {
+    if (!upstream.ok && upstream.status !== 206) {
       return NextResponse.json(
         { error: `Audio source ${upstream.status}` },
         { status: 502 },
@@ -47,13 +49,18 @@ export async function GET(req: Request) {
     const contentType =
       upstream.headers.get("content-type") || "audio/mp4";
     const buffer = Buffer.from(await upstream.arrayBuffer());
+    const headers: Record<string, string> = {
+      "Content-Type": contentType,
+      "Cache-Control": "private, max-age=86400",
+      "Accept-Ranges": "bytes",
+      "Content-Length": String(buffer.length),
+    };
+    const contentRange = upstream.headers.get("content-range");
+    if (contentRange) headers["Content-Range"] = contentRange;
+
     return new NextResponse(buffer, {
-      status: 200,
-      headers: {
-        "Content-Type": contentType,
-        "Cache-Control": "private, max-age=86400",
-        "Accept-Ranges": "bytes",
-      },
+      status: upstream.status === 206 ? 206 : 200,
+      headers,
     });
   } catch (error) {
     console.error("Audio proxy error", error);
