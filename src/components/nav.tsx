@@ -30,19 +30,13 @@ function NavLinks({
             key={link.href}
             href={link.href}
             aria-current={active ? "page" : undefined}
-            className={
-              vertical
-                ? `rounded-[1.15rem] px-3.5 py-3 text-[1.02rem] font-semibold transition-[background,color,box-shadow,transform] duration-200 ${
-                    active
-                      ? "bg-[var(--forest)] text-white shadow-[var(--shadow-glow)]"
-                      : "text-[var(--ink-soft)] hover:bg-[var(--forest-soft)] hover:text-[var(--forest-deep)]"
-                  }`
-                : `flex-1 rounded-[1.2rem] px-2.5 py-3 text-center text-[0.92rem] font-semibold transition-[background,color,box-shadow,transform] duration-200 ${
-                    active
-                      ? "bg-[var(--forest)] text-white shadow-[0_10px_20px_rgba(23,104,68,0.28)]"
-                      : "text-[var(--ink-soft)] hover:bg-[var(--forest-soft)]"
-                  }`
-            }
+            className={[
+              "nav-link",
+              vertical ? "nav-link--rail" : "nav-link--dock",
+              active ? "nav-link--active" : "",
+            ]
+              .filter(Boolean)
+              .join(" ")}
           >
             {link.label}
           </Link>

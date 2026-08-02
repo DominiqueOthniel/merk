@@ -7,16 +7,19 @@ type BrandProps = {
 
 const sizes = {
   small: {
-    image: "h-12 w-12",
+    box: "h-12 w-12",
     text: "text-[clamp(2.4rem,7vw,3.2rem)]",
+    px: 48,
   },
   medium: {
-    image: "h-16 w-16",
+    box: "h-16 w-16",
     text: "text-[clamp(3rem,10vw,4.2rem)]",
+    px: 64,
   },
   large: {
-    image: "h-24 w-24 sm:h-28 sm:w-28",
+    box: "h-24 w-24 sm:h-28 sm:w-28",
     text: "text-[clamp(4rem,15vw,6rem)]",
+    px: 112,
   },
 } as const;
 
@@ -28,15 +31,16 @@ export function Brand({
 
   return (
     <div className={`flex items-center gap-3 sm:gap-4 ${className}`}>
-      <Image
-        src="/merk-logo.png"
-        unoptimized
-        alt=""
-        width={112}
-        height={112}
-        priority={size === "large"}
-        className={`${scale.image} shrink-0 object-contain drop-shadow-[0_10px_20px_rgba(15,70,48,0.16)]`}
-      />
+      <span className={`brand-logo ${scale.box} shrink-0`} aria-hidden>
+        <Image
+          src="/merk-logo.png"
+          unoptimized
+          alt=""
+          width={scale.px}
+          height={scale.px}
+          priority={size === "large"}
+        />
+      </span>
       <span
         className={`brand-mark ${scale.text} text-[var(--forest-deep)]`}
       >
