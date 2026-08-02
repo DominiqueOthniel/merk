@@ -168,14 +168,16 @@ export function AudioRecorder() {
         {recording ? (
           <span className="rec-dot inline-block h-2.5 w-2.5 rounded-full bg-[var(--danger)]" />
         ) : null}
-        <p className="eyebrow">{recording ? "Enregistrement" : "Production orale"}</p>
+        <p className="eyebrow">
+          {recording ? "Enregistrement" : "Oral optionnel"}
+        </p>
       </div>
       <p className="mt-2 text-[1.02rem] leading-relaxed text-[var(--ink-soft)]">
         {recording
           ? `Parle maintenant... ${mm}:${ss}`
           : url
             ? "Prise enregistree. Reecoute ou recommence."
-            : "Enregistre ta reponse a voix haute, puis reecoute."}
+            : "Dis la reponse a voix haute pour t entrainer. Ca ne remplace pas la saisie."}
       </p>
 
       {recording ? (

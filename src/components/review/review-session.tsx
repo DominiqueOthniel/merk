@@ -201,15 +201,20 @@ export function ReviewSession() {
                 autoFocus
                 value={answer}
                 onChange={(e) => setAnswer(e.target.value)}
-                placeholder="Ecris ta reponse"
+                placeholder="Ecris ta reponse ici"
                 onKeyDown={(e) => {
                   if (e.key === "Enter" && answer.trim()) verify();
                 }}
               />
-              <AudioRecorder />
               <Button className="w-full" disabled={!answer.trim() || busy} onClick={verify}>
                 Verifier
               </Button>
+              {!answer.trim() ? (
+                <p className="text-center text-[0.95rem] text-[var(--warn)]">
+                  Tape ta reponse ci-dessus pour activer Verifier. L audio est optionnel.
+                </p>
+              ) : null}
+              <AudioRecorder key={current.progressId} />
               <p className="text-center text-[0.98rem] text-[var(--ink-faint)]">
                 {remaining} carte{remaining > 1 ? "s" : ""} restante
                 {remaining > 1 ? "s" : ""}
