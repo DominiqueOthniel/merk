@@ -30,6 +30,7 @@ export function Brand({
     <div className={`flex items-center gap-3 sm:gap-4 ${className}`}>
       <Image
         src="/merk-logo.png"
+        unoptimized
         alt=""
         width={112}
         height={112}

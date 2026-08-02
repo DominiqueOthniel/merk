@@ -37,11 +37,34 @@ type Dash = {
 export default function DashboardPage() {
   const [data, setData] = useState<Dash | null>(null);
 
+  const [error, setError] = useState<string | null>(null);
+
   useEffect(() => {
     fetch("/api/dashboard")
-      .then((r) => r.json())
-      .then(setData);
+      .then(async (r) => {
+        const text = await r.text();
+        if (!r.ok) {
+          throw new Error(text || `Erreur ${r.status}`);
+        }
+        if (!text) {
+          throw new Error("Reponse vide du serveur");
+        }
+        return JSON.parse(text) as Dash;
+      })
+      .then(setData)
+      .catch((e: unknown) => {
+        setError(e instanceof Error ? e.message : "Chargement impossible");
+      });
   }, []);
+
+  if (error) {
+    return (
+      <>
+        <BrandHeader subtitle="Ton carnet personnel" />
+        <p className="text-[1.1rem] text-[var(--danger)]">{error}</p>
+      </>
+    );
+  }
 
   if (!data) {
     return (
