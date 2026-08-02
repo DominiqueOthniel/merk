@@ -5,7 +5,7 @@ import {
 } from "@/lib/content/exam-catalog";
 import type { ExamProvider } from "@/lib/exam-provider";
 
-export type MockLevel = "B1" | "B2" | "C1";
+export type MockLevel = "A1" | "A2" | "B1" | "B2" | "C1";
 
 export type MockItem = {
   id: string;
@@ -40,7 +40,9 @@ const MAX_PER_SKILL: Record<string, number> = {
 export function mockDurationMinutes(level: MockLevel): number {
   if (level === "C1") return 90;
   if (level === "B2") return 70;
-  return 50;
+  if (level === "B1") return 50;
+  if (level === "A2") return 40;
+  return 35;
 }
 
 export function mockDurationLabel(level: MockLevel): string {

@@ -9,7 +9,7 @@ import {
   getExamLevels,
   sectionSortKey,
 } from "@/lib/content/exam-catalog";
-import { ensureGoetheCards } from "@/lib/content/ensure-goethe-cards";
+import { ensureExamCards } from "@/lib/content/ensure-exam-cards";
 import { ensureSpeakCards } from "@/lib/content/ensure-speak-cards";
 import {
   examProviderLabel,
@@ -57,9 +57,7 @@ export async function GET(req: Request) {
     });
   }
 
-  if (provider === "GOETHE") {
-    await ensureGoetheCards();
-  }
+  await ensureExamCards(provider);
   await ensureSpeakCards();
 
   const exercises = getExamExercises(provider, levelInfo.id);

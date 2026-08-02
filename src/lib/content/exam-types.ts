@@ -34,14 +34,18 @@ export type ExamExercise = {
   listenScript?: string | null;
 };
 
+export type ExamLevelId = "A1" | "A2" | "B1" | "B2" | "C1";
+
 export type ExamLevelInfo = {
-  id: "B1" | "B2" | "C1";
+  id: ExamLevelId;
   label: string;
   available: boolean;
   note?: string;
 };
 
 export const EXAM_LEVELS: ExamLevelInfo[] = [
+  { id: "A1", label: "A1", available: true },
+  { id: "A2", label: "A2", available: true },
   { id: "B1", label: "B1", available: true },
   { id: "B2", label: "B2", available: true },
   {
@@ -96,7 +100,9 @@ export function formatLabel(format: ExamFormat): string {
 export function speakMaxSeconds(level: string): number {
   if (level === "C1") return 240;
   if (level === "B2") return 180;
-  return 120;
+  if (level === "B1") return 120;
+  if (level === "A2") return 90;
+  return 60;
 }
 
 export function sectionSortKey(section: string): number {

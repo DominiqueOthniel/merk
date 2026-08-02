@@ -9,7 +9,7 @@ import {
   mockSkillLabels,
   type MockLevel,
 } from "@/lib/content/mock-exam";
-import { ensureGoetheCards } from "@/lib/content/ensure-goethe-cards";
+import { ensureExamCards } from "@/lib/content/ensure-exam-cards";
 import { ensureSpeakCards } from "@/lib/content/ensure-speak-cards";
 import {
   examProviderLabel,
@@ -17,7 +17,7 @@ import {
 } from "@/lib/exam-provider";
 
 function toLevel(raw: string | null): MockLevel {
-  if (raw === "B2" || raw === "C1") return raw;
+  if (raw === "A1" || raw === "A2" || raw === "B2" || raw === "C1") return raw;
   return "B1";
 }
 
@@ -36,7 +36,7 @@ export async function GET(req: Request) {
   );
   const level = toLevel(new URL(req.url).searchParams.get("level"));
 
-  if (provider === "GOETHE") await ensureGoetheCards();
+  await ensureExamCards(provider);
   await ensureSpeakCards();
 
   const items = buildMockItems(provider, level);

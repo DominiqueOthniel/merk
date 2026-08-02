@@ -29,7 +29,7 @@ type SectionGroup = {
   sets: ExamSet[];
 };
 
-type ExamLevel = "B1" | "B2" | "C1";
+type ExamLevel = "A1" | "A2" | "B1" | "B2" | "C1";
 
 type LevelInfo = {
   id: ExamLevel;
@@ -39,6 +39,8 @@ type LevelInfo = {
 };
 
 const LEVEL_FALLBACK: LevelInfo[] = [
+  { id: "A1", label: "A1", available: true },
+  { id: "A2", label: "A2", available: true },
   { id: "B1", label: "B1", available: true },
   { id: "B2", label: "B2", available: true },
   { id: "C1", label: "C1", available: true },
@@ -52,7 +54,15 @@ const SKILL_CHIPS = [
 ] as const;
 
 function toExamLevel(value: string): ExamLevel | null {
-  if (value === "B1" || value === "B2" || value === "C1") return value;
+  if (
+    value === "A1" ||
+    value === "A2" ||
+    value === "B1" ||
+    value === "B2" ||
+    value === "C1"
+  ) {
+    return value;
+  }
   return null;
 }
 

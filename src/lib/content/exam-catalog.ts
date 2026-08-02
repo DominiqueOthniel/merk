@@ -22,11 +22,15 @@ export type { ExamExercise, ExamLevelInfo, ExamFormat } from "./exam-types";
 
 const LEVEL_FILES: Record<ExamProvider, Record<string, string>> = {
   TELC: {
+    A1: "telc-a1.json",
+    A2: "telc-a2.json",
     B1: "telc-b1.json",
     B2: "telc-b2.json",
     C1: "telc-c1.json",
   },
   GOETHE: {
+    A1: "goethe-a1.json",
+    A2: "goethe-a2.json",
     B1: "goethe-b1.json",
     B2: "goethe-b2.json",
     C1: "goethe-c1.json",
@@ -57,10 +61,15 @@ function loadLevel(provider: ExamProvider, level: string): ExamExercise[] {
 
 export function getExamLevels(provider?: ExamProvider | string | null): ExamLevelInfo[] {
   const p = normalizeExamProvider(provider);
+  const shared: ExamLevelInfo[] = [
+    { id: "A1", label: "A1", available: true },
+    { id: "A2", label: "A2", available: true },
+    { id: "B1", label: "B1", available: true },
+    { id: "B2", label: "B2", available: true },
+  ];
   if (p === "GOETHE") {
     return [
-      { id: "B1", label: "B1", available: true },
-      { id: "B2", label: "B2", available: true },
+      ...shared,
       {
         id: "C1",
         label: "C1",
@@ -70,8 +79,7 @@ export function getExamLevels(provider?: ExamProvider | string | null): ExamLeve
     ];
   }
   return [
-    { id: "B1", label: "B1", available: true },
-    { id: "B2", label: "B2", available: true },
+    ...shared,
     {
       id: "C1",
       label: "C1",
@@ -86,7 +94,13 @@ export const EXAM_LEVELS = getExamLevels("TELC");
 
 export function getExamAll(provider?: ExamProvider | string | null): ExamExercise[] {
   const p = normalizeExamProvider(provider);
-  return [...loadLevel(p, "B1"), ...loadLevel(p, "B2"), ...loadLevel(p, "C1")];
+  return [
+    ...loadLevel(p, "A1"),
+    ...loadLevel(p, "A2"),
+    ...loadLevel(p, "B1"),
+    ...loadLevel(p, "B2"),
+    ...loadLevel(p, "C1"),
+  ];
 }
 
 export function getExamExercises(
