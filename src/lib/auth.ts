@@ -2,6 +2,7 @@ import type { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 import { prisma } from "@/lib/db";
+import { ensureSchema } from "@/lib/ensure-schema";
 import { normalizeExamProvider } from "@/lib/exam-provider";
 
 export const authOptions: NextAuthOptions = {
@@ -20,6 +21,12 @@ export const authOptions: NextAuthOptions = {
       },
       async authorize(credentials) {
         if (!credentials?.email || !credentials.password) return null;
+
+        try {
+          await ensureSchema();
+        } catch {
+          // continue: login peut encore marcher si la colonne existe deja
+        }
 
         const user = await prisma.user.findUnique({
           where: { email: credentials.email.toLowerCase().trim() },
