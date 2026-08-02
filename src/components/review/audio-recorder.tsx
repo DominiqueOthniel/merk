@@ -3,16 +3,14 @@
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { RecordingLive } from "@/components/ui/recording-live";
-
-function pickMimeType() {
-  if (typeof MediaRecorder === "undefined") return undefined;
-  if (MediaRecorder.isTypeSupported("audio/webm;codecs=opus")) {
-    return "audio/webm;codecs=opus";
-  }
-  if (MediaRecorder.isTypeSupported("audio/webm")) return "audio/webm";
-  if (MediaRecorder.isTypeSupported("audio/mp4")) return "audio/mp4";
-  return undefined;
-}
+import {
+  canRecordAudio,
+  getMicStream,
+  pickRecorderMimeType,
+  recorderFileExtension,
+  startMediaRecorder,
+  stopMediaRecorder,
+} from "@/lib/media/recording";
 
 export function AudioRecorder() {
   const [recording, setRecording] = useState(false);
@@ -20,26 +18,25 @@ export function AudioRecorder() {
   const [supported, setSupported] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [elapsed, setElapsed] = useState(0);
-  const [levels, setLevels] = useState<number[]>([0.2, 0.2, 0.2, 0.2, 0.2]);
+  const [levels, setLevels] = useState<number[]>([0.25, 0.45, 0.35, 0.55, 0.4]);
   const mediaRef = useRef<MediaRecorder | null>(null);
   const chunks = useRef<Blob[]>([]);
   const streamRef = useRef<MediaStream | null>(null);
   const timerRef = useRef<number | null>(null);
   const rafRef = useRef<number | null>(null);
   const audioCtxRef = useRef<AudioContext | null>(null);
+  const mimeRef = useRef<string | undefined>(undefined);
 
   useEffect(() => {
-    if (typeof window === "undefined" || !navigator.mediaDevices?.getUserMedia) {
-      setSupported(false);
-    }
+    setSupported(canRecordAudio());
     return () => {
-      cleanup();
+      cleanup(false);
       if (url) URL.revokeObjectURL(url);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  function cleanup() {
+  function cleanup(stopTracks = true) {
     if (timerRef.current) {
       window.clearInterval(timerRef.current);
       timerRef.current = null;
@@ -48,18 +45,29 @@ export function AudioRecorder() {
       cancelAnimationFrame(rafRef.current);
       rafRef.current = null;
     }
-    streamRef.current?.getTracks().forEach((t) => t.stop());
-    streamRef.current = null;
     if (audioCtxRef.current) {
       void audioCtxRef.current.close().catch(() => undefined);
       audioCtxRef.current = null;
     }
+    if (stopTracks) {
+      streamRef.current?.getTracks().forEach((t) => t.stop());
+      streamRef.current = null;
+    }
   }
 
-  function startMeter(stream: MediaStream) {
+  async function startMeter(stream: MediaStream) {
     try {
-      const ctx = new AudioContext();
+      const AC =
+        window.AudioContext ||
+        (window as unknown as { webkitAudioContext?: typeof AudioContext })
+          .webkitAudioContext;
+      if (!AC) {
+        setLevels([0.4, 0.7, 0.55, 0.85, 0.5]);
+        return;
+      }
+      const ctx = new AC();
       audioCtxRef.current = ctx;
+      if (ctx.state === "suspended") await ctx.resume();
       const source = ctx.createMediaStreamSource(stream);
       const analyser = ctx.createAnalyser();
       analyser.fftSize = 256;
@@ -81,7 +89,6 @@ export function AudioRecorder() {
       };
       rafRef.current = requestAnimationFrame(tick);
     } catch {
-      // fallback: bars animes sans niveau micro
       setLevels([0.4, 0.7, 0.55, 0.85, 0.5]);
     }
   }
@@ -90,31 +97,34 @@ export function AudioRecorder() {
     if (!supported || recording) return;
     setError(null);
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({
-        audio: {
-          echoCancellation: true,
-          noiseSuppression: true,
-        },
-      });
+      if (!canRecordAudio()) {
+        setSupported(false);
+        setError("Enregistrement non supporté sur ce navigateur mobile.");
+        return;
+      }
+
+      const stream = await getMicStream();
       streamRef.current = stream;
-      const mime = pickMimeType();
-      const recorder = mime
-        ? new MediaRecorder(stream, { mimeType: mime })
-        : new MediaRecorder(stream);
+      const mime = pickRecorderMimeType();
+      mimeRef.current = mime;
       chunks.current = [];
-      recorder.ondataavailable = (e) => {
-        if (e.data.size > 0) chunks.current.push(e.data);
-      };
-      recorder.onerror = () => {
-        setError("Erreur pendant l enregistrement.");
-        setRecording(false);
-        cleanup();
-      };
+
+      const recorder = startMediaRecorder(
+        stream,
+        mime,
+        (blob) => chunks.current.push(blob),
+        (message) => {
+          setError(message);
+          setRecording(false);
+          cleanup(true);
+        },
+      );
+
       recorder.onstop = () => {
-        const type = recorder.mimeType || mime || "audio/webm";
+        const type = recorder.mimeType || mime || "audio/mp4";
         const blob = new Blob(chunks.current, { type });
-        if (blob.size < 200) {
-          setError("Enregistrement vide. Verifie le micro et reessaie.");
+        if (blob.size < 50) {
+          setError("Enregistrement vide. Autorise le micro puis reessaie.");
         } else {
           const objectUrl = URL.createObjectURL(blob);
           setUrl((prev) => {
@@ -122,19 +132,25 @@ export function AudioRecorder() {
             return objectUrl;
           });
         }
-        cleanup();
+        cleanup(true);
       };
+
       mediaRef.current = recorder;
-      recorder.start(200);
       setRecording(true);
       setElapsed(0);
-      startMeter(stream);
+      void startMeter(stream);
       timerRef.current = window.setInterval(() => {
         setElapsed((n) => n + 1);
       }, 1000);
-    } catch {
-      setSupported(false);
-      setError("Micro refuse ou indisponible. Autorise l acces micro du navigateur.");
+    } catch (err) {
+      const name = err instanceof Error ? err.name : "";
+      setSupported(name !== "NotAllowedError");
+      setError(
+        name === "NotAllowedError"
+          ? "Micro refuse. Autorise le micro dans les reglages du navigateur / Safari."
+          : "Micro indisponible sur cet appareil.",
+      );
+      cleanup(true);
     }
   }
 
@@ -147,14 +163,13 @@ export function AudioRecorder() {
       cancelAnimationFrame(rafRef.current);
       rafRef.current = null;
     }
-    if (mediaRef.current && mediaRef.current.state !== "inactive") {
-      mediaRef.current.stop();
-    }
+    stopMediaRecorder(mediaRef.current);
     setRecording(false);
   }
 
   const mm = String(Math.floor(elapsed / 60)).padStart(1, "0");
   const ss = String(elapsed % 60).padStart(2, "0");
+  const ext = recorderFileExtension(mimeRef.current);
 
   return (
     <div
@@ -176,7 +191,7 @@ export function AudioRecorder() {
         {recording
           ? `Parle maintenant... ${mm}:${ss}`
           : url
-            ? "Prise enregistree. Reecoute ou recommence."
+            ? `Prise enregistree (${ext}). Reecoute ou recommence.`
             : "Dis la reponse a voix haute pour t entrainer. Ca ne remplace pas la saisie."}
       </p>
 
@@ -202,7 +217,7 @@ export function AudioRecorder() {
         <p className="mt-3 text-[0.95rem] text-[var(--danger)]">{error}</p>
       ) : null}
       {url && !recording ? (
-        <audio className="mt-4 w-full" controls src={url} preload="metadata" />
+        <audio className="mt-4 w-full" controls playsInline preload="metadata" src={url} />
       ) : null}
     </div>
   );

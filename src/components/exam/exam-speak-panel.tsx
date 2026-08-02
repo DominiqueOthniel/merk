@@ -4,6 +4,14 @@ import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { RecordingLive } from "@/components/ui/recording-live";
 import { speakMaxSeconds } from "@/lib/content/exam-types";
+import {
+  canRecordAudio,
+  getMicStream,
+  pickRecorderMimeType,
+  recorderFileExtension,
+  startMediaRecorder,
+  stopMediaRecorder,
+} from "@/lib/media/recording";
 
 type Feedback = {
   total: number;
@@ -56,11 +64,11 @@ export function ExamSpeakPanel({
   const streamRef = useRef<MediaStream | null>(null);
   const rafRef = useRef<number | null>(null);
   const audioCtxRef = useRef<AudioContext | null>(null);
+  const mimeRef = useRef<string | undefined>(undefined);
+  const [recError, setRecError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (typeof window === "undefined" || !navigator.mediaDevices) {
-      setSupported(false);
-    }
+    setSupported(canRecordAudio());
     return () => {
       cleanupRecording();
       if (audioUrl) URL.revokeObjectURL(audioUrl);
@@ -97,20 +105,23 @@ export function ExamSpeakPanel({
       void audioCtxRef.current.close().catch(() => undefined);
       audioCtxRef.current = null;
     }
-    if (mediaRef.current && mediaRef.current.state !== "inactive") {
-      try {
-        mediaRef.current.stop();
-      } catch {
-        /* ignore */
-      }
-    }
+    stopMediaRecorder(mediaRef.current);
     mediaRef.current = null;
   }
 
-  function startMeter(stream: MediaStream) {
+  async function startMeter(stream: MediaStream) {
     try {
-      const ctx = new AudioContext();
+      const AC =
+        window.AudioContext ||
+        (window as unknown as { webkitAudioContext?: typeof AudioContext })
+          .webkitAudioContext;
+      if (!AC) {
+        setLevels([0.4, 0.7, 0.55, 0.85, 0.5]);
+        return;
+      }
+      const ctx = new AC();
       audioCtxRef.current = ctx;
+      if (ctx.state === "suspended") await ctx.resume();
       const source = ctx.createMediaStreamSource(stream);
       const analyser = ctx.createAnalyser();
       analyser.fftSize = 256;
@@ -139,32 +150,42 @@ export function ExamSpeakPanel({
     if (!supported || recording) return;
     setFeedback(null);
     setFeedbackError(null);
+    setRecError(null);
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({
-        audio: { echoCancellation: true, noiseSuppression: true },
-      });
+      if (!canRecordAudio()) {
+        setSupported(false);
+        setRecError("Enregistrement non supporté sur ce navigateur mobile.");
+        return;
+      }
+      const stream = await getMicStream();
       streamRef.current = stream;
-      const mime = MediaRecorder.isTypeSupported("audio/webm;codecs=opus")
-        ? "audio/webm;codecs=opus"
-        : MediaRecorder.isTypeSupported("audio/webm")
-          ? "audio/webm"
-          : undefined;
-      const recorder = mime
-        ? new MediaRecorder(stream, { mimeType: mime })
-        : new MediaRecorder(stream);
+      const mime = pickRecorderMimeType();
+      mimeRef.current = mime;
       chunks.current = [];
-      recorder.ondataavailable = (e) => {
-        if (e.data.size > 0) chunks.current.push(e.data);
-      };
+
+      const recorder = startMediaRecorder(
+        stream,
+        mime,
+        (blob) => chunks.current.push(blob),
+        (message) => {
+          setRecError(message);
+          setRecording(false);
+          cleanupRecording();
+        },
+      );
+
       recorder.onstop = () => {
-        const blob = new Blob(chunks.current, {
-          type: recorder.mimeType || "audio/webm",
-        });
-        setAudioBlob(blob);
-        setAudioUrl((prev) => {
-          if (prev) URL.revokeObjectURL(prev);
-          return URL.createObjectURL(blob);
-        });
+        const type = recorder.mimeType || mime || "audio/mp4";
+        const blob = new Blob(chunks.current, { type });
+        if (blob.size < 50) {
+          setRecError("Enregistrement vide. Autorise le micro puis reessaie.");
+        } else {
+          setAudioBlob(blob);
+          setAudioUrl((prev) => {
+            if (prev) URL.revokeObjectURL(prev);
+            return URL.createObjectURL(blob);
+          });
+        }
         if (rafRef.current) {
           cancelAnimationFrame(rafRef.current);
           rafRef.current = null;
@@ -176,11 +197,11 @@ export function ExamSpeakPanel({
         stream.getTracks().forEach((t) => t.stop());
         streamRef.current = null;
       };
+
       mediaRef.current = recorder;
-      recorder.start(250);
       setRecording(true);
       setElapsed(0);
-      startMeter(stream);
+      void startMeter(stream);
       timerRef.current = window.setInterval(() => {
         setElapsed((n) => {
           const next = n + 1;
@@ -190,8 +211,14 @@ export function ExamSpeakPanel({
           return Math.min(next, maxSeconds);
         });
       }, 1000);
-    } catch {
-      setSupported(false);
+    } catch (err) {
+      const name = err instanceof Error ? err.name : "";
+      setSupported(name !== "NotAllowedError");
+      setRecError(
+        name === "NotAllowedError"
+          ? "Micro refuse. Autorise le micro dans Safari / Chrome."
+          : "Micro indisponible sur cet appareil.",
+      );
     }
   }
 
@@ -204,9 +231,7 @@ export function ExamSpeakPanel({
       cancelAnimationFrame(rafRef.current);
       rafRef.current = null;
     }
-    if (mediaRef.current && mediaRef.current.state !== "inactive") {
-      mediaRef.current.stop();
-    }
+    stopMediaRecorder(mediaRef.current);
     setRecording(false);
   }
 
@@ -216,7 +241,8 @@ export function ExamSpeakPanel({
     setFeedbackError(null);
     try {
       const form = new FormData();
-      form.append("audio", audioBlob, "sprechen.webm");
+      const ext = recorderFileExtension(mimeRef.current || audioBlob.type);
+      form.append("audio", audioBlob, `sprechen.${ext}`);
       form.append("sourceId", sourceId);
       form.append("prompt", prompt);
       form.append("level", level);
@@ -313,13 +339,22 @@ export function ExamSpeakPanel({
             label={`Enregistrement... ${mm}:${ss} restantes`}
           />
         ) : null}
-        {!supported ? (
+        {!supported && !recError ? (
           <p className="mt-3 text-[0.95rem] text-[var(--warn)]">
             Micro non disponible sur cet appareil.
           </p>
         ) : null}
+        {recError ? (
+          <p className="mt-3 text-[0.95rem] text-[var(--danger)]">{recError}</p>
+        ) : null}
         {audioUrl && !recording ? (
-          <audio className="mt-4 w-full" controls src={audioUrl} preload="metadata" />
+          <audio
+            className="mt-4 w-full"
+            controls
+            playsInline
+            src={audioUrl}
+            preload="metadata"
+          />
         ) : null}
       </div>
 
