@@ -547,15 +547,6 @@ html[data-exam="goethe"] .exam-choice:hover {
 .provider-card--active .provider-card__cta {
   background: var(--forest-deep);
 }
-  place-items: center;
-  width: 1.7rem;
-  height: 1.7rem;
-  border-radius: 999px;
-  background: var(--forest);
-  color: white;
-  font-size: 0.85rem;
-  font-weight: 700;
-}
 
 .track-pill {
   display: inline-flex;
