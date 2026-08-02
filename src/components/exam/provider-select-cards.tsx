@@ -21,8 +21,8 @@ const PROVIDERS: {
     title: "telc Deutsch",
     blurb:
       "Parcours centre : Lesen, Sprachbausteine, Horen, Schreiben et Sprechen, avec repetition espacee.",
-    levels: ["B1", "B2", "C1"],
-    skills: ["Lesen", "Horen", "Schreiben", "Sprechen"],
+    levels: ["A1", "A2", "B1", "B2", "C1"],
+    skills: ["Lesen", "Bausteine", "Horen", "Schreiben", "Sprechen"],
     tone: "telc",
     cta: "Commencer TELC",
     avatar: MERK_AVATARS.telc,
@@ -32,8 +32,8 @@ const PROVIDERS: {
     label: "Goethe",
     title: "Goethe-Zertifikat",
     blurb:
-      "Parcours Goethe : memes competences, thematique et ambiance encre & laiton.",
-    levels: ["B1", "B2", "C1"],
+      "Parcours Goethe-Zertifikat : Lesen, Horen, Schreiben et Sprechen (sans Sprachbausteine), structure par Teils officiels.",
+    levels: ["A1", "A2", "B1", "B2", "C1"],
     skills: ["Lesen", "Horen", "Schreiben", "Sprechen"],
     tone: "goethe",
     cta: "Commencer Goethe",

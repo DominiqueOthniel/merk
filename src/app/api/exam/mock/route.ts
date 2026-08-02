@@ -49,7 +49,7 @@ export async function GET(req: Request) {
     title: `${examProviderLabel(provider)} ${level} · Mock Test`,
     durationMinutes: mockDurationMinutes(level),
     durationLabel: mockDurationLabel(level),
-    skills: mockSkillLabels(skills),
+    skills: mockSkillLabels(skills, provider),
     itemCount: items.length,
     features: [
       "Simulation chronometree",

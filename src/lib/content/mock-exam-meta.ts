@@ -22,12 +22,27 @@ export const MOCK_SKILL_ORDER = [
   "sprechen",
 ] as const;
 
+/** Goethe : 4 modules officiels, sans Sprachbausteine. */
+export const MOCK_SKILL_ORDER_GOETHE = [
+  "lesen",
+  "horen",
+  "schreiben",
+  "sprechen",
+] as const;
+
 export const MOCK_MAX_PER_SKILL: Record<string, number> = {
   lesen: 5,
   sprachbausteine: 4,
   horen: 4,
   schreiben: 1,
   sprechen: 1,
+};
+
+export const MOCK_MAX_PER_SKILL_GOETHE: Record<string, number> = {
+  lesen: 6,
+  horen: 5,
+  schreiben: 2,
+  sprechen: 2,
 };
 
 export function mockDurationMinutes(level: MockLevel): number {
@@ -47,7 +62,10 @@ export function mockDurationLabel(level: MockLevel): string {
   return `${h}h ${rest}min`;
 }
 
-export function mockSkillLabels(skillsPresent: string[]): string[] {
+export function mockSkillLabels(
+  skillsPresent: string[],
+  provider?: "TELC" | "GOETHE" | string | null,
+): string[] {
   const labels: Record<string, string> = {
     lesen: "Lesen",
     sprachbausteine: "Bausteine",
@@ -55,7 +73,11 @@ export function mockSkillLabels(skillsPresent: string[]): string[] {
     schreiben: "Schreiben",
     sprechen: "Sprechen",
   };
-  return MOCK_SKILL_ORDER.filter((s) => skillsPresent.includes(s)).map(
-    (s) => labels[s] ?? s,
-  );
+  const order =
+    String(provider ?? "").toUpperCase() === "GOETHE"
+      ? MOCK_SKILL_ORDER_GOETHE
+      : MOCK_SKILL_ORDER;
+  return order
+    .filter((s) => skillsPresent.includes(s))
+    .map((s) => labels[s] ?? s);
 }

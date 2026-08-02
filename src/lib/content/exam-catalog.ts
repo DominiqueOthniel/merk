@@ -74,7 +74,7 @@ export function getExamLevels(provider?: ExamProvider | string | null): ExamLeve
         id: "C1",
         label: "C1",
         available: true,
-        note: "Format Goethe-Zertifikat C1. Contenu MERK original aligne sur les types d epreuves.",
+        note: "Format Goethe-Zertifikat : Lesen, Horen, Schreiben, Sprechen (modules officiels, sans Sprachbausteine).",
       },
     ];
   }
