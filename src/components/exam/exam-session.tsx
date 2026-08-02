@@ -245,13 +245,14 @@ export function ExamSession({ sourceId }: { sourceId: string }) {
           {instructionFor(format, section, current.options)}
         </p>
 
-        {audioUrl ? (
-          <audio className="mt-4 w-full" controls src={audioUrl} preload="none" />
-        ) : null}
-
-        {isListen && listenScript && !audioUrl ? (
+        {isListen && (audioUrl || listenScript) ? (
           <div className="mt-4">
-            <ExamListenPlayer script={listenScript} title={title} maxPlays={2} />
+            <ExamListenPlayer
+              script={listenScript ?? ""}
+              title={title}
+              audioUrl={audioUrl}
+              maxPlays={2}
+            />
           </div>
         ) : null}
 
