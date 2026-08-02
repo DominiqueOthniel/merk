@@ -51,10 +51,16 @@ export default function ExamHubPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    let cancelled = false;
     setLoading(true);
     fetch(`/api/exam/sets?level=${level}`)
-      .then((r) => r.json())
+      .then(async (r) => {
+        const text = await r.text();
+        if (!r.ok) throw new Error(text || `Erreur ${r.status}`);
+        return text ? JSON.parse(text) : {};
+      })
       .then((data) => {
+        if (cancelled) return;
         const rawLevels = Array.isArray(data.levels) ? data.levels : [];
         const parsed: LevelInfo[] = rawLevels
           .map((item: { id?: string; label?: string; available?: boolean; note?: string }) => {
@@ -75,7 +81,12 @@ export default function ExamHubPage() {
         setNote(data.note);
         setLoading(false);
       })
-      .catch(() => setLoading(false));
+      .catch(() => {
+        if (!cancelled) setLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
   }, [level]);
 
   const levelChips = levels.length ? levels : LEVEL_FALLBACK;
