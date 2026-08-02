@@ -3,6 +3,7 @@ import Link from "next/link";
 import { getSession } from "@/lib/session";
 import { Brand } from "@/components/brand";
 import { ProviderSelectCards } from "@/components/exam/provider-select-cards";
+import { LandingFeatureCards } from "@/components/exam/landing-feature-cards";
 
 export default async function HomePage() {
   let session = null;
@@ -39,6 +40,12 @@ export default async function HomePage() {
               Se connecter
             </Link>
           </div>
+        </div>
+      </section>
+
+      <section className="landing-features fade-up" aria-label="Competences">
+        <div className="landing-providers__inner">
+          <LandingFeatureCards />
         </div>
       </section>
 

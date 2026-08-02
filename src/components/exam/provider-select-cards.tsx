@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import type { ExamProvider } from "@/lib/exam-provider";
+import { MerkAvatar, MERK_AVATARS } from "@/components/ui/merk-avatar";
 
 const PROVIDERS: {
   id: ExamProvider;
@@ -12,6 +13,7 @@ const PROVIDERS: {
   skills: string[];
   tone: "telc" | "goethe";
   cta: string;
+  avatar: string;
 }[] = [
   {
     id: "TELC",
@@ -23,6 +25,7 @@ const PROVIDERS: {
     skills: ["Lesen", "Horen", "Schreiben", "Sprechen"],
     tone: "telc",
     cta: "Commencer TELC",
+    avatar: MERK_AVATARS.telc,
   },
   {
     id: "GOETHE",
@@ -34,6 +37,7 @@ const PROVIDERS: {
     skills: ["Lesen", "Horen", "Schreiben", "Sprechen"],
     tone: "goethe",
     cta: "Commencer Goethe",
+    avatar: MERK_AVATARS.goethe,
   },
 ];
 
@@ -55,12 +59,20 @@ export function ProviderSelectCards({
         const inner = (
           <>
             <div className={`provider-card__hero provider-card__hero--${p.tone}`}>
-              <p className="provider-card__kicker">{p.label}</p>
-              <p className="provider-card__title">{p.title}</p>
-              <div className="provider-card__levels" aria-label="Niveaux">
-                {p.levels.map((level) => (
-                  <span key={level}>{level}</span>
-                ))}
+              <MerkAvatar
+                src={p.avatar}
+                size="lg"
+                shape="circle"
+                className="provider-card__avatar"
+              />
+              <div className="provider-card__hero-text">
+                <p className="provider-card__kicker">{p.label}</p>
+                <p className="provider-card__title">{p.title}</p>
+                <div className="provider-card__levels" aria-label="Niveaux">
+                  {p.levels.map((level) => (
+                    <span key={level}>{level}</span>
+                  ))}
+                </div>
               </div>
             </div>
             <div className="provider-card__body">

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { signOut, useSession } from "next-auth/react";
 import { BrandHeader } from "@/components/nav";
+import { MerkAvatar, avatarForSection } from "@/components/ui/merk-avatar";
 import { examProviderLabel, type ExamProvider } from "@/lib/exam-provider";
 
 type ExamSet = {
@@ -199,22 +200,37 @@ export default function ExamHubPage() {
         <div className="space-y-8">
           {sections.map((group) => (
             <section key={group.section}>
-              <div className="flex flex-wrap items-end justify-between gap-2">
-                <h2 className="display text-[clamp(1.35rem,4vw,1.7rem)]">
-                  {group.section}
-                </h2>
-                <p className="text-[0.95rem] text-[var(--ink-faint)]">
-                  {group.due} dus dans cette section
-                </p>
+              <div className="exam-section-head">
+                <MerkAvatar
+                  src={avatarForSection(group.section, group.sets[0]?.skill)}
+                  size="md"
+                  shape="circle"
+                />
+                <div className="min-w-0 flex-1">
+                  <div className="flex flex-wrap items-end justify-between gap-2">
+                    <h2 className="display text-[clamp(1.35rem,4vw,1.7rem)]">
+                      {group.section}
+                    </h2>
+                    <p className="text-[0.95rem] text-[var(--ink-faint)]">
+                      {group.due} dus dans cette section
+                    </p>
+                  </div>
+                </div>
               </div>
               <div className="mt-3 grid gap-2.5 lg:grid-cols-2">
                 {group.sets.map((set) => (
                   <Link
                     key={set.sourceId}
                     href={`/exam/${encodeURIComponent(set.sourceId)}`}
-                    className="surface flex items-center justify-between gap-3 px-4 py-4"
+                    className="exam-set-card surface"
                   >
-                    <div>
+                    <MerkAvatar
+                      src={avatarForSection(group.section, set.skill)}
+                      size="sm"
+                      shape="circle"
+                      className="exam-set-card__avatar"
+                    />
+                    <div className="min-w-0 pr-2">
                       <p className="font-semibold">{set.title}</p>
                       <p className="mt-1 text-[0.92rem] text-[var(--ink-soft)]">
                         {set.format === "MATCH"
@@ -230,7 +246,7 @@ export default function ExamHubPage() {
                       </p>
                     </div>
                     <span
-                      className={`rounded-full px-3 py-1 text-[0.85rem] font-semibold ${
+                      className={`shrink-0 rounded-full px-3 py-1 text-[0.85rem] font-semibold ${
                         set.dueCount > 0
                           ? "bg-[var(--forest)] text-white"
                           : "bg-[var(--forest-soft)] text-[var(--forest-deep)]"
