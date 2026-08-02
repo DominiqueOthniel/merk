@@ -9,6 +9,7 @@ const studentLinks = [
   { href: "/review", label: "Reviser" },
   { href: "/exam", label: "Examen" },
   { href: "/dashboard", label: "Carnet" },
+  { href: "/subscription", label: "Pro" },
 ];
 
 function NavLinks({
