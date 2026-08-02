@@ -6,6 +6,7 @@ import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { Brand } from "@/components/brand";
 import { ExamProviderPicker } from "@/components/exam/exam-provider-picker";
+import { ExamThemeSync } from "@/components/exam/exam-theme";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import type { ExamProvider } from "@/lib/exam-provider";
@@ -79,13 +80,14 @@ export default function RegisterPage() {
 
   return (
     <main className="merk-shell merk-shell--narrow">
+      <ExamThemeSync preview={examProvider} />
       <div className="fade-up">
         <Brand size="medium" />
         <h1 className="display mt-6 text-[clamp(2rem,6vw,2.6rem)]">
           Inscription eleve
         </h1>
         <p className="mt-2 text-[1.08rem] text-[var(--ink-soft)]">
-          Rattache-toi a ton centre, puis passe le test de positionnement.
+          Choisis TELC ou Goethe, puis rattache-toi a ton centre.
         </p>
       </div>
 

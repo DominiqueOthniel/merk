@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { signOut, useSession } from "next-auth/react";
 import { Brand } from "@/components/brand";
+import { examProviderLabel } from "@/lib/exam-provider";
 
 const studentLinks = [
   { href: "/review", label: "Reviser" },
@@ -70,7 +71,15 @@ export function StudentNav() {
             "Espace eleve"
           )}
         </p>
-        <p className="mt-2 px-1 text-[0.88rem] leading-snug text-[var(--ink-faint)]">
+        {data?.user?.examProvider ? (
+          <div className="mt-3 px-1">
+            <span className="track-pill">
+              <span className="track-pill__dot" />
+              {examProviderLabel(data.user.examProvider)}
+            </span>
+          </div>
+        ) : null}
+        <p className="mt-3 px-1 text-[0.88rem] leading-snug text-[var(--ink-faint)]">
           Un peu chaque jour. Ca reste.
         </p>
         <nav className="mt-8 flex flex-1 flex-col gap-2" aria-label="Navigation eleve">

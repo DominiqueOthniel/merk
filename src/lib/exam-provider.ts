@@ -9,8 +9,8 @@ export function normalizeExamProvider(value: unknown): ExamProvider {
   return raw === "GOETHE" ? "GOETHE" : "TELC";
 }
 
-export function examProviderLabel(provider: ExamProvider): string {
-  return provider === "GOETHE" ? "Goethe" : "TELC";
+export function examProviderLabel(provider: ExamProvider | string | null | undefined): string {
+  return String(provider ?? "").toUpperCase() === "GOETHE" ? "Goethe" : "TELC";
 }
 
 /** Prefixe sourceRef en base (TELC historique = deuropa). */

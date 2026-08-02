@@ -6,6 +6,7 @@ import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Brand } from "@/components/brand";
 import { ExamProviderPicker } from "@/components/exam/exam-provider-picker";
+import { ExamThemeSync } from "@/components/exam/exam-theme";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import type { ExamProvider } from "@/lib/exam-provider";
@@ -39,11 +40,12 @@ export default function LoginPage() {
 
   return (
     <main className="merk-shell merk-shell--narrow">
+      <ExamThemeSync preview={examProvider} />
       <div className="fade-up">
         <Brand size="medium" />
         <h1 className="display mt-6 text-[clamp(2rem,6vw,2.6rem)]">Connexion</h1>
         <p className="mt-2 text-[1.08rem] text-[var(--ink-soft)]">
-          Choisis ton examen, puis accede a tes cartes du jour.
+          Un parcours, une couleur, un seul contenu examen.
         </p>
       </div>
 
@@ -69,13 +71,18 @@ export default function LoginPage() {
         </label>
         {error ? <p className="text-[var(--danger)]">{error}</p> : null}
         <Button className="w-full" disabled={busy}>
-          {busy ? "Connexion..." : "Entrer"}
+          {busy
+            ? "Connexion..."
+            : `Entrer en ${examProvider === "GOETHE" ? "Goethe" : "TELC"}`}
         </Button>
       </form>
 
       <p className="fade-up-late mt-8 text-[1.05rem] text-[var(--ink-soft)]">
         Pas encore de compte ?{" "}
-        <Link href="/register" className="font-semibold text-[var(--forest)] underline underline-offset-4">
+        <Link
+          href="/register"
+          className="font-semibold text-[var(--forest)] underline underline-offset-4"
+        >
           S inscrire
         </Link>
       </p>
