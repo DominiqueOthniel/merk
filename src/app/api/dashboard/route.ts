@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/db";
+import { EXAM_CARD_KINDS } from "@/lib/content/exam-catalog";
 import { computePrepScore, prepLabel } from "@/lib/srs/prep-score";
 
 export async function GET() {
@@ -10,34 +11,82 @@ export async function GET() {
     return NextResponse.json({ error: "Non authentifie" }, { status: 401 });
   }
 
-  const user = await prisma.user.findUnique({
-    where: { id: session.user.id },
-    include: {
-      cohorte: true,
-      centre: true,
-    },
-  });
+  const userId = session.user.id;
+  const now = new Date();
+  const startOfDay = new Date(now);
+  startOfDay.setHours(0, 0, 0, 0);
+  const practiceKinds = { notIn: [...EXAM_CARD_KINDS] };
+
+  const [user, dueCount, doneToday, recent, themes, progressRows, latestPrep] =
+    await Promise.all([
+      prisma.user.findUnique({
+        where: { id: userId },
+        include: { cohorte: true, centre: true },
+      }),
+      prisma.cardProgress.count({
+        where: {
+          userId,
+          nextReviewAt: { lte: now },
+          card: { kind: practiceKinds },
+        },
+      }),
+      prisma.reviewLog.count({
+        where: { userId, createdAt: { gte: startOfDay } },
+      }),
+      prisma.reviewLog.findMany({
+        where: { userId },
+        orderBy: { createdAt: "desc" },
+        take: 20,
+        select: { correct: true },
+      }),
+      prisma.theme.findMany({
+        orderBy: { sortOrder: "asc" },
+        select: { id: true, slug: true, nameFr: true, nameDe: true },
+      }),
+      prisma.cardProgress.findMany({
+        where: { userId, card: { kind: practiceKinds } },
+        select: {
+          repetitions: true,
+          card: { select: { themeId: true } },
+        },
+      }),
+      prisma.prepScore.findFirst({
+        where: { userId },
+        orderBy: { createdAt: "desc" },
+        select: { value: true },
+      }),
+    ]);
+
   if (!user) {
     return NextResponse.json({ error: "Utilisateur introuvable" }, { status: 404 });
   }
 
-  const now = new Date();
-  const startOfDay = new Date(now);
-  startOfDay.setHours(0, 0, 0, 0);
+  const themeAgg = new Map<string, { total: number; mastered: number }>();
+  for (const row of progressRows) {
+    const themeId = row.card.themeId;
+    let agg = themeAgg.get(themeId);
+    if (!agg) {
+      agg = { total: 0, mastered: 0 };
+      themeAgg.set(themeId, agg);
+    }
+    agg.total += 1;
+    if (row.repetitions >= 2) agg.mastered += 1;
+  }
 
-  const dueCount = await prisma.cardProgress.count({
-    where: { userId: user.id, nextReviewAt: { lte: now } },
-  });
+  const progressByTheme = themes
+    .filter((theme) => !theme.slug.startsWith("examen-"))
+    .map((theme) => {
+      const agg = themeAgg.get(theme.id) ?? { total: 0, mastered: 0 };
+      return {
+        slug: theme.slug,
+        name: theme.nameFr,
+        nameDe: theme.nameDe,
+        total: agg.total,
+        mastered: agg.mastered,
+        pct: agg.total === 0 ? 0 : Math.round((agg.mastered / agg.total) * 100),
+      };
+    });
 
-  const doneToday = await prisma.reviewLog.count({
-    where: { userId: user.id, createdAt: { gte: startOfDay } },
-  });
-
-  const recent = await prisma.reviewLog.findMany({
-    where: { userId: user.id },
-    orderBy: { createdAt: "desc" },
-    take: 20,
-  });
   const recentCorrectRate =
     recent.length === 0
       ? 0.5
@@ -56,41 +105,25 @@ export async function GET() {
     hoursUntilSession,
   });
 
-  const themes = await prisma.theme.findMany({ orderBy: { sortOrder: "asc" } });
-  const progressByTheme = await Promise.all(
-    themes.map(async (theme) => {
-      const total = await prisma.cardProgress.count({
-        where: { userId: user.id, card: { themeId: theme.id } },
-      });
-      const mastered = await prisma.cardProgress.count({
-        where: {
-          userId: user.id,
-          card: { themeId: theme.id },
-          repetitions: { gte: 2 },
-        },
-      });
-      return {
-        slug: theme.slug,
-        name: theme.nameFr,
-        nameDe: theme.nameDe,
-        total,
-        mastered,
-        pct: total === 0 ? 0 : Math.round((mastered / total) * 100),
-      };
-    })
-  );
-
   let challenge = null;
   let ranking: { name: string; points: number; isYou: boolean }[] = [];
 
   if (user.cohorteId) {
-    const ch = await prisma.challenge.findFirst({
-      where: {
-        cohorteId: user.cohorteId,
-        startsAt: { lte: now },
-        endsAt: { gte: now },
-      },
-    });
+    const [ch, peers] = await Promise.all([
+      prisma.challenge.findFirst({
+        where: {
+          cohorteId: user.cohorteId,
+          startsAt: { lte: now },
+          endsAt: { gte: now },
+        },
+      }),
+      prisma.user.findMany({
+        where: { cohorteId: user.cohorteId, role: "STUDENT" },
+        orderBy: { totalPoints: "desc" },
+        select: { id: true, name: true, totalPoints: true },
+      }),
+    ]);
+
     if (ch) {
       challenge = {
         id: ch.id,
@@ -102,22 +135,12 @@ export async function GET() {
       };
     }
 
-    const peers = await prisma.user.findMany({
-      where: { cohorteId: user.cohorteId, role: "STUDENT" },
-      orderBy: { totalPoints: "desc" },
-      select: { id: true, name: true, totalPoints: true },
-    });
     ranking = peers.map((p) => ({
       name: p.name,
       points: p.totalPoints,
       isYou: p.id === user.id,
     }));
   }
-
-  const latestPrep = await prisma.prepScore.findFirst({
-    where: { userId: user.id },
-    orderBy: { createdAt: "desc" },
-  });
 
   return NextResponse.json({
     user: {

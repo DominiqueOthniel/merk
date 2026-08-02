@@ -7,6 +7,7 @@ import { answersMatch } from "@/lib/normalize";
 import { applySm2, type QualityLabel } from "@/lib/srs/sm2";
 import { computePoints } from "@/lib/srs/points";
 import { updateStreak } from "@/lib/srs/streak";
+import { EXAM_CARD_KINDS } from "@/lib/content/exam-catalog";
 import { computePrepScore } from "@/lib/srs/prep-score";
 
 const schema = z.object({
@@ -97,26 +98,33 @@ export async function POST(req: Request) {
       }
     });
 
-    const user = await prisma.user.findUnique({
-      where: { id: session.user.id },
-      include: { cohorte: true },
-    });
-
     const now = new Date();
     const startOfDay = new Date(now);
     startOfDay.setHours(0, 0, 0, 0);
 
-    const dueTotal = await prisma.cardProgress.count({
-      where: { userId: session.user.id, nextReviewAt: { lte: now } },
-    });
-    const dueDoneToday = await prisma.reviewLog.count({
-      where: { userId: session.user.id, createdAt: { gte: startOfDay } },
-    });
-    const recent = await prisma.reviewLog.findMany({
-      where: { userId: session.user.id },
-      orderBy: { createdAt: "desc" },
-      take: 20,
-    });
+    const [user, dueTotal, dueDoneToday, recent] = await Promise.all([
+      prisma.user.findUnique({
+        where: { id: session.user.id },
+        include: { cohorte: true },
+      }),
+      prisma.cardProgress.count({
+        where: {
+          userId: session.user.id,
+          nextReviewAt: { lte: now },
+          card: { kind: { notIn: [...EXAM_CARD_KINDS] } },
+        },
+      }),
+      prisma.reviewLog.count({
+        where: { userId: session.user.id, createdAt: { gte: startOfDay } },
+      }),
+      prisma.reviewLog.findMany({
+        where: { userId: session.user.id },
+        orderBy: { createdAt: "desc" },
+        take: 20,
+        select: { correct: true },
+      }),
+    ]);
+
     const recentCorrectRate =
       recent.length === 0
         ? 0.5

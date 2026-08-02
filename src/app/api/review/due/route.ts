@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/db";
+import { EXAM_CARD_KINDS } from "@/lib/content/exam-catalog";
 
 export async function GET() {
   const session = await getServerSession(authOptions);
@@ -14,9 +15,20 @@ export async function GET() {
     where: {
       userId: session.user.id,
       nextReviewAt: { lte: now },
+      card: { kind: { notIn: [...EXAM_CARD_KINDS] } },
     },
-    include: {
-      card: { include: { theme: true } },
+    select: {
+      id: true,
+      cardId: true,
+      card: {
+        select: {
+          prompt: true,
+          context: true,
+          hint: true,
+          level: true,
+          theme: { select: { nameFr: true } },
+        },
+      },
     },
     orderBy: { nextReviewAt: "asc" },
     take: 20,
