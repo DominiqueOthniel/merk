@@ -4,55 +4,19 @@ import {
   type ExamExercise,
 } from "@/lib/content/exam-catalog";
 import type { ExamProvider } from "@/lib/exam-provider";
+import {
+  MOCK_MAX_PER_SKILL,
+  MOCK_SKILL_ORDER,
+  type MockItem,
+  type MockLevel,
+} from "@/lib/content/mock-exam-meta";
 
-export type MockLevel = "A1" | "A2" | "B1" | "B2" | "C1";
-
-export type MockItem = {
-  id: string;
-  sourceId: string;
-  sourceTitle: string;
-  skill: string;
-  section: string;
-  format: string;
-  prompt: string;
-  passage?: string | null;
-  options: string[];
-  answer: string;
-  selfScore?: boolean;
-};
-
-const SKILL_ORDER = [
-  "lesen",
-  "sprachbausteine",
-  "horen",
-  "schreiben",
-  "sprechen",
-] as const;
-
-const MAX_PER_SKILL: Record<string, number> = {
-  lesen: 5,
-  sprachbausteine: 4,
-  horen: 4,
-  schreiben: 1,
-  sprechen: 1,
-};
-
-export function mockDurationMinutes(level: MockLevel): number {
-  if (level === "C1") return 90;
-  if (level === "B2") return 70;
-  if (level === "B1") return 50;
-  if (level === "A2") return 40;
-  return 35;
-}
-
-export function mockDurationLabel(level: MockLevel): string {
-  const m = mockDurationMinutes(level);
-  const h = Math.floor(m / 60);
-  const rest = m % 60;
-  if (h === 0) return `${m} min`;
-  if (rest === 0) return `${h}h`;
-  return `${h}h ${rest}min`;
-}
+export type { MockItem, MockLevel } from "@/lib/content/mock-exam-meta";
+export {
+  mockDurationLabel,
+  mockDurationMinutes,
+  mockSkillLabels,
+} from "@/lib/content/mock-exam-meta";
 
 function pickExercise(
   exercises: ExamExercise[],
@@ -68,10 +32,10 @@ export function buildMockItems(
   const exercises = getExamExercises(provider, level);
   const items: MockItem[] = [];
 
-  for (const skill of SKILL_ORDER) {
+  for (const skill of MOCK_SKILL_ORDER) {
     const exercise = pickExercise(exercises, skill);
     if (!exercise) continue;
-    const limit = MAX_PER_SKILL[skill] ?? 3;
+    const limit = MOCK_MAX_PER_SKILL[skill] ?? 3;
 
     if (exercise.format === "MATCH" && exercise.pairs?.length) {
       for (const [idx, pair] of exercise.pairs.slice(0, limit).entries()) {
@@ -121,23 +85,11 @@ export function buildMockItems(
   return items;
 }
 
-export function mockSkillLabels(skillsPresent: string[]): string[] {
-  const labels: Record<string, string> = {
-    lesen: "Lesen",
-    sprachbausteine: "Bausteine",
-    horen: "Horen",
-    schreiben: "Schreiben",
-    sprechen: "Sprechen",
-  };
-  return SKILL_ORDER.filter((s) => skillsPresent.includes(s)).map(
-    (s) => labels[s] ?? s,
-  );
-}
-
 export function summarizeMock(exercises: ExamExercise[]) {
   const skills = [...new Set(exercises.map((e) => e.skill))];
   const itemEstimate = exercises.reduce(
-    (sum, e) => sum + Math.min(exerciseItemCount(e), MAX_PER_SKILL[e.skill] ?? 3),
+    (sum, e) =>
+      sum + Math.min(exerciseItemCount(e), MOCK_MAX_PER_SKILL[e.skill] ?? 3),
     0,
   );
   return { skills, itemEstimate };

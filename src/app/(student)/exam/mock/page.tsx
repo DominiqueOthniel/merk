@@ -1,6 +1,6 @@
 import { BrandHeader } from "@/components/nav";
 import { MockExamSession } from "@/components/exam/mock-exam-session";
-import type { MockLevel } from "@/lib/content/mock-exam";
+import type { MockLevel } from "@/lib/content/mock-exam-meta";
 
 type Props = {
   searchParams: Promise<{ level?: string }>;

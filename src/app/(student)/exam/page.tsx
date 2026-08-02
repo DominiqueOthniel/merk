@@ -9,7 +9,10 @@ import {
   MERK_AVATARS,
   avatarForSection,
 } from "@/components/ui/merk-avatar";
-import { mockDurationLabel, type MockLevel } from "@/lib/content/mock-exam";
+import {
+  mockDurationLabel,
+  type MockLevel,
+} from "@/lib/content/mock-exam-meta";
 import { examProviderLabel, type ExamProvider } from "@/lib/exam-provider";
 
 type ExamSet = {
