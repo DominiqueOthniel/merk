@@ -1,15 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, Suspense, useEffect, useState } from "react";
 import { signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { Brand } from "@/components/brand";
 import { ExamProviderPicker } from "@/components/exam/exam-provider-picker";
 import { ExamThemeSync } from "@/components/exam/exam-theme";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import type { ExamProvider } from "@/lib/exam-provider";
+import { normalizeExamProvider, type ExamProvider } from "@/lib/exam-provider";
 
 type Centre = {
   id: string;
@@ -21,14 +21,27 @@ const selectClass =
   "mt-0 min-h-[var(--touch)] w-full rounded-[1.35rem] border border-[var(--line)] bg-white/90 px-5 py-3.5 text-[1.05rem] outline-none focus:border-[var(--forest)] focus:ring-4 focus:ring-[rgba(26,107,72,0.12)]";
 
 export default function RegisterPage() {
+  return (
+    <main className="merk-shell merk-shell--narrow">
+      <Suspense fallback={<p className="text-[var(--ink-soft)]">Chargement...</p>}>
+        <RegisterForm />
+      </Suspense>
+    </main>
+  );
+}
+
+function RegisterForm() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [centres, setCentres] = useState<Centre[]>([]);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [centreId, setCentreId] = useState("");
   const [cohorteId, setCohorteId] = useState("");
-  const [examProvider, setExamProvider] = useState<ExamProvider>("TELC");
+  const [examProvider, setExamProvider] = useState<ExamProvider>(() =>
+    normalizeExamProvider(searchParams.get("exam")),
+  );
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
 
@@ -79,7 +92,7 @@ export default function RegisterPage() {
   }
 
   return (
-    <main className="merk-shell merk-shell--narrow">
+    <>
       <ExamThemeSync preview={examProvider} />
       <div className="fade-up">
         <Brand size="medium" />
@@ -159,12 +172,12 @@ export default function RegisterPage() {
       <p className="fade-up-late mt-8 text-[1.05rem] text-[var(--ink-soft)]">
         Deja inscrit ?{" "}
         <Link
-          href="/login"
+          href={`/login?exam=${examProvider}`}
           className="font-semibold text-[var(--forest)] underline underline-offset-4"
         >
           Se connecter
         </Link>
       </p>
-    </main>
+    </>
   );
 }
