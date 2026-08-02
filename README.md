@@ -6,7 +6,7 @@ MVP aligne sur le cahier des charges (auth, placement CECR, banque theme x nivea
 ## Stack
 
 - Next.js 15 (App Router) + TypeScript + Tailwind CSS 4
-- Prisma 5 + PostgreSQL (Prisma Postgres)
+- Prisma 5 + PostgreSQL (Supabase)
 - Auth.js (credentials)
 - Algorithme de repetition espacee type SM-2
 
@@ -14,22 +14,32 @@ MVP aligne sur le cahier des charges (auth, placement CECR, banque theme x nivea
 
 ```bash
 npm install
-# renseigne DATABASE_URL (Postgres) dans .env, voir .env.example
-npx prisma migrate dev
+# cree un projet sur https://supabase.com puis colle les URLs dans .env (voir .env.example)
+npx prisma migrate deploy
 npm run db:seed
 npm run dev
 ```
 
 Ouvre [http://localhost:3000](http://localhost:3000).
 
+## Base Supabase
+
+1. Cree un projet sur [supabase.com](https://supabase.com).
+2. `Project Settings` > `Database` > copie :
+   - **Transaction pooler** (port `6543`) → `DATABASE_URL` (ajoute `?pgbouncer=true&sslmode=require`)
+   - **Session / Direct** (port `5432`) → `DIRECT_URL` (ajoute `?sslmode=require`)
+3. Local : mets les deux dans `.env`, puis `npx prisma migrate deploy` et `npm run db:seed`.
+4. Netlify : ajoute les memes variables (`DATABASE_URL`, `DIRECT_URL`, `NEXTAUTH_SECRET`, `NEXTAUTH_URL`).
+
 ## Deploiement (Netlify)
 
 1. Sur Netlify : `Add new site` > `Import from GitHub` > repo `merk`.
 2. Le build est pilote par `netlify.toml` (plugin `@netlify/plugin-nextjs`).
 3. Variables d'environnement a definir dans `Site settings` > `Environment variables` :
-   - `DATABASE_URL` : la connexion Postgres
+   - `DATABASE_URL` : pooler Supabase (6543)
+   - `DIRECT_URL` : connexion directe Supabase (5432)
    - `NEXTAUTH_SECRET` : une longue chaine aleatoire
-   - `NEXTAUTH_URL` : l'URL publique du site (ex. `https://merk.netlify.app`)
+   - `NEXTAUTH_URL` : l'URL publique du site (ex. `https://merkacademy.netlify.app`)
 4. Applique le schema sur la base de prod une fois : `npx prisma migrate deploy` (puis `npm run db:seed` pour les donnees demo).
 
 ## Comptes demo
