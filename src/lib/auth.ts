@@ -55,6 +55,7 @@ export const authOptions: NextAuthOptions = {
           centreId: user.centreId,
           cohorteId: user.cohorteId,
           cefrLevel: user.cefrLevel,
+          targetLevel: user.targetLevel,
           placedAt: user.placedAt?.toISOString() ?? null,
           examProvider,
         };
@@ -70,6 +71,7 @@ export const authOptions: NextAuthOptions = {
           centreId?: string | null;
           cohorteId?: string | null;
           cefrLevel?: string | null;
+          targetLevel?: string | null;
           placedAt?: string | null;
           examProvider?: string | null;
         };
@@ -78,11 +80,13 @@ export const authOptions: NextAuthOptions = {
         token.centreId = u.centreId;
         token.cohorteId = u.cohorteId;
         token.cefrLevel = u.cefrLevel;
+        token.targetLevel = u.targetLevel;
         token.placedAt = u.placedAt;
         token.examProvider = normalizeExamProvider(u.examProvider);
       }
       if (trigger === "update" && session) {
         token.cefrLevel = session.cefrLevel ?? token.cefrLevel;
+        token.targetLevel = session.targetLevel ?? token.targetLevel;
         token.placedAt = session.placedAt ?? token.placedAt;
         token.cohorteId = session.cohorteId ?? token.cohorteId;
         if (session.examProvider) {
@@ -98,6 +102,7 @@ export const authOptions: NextAuthOptions = {
         session.user.centreId = (token.centreId as string | null) ?? null;
         session.user.cohorteId = (token.cohorteId as string | null) ?? null;
         session.user.cefrLevel = (token.cefrLevel as string | null) ?? null;
+        session.user.targetLevel = (token.targetLevel as string | null) ?? null;
         session.user.placedAt = (token.placedAt as string | null) ?? null;
         session.user.examProvider = normalizeExamProvider(token.examProvider);
       }

@@ -4,8 +4,13 @@ import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/db";
 import { answersMatch } from "@/lib/normalize";
 import { PLACEMENT_ITEMS } from "@/lib/content/cards-de";
-import { EXAM_CARD_KINDS } from "@/lib/content/exam-catalog";
-import { examSourcePrefix, normalizeExamProvider } from "@/lib/exam-provider";
+import { assignReviewCards } from "@/lib/assign-cards";
+import {
+  isCefrLevel,
+  levelsBetween,
+  levelsUpTo,
+} from "@/lib/cefr";
+import { normalizeExamProvider } from "@/lib/exam-provider";
 import type { CefrLevel } from "@/lib/types";
 
 function scoreToLevel(correct: number, total: number): CefrLevel {
@@ -15,12 +20,6 @@ function scoreToLevel(correct: number, total: number): CefrLevel {
   if (ratio < 0.75) return "B1";
   if (ratio < 0.9) return "B2";
   return "C1";
-}
-
-function levelsUpTo(level: CefrLevel): CefrLevel[] {
-  const order: CefrLevel[] = ["A1", "A2", "B1", "B2", "C1"];
-  const idx = order.indexOf(level);
-  return order.slice(0, Math.max(1, idx + 1));
 }
 
 export async function GET() {
@@ -52,49 +51,38 @@ export async function POST(req: Request) {
 
   const current = await prisma.user.findUnique({
     where: { id: session.user.id },
-    select: { examProvider: true },
+    select: { examProvider: true, targetLevel: true },
   });
   const provider = normalizeExamProvider(current?.examProvider);
-  const prefix = examSourcePrefix(provider);
+  const target = isCefrLevel(current?.targetLevel)
+    ? current!.targetLevel
+    : level;
 
   await prisma.user.update({
     where: { id: session.user.id },
-    data: { cefrLevel: level, placedAt: now },
-  });
-
-  const assignLevels = levelsUpTo(level);
-  const cards = await prisma.card.findMany({
-    where: {
-      language: "de",
-      level: { in: assignLevels },
-      OR: [
-        { kind: "CLOZE" },
-        {
-          kind: { in: [...EXAM_CARD_KINDS] },
-          sourceRef: { startsWith: prefix },
-        },
-      ],
+    data: {
+      cefrLevel: level,
+      targetLevel: target,
+      placedAt: now,
     },
   });
 
-  for (const card of cards) {
-    await prisma.cardProgress.upsert({
-      where: {
-        userId_cardId: { userId: session.user.id, cardId: card.id },
-      },
-      create: {
-        userId: session.user.id,
-        cardId: card.id,
-        nextReviewAt: now,
-      },
-      update: {},
-    });
-  }
+  const levels = isCefrLevel(target)
+    ? levelsBetween(level, target)
+    : levelsUpTo(level);
+
+  const cardsAssigned = await assignReviewCards({
+    userId: session.user.id,
+    levels,
+    provider,
+    now,
+  });
 
   return NextResponse.json({
     level,
+    targetLevel: target,
     correct,
     total: PLACEMENT_ITEMS.length,
-    cardsAssigned: cards.length,
+    cardsAssigned,
   });
 }

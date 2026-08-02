@@ -12,6 +12,7 @@ declare module "next-auth" {
       centreId: string | null;
       cohorteId: string | null;
       cefrLevel: string | null;
+      targetLevel: string | null;
       placedAt: string | null;
       examProvider: ExamProvider;
     };
@@ -22,6 +23,7 @@ declare module "next-auth" {
     centreId?: string | null;
     cohorteId?: string | null;
     cefrLevel?: string | null;
+    targetLevel?: string | null;
     placedAt?: string | null;
     examProvider?: ExamProvider | null;
   }
@@ -34,6 +36,7 @@ declare module "next-auth/jwt" {
     centreId?: string | null;
     cohorteId?: string | null;
     cefrLevel?: string | null;
+    targetLevel?: string | null;
     placedAt?: string | null;
     examProvider?: ExamProvider;
   }

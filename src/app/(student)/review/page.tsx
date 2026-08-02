@@ -9,7 +9,17 @@ export default async function ReviewPage() {
 
   return (
     <>
-      <BrandHeader subtitle="Cartes du jour · production active" />
+      <BrandHeader
+        subtitle={
+          session.user.cefrLevel
+            ? `Cartes du jour · ${session.user.cefrLevel}${
+                session.user.targetLevel
+                  ? ` vers ${session.user.targetLevel}`
+                  : ""
+              }`
+            : "Cartes du jour · production active"
+        }
+      />
       <ReviewSession />
     </>
   );

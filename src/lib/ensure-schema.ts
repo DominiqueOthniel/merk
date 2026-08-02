@@ -18,4 +18,8 @@ async function runEnsure() {
     ALTER TABLE "User"
     ADD COLUMN IF NOT EXISTS "examProvider" TEXT NOT NULL DEFAULT 'TELC'
   `);
+  await prisma.$executeRawUnsafe(`
+    ALTER TABLE "User"
+    ADD COLUMN IF NOT EXISTS "targetLevel" TEXT
+  `);
 }

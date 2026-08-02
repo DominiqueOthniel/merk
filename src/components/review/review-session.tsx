@@ -16,6 +16,12 @@ type DueCard = {
   level: string;
 };
 
+type ReviewProfile = {
+  cefrLevel: string | null;
+  targetLevel: string | null;
+  examProvider: string;
+};
+
 type CheckResult = {
   correct: boolean;
   expected: string;
@@ -31,6 +37,7 @@ type SubmitResult = {
 export function ReviewSession() {
   const router = useRouter();
   const [cards, setCards] = useState<DueCard[]>([]);
+  const [profile, setProfile] = useState<ReviewProfile | null>(null);
   const [loading, setLoading] = useState(true);
   const [index, setIndex] = useState(0);
   const [answer, setAnswer] = useState("");
@@ -46,6 +53,7 @@ export function ReviewSession() {
       .then((r) => r.json())
       .then((data) => {
         setCards(data.cards ?? []);
+        setProfile(data.profile ?? null);
         setLoading(false);
         setStartedAt(Date.now());
       })
@@ -155,6 +163,21 @@ export function ReviewSession() {
 
   return (
     <div className="space-y-5">
+      {profile?.cefrLevel ? (
+        <div className="surface flex flex-wrap items-center gap-2 px-4 py-3 text-[0.95rem]">
+          <span className="font-semibold text-[var(--forest-deep)]">
+            Niveau {profile.cefrLevel}
+          </span>
+          {profile.targetLevel ? (
+            <span className="text-[var(--ink-soft)]">
+              · objectif {profile.targetLevel}
+            </span>
+          ) : null}
+          <span className="text-[var(--ink-faint)]">
+            Cartes entre ton niveau et ton objectif.
+          </span>
+        </div>
+      ) : null}
       <div className="flex items-center justify-between gap-3 text-[1rem] text-[var(--ink-soft)]">
         <span className="font-semibold text-[var(--forest-deep)]">
           {index + 1} / {cards.length}

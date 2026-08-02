@@ -146,6 +146,7 @@ export async function GET() {
     user: {
       name: user.name,
       cefrLevel: user.cefrLevel,
+      targetLevel: user.targetLevel,
       streakDays: user.streakDays,
       totalPoints: user.totalPoints,
       centre: user.centre?.name ?? null,

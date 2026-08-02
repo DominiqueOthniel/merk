@@ -8,6 +8,7 @@ type Dash = {
   user: {
     name: string;
     cefrLevel: string | null;
+    targetLevel?: string | null;
     streakDays: number;
     totalPoints: number;
     centre: string | null;
@@ -121,6 +122,9 @@ export default function DashboardPage() {
               </p>
               <div className="mt-5 flex flex-wrap gap-2">
                 <span className="stat-chip">Niveau {data.user.cefrLevel ?? "?"}</span>
+                {data.user.targetLevel ? (
+                  <span className="stat-chip">Objectif {data.user.targetLevel}</span>
+                ) : null}
                 <span
                   className={`stat-chip ${
                     data.user.streakDays >= 2 ? "stat-chip--hot pop-in" : ""

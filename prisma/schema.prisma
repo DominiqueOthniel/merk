@@ -42,6 +42,7 @@ model User {
   language      String         @default("de")
   examProvider  String         @default("TELC")
   cefrLevel     String?
+  targetLevel   String?
   placedAt      DateTime?
   streakDays    Int            @default(0)
   lastReviewDay String?
