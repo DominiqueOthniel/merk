@@ -7,6 +7,7 @@ import {
   exerciseItemCount,
   getExamExercise,
 } from "@/lib/content/exam-catalog";
+import { buildListenScript } from "@/lib/content/listen-script";
 import {
   examProviderLabel,
   examSourcePrefix,
@@ -75,6 +76,9 @@ export async function GET(_req: Request, ctx: Ctx) {
     return aDue.getTime() - bDue.getTime();
   });
 
+  const listenScript = buildListenScript(exercise);
+  const isListen = exercise.skill === "horen";
+
   return NextResponse.json({
     exam: provider,
     examLabel: examProviderLabel(provider),
@@ -84,8 +88,10 @@ export async function GET(_req: Request, ctx: Ctx) {
     skill: exercise.skill,
     level: exercise.level,
     format: exercise.format,
-    passage: exercise.passage ?? null,
+    // Pour Horen on ne renvoie pas le script lisible (anti-triche)
+    passage: isListen ? null : exercise.passage ?? null,
     audioUrl: exercise.audioUrl ?? null,
+    listenScript,
     itemCount: exerciseItemCount(exercise),
     options: exercise.bank?.length ? exercise.bank : exercise.options,
     items: dueFirst.map((card) => {
@@ -105,7 +111,7 @@ export async function GET(_req: Request, ctx: Ctx) {
         kind: card.kind,
         gapN,
         prompt: card.prompt,
-        passage: card.context,
+        passage: isListen ? "" : card.context,
         answer: card.answer,
         options: options.includes(card.answer)
           ? options

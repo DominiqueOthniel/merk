@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import { ExamListenPlayer } from "@/components/exam/exam-listen-player";
 import type { ExamFormat } from "@/lib/content/exam-types";
 
 type Item = {
@@ -57,6 +58,9 @@ function instructionFor(
   if (format === "CLOZE_BANK") return "Choisis le mot de la banque qui complete la lacune.";
   if (format === "READING_MCQ") return "Lis le texte puis reponds a la question.";
   if (format === "TF") {
+    if (/Hören|Horen/i.test(section)) {
+      return "Ecoute l audio, puis indique si l affirmation est richtig ou falsch.";
+    }
     return options.includes("nicht im Text")
       ? "Indique richtig, falsch ou nicht im Text."
       : "Indique si l affirmation est richtig ou falsch.";
@@ -103,6 +107,8 @@ export function ExamSession({ sourceId }: { sourceId: string }) {
   const [format, setFormat] = useState<ExamFormat>("MATCH");
   const [sharedPassage, setSharedPassage] = useState<string | null>(null);
   const [audioUrl, setAudioUrl] = useState<string | null>(null);
+  const [listenScript, setListenScript] = useState<string | null>(null);
+  const [skill, setSkill] = useState("");
   const [items, setItems] = useState<Item[]>([]);
   const [index, setIndex] = useState(0);
   const [selected, setSelected] = useState<string | null>(null);
@@ -122,8 +128,10 @@ export function ExamSession({ sourceId }: { sourceId: string }) {
         setLevel(data.level ?? "B1");
         setExamLabel(data.examLabel ?? "TELC");
         setFormat((data.format as ExamFormat) || "MATCH");
+        setSkill(data.skill ?? "");
         setSharedPassage(data.passage ?? null);
         setAudioUrl(data.audioUrl ?? null);
+        setListenScript(data.listenScript ?? null);
         setItems(data.items ?? []);
         setLoading(false);
       })
@@ -135,6 +143,7 @@ export function ExamSession({ sourceId }: { sourceId: string }) {
   const isReading = format === "READING_MCQ";
   const isTf = format === "TF";
   const isWrite = format === "WRITE";
+  const isListen = skill === "horen" || /Hören|Horen/i.test(section);
 
   const choices = useMemo(() => {
     if (!current) return [];
@@ -240,25 +249,39 @@ export function ExamSession({ sourceId }: { sourceId: string }) {
           <audio className="mt-4 w-full" controls src={audioUrl} preload="none" />
         ) : null}
 
+        {isListen && listenScript && !audioUrl ? (
+          <div className="mt-4">
+            <ExamListenPlayer script={listenScript} title={title} maxPlays={2} />
+          </div>
+        ) : null}
+
         <div className="mt-5 grid gap-5 lg:grid-cols-[1.2fr_0.8fr] lg:items-start lg:gap-7">
           <div className="space-y-4">
-            {(isCloze || isReading || isWrite || isTf) && (sharedPassage || current.passage) ? (
-              <div className="max-h-[42vh] overflow-y-auto rounded-[1.25rem] bg-[rgba(216,235,224,0.35)] p-4 text-[1.05rem] leading-relaxed lg:max-h-[min(68vh,36rem)] lg:p-5 lg:text-[1.08rem]">
+            {!isListen &&
+            (isCloze || isReading || isWrite || isTf) &&
+            (sharedPassage || current.passage) ? (
+              <div className="max-h-[42vh] overflow-y-auto rounded-[1.25rem] bg-[var(--forest-soft)]/45 p-4 text-[1.05rem] leading-relaxed lg:max-h-[min(68vh,36rem)] lg:p-5 lg:text-[1.08rem]">
                 {isCloze
                   ? renderClozePassage(current.passage, current.gapN)
                   : sharedPassage || current.passage}
               </div>
             ) : null}
 
-            {!isCloze && !isReading && !isWrite && !isTf ? (
-              <div className="max-h-[42vh] overflow-y-auto rounded-[1.25rem] bg-[rgba(216,235,224,0.35)] p-4 text-[1.05rem] leading-relaxed lg:max-h-[min(68vh,36rem)] lg:p-5">
+            {!isListen && !isCloze && !isReading && !isWrite && !isTf ? (
+              <div className="max-h-[42vh] overflow-y-auto rounded-[1.25rem] bg-[var(--forest-soft)]/45 p-4 text-[1.05rem] leading-relaxed lg:max-h-[min(68vh,36rem)] lg:p-5">
                 {current.passage}
               </div>
             ) : null}
 
             {(isReading || isTf) && current.prompt ? (
               <p className="rounded-[1.2rem] border border-[var(--line)] bg-white/80 px-4 py-3 text-[1.05rem] font-semibold">
-                {current.prompt}
+                {isListen ? `Aussage ${index + 1} : ${current.prompt}` : current.prompt}
+              </p>
+            ) : null}
+
+            {isListen ? (
+              <p className="text-[0.95rem] text-[var(--ink-faint)]">
+                Le texte audio n est pas affiche. Base-toi sur ce que tu as entendu.
               </p>
             ) : null}
           </div>

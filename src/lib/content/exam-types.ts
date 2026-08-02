@@ -29,6 +29,8 @@ export type ExamExercise = {
   bank?: string[];
   gaps?: ExamGap[];
   audioUrl?: string | null;
+  /** Script pour TTS Horen (si absent, genere depuis les items). */
+  listenScript?: string | null;
 };
 
 export type ExamLevelInfo = {

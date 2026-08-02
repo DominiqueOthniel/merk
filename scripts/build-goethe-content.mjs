@@ -66,7 +66,7 @@ function bank(level, sourceId, title, section, passage, bankWords, gaps) {
   };
 }
 
-function horen(level, sourceId, title, statements) {
+function horen(level, sourceId, title, statements, listenScript) {
   return {
     ...base(level),
     sourceId,
@@ -75,8 +75,9 @@ function horen(level, sourceId, title, statements) {
     skill: "horen",
     format: "TF",
     options: ["richtig", "falsch"],
-    passage: `${title} · Ubung ohne Audio (Aussagen zum Verstehen)`,
+    passage: `${title} · Horverstehen`,
     audioUrl: null,
+    listenScript,
     gaps: statements.map((s, i) => ({
       n: i + 1,
       prompt: s.prompt,
@@ -270,17 +271,29 @@ const b1 = [
       { n: 3, answer: "dir", choices: [] },
     ],
   ),
-  horen("B1", "g-b1-h-01", "Durchsage im Bahnhof", [
-    { prompt: "Der Zug nach Hamburg hat Verspatung.", answer: "richtig" },
-    { prompt: "Alle Reisenden mussen den Zug sofort verlassen.", answer: "falsch" },
-    { prompt: "Es gibt Informationen auf Gleis 4.", answer: "richtig" },
-    { prompt: "Die Durchsage betrifft einen Flug.", answer: "falsch" },
-  ]),
-  horen("B1", "g-b1-h-02", "Gesprach in der Apotheke", [
-    { prompt: "Die Person braucht etwas gegen Kopfschmerzen.", answer: "richtig" },
-    { prompt: "Man darf das Medikament mit Alkohol nehmen.", answer: "falsch" },
-    { prompt: "Es wird geraten, viel Wasser zu trinken.", answer: "richtig" },
-  ]),
+  horen(
+    "B1",
+    "g-b1-h-01",
+    "Durchsage im Bahnhof",
+    [
+      { prompt: "Der Zug nach Hamburg hat Verspatung.", answer: "richtig" },
+      { prompt: "Alle Reisenden mussen den Zug sofort verlassen.", answer: "falsch" },
+      { prompt: "Es gibt Informationen auf Gleis 4.", answer: "richtig" },
+      { prompt: "Die Durchsage betrifft einen Flug.", answer: "falsch" },
+    ],
+    "Achtung, eine Bahndurchsage: Der Zug nach Hamburg hat derzeit Verspatung. Bitte bleiben Sie ruhig auf dem Bahnsteig. Sie mussen den Zug nicht verlassen. Weitere Informationen erhalten Sie auf Gleis 4. Ende der Durchsage.",
+  ),
+  horen(
+    "B1",
+    "g-b1-h-02",
+    "Gesprach in der Apotheke",
+    [
+      { prompt: "Die Person braucht etwas gegen Kopfschmerzen.", answer: "richtig" },
+      { prompt: "Man darf das Medikament mit Alkohol nehmen.", answer: "falsch" },
+      { prompt: "Es wird geraten, viel Wasser zu trinken.", answer: "richtig" },
+    ],
+    "Guten Tag, ich habe starke Kopfschmerzen. Konnen Sie mir etwas empfehlen? Ja, diese Tabletten helfen gut. Bitte nehmen Sie sie nicht mit Alkohol ein. Trinken Sie ausserdem viel Wasser und ruhen Sie sich aus.",
+  ),
   schreiben(
     "B1",
     "g-b1-w-01",
@@ -468,17 +481,29 @@ const b2 = [
       { n: 3, answer: "bedanke", choices: ["bedanke", "beschwere", "entscheide", "erinnere"] },
     ],
   ),
-  horen("B2", "g-b2-h-01", "Radiobeitrag Weiterbildung", [
-    { prompt: "Der Beitrag handelt von beruflicher Weiterbildung.", answer: "richtig" },
-    { prompt: "Onlinekurse werden als nutzlos dargestellt.", answer: "falsch" },
-    { prompt: "Zeitmanagement wird als Herausforderung genannt.", answer: "richtig" },
-    { prompt: "Nur Studierende durfen Kurse besuchen.", answer: "falsch" },
-  ]),
-  horen("B2", "g-b2-h-02", "Interview Stadtleben", [
-    { prompt: "Grunflachen gelten als wichtig fur die Lebensqualitat.", answer: "richtig" },
-    { prompt: "Der Gast lehnt Offentlichen Verkehr ab.", answer: "falsch" },
-    { prompt: "Bezahlbarer Wohnraum wird thematisiert.", answer: "richtig" },
-  ]),
+  horen(
+    "B2",
+    "g-b2-h-01",
+    "Radiobeitrag Weiterbildung",
+    [
+      { prompt: "Der Beitrag handelt von beruflicher Weiterbildung.", answer: "richtig" },
+      { prompt: "Onlinekurse werden als nutzlos dargestellt.", answer: "falsch" },
+      { prompt: "Zeitmanagement wird als Herausforderung genannt.", answer: "richtig" },
+      { prompt: "Nur Studierende durfen Kurse besuchen.", answer: "falsch" },
+    ],
+    "In unserem Beitrag geht es um berufliche Weiterbildung. Viele Unternehmen fordern Onlinekurse, weil sie flexibel und hilfreich sind. Gleichzeitig bleibt Zeitmanagement eine grosse Herausforderung. Die Angebote richten sich nicht nur an Studierende, sondern auch an Berufstatige.",
+  ),
+  horen(
+    "B2",
+    "g-b2-h-02",
+    "Interview Stadtleben",
+    [
+      { prompt: "Grunflachen gelten als wichtig fur die Lebensqualitat.", answer: "richtig" },
+      { prompt: "Der Gast lehnt Offentlichen Verkehr ab.", answer: "falsch" },
+      { prompt: "Bezahlbarer Wohnraum wird thematisiert.", answer: "richtig" },
+    ],
+    "Fur mich gehoren Grunflachen klar zur Lebensqualitat in der Stadt. Ich nutze regelmassig den Offentlichen Verkehr und halte ihn fur unverzichtbar. Ein weiteres zentrales Thema ist bezahlbarer Wohnraum, besonders fur junge Familien.",
+  ),
   schreiben(
     "B2",
     "g-b2-w-01",
@@ -621,17 +646,29 @@ const c1 = [
       { n: 5, answer: "entschärfen", choices: ["entschärfen", "verscharfen", "ignorieren", "verbieten"] },
     ],
   ),
-  horen("C1", "g-c1-h-01", "Vortrag Stadtmobilitat", [
-    { prompt: "Der Vortrag behandelt ausschliesslich Flugverkehr.", answer: "falsch" },
-    { prompt: "Parkraumbewirtschaftung kann Verkehr lenken.", answer: "richtig" },
-    { prompt: "Verhaltensanderung braucht auch Infrastruktur.", answer: "richtig" },
-    { prompt: "Offentlicher Verkehr wird grundsatzlich abgelehnt.", answer: "falsch" },
-  ]),
-  horen("C1", "g-c1-h-02", "Diskussion KI in der Verwaltung", [
-    { prompt: "Automatisierung kann Bearbeitungszeiten verkürzen.", answer: "richtig" },
-    { prompt: "Menschliche Kontrolle gilt als entbehrlich.", answer: "falsch" },
-    { prompt: "Diskriminierungsrisiken durch Daten werden genannt.", answer: "richtig" },
-  ]),
+  horen(
+    "C1",
+    "g-c1-h-01",
+    "Vortrag Stadtmobilitat",
+    [
+      { prompt: "Der Vortrag behandelt ausschliesslich Flugverkehr.", answer: "falsch" },
+      { prompt: "Parkraumbewirtschaftung kann Verkehr lenken.", answer: "richtig" },
+      { prompt: "Verhaltensanderung braucht auch Infrastruktur.", answer: "richtig" },
+      { prompt: "Offentlicher Verkehr wird grundsatzlich abgelehnt.", answer: "falsch" },
+    ],
+    "Dieser Vortrag behandelt die Stadtmobilitat, nicht den Flugverkehr. Parkraumbewirtschaftung kann den Verkehr wirksam lenken. Verhaltensanderung gelingt jedoch nur, wenn auch die Infrastruktur passt. Offentlicher Verkehr wird dabei als zentrale Losung empfohlen.",
+  ),
+  horen(
+    "C1",
+    "g-c1-h-02",
+    "Diskussion KI in der Verwaltung",
+    [
+      { prompt: "Automatisierung kann Bearbeitungszeiten verkürzen.", answer: "richtig" },
+      { prompt: "Menschliche Kontrolle gilt als entbehrlich.", answer: "falsch" },
+      { prompt: "Diskriminierungsrisiken durch Daten werden genannt.", answer: "richtig" },
+    ],
+    "Automatisierung kann Bearbeitungszeiten deutlich verkürzen. Dennoch bleibt menschliche Kontrolle unerlasslich. Zugleich werden Diskriminierungsrisiken durch Trainingsdaten klar benannt und mussen gepruft werden.",
+  ),
   schreiben(
     "C1",
     "g-c1-w-01",
