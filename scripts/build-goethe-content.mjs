@@ -106,8 +106,8 @@ function sprechen(level, sourceId, title, passage, prompt) {
     sourceId,
     sourceTitle: title,
     section: "Sprechen",
-    skill: "schreiben",
-    format: "WRITE",
+    skill: "sprechen",
+    format: "SPEAK",
     passage,
     gaps: [{ n: 1, answer: "done", choices: ["done"], prompt }],
   };
@@ -313,14 +313,14 @@ const b1 = [
     "g-b1-s-01",
     "Uber sich sprechen",
     "Bereite 2 Minuten vor: Name, Herkunft, Beruf/Studium, Hobbys, warum du Deutsch lernst. Notiere Stichpunkte.",
-    "Prepare tes notes, puis marque comme pret.",
+    "Prepare tes notes, enregistre-toi, puis marque comme pret.",
   ),
   sprechen(
     "B1",
     "g-b1-s-02",
     "Alltag planen",
     "Situation: Du planst mit einer Freundin / einem Freund einen Samstag in der Stadt (Museum, Essen, Park). Bereite Vorschlage und Kompromisse vor.",
-    "Prepare tes notes, puis marque comme pret.",
+    "Prepare tes notes, enregistre-toi, puis marque comme pret.",
   ),
 ];
 
@@ -523,14 +523,14 @@ const b2 = [
     "g-b2-s-01",
     "Kurzprasentation Hobby",
     "Prasentiere 2-3 Minuten ein Hobby und erklare, warum es fur dich wichtig ist. Strukturiere: Einleitung, 2 Argumente, Schluss.",
-    "Prepare tes notes, puis marque comme pret.",
+    "Prepare tes notes, enregistre-toi, puis marque comme pret.",
   ),
   sprechen(
     "B2",
     "g-b2-s-02",
     "Diskussion Reisen",
     "Diskutiert: Sollte man fur den Klimaschutz weniger fliegen? Bereite Pro/Contra und einen Kompromissvorschlag vor.",
-    "Prepare tes notes, puis marque comme pret.",
+    "Prepare tes notes, enregistre-toi, puis marque comme pret.",
   ),
 ];
 
@@ -688,14 +688,14 @@ const c1 = [
     "g-c1-s-01",
     "Prasentation lebenslanges Lernen",
     "Bereiten Sie eine 3-Minuten-Prasentation vor: Lebenslanges Lernen in der digitalen Arbeitswelt. Struktur + 3 Anschlussfragen.",
-    "Prepare tes notes, puis marque comme pret.",
+    "Prepare tes notes, enregistre-toi, puis marque comme pret.",
   ),
   sprechen(
     "C1",
     "g-c1-s-02",
     "Diskussion Stadt der Zukunft",
     "Diskutieren Sie Mobilitat und Wohnen in der Stadt der Zukunft. Pro/Contra, Bezahlbarkeit, Grunflachen. 5 Diskussionsimpulse.",
-    "Prepare tes notes, puis marque comme pret.",
+    "Prepare tes notes, enregistre-toi, puis marque comme pret.",
   ),
 ];
 

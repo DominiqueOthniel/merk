@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { ExamListenPlayer } from "@/components/exam/exam-listen-player";
+import { ExamSpeakPanel } from "@/components/exam/exam-speak-panel";
 import type { ExamFormat } from "@/lib/content/exam-types";
 
 type Item = {
@@ -65,10 +66,11 @@ function instructionFor(
       ? "Indique richtig, falsch ou nicht im Text."
       : "Indique si l affirmation est richtig ou falsch.";
   }
+  if (format === "SPEAK") {
+    return "Prepare ta prise de parole, enregistre-toi, puis marque comme pret.";
+  }
   if (format === "WRITE") {
-    return /Sprechen/i.test(section)
-      ? "Prepare ta prise de parole, puis marque comme pret."
-      : "Redige selon la consigne, puis marque comme termine.";
+    return "Redige selon la consigne, puis marque comme termine.";
   }
   if (/Teil 3/i.test(section)) return "Choisis la situation qui correspond a cette annonce.";
   return "Choisis le titre qui correspond au texte.";
@@ -76,6 +78,7 @@ function instructionFor(
 
 function feedbackOk(format: ExamFormat) {
   if (format === "MATCH") return "Bonne association.";
+  if (format === "SPEAK") return "Prise de parole enregistree.";
   if (format === "WRITE") return "Serie ecrite enregistree.";
   return "Bonne reponse.";
 }
@@ -88,7 +91,7 @@ function feedbackBad(format: ExamFormat, answer: string) {
 
 function doneLabel(format: ExamFormat, score: { ok: number; total: number }) {
   if (score.total === 0) return "Aucun item dans cette serie.";
-  if (format === "WRITE") return "Consigne traitee.";
+  if (format === "WRITE" || format === "SPEAK") return "Consigne traitee.";
   if (format === "MATCH") {
     return `${score.ok}/${score.total} associations correctes.`;
   }
@@ -143,6 +146,7 @@ export function ExamSession({ sourceId }: { sourceId: string }) {
   const isReading = format === "READING_MCQ";
   const isTf = format === "TF";
   const isWrite = format === "WRITE";
+  const isSpeak = format === "SPEAK" || skill === "sprechen";
   const isListen = skill === "horen" || /Hören|Horen/i.test(section);
 
   const choices = useMemo(() => {
@@ -170,7 +174,9 @@ export function ExamSession({ sourceId }: { sourceId: string }) {
     if (!current || !value || !current.progressId || busy) return;
     setBusy(true);
     const isCorrect =
-      format === "WRITE" ? true : value.trim() === current.answer.trim();
+      format === "WRITE" || format === "SPEAK"
+        ? true
+        : value.trim() === current.answer.trim();
     setCorrect(isCorrect);
     setPhase("feedback");
     setScore((s) => ({ ok: s.ok + (isCorrect ? 1 : 0), total: s.total + 1 }));
@@ -181,7 +187,7 @@ export function ExamSession({ sourceId }: { sourceId: string }) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           progressId: current.progressId,
-          answer: format === "WRITE" ? "done" : value,
+          answer: format === "WRITE" || format === "SPEAK" ? "done" : value,
           quality: isCorrect ? "MEDIUM" : "HARD",
         }),
       });
@@ -256,117 +262,29 @@ export function ExamSession({ sourceId }: { sourceId: string }) {
           </div>
         ) : null}
 
-        <div className="mt-5 grid gap-5 lg:grid-cols-[1.2fr_0.8fr] lg:items-start lg:gap-7">
-          <div className="space-y-4">
-            {!isListen &&
-            (isCloze || isReading || isWrite || isTf) &&
-            (sharedPassage || current.passage) ? (
-              <div className="max-h-[42vh] overflow-y-auto rounded-[1.25rem] bg-[var(--forest-soft)]/45 p-4 text-[1.05rem] leading-relaxed lg:max-h-[min(68vh,36rem)] lg:p-5 lg:text-[1.08rem]">
-                {isCloze
-                  ? renderClozePassage(current.passage, current.gapN)
-                  : sharedPassage || current.passage}
+        {isSpeak ? (
+          <div className="mt-5 space-y-4">
+            {(sharedPassage || current.passage) && phase === "pick" ? (
+              <div className="max-h-[36vh] overflow-y-auto rounded-[1.25rem] bg-[var(--forest-soft)]/45 p-4 text-[1.05rem] leading-relaxed whitespace-pre-wrap lg:max-h-[min(48vh,28rem)] lg:p-5">
+                {sharedPassage || current.passage}
               </div>
             ) : null}
-
-            {!isListen && !isCloze && !isReading && !isWrite && !isTf ? (
-              <div className="max-h-[42vh] overflow-y-auto rounded-[1.25rem] bg-[var(--forest-soft)]/45 p-4 text-[1.05rem] leading-relaxed lg:max-h-[min(68vh,36rem)] lg:p-5">
-                {current.passage}
-              </div>
-            ) : null}
-
-            {(isReading || isTf) && current.prompt ? (
-              <p className="rounded-[1.2rem] border border-[var(--line)] bg-white/80 px-4 py-3 text-[1.05rem] font-semibold">
-                {isListen ? `Aussage ${index + 1} : ${current.prompt}` : current.prompt}
-              </p>
-            ) : null}
-
-            {isListen ? (
-              <p className="text-[0.95rem] text-[var(--ink-faint)]">
-                Le texte audio n est pas affiche. Base-toi sur ce que tu as entendu.
-              </p>
-            ) : null}
-          </div>
-
-          <div>
             {phase === "pick" ? (
-              <div className="space-y-2.5">
-                {isWrite ? (
-                  <>
-                    <textarea
-                      value={writeNote}
-                      onChange={(e) => setWriteNote(e.target.value)}
-                      rows={10}
-                      placeholder="Ecris ici ton brouillon (non corrige automatiquement)."
-                      className="w-full rounded-[1.25rem] border border-[var(--line)] bg-white/90 px-4 py-3 text-[1.02rem] outline-none focus:border-[var(--forest)] focus:ring-4 focus:ring-[rgba(26,107,72,0.12)]"
-                    />
-                    <Button
-                      className="mt-3 w-full"
-                      disabled={busy || writeNote.trim().length < 40}
-                      onClick={() => confirmPick("done")}
-                    >
-                      Marquer comme termine
-                    </Button>
-                  </>
-                ) : (
-                  <>
-                    <div
-                      className={
-                        format === "CLOZE_BANK" || isTf
-                          ? "flex flex-wrap gap-2"
-                          : "space-y-2.5"
-                      }
-                    >
-                      {choices.map((choice) => {
-                        const active = selected === choice;
-                        const pill = format === "CLOZE_BANK" || isTf;
-                        return (
-                          <button
-                            key={choice}
-                            type="button"
-                            onClick={() => setSelected(choice)}
-                            className={
-                              pill
-                                ? `rounded-full border px-3.5 py-2 text-[0.98rem] transition ${
-                                    active
-                                      ? "border-[var(--forest)] bg-[var(--forest)] text-white"
-                                      : "border-[var(--line)] bg-white/90 text-[var(--ink)] hover:bg-[var(--forest-soft)]/50"
-                                  }`
-                                : `w-full rounded-[1.2rem] border px-4 py-3.5 text-left text-[0.98rem] leading-snug transition ${
-                                    active
-                                      ? "border-[var(--forest)] bg-[var(--forest-soft)] text-[var(--forest-deep)]"
-                                      : "border-[var(--line)] bg-white/90 hover:bg-[var(--forest-soft)]/50"
-                                  }`
-                            }
-                          >
-                            {choice}
-                          </button>
-                        );
-                      })}
-                    </div>
-                    <Button
-                      className="mt-3 w-full"
-                      disabled={!selected || busy}
-                      onClick={() => confirmPick()}
-                    >
-                      Valider
-                    </Button>
-                  </>
-                )}
-              </div>
+              <ExamSpeakPanel
+                title={title}
+                level={level}
+                sourceId={sourceId}
+                prompt={sharedPassage || current.passage || title}
+                notes={writeNote}
+                onNotesChange={setWriteNote}
+                onComplete={() => confirmPick("done")}
+                busy={busy}
+              />
             ) : null}
-
             {phase === "feedback" ? (
               <div className="fade-up-delay space-y-4">
-                <div
-                  className={`rounded-[1.3rem] px-4 py-3 text-[1.02rem] ${
-                    correct
-                      ? "bg-[var(--forest-soft)] text-[var(--forest-deep)]"
-                      : "bg-rose-50 text-[var(--danger)]"
-                  }`}
-                >
-                  {correct
-                    ? feedbackOk(format)
-                    : feedbackBad(format, current.answer)}
+                <div className="rounded-[1.3rem] bg-[var(--forest-soft)] px-4 py-3 text-[1.02rem] text-[var(--forest-deep)]">
+                  {feedbackOk(format)}
                 </div>
                 <Button className="w-full" onClick={next} disabled={busy}>
                   Continuer
@@ -374,7 +292,129 @@ export function ExamSession({ sourceId }: { sourceId: string }) {
               </div>
             ) : null}
           </div>
-        </div>
+        ) : (
+          <div className="mt-5 grid gap-5 lg:grid-cols-[1.2fr_0.8fr] lg:items-start lg:gap-7">
+            <div className="space-y-4">
+              {!isListen &&
+              (isCloze || isReading || isWrite || isTf) &&
+              (sharedPassage || current.passage) ? (
+                <div className="max-h-[42vh] overflow-y-auto rounded-[1.25rem] bg-[var(--forest-soft)]/45 p-4 text-[1.05rem] leading-relaxed lg:max-h-[min(68vh,36rem)] lg:p-5 lg:text-[1.08rem]">
+                  {isCloze
+                    ? renderClozePassage(current.passage, current.gapN)
+                    : sharedPassage || current.passage}
+                </div>
+              ) : null}
+
+              {!isListen && !isCloze && !isReading && !isWrite && !isTf ? (
+                <div className="max-h-[42vh] overflow-y-auto rounded-[1.25rem] bg-[var(--forest-soft)]/45 p-4 text-[1.05rem] leading-relaxed lg:max-h-[min(68vh,36rem)] lg:p-5">
+                  {current.passage}
+                </div>
+              ) : null}
+
+              {(isReading || isTf) && current.prompt ? (
+                <p className="rounded-[1.2rem] border border-[var(--line)] bg-white/80 px-4 py-3 text-[1.05rem] font-semibold">
+                  {isListen
+                    ? `Aussage ${index + 1} : ${current.prompt}`
+                    : current.prompt}
+                </p>
+              ) : null}
+
+              {isListen ? (
+                <p className="text-[0.95rem] text-[var(--ink-faint)]">
+                  Le texte audio n est pas affiche. Base-toi sur ce que tu as entendu.
+                </p>
+              ) : null}
+            </div>
+
+            <div>
+              {phase === "pick" ? (
+                <div className="space-y-2.5">
+                  {isWrite ? (
+                    <>
+                      <textarea
+                        value={writeNote}
+                        onChange={(e) => setWriteNote(e.target.value)}
+                        rows={10}
+                        placeholder="Ecris ici ton brouillon (non corrige automatiquement)."
+                        className="w-full rounded-[1.25rem] border border-[var(--line)] bg-white/90 px-4 py-3 text-[1.02rem] outline-none focus:border-[var(--forest)] focus:ring-4 focus:ring-[rgba(26,107,72,0.12)]"
+                      />
+                      <Button
+                        className="mt-3 w-full"
+                        disabled={busy || writeNote.trim().length < 40}
+                        onClick={() => confirmPick("done")}
+                      >
+                        Marquer comme termine
+                      </Button>
+                    </>
+                  ) : (
+                    <>
+                      <div
+                        className={
+                          format === "CLOZE_BANK" || isTf
+                            ? "flex flex-wrap gap-2"
+                            : "space-y-2.5"
+                        }
+                      >
+                        {choices.map((choice) => {
+                          const active = selected === choice;
+                          const pill = format === "CLOZE_BANK" || isTf;
+                          return (
+                            <button
+                              key={choice}
+                              type="button"
+                              onClick={() => setSelected(choice)}
+                              className={
+                                pill
+                                  ? `rounded-full border px-3.5 py-2 text-[0.98rem] transition ${
+                                      active
+                                        ? "border-[var(--forest)] bg-[var(--forest)] text-white"
+                                        : "border-[var(--line)] bg-white/90 text-[var(--ink)] hover:bg-[var(--forest-soft)]/50"
+                                    }`
+                                  : `w-full rounded-[1.2rem] border px-4 py-3.5 text-left text-[0.98rem] leading-snug transition ${
+                                      active
+                                        ? "border-[var(--forest)] bg-[var(--forest-soft)] text-[var(--forest-deep)]"
+                                        : "border-[var(--line)] bg-white/90 hover:bg-[var(--forest-soft)]/50"
+                                    }`
+                              }
+                            >
+                              {choice}
+                            </button>
+                          );
+                        })}
+                      </div>
+                      <Button
+                        className="mt-3 w-full"
+                        disabled={!selected || busy}
+                        onClick={() => confirmPick()}
+                      >
+                        Valider
+                      </Button>
+                    </>
+                  )}
+                </div>
+              ) : null}
+
+              {phase === "feedback" ? (
+                <div className="fade-up-delay space-y-4">
+                  <div
+                    className={`rounded-[1.3rem] px-4 py-3 text-[1.02rem] ${
+                      correct
+                        ? "bg-[var(--forest-soft)] text-[var(--forest-deep)]"
+                        : "bg-rose-50 text-[var(--danger)]"
+                    }`}
+                  >
+                    {correct
+                      ? feedbackOk(format)
+                      : feedbackBad(format, current.answer)}
+                  </div>
+                  <Button className="w-full" onClick={next} disabled={busy}>
+                    Continuer
+                  </Button>
+                </div>
+              ) : null}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

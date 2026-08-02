@@ -83,7 +83,10 @@ async function main() {
             ? gap.prompt || `Aussage ${gap.n}`
             : exercise.format === "WRITE"
               ? gap.prompt || "Redige selon la consigne"
-              : `Complete la lacune ${gap.n}`;
+              : exercise.format === "SPEAK"
+                ? gap.prompt ||
+                  "Prepare tes notes, enregistre-toi, puis marque comme pret."
+                : `Complete la lacune ${gap.n}`;
       const optionPayload =
         exercise.format === "CLOZE_BANK"
           ? exercise.bank?.length

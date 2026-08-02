@@ -13,13 +13,14 @@ export type ExamFormat =
   | "CLOZE_BANK"
   | "READING_MCQ"
   | "TF"
-  | "WRITE";
+  | "WRITE"
+  | "SPEAK";
 
 export type ExamExercise = {
   sourceId: string;
   sourceTitle: string;
   section: string;
-  skill: "lesen" | "sprachbausteine" | "horen" | "schreiben";
+  skill: "lesen" | "sprachbausteine" | "horen" | "schreiben" | "sprechen";
   level: string;
   exam: string;
   format: ExamFormat;
@@ -58,6 +59,7 @@ export const EXAM_CARD_KINDS = [
   "READING_MCQ",
   "TF",
   "WRITE",
+  "SPEAK",
 ] as const;
 
 export function exerciseItemCount(exercise: ExamExercise): number {
@@ -83,9 +85,18 @@ export function formatLabel(format: ExamFormat): string {
       return "Richtig / Falsch";
     case "WRITE":
       return "Production ecrite";
+    case "SPEAK":
+      return "Production orale";
     default:
       return format;
   }
+}
+
+/** Duree max d enregistrement Sprechen (secondes), selon le niveau. */
+export function speakMaxSeconds(level: string): number {
+  if (level === "C1") return 240;
+  if (level === "B2") return 180;
+  return 120;
 }
 
 export function sectionSortKey(section: string): number {

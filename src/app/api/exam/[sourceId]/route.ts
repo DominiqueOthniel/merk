@@ -8,6 +8,7 @@ import {
   getExamExercise,
 } from "@/lib/content/exam-catalog";
 import { buildListenScript } from "@/lib/content/listen-script";
+import { ensureSpeakCards } from "@/lib/content/ensure-speak-cards";
 import {
   examProviderLabel,
   examSourcePrefix,
@@ -35,6 +36,10 @@ export async function GET(_req: Request, ctx: Ctx) {
   const exercise = getExamExercise(sourceId, provider);
   if (!exercise) {
     return NextResponse.json({ error: "Serie introuvable" }, { status: 404 });
+  }
+
+  if (exercise.format === "SPEAK") {
+    await ensureSpeakCards();
   }
 
   const now = new Date();

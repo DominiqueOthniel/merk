@@ -170,9 +170,7 @@ export default function ExamHubPage() {
           <p className="text-[1.05rem] leading-relaxed text-[var(--ink-soft)] lg:text-[1.1rem]">
             {isGoethe
               ? "Goethe-Zertifikat : Lesen, Sprachbausteine, Horen, Schreiben et Sprechen."
-              : level === "C1"
-                ? "telc C1 : Lesen, Sprachbausteine, Horen, Schreiben et Sprechen."
-                : "TELC : Lesen, Sprachbausteine, Horen et Schreiben, avec repetition espacee."}
+              : "TELC : Lesen, Sprachbausteine, Horen, Schreiben et Sprechen, avec repetition espacee."}
           </p>
           {available ? (
             <p className="mt-3 text-[1.02rem] font-semibold text-[var(--forest-deep)]">
@@ -225,7 +223,9 @@ export default function ExamHubPage() {
                             ? `${set.pairCount} questions`
                             : set.format === "WRITE"
                               ? "Production ecrite"
-                              : `${set.pairCount} lacunes`}{" "}
+                              : set.format === "SPEAK"
+                                ? "Production orale"
+                                : `${set.pairCount} lacunes`}{" "}
                         · {set.doneCount} deja vus
                       </p>
                     </div>
