@@ -121,43 +121,53 @@ export function ReviewSession() {
   }
 
   if (loading) {
-    return <p className="text-[1.1rem] text-[var(--ink-soft)]">Chargement des cartes...</p>;
+    return (
+      <div className="space-y-4">
+        <div className="skeleton h-3 w-full rounded-full" />
+        <div className="skeleton h-56 w-full rounded-[28px]" />
+      </div>
+    );
   }
 
   if (!current || phase === "done") {
     return (
       <div className="panel fade-up">
-        <p className="display text-[clamp(2rem,7vw,2.7rem)]">Session terminee</p>
+        <p className="eyebrow">Session</p>
+        <p className="display mt-2 text-[clamp(2rem,7vw,2.7rem)] text-[var(--forest-deep)]">
+          {cards.length === 0 ? "Rien a revoir" : "Bien joue"}
+        </p>
         <p className="mt-4 text-[1.1rem] leading-relaxed text-[var(--ink-soft)]">
           {cards.length === 0
-            ? "Aucune carte due pour le moment. Belle avance."
-            : `Tu as gagne ${sessionPoints} points de retention.`}
+            ? "Aucune carte due pour le moment. Reviens demain, la regularite gagne."
+            : `+${sessionPoints} points. Ta memoire garde mieux ce que tu revisites.`}
         </p>
         <div className="mt-8 flex flex-col gap-3">
           <Button onClick={() => router.push("/dashboard")}>Voir mon carnet</Button>
-          <Button variant="secondary" onClick={() => window.location.reload()}>
-            Relancer
+          <Button variant="secondary" onClick={() => router.push("/exam")}>
+            Entrainer l examen
           </Button>
         </div>
       </div>
     );
   }
 
+  const sessionPct = Math.round(((index + (phase === "quality" ? 1 : 0)) / cards.length) * 100);
+
   return (
     <div className="space-y-5">
-      <div className="flex items-center justify-between text-[1rem] text-[var(--ink-soft)]">
-        <span className="font-semibold">
+      <div className="flex items-center justify-between gap-3 text-[1rem] text-[var(--ink-soft)]">
+        <span className="font-semibold text-[var(--forest-deep)]">
           {index + 1} / {cards.length}
         </span>
-        <span>
+        <span className="stat-chip">
           {current.theme} · {current.level}
         </span>
       </div>
-      <div className="progress-track">
+      <div className="progress-track" aria-label={`Progression ${sessionPct}%`}>
         <div
-          className="progress-fill progress-pulse"
+          className="progress-fill"
           style={{
-            width: `${(index / Math.max(1, cards.length)) * 100}%`,
+            width: `${Math.min(100, sessionPct)}%`,
           }}
         />
       </div>
@@ -210,10 +220,8 @@ export function ReviewSession() {
           {phase === "quality" && check ? (
             <div className="fade-up-delay space-y-5">
               <div
-                className={`rounded-[1.4rem] px-5 py-4 text-[1.05rem] leading-relaxed ${
-                  check.correct
-                    ? "bg-[var(--forest-soft)] text-[var(--forest-deep)]"
-                    : "bg-rose-50 text-[var(--danger)]"
+                className={`pop-in rounded-[1.4rem] px-5 py-4 text-[1.05rem] leading-relaxed ${
+                  check.correct ? "feedback-ok" : "feedback-bad"
                 }`}
               >
                 {check.correct

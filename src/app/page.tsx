@@ -22,7 +22,7 @@ export default async function HomePage() {
       <div className="fade-up">
         <Brand size="large" />
         <p className="lede mt-5 lg:mt-7 lg:max-w-[34ch]">
-          Retiens ce que tu apprends entre deux seances. Doucement, chaque jour.
+          Retiens ce que tu apprends entre deux seances. Un peu chaque jour, ca reste.
         </p>
         <div className="mt-8 hidden max-w-sm space-y-3 lg:block">
           <Link href="/login" className="btn-link btn-link-primary">
