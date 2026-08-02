@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import { z } from "zod";
 import { prisma } from "@/lib/db";
+import { normalizeExamProvider } from "@/lib/exam-provider";
 
 const schema = z.object({
   name: z.string().min(2),
@@ -9,6 +10,7 @@ const schema = z.object({
   password: z.string().min(6),
   centreId: z.string().min(1),
   cohorteId: z.string().optional().nullable(),
+  examProvider: z.enum(["TELC", "GOETHE"]).optional(),
 });
 
 export async function POST(req: Request) {
@@ -47,6 +49,7 @@ export async function POST(req: Request) {
         centreId: data.centreId,
         cohorteId: data.cohorteId || null,
         language: "de",
+        examProvider: normalizeExamProvider(data.examProvider),
       },
     });
 

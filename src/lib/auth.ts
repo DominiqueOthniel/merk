@@ -2,6 +2,7 @@ import type { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 import { prisma } from "@/lib/db";
+import { normalizeExamProvider } from "@/lib/exam-provider";
 
 export const authOptions: NextAuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
@@ -15,6 +16,7 @@ export const authOptions: NextAuthOptions = {
       credentials: {
         email: { label: "Email", type: "email" },
         password: { label: "Mot de passe", type: "password" },
+        examProvider: { label: "Examen", type: "text" },
       },
       async authorize(credentials) {
         if (!credentials?.email || !credentials.password) return null;
@@ -27,6 +29,17 @@ export const authOptions: NextAuthOptions = {
         const ok = await bcrypt.compare(credentials.password, user.passwordHash);
         if (!ok) return null;
 
+        let examProvider = normalizeExamProvider(user.examProvider);
+        if (credentials.examProvider) {
+          examProvider = normalizeExamProvider(credentials.examProvider);
+          if (examProvider !== user.examProvider) {
+            await prisma.user.update({
+              where: { id: user.id },
+              data: { examProvider },
+            });
+          }
+        }
+
         return {
           id: user.id,
           email: user.email,
@@ -36,6 +49,7 @@ export const authOptions: NextAuthOptions = {
           cohorteId: user.cohorteId,
           cefrLevel: user.cefrLevel,
           placedAt: user.placedAt?.toISOString() ?? null,
+          examProvider,
         };
       },
     }),
@@ -50,6 +64,7 @@ export const authOptions: NextAuthOptions = {
           cohorteId?: string | null;
           cefrLevel?: string | null;
           placedAt?: string | null;
+          examProvider?: string | null;
         };
         token.id = u.id;
         token.role = u.role;
@@ -57,11 +72,15 @@ export const authOptions: NextAuthOptions = {
         token.cohorteId = u.cohorteId;
         token.cefrLevel = u.cefrLevel;
         token.placedAt = u.placedAt;
+        token.examProvider = normalizeExamProvider(u.examProvider);
       }
       if (trigger === "update" && session) {
         token.cefrLevel = session.cefrLevel ?? token.cefrLevel;
         token.placedAt = session.placedAt ?? token.placedAt;
         token.cohorteId = session.cohorteId ?? token.cohorteId;
+        if (session.examProvider) {
+          token.examProvider = normalizeExamProvider(session.examProvider);
+        }
       }
       return token;
     },
@@ -73,6 +92,7 @@ export const authOptions: NextAuthOptions = {
         session.user.cohorteId = (token.cohorteId as string | null) ?? null;
         session.user.cefrLevel = (token.cefrLevel as string | null) ?? null;
         session.user.placedAt = (token.placedAt as string | null) ?? null;
+        session.user.examProvider = normalizeExamProvider(token.examProvider);
       }
       return session;
     },

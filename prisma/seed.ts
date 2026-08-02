@@ -3,12 +3,17 @@ import bcrypt from "bcryptjs";
 import { THEMES } from "../src/lib/content/themes";
 import { CARDS_DE } from "../src/lib/content/cards-de";
 import { getExamAll } from "../src/lib/content/exam-catalog";
+import {
+  examSourcePrefix,
+  examThemeSlug,
+  type ExamProvider,
+} from "../src/lib/exam-provider";
 import type { CefrLevel } from "../src/lib/types";
 
 const prisma = new PrismaClient();
 
 async function main() {
-  const EXAM_ALL = getExamAll();
+  const EXAM_ALL = [...getExamAll("TELC"), ...getExamAll("GOETHE")];
   await prisma.reviewLog.deleteMany();
   await prisma.cardProgress.deleteMany();
   await prisma.prepScore.deleteMany();
@@ -60,6 +65,7 @@ async function main() {
       centreId: centre.id,
       cohorteId: cohorte.id,
       language: "de",
+      examProvider: "TELC",
       cefrLevel: "B1",
       placedAt: new Date(),
       streakDays: 3,
@@ -77,6 +83,7 @@ async function main() {
       centreId: centre.id,
       cohorteId: cohorte.id,
       language: "de",
+      examProvider: "GOETHE",
       cefrLevel: "B1",
       placedAt: new Date(),
       streakDays: 1,
@@ -116,12 +123,6 @@ async function main() {
     createdCards.push(card);
   }
 
-  const examThemeByLevel: Record<string, string | undefined> = {
-    B1: themeMap.get("examen-telc-b1"),
-    B2: themeMap.get("examen-telc-b2"),
-    C1: themeMap.get("examen-telc-c1"),
-  };
-
   const examRows: {
     themeId: string;
     language: string;
@@ -136,8 +137,12 @@ async function main() {
   }[] = [];
 
   for (const exercise of EXAM_ALL) {
-    const examThemeId = examThemeByLevel[exercise.level];
+    const provider = (
+      exercise.exam === "GOETHE" ? "GOETHE" : "TELC"
+    ) as ExamProvider;
+    const examThemeId = themeMap.get(examThemeSlug(provider, exercise.level));
     if (!examThemeId) continue;
+    const prefix = examSourcePrefix(provider);
 
     if (exercise.format === "MATCH") {
       for (const [idx, pair] of exercise.pairs.entries()) {
@@ -153,7 +158,7 @@ async function main() {
           context: pair.passage,
           hint: `${exercise.section} · ${exercise.sourceTitle}`,
           options: JSON.stringify(exercise.options),
-          sourceRef: `deuropa:${exercise.sourceId}:${idx}`,
+          sourceRef: `${prefix}${exercise.sourceId}:${idx}`,
         });
       }
       continue;
@@ -168,6 +173,12 @@ async function main() {
             : exercise.format === "WRITE"
               ? gap.prompt || "Redige selon la consigne"
               : `Complete la lacune ${gap.n}`;
+      const optionPayload =
+        exercise.format === "CLOZE_BANK"
+          ? exercise.bank?.length
+            ? exercise.bank
+            : exercise.options
+          : gap.choices;
       examRows.push({
         themeId: examThemeId,
         language: "de",
@@ -177,8 +188,8 @@ async function main() {
         answer: gap.answer,
         context: exercise.passage ?? "",
         hint: `${exercise.section} · ${exercise.sourceTitle} · #${gap.n}`,
-        options: JSON.stringify(gap.choices),
-        sourceRef: `deuropa:${exercise.sourceId}:${gap.n}`,
+        options: JSON.stringify(optionPayload),
+        sourceRef: `${prefix}${exercise.sourceId}:${gap.n}`,
       });
     }
   }
@@ -189,7 +200,12 @@ async function main() {
   }
   const examCardCount = examRows.length;
   const examCards = await prisma.card.findMany({
-    where: { sourceRef: { startsWith: "deuropa:" } },
+    where: {
+      OR: [
+        { sourceRef: { startsWith: "deuropa:" } },
+        { sourceRef: { startsWith: "goethe:" } },
+      ],
+    },
     select: { id: true, kind: true, level: true },
   });
   createdCards.push(...examCards);

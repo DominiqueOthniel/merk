@@ -1,5 +1,6 @@
 import "next-auth";
 import "next-auth/jwt";
+import type { ExamProvider } from "@/lib/exam-provider";
 
 declare module "next-auth" {
   interface Session {
@@ -12,6 +13,7 @@ declare module "next-auth" {
       cohorteId: string | null;
       cefrLevel: string | null;
       placedAt: string | null;
+      examProvider: ExamProvider;
     };
   }
 
@@ -21,6 +23,7 @@ declare module "next-auth" {
     cohorteId?: string | null;
     cefrLevel?: string | null;
     placedAt?: string | null;
+    examProvider?: ExamProvider | null;
   }
 }
 
@@ -32,5 +35,6 @@ declare module "next-auth/jwt" {
     cohorteId?: string | null;
     cefrLevel?: string | null;
     placedAt?: string | null;
+    examProvider?: ExamProvider;
   }
 }

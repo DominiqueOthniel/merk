@@ -99,6 +99,7 @@ export function ExamSession({ sourceId }: { sourceId: string }) {
   const [title, setTitle] = useState("");
   const [section, setSection] = useState("");
   const [level, setLevel] = useState("B1");
+  const [examLabel, setExamLabel] = useState("TELC");
   const [format, setFormat] = useState<ExamFormat>("MATCH");
   const [sharedPassage, setSharedPassage] = useState<string | null>(null);
   const [audioUrl, setAudioUrl] = useState<string | null>(null);
@@ -119,6 +120,7 @@ export function ExamSession({ sourceId }: { sourceId: string }) {
         setTitle(data.title ?? "");
         setSection(data.section ?? "");
         setLevel(data.level ?? "B1");
+        setExamLabel(data.examLabel ?? "TELC");
         setFormat((data.format as ExamFormat) || "MATCH");
         setSharedPassage(data.passage ?? null);
         setAudioUrl(data.audioUrl ?? null);
@@ -229,7 +231,7 @@ export function ExamSession({ sourceId }: { sourceId: string }) {
       </div>
 
       <div className="panel fade-up">
-        <p className="eyebrow">TELC {level} · {title}</p>
+        <p className="eyebrow">{examLabel} {level} · {title}</p>
         <p className="mt-3 text-[1.02rem] font-semibold text-[var(--forest-deep)]">
           {instructionFor(format, section, current.options)}
         </p>

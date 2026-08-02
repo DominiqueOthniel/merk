@@ -14,4 +14,7 @@ export const THEMES = [
   { slug: "examen-telc-b1", nameFr: "Examen TELC B1", nameDe: "TELC B1", sortOrder: 13 },
   { slug: "examen-telc-b2", nameFr: "Examen TELC B2", nameDe: "TELC B2", sortOrder: 14 },
   { slug: "examen-telc-c1", nameFr: "Examen TELC C1", nameDe: "TELC C1", sortOrder: 15 },
+  { slug: "examen-goethe-b1", nameFr: "Examen Goethe B1", nameDe: "Goethe B1", sortOrder: 16 },
+  { slug: "examen-goethe-b2", nameFr: "Examen Goethe B2", nameDe: "Goethe B2", sortOrder: 17 },
+  { slug: "examen-goethe-c1", nameFr: "Examen Goethe C1", nameDe: "Goethe C1", sortOrder: 18 },
 ] as const;

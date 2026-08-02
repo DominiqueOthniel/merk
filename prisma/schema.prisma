@@ -40,6 +40,7 @@ model User {
   cohorteId     String?
   cohorte       Cohorte?       @relation(fields: [cohorteId], references: [id])
   language      String         @default("de")
+  examProvider  String         @default("TELC")
   cefrLevel     String?
   placedAt      DateTime?
   streakDays    Int            @default(0)

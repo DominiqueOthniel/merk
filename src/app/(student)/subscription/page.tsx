@@ -38,7 +38,7 @@ const PLANS: Plan[] = [
     blurb: "Tout le parcours eleve, sans plafond.",
     features: [
       "Revision illimitee",
-      "Catalogue TELC B1, B2 et C1",
+      "Catalogue TELC et Goethe B1, B2, C1",
       "Defi de cohorte et carnet complet",
       "Historique de progression",
     ],

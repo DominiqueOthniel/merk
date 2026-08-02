@@ -7,6 +7,11 @@ import {
   exerciseItemCount,
   getExamExercise,
 } from "@/lib/content/exam-catalog";
+import {
+  examProviderLabel,
+  examSourcePrefix,
+  normalizeExamProvider,
+} from "@/lib/exam-provider";
 
 type Ctx = { params: Promise<{ sourceId: string }> };
 
@@ -16,8 +21,17 @@ export async function GET(_req: Request, ctx: Ctx) {
     return NextResponse.json({ error: "Non authentifie" }, { status: 401 });
   }
 
+  const dbUser = await prisma.user.findUnique({
+    where: { id: session.user.id },
+    select: { examProvider: true },
+  });
+  const provider = normalizeExamProvider(
+    dbUser?.examProvider ?? session.user.examProvider,
+  );
+  const prefix = examSourcePrefix(provider);
+
   const { sourceId } = await ctx.params;
-  const exercise = getExamExercise(sourceId);
+  const exercise = getExamExercise(sourceId, provider);
   if (!exercise) {
     return NextResponse.json({ error: "Serie introuvable" }, { status: 404 });
   }
@@ -25,7 +39,7 @@ export async function GET(_req: Request, ctx: Ctx) {
   const now = new Date();
   const where = {
     kind: { in: [...EXAM_CARD_KINDS] },
-    sourceRef: { startsWith: `deuropa:${sourceId}:` },
+    sourceRef: { startsWith: `${prefix}${sourceId}:` },
   };
 
   let cards = await prisma.card.findMany({
@@ -62,6 +76,8 @@ export async function GET(_req: Request, ctx: Ctx) {
   });
 
   return NextResponse.json({
+    exam: provider,
+    examLabel: examProviderLabel(provider),
     sourceId: exercise.sourceId,
     title: exercise.sourceTitle,
     section: exercise.section,
@@ -71,13 +87,15 @@ export async function GET(_req: Request, ctx: Ctx) {
     passage: exercise.passage ?? null,
     audioUrl: exercise.audioUrl ?? null,
     itemCount: exerciseItemCount(exercise),
-    options: exercise.options,
+    options: exercise.bank?.length ? exercise.bank : exercise.options,
     items: dueFirst.map((card) => {
       const gapMatch = card.sourceRef?.match(/:(\d+)$/);
       const gapN = gapMatch ? Number(gapMatch[1]) : null;
       const rawOptions = card.options
         ? (JSON.parse(card.options) as string[])
-        : exercise.options;
+        : exercise.bank?.length
+          ? exercise.bank
+          : exercise.options;
       const options = rawOptions.filter(
         (w) => w && !w.includes("${") && !/droppedWord|wordText/i.test(w)
       );

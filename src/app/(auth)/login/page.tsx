@@ -5,13 +5,16 @@ import { signIn } from "next-auth/react";
 import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Brand } from "@/components/brand";
+import { ExamProviderPicker } from "@/components/exam/exam-provider-picker";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import type { ExamProvider } from "@/lib/exam-provider";
 
 export default function LoginPage() {
   const router = useRouter();
   const [email, setEmail] = useState("eleve@merk.demo");
   const [password, setPassword] = useState("merk1234");
+  const [examProvider, setExamProvider] = useState<ExamProvider>("TELC");
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
 
@@ -22,6 +25,7 @@ export default function LoginPage() {
     const res = await signIn("credentials", {
       email,
       password,
+      examProvider,
       redirect: false,
     });
     setBusy(false);
@@ -39,11 +43,12 @@ export default function LoginPage() {
         <Brand size="medium" />
         <h1 className="display mt-6 text-[clamp(2rem,6vw,2.6rem)]">Connexion</h1>
         <p className="mt-2 text-[1.08rem] text-[var(--ink-soft)]">
-          Accede directement a tes cartes du jour.
+          Choisis ton examen, puis accede a tes cartes du jour.
         </p>
       </div>
 
       <form onSubmit={onSubmit} className="panel fade-up-delay mt-10 space-y-5">
+        <ExamProviderPicker value={examProvider} onChange={setExamProvider} />
         <label className="block">
           <span className="field-label">Email</span>
           <Input

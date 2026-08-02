@@ -2,7 +2,10 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 import { BrandHeader } from "@/components/nav";
+import { ExamProviderPicker } from "@/components/exam/exam-provider-picker";
+import type { ExamProvider } from "@/lib/exam-provider";
 
 type ExamSet = {
   sourceId: string;
@@ -42,6 +45,9 @@ function toExamLevel(value: string): ExamLevel | null {
 }
 
 export default function ExamHubPage() {
+  const { data: session, update } = useSession();
+  const [provider, setProvider] = useState<ExamProvider>("TELC");
+  const [examLabel, setExamLabel] = useState("TELC");
   const [level, setLevel] = useState<ExamLevel>("B1");
   const [levels, setLevels] = useState<LevelInfo[]>([]);
   const [sections, setSections] = useState<SectionGroup[]>([]);
@@ -49,6 +55,14 @@ export default function ExamHubPage() {
   const [available, setAvailable] = useState(true);
   const [note, setNote] = useState<string | undefined>();
   const [loading, setLoading] = useState(true);
+  const [switching, setSwitching] = useState(false);
+  const [reloadKey, setReloadKey] = useState(0);
+
+  useEffect(() => {
+    if (session?.user?.examProvider) {
+      setProvider(session.user.examProvider);
+    }
+  }, [session?.user?.examProvider]);
 
   useEffect(() => {
     let cancelled = false;
@@ -79,6 +93,10 @@ export default function ExamHubPage() {
         setTotalDue(data.totalDue ?? 0);
         setAvailable(data.available !== false);
         setNote(data.note);
+        if (data.examLabel) setExamLabel(String(data.examLabel));
+        if (data.exam === "GOETHE" || data.exam === "TELC") {
+          setProvider(data.exam);
+        }
         setLoading(false);
       })
       .catch(() => {
@@ -87,13 +105,41 @@ export default function ExamHubPage() {
     return () => {
       cancelled = true;
     };
-  }, [level]);
+  }, [level, reloadKey]);
+
+  async function changeProvider(next: ExamProvider) {
+    if (next === provider || switching) return;
+    setSwitching(true);
+    setProvider(next);
+    try {
+      const res = await fetch("/api/user/exam-provider", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ examProvider: next }),
+      });
+      if (!res.ok) throw new Error("switch failed");
+      await update({ examProvider: next });
+      setReloadKey((k) => k + 1);
+    } catch {
+      setProvider(provider);
+    } finally {
+      setSwitching(false);
+    }
+  }
 
   const levelChips = levels.length ? levels : LEVEL_FALLBACK;
 
   return (
     <>
-      <BrandHeader subtitle="Mode avant examen · catalogue TELC complet" />
+      <BrandHeader subtitle={`Mode avant examen · ${examLabel}`} />
+
+      <section className="panel fade-up mb-6 lg:mb-8">
+        <ExamProviderPicker
+          value={provider}
+          onChange={changeProvider}
+          className={switching ? "pointer-events-none opacity-70" : ""}
+        />
+      </section>
 
       <section className="panel fade-up mb-6 lg:mb-8 lg:grid lg:grid-cols-[1fr_1.1fr] lg:items-center lg:gap-8">
         <div>
@@ -125,9 +171,11 @@ export default function ExamHubPage() {
         </div>
         <div className="mt-5 lg:mt-0">
           <p className="text-[1.05rem] leading-relaxed text-[var(--ink-soft)] lg:text-[1.1rem]">
-            {level === "C1"
-              ? "C1 selon la structure telc : Lesen, Sprachbausteine (4 options), Horen, Schreiben et Sprechen."
-              : "Lesen, Sprachbausteine, Horen et Schreiben : formats examen, avec repetition espacee."}
+            {provider === "GOETHE"
+              ? "Parcours Goethe-Zertifikat : Lesen, Sprachbausteine, Horen, Schreiben et Sprechen."
+              : level === "C1"
+                ? "C1 selon la structure telc : Lesen, Sprachbausteine, Horen, Schreiben et Sprechen."
+                : "Lesen, Sprachbausteine, Horen et Schreiben : formats examen, avec repetition espacee."}
           </p>
           {available ? (
             <p className="mt-3 text-[1.02rem] font-semibold text-[var(--forest-deep)]">

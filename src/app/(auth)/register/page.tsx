@@ -5,8 +5,10 @@ import { FormEvent, useEffect, useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { Brand } from "@/components/brand";
+import { ExamProviderPicker } from "@/components/exam/exam-provider-picker";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import type { ExamProvider } from "@/lib/exam-provider";
 
 type Centre = {
   id: string;
@@ -25,6 +27,7 @@ export default function RegisterPage() {
   const [password, setPassword] = useState("");
   const [centreId, setCentreId] = useState("");
   const [cohorteId, setCohorteId] = useState("");
+  const [examProvider, setExamProvider] = useState<ExamProvider>("TELC");
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
 
@@ -55,6 +58,7 @@ export default function RegisterPage() {
         password,
         centreId,
         cohorteId: cohorteId || null,
+        examProvider,
       }),
     });
     const data = await res.json();
@@ -63,7 +67,12 @@ export default function RegisterPage() {
       setBusy(false);
       return;
     }
-    await signIn("credentials", { email, password, redirect: false });
+    await signIn("credentials", {
+      email,
+      password,
+      examProvider,
+      redirect: false,
+    });
     setBusy(false);
     router.push("/placement");
   }
@@ -81,6 +90,7 @@ export default function RegisterPage() {
       </div>
 
       <form onSubmit={onSubmit} className="panel fade-up-delay mt-10 space-y-5">
+        <ExamProviderPicker value={examProvider} onChange={setExamProvider} />
         <label className="block">
           <span className="field-label">Prenom / nom</span>
           <Input value={name} onChange={(e) => setName(e.target.value)} required />

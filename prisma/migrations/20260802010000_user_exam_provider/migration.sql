@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "User" ADD COLUMN "examProvider" TEXT NOT NULL DEFAULT 'TELC';

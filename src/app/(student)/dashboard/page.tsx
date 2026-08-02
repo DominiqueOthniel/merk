@@ -122,7 +122,7 @@ export default function DashboardPage() {
                 : "Ouvrir la revision"}
             </Link>
             <Link href="/exam" className="btn-link btn-link-secondary">
-              Mode avant examen TELC
+              Mode avant examen
             </Link>
           </div>
         </section>

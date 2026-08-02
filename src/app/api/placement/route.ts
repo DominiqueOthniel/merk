@@ -4,6 +4,8 @@ import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/db";
 import { answersMatch } from "@/lib/normalize";
 import { PLACEMENT_ITEMS } from "@/lib/content/cards-de";
+import { EXAM_CARD_KINDS } from "@/lib/content/exam-catalog";
+import { examSourcePrefix, normalizeExamProvider } from "@/lib/exam-provider";
 import type { CefrLevel } from "@/lib/types";
 
 function scoreToLevel(correct: number, total: number): CefrLevel {
@@ -48,6 +50,13 @@ export async function POST(req: Request) {
   const level = scoreToLevel(correct, PLACEMENT_ITEMS.length);
   const now = new Date();
 
+  const current = await prisma.user.findUnique({
+    where: { id: session.user.id },
+    select: { examProvider: true },
+  });
+  const provider = normalizeExamProvider(current?.examProvider);
+  const prefix = examSourcePrefix(provider);
+
   await prisma.user.update({
     where: { id: session.user.id },
     data: { cefrLevel: level, placedAt: now },
@@ -55,7 +64,17 @@ export async function POST(req: Request) {
 
   const assignLevels = levelsUpTo(level);
   const cards = await prisma.card.findMany({
-    where: { language: "de", level: { in: assignLevels } },
+    where: {
+      language: "de",
+      level: { in: assignLevels },
+      OR: [
+        { kind: "CLOZE" },
+        {
+          kind: { in: [...EXAM_CARD_KINDS] },
+          sourceRef: { startsWith: prefix },
+        },
+      ],
+    },
   });
 
   for (const card of cards) {

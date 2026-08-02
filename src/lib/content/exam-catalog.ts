@@ -1,9 +1,10 @@
 import fs from "node:fs";
 import path from "node:path";
-import type { ExamExercise } from "./exam-types";
+import type { ExamProvider } from "@/lib/exam-provider";
+import { normalizeExamProvider } from "@/lib/exam-provider";
+import type { ExamExercise, ExamLevelInfo } from "./exam-types";
 import {
   EXAM_CARD_KINDS,
-  EXAM_LEVELS,
   exerciseCardKind,
   exerciseItemCount,
   formatLabel,
@@ -12,7 +13,6 @@ import {
 
 export {
   EXAM_CARD_KINDS,
-  EXAM_LEVELS,
   exerciseCardKind,
   exerciseItemCount,
   formatLabel,
@@ -20,51 +20,94 @@ export {
 };
 export type { ExamExercise, ExamLevelInfo, ExamFormat } from "./exam-types";
 
-const LEVEL_FILES: Record<string, string> = {
-  B1: "telc-b1.json",
-  B2: "telc-b2.json",
-  C1: "telc-c1.json",
+const LEVEL_FILES: Record<ExamProvider, Record<string, string>> = {
+  TELC: {
+    B1: "telc-b1.json",
+    B2: "telc-b2.json",
+    C1: "telc-c1.json",
+  },
+  GOETHE: {
+    B1: "goethe-b1.json",
+    B2: "goethe-b2.json",
+    C1: "goethe-c1.json",
+  },
 };
 
-const cachedByLevel = new Map<string, ExamExercise[]>();
-let cachedAll: ExamExercise[] | null = null;
+const cached = new Map<string, ExamExercise[]>();
+
+function cacheKey(provider: ExamProvider, level: string) {
+  return `${provider}:${level}`;
+}
 
 function loadJson(name: string): ExamExercise[] {
   const filePath = path.join(process.cwd(), "content", "exam", name);
   return JSON.parse(fs.readFileSync(filePath, "utf8")) as ExamExercise[];
 }
 
-function loadLevel(level: string): ExamExercise[] {
-  const hit = cachedByLevel.get(level);
+function loadLevel(provider: ExamProvider, level: string): ExamExercise[] {
+  const key = cacheKey(provider, level);
+  const hit = cached.get(key);
   if (hit) return hit;
-  const file = LEVEL_FILES[level];
+  const file = LEVEL_FILES[provider]?.[level];
   if (!file) return [];
   const data = loadJson(file);
-  cachedByLevel.set(level, data);
+  cached.set(key, data);
   return data;
 }
 
-export function getExamAll(): ExamExercise[] {
-  if (!cachedAll) {
-    cachedAll = [
-      ...loadLevel("B1"),
-      ...loadLevel("B2"),
-      ...loadLevel("C1"),
+export function getExamLevels(provider?: ExamProvider | string | null): ExamLevelInfo[] {
+  const p = normalizeExamProvider(provider);
+  if (p === "GOETHE") {
+    return [
+      { id: "B1", label: "B1", available: true },
+      { id: "B2", label: "B2", available: true },
+      {
+        id: "C1",
+        label: "C1",
+        available: true,
+        note: "Format Goethe-Zertifikat C1. Contenu MERK original aligne sur les types d epreuves.",
+      },
     ];
   }
-  return cachedAll;
+  return [
+    { id: "B1", label: "B1", available: true },
+    { id: "B2", label: "B2", available: true },
+    {
+      id: "C1",
+      label: "C1",
+      available: true,
+      note: "Format telc Deutsch C1. Contenu MERK original aligne sur les types d epreuves officiels.",
+    },
+  ];
 }
 
-export function getExamExercises(level?: string | null): ExamExercise[] {
-  if (!level || level === "ALL") return getExamAll();
-  if (LEVEL_FILES[level]) return loadLevel(level);
-  return getExamAll().filter((e) => e.level === level);
+/** @deprecated Prefer getExamLevels(provider) */
+export const EXAM_LEVELS = getExamLevels("TELC");
+
+export function getExamAll(provider?: ExamProvider | string | null): ExamExercise[] {
+  const p = normalizeExamProvider(provider);
+  return [...loadLevel(p, "B1"), ...loadLevel(p, "B2"), ...loadLevel(p, "C1")];
 }
 
-export function getExamExercise(sourceId: string): ExamExercise | undefined {
-  for (const level of Object.keys(LEVEL_FILES)) {
-    const found = loadLevel(level).find((e) => e.sourceId === sourceId);
-    if (found) return found;
+export function getExamExercises(
+  provider?: ExamProvider | string | null,
+  level?: string | null,
+): ExamExercise[] {
+  const p = normalizeExamProvider(provider);
+  if (!level || level === "ALL") return getExamAll(p);
+  if (LEVEL_FILES[p][level]) return loadLevel(p, level);
+  return getExamAll(p).filter((e) => e.level === level);
+}
+
+export function getExamExercise(
+  sourceId: string,
+  provider?: ExamProvider | string | null,
+): ExamExercise | undefined {
+  if (provider) {
+    return getExamAll(provider).find((e) => e.sourceId === sourceId);
   }
-  return undefined;
+  return (
+    getExamAll("TELC").find((e) => e.sourceId === sourceId) ||
+    getExamAll("GOETHE").find((e) => e.sourceId === sourceId)
+  );
 }

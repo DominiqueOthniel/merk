@@ -4,15 +4,21 @@ import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/db";
 import {
   EXAM_CARD_KINDS,
-  EXAM_LEVELS,
   exerciseItemCount,
   getExamExercises,
+  getExamLevels,
   sectionSortKey,
 } from "@/lib/content/exam-catalog";
+import { ensureGoetheCards } from "@/lib/content/ensure-goethe-cards";
+import {
+  examProviderLabel,
+  examSourcePrefix,
+  normalizeExamProvider,
+} from "@/lib/exam-provider";
 
-function sourceIdFromRef(ref: string | null | undefined): string | null {
-  if (!ref?.startsWith("deuropa:")) return null;
-  const rest = ref.slice("deuropa:".length);
+function sourceIdFromRef(ref: string | null | undefined, prefix: string): string | null {
+  if (!ref?.startsWith(prefix)) return null;
+  const rest = ref.slice(prefix.length);
   const lastColon = rest.lastIndexOf(":");
   if (lastColon <= 0) return null;
   return rest.slice(0, lastColon);
@@ -24,14 +30,25 @@ export async function GET(req: Request) {
     return NextResponse.json({ error: "Non authentifie" }, { status: 401 });
   }
 
+  const dbUser = await prisma.user.findUnique({
+    where: { id: session.user.id },
+    select: { examProvider: true },
+  });
+  const provider = normalizeExamProvider(
+    dbUser?.examProvider ?? session.user.examProvider,
+  );
+  const levels = getExamLevels(provider);
+  const prefix = examSourcePrefix(provider);
+
   const level = new URL(req.url).searchParams.get("level") || "B1";
-  const levelInfo = EXAM_LEVELS.find((l) => l.id === level) ?? EXAM_LEVELS[0];
+  const levelInfo = levels.find((l) => l.id === level) ?? levels[0];
 
   if (!levelInfo.available) {
     return NextResponse.json({
-      exam: "TELC",
+      exam: provider,
+      examLabel: examProviderLabel(provider),
       level: levelInfo.id,
-      levels: EXAM_LEVELS,
+      levels,
       available: false,
       note: levelInfo.note,
       sections: [],
@@ -39,15 +56,18 @@ export async function GET(req: Request) {
     });
   }
 
-  const exercises = getExamExercises(levelInfo.id);
+  if (provider === "GOETHE") {
+    await ensureGoetheCards();
+  }
+
+  const exercises = getExamExercises(provider, levelInfo.id);
   const now = new Date();
 
-  // Une seule requete pour tout le niveau (evite N+1 : B2 = 373 roundtrips avant)
   const cards = await prisma.card.findMany({
     where: {
       kind: { in: [...EXAM_CARD_KINDS] },
       level: levelInfo.id,
-      sourceRef: { startsWith: "deuropa:" },
+      sourceRef: { startsWith: prefix },
     },
     select: {
       id: true,
@@ -65,7 +85,7 @@ export async function GET(req: Request) {
   >();
 
   for (const card of cards) {
-    const sourceId = sourceIdFromRef(card.sourceRef);
+    const sourceId = sourceIdFromRef(card.sourceRef, prefix);
     if (!sourceId) continue;
 
     let stats = statsBySource.get(sourceId);
@@ -119,9 +139,10 @@ export async function GET(req: Request) {
   );
 
   return NextResponse.json({
-    exam: "TELC",
+    exam: provider,
+    examLabel: examProviderLabel(provider),
     level: levelInfo.id,
-    levels: EXAM_LEVELS,
+    levels,
     available: true,
     sections: bySection,
     totalDue: sets.reduce((s, x) => s + x.dueCount, 0),
