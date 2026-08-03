@@ -9,17 +9,28 @@ import { AudioRecorder } from "@/components/review/audio-recorder";
 type DueCard = {
   progressId: string;
   cardId: string;
+  queueKind: "learning" | "review" | "new";
+  status: string;
   prompt: string;
   context: string;
   hint?: string | null;
   theme: string;
   level: string;
+  intervals: { HARD: string; MEDIUM: string; EASY: string };
 };
 
 type ReviewProfile = {
   cefrLevel: string | null;
   targetLevel: string | null;
   examProvider: string;
+};
+
+type QueueCounts = {
+  learning: number;
+  review: number;
+  new: number;
+  reviewBacklog: number;
+  newBacklog: number;
 };
 
 type CheckResult = {
@@ -34,10 +45,17 @@ type SubmitResult = {
   streakDays: number;
 };
 
+function queueLabel(kind: DueCard["queueKind"]): string {
+  if (kind === "learning") return "Apprentissage";
+  if (kind === "new") return "Nouvelle";
+  return "Revision";
+}
+
 export function ReviewSession() {
   const router = useRouter();
   const [cards, setCards] = useState<DueCard[]>([]);
   const [profile, setProfile] = useState<ReviewProfile | null>(null);
+  const [counts, setCounts] = useState<QueueCounts | null>(null);
   const [loading, setLoading] = useState(true);
   const [index, setIndex] = useState(0);
   const [answer, setAnswer] = useState("");
@@ -54,6 +72,7 @@ export function ReviewSession() {
       .then((data) => {
         setCards(data.cards ?? []);
         setProfile(data.profile ?? null);
+        setCounts(data.counts ?? null);
         setLoading(false);
         setStartedAt(Date.now());
       })
@@ -111,7 +130,19 @@ export function ReviewSession() {
       });
       setSessionPoints((p) => p + (data.points ?? 0));
 
-      if (index + 1 >= cards.length) {
+      let nextCards = cards;
+      if (data.requeue) {
+        const requeued: DueCard = {
+          ...current,
+          queueKind: "learning",
+          status: data.status ?? "LEARNING",
+          intervals: data.intervals ?? current.intervals,
+        };
+        nextCards = [...cards, requeued];
+        setCards(nextCards);
+      }
+
+      if (index + 1 >= nextCards.length) {
         setPhase("done");
       } else {
         setIndex((i) => i + 1);
@@ -138,6 +169,8 @@ export function ReviewSession() {
   }
 
   if (!current || phase === "done") {
+    const backlog =
+      (counts?.reviewBacklog ?? 0) + (counts?.newBacklog ?? 0);
     return (
       <div className="panel fade-up">
         <p className="eyebrow">Session</p>
@@ -147,7 +180,9 @@ export function ReviewSession() {
         <p className="mt-4 text-[1.1rem] leading-relaxed text-[var(--ink-soft)]">
           {cards.length === 0
             ? "Aucune carte due pour le moment. Reviens demain, la regularite gagne."
-            : `+${sessionPoints} points. Ta memoire garde mieux ce que tu revisites.`}
+            : backlog > 0
+              ? `+${sessionPoints} points. Dues du jour terminees. Il reste ${backlog} carte${backlog > 1 ? "s" : ""} reportees a demain.`
+              : `+${sessionPoints} points. Ta memoire garde mieux ce que tu revisites.`}
         </p>
         <div className="mt-8 flex flex-col gap-3">
           <Button onClick={() => router.push("/dashboard")}>Voir mon carnet</Button>
@@ -160,6 +195,7 @@ export function ReviewSession() {
   }
 
   const sessionPct = Math.round(((index + (phase === "quality" ? 1 : 0)) / cards.length) * 100);
+  const intervals = current.intervals;
 
   return (
     <div className="space-y-5">
@@ -178,12 +214,23 @@ export function ReviewSession() {
           </span>
         </div>
       ) : null}
+
+      {counts ? (
+        <p className="text-[0.95rem] text-[var(--ink-soft)]">
+          {counts.learning > 0
+            ? `${counts.learning} a reapprendre · `
+            : null}
+          {counts.review} a revoir · {counts.new} nouvelle
+          {counts.new > 1 ? "s" : ""}
+        </p>
+      ) : null}
+
       <div className="flex items-center justify-between gap-3 text-[1rem] text-[var(--ink-soft)]">
         <span className="font-semibold text-[var(--forest-deep)]">
           {index + 1} / {cards.length}
         </span>
         <span className="stat-chip">
-          {current.theme} · {current.level}
+          {queueLabel(current.queueKind)} · {current.theme} · {current.level}
         </span>
       </div>
       <div className="progress-track" aria-label={`Progression ${sessionPct}%`}>
@@ -257,31 +304,46 @@ export function ReviewSession() {
                   : `Attendu : ${check.expected}`}
               </div>
               <p className="text-[1.05rem] text-[var(--ink-soft)]">Comment c etait pour toi ?</p>
-              <div className="grid grid-cols-3 gap-2.5">
-                <Button
-                  variant="secondary"
-                  className="px-2 text-[0.95rem]"
-                  disabled={busy}
-                  onClick={() => rate("HARD")}
-                >
-                  Difficile
+              {check.correct ? (
+                <div className="grid grid-cols-3 gap-2.5">
+                  <Button
+                    variant="secondary"
+                    className="flex h-auto flex-col gap-0.5 px-2 py-2.5 text-[0.95rem]"
+                    disabled={busy}
+                    onClick={() => rate("HARD")}
+                  >
+                    <span>Difficile</span>
+                    <span className="text-[0.8rem] font-normal text-[var(--ink-faint)]">
+                      {intervals.HARD}
+                    </span>
+                  </Button>
+                  <Button
+                    variant="secondary"
+                    className="flex h-auto flex-col gap-0.5 px-2 py-2.5 text-[0.95rem]"
+                    disabled={busy}
+                    onClick={() => rate("MEDIUM")}
+                  >
+                    <span>Moyen</span>
+                    <span className="text-[0.8rem] font-normal text-[var(--ink-faint)]">
+                      {intervals.MEDIUM}
+                    </span>
+                  </Button>
+                  <Button
+                    className="flex h-auto flex-col gap-0.5 px-2 py-2.5 text-[0.95rem]"
+                    disabled={busy}
+                    onClick={() => rate("EASY")}
+                  >
+                    <span>Facile</span>
+                    <span className="text-[0.8rem] font-normal text-[var(--ink-faint)]">
+                      {intervals.EASY}
+                    </span>
+                  </Button>
+                </div>
+              ) : (
+                <Button className="w-full" disabled={busy} onClick={() => rate("HARD")}>
+                  Continuer ({intervals.HARD})
                 </Button>
-                <Button
-                  variant="secondary"
-                  className="px-2 text-[0.95rem]"
-                  disabled={busy}
-                  onClick={() => rate("MEDIUM")}
-                >
-                  Moyen
-                </Button>
-                <Button
-                  className="px-2 text-[0.95rem]"
-                  disabled={busy}
-                  onClick={() => rate("EASY")}
-                >
-                  Facile
-                </Button>
-              </div>
+              )}
               {submitMeta ? (
                 <p className="text-[0.95rem] text-[var(--ink-faint)]">
                   +{submitMeta.points} pts · prep {submitMeta.prepScore} · serie{" "}

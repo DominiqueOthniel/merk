@@ -182,13 +182,13 @@ export function ExamSession({ sourceId }: { sourceId: string }) {
     setScore((s) => ({ ok: s.ok + (isCorrect ? 1 : 0), total: s.total + 1 }));
 
     try {
-      await fetch("/api/review/submit", {
+      await fetch("/api/exam/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           progressId: current.progressId,
           answer: format === "WRITE" || format === "SPEAK" ? "done" : value,
-          quality: isCorrect ? "MEDIUM" : "HARD",
+          correct: isCorrect,
         }),
       });
     } catch {

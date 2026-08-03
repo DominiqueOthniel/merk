@@ -31,10 +31,11 @@ export async function assignReviewCards(opts: {
         },
       ],
     },
-    select: { id: true },
+    select: { id: true, kind: true },
   });
 
   for (const card of cards) {
+    const isExam = (EXAM_CARD_KINDS as readonly string[]).includes(card.kind);
     await prisma.cardProgress.upsert({
       where: {
         userId_cardId: { userId: opts.userId, cardId: card.id },
@@ -42,7 +43,11 @@ export async function assignReviewCards(opts: {
       create: {
         userId: opts.userId,
         cardId: card.id,
-        nextReviewAt: now,
+        status: isExam ? "REVIEW" : "NEW",
+        learningStep: 0,
+        lapses: 0,
+        // NEW cards are introduced by the daily queue, not by nextReviewAt
+        nextReviewAt: isExam ? now : new Date("2099-01-01T00:00:00.000Z"),
       },
       update: {},
     });

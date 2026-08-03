@@ -7,6 +7,8 @@
     "build": "prisma generate && next build",
     "start": "next start",
     "lint": "eslint",
+    "test:srs": "tsx src/lib/srs/scheduler.test.ts",
+    "audit:cloze": "tsx scripts/audit-multi-cloze.ts",
     "db:migrate": "prisma migrate dev",
     "db:seed": "tsx prisma/seed.ts",
     "db:seed:goethe": "tsx scripts/seed-goethe-incremental.ts",

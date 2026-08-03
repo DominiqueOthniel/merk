@@ -89,6 +89,10 @@ model CardProgress {
   user           User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   cardId         String
   card           Card      @relation(fields: [cardId], references: [id], onDelete: Cascade)
+  /// NEW | LEARNING | REVIEW | RELEARNING
+  status         String    @default("NEW")
+  learningStep   Int       @default(0)
+  lapses         Int       @default(0)
   easeFactor     Float     @default(2.5)
   intervalDays   Int       @default(0)
   repetitions    Int       @default(0)
@@ -98,6 +102,7 @@ model CardProgress {
 
   @@unique([userId, cardId])
   @@index([userId, nextReviewAt])
+  @@index([userId, status, nextReviewAt])
 }
 
 model ReviewLog {
@@ -110,9 +115,12 @@ model ReviewLog {
   correct      Boolean
   responseMs   Int?
   pointsEarned Int      @default(0)
+  /// REVIEW | EXAM
+  mode         String   @default("REVIEW")
   createdAt    DateTime @default(now())
 
   @@index([userId, createdAt])
+  @@index([userId, mode, createdAt])
 }
 
 model Challenge {

@@ -105,7 +105,7 @@ async function main() {
   }
 
   const createdCards = [];
-  for (const c of CARDS_DE) {
+  for (const [idx, c] of CARDS_DE.entries()) {
     const themeId = themeMap.get(c.themeSlug);
     if (!themeId) continue;
     const card = await prisma.card.create({
@@ -118,6 +118,7 @@ async function main() {
         answer: c.answer,
         context: c.context,
         hint: c.hint,
+        sourceRef: `cloze:${c.themeSlug}:${idx}`,
       },
     });
     createdCards.push(card);
@@ -232,16 +233,46 @@ async function main() {
   for (const user of [student, student2]) {
     for (let i = 0; i < assignable.length; i++) {
       const card = assignable[i];
-      const dueSoon = examKinds.has(card.kind) ? i % 5 === 0 : i < 12;
+      const isExam = examKinds.has(card.kind);
+      const dueSoon = isExam ? i % 5 === 0 : i < 12;
       const next = new Date(now);
       if (!dueSoon) next.setDate(next.getDate() + 2 + (i % 5));
+
+      let status = "NEW";
+      let repetitions = 0;
+      let intervalDays = 0;
+      let nextReviewAt = new Date("2099-01-01T00:00:00.000Z");
+
+      if (isExam) {
+        status = "REVIEW";
+        repetitions = dueSoon ? 0 : 1;
+        intervalDays = dueSoon ? 0 : 3;
+        nextReviewAt = next;
+      } else if (dueSoon) {
+        // A few cards already in review for demo sessions
+        status = "REVIEW";
+        repetitions = 1;
+        intervalDays = 0;
+        nextReviewAt = now;
+      } else if (i < 30) {
+        status = "NEW";
+      } else {
+        status = "REVIEW";
+        repetitions = 1;
+        intervalDays = 3;
+        nextReviewAt = next;
+      }
+
       progressRows.push({
         userId: user.id,
         cardId: card.id,
+        status,
+        learningStep: 0,
+        lapses: 0,
         easeFactor: 2.5,
-        intervalDays: dueSoon ? 0 : 3,
-        repetitions: dueSoon ? 0 : 1,
-        nextReviewAt: next,
+        intervalDays,
+        repetitions,
+        nextReviewAt,
       });
     }
   }

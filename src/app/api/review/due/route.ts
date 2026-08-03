@@ -3,6 +3,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/db";
 import { EXAM_CARD_KINDS } from "@/lib/content/exam-catalog";
+import { buildReviewQueue, type QueueCardSelect } from "@/lib/srs/queue";
 
 export async function GET() {
   const session = await getServerSession(authOptions);
@@ -11,28 +12,41 @@ export async function GET() {
   }
 
   const now = new Date();
-  const [due, user] = await Promise.all([
+  const [rows, user] = await Promise.all([
     prisma.cardProgress.findMany({
       where: {
         userId: session.user.id,
-        nextReviewAt: { lte: now },
         card: { kind: { notIn: [...EXAM_CARD_KINDS] } },
+        OR: [
+          {
+            status: { in: ["LEARNING", "RELEARNING", "REVIEW"] },
+            nextReviewAt: { lte: now },
+          },
+          { status: "NEW" },
+        ],
       },
       select: {
         id: true,
         cardId: true,
+        status: true,
+        learningStep: true,
+        lapses: true,
+        easeFactor: true,
+        intervalDays: true,
+        repetitions: true,
+        nextReviewAt: true,
+        createdAt: true,
         card: {
           select: {
             prompt: true,
             context: true,
             hint: true,
             level: true,
+            sourceRef: true,
             theme: { select: { nameFr: true } },
           },
         },
       },
-      orderBy: { nextReviewAt: "asc" },
-      take: 20,
     }),
     prisma.user.findUnique({
       where: { id: session.user.id },
@@ -40,21 +54,17 @@ export async function GET() {
     }),
   ]);
 
+  const queue = buildReviewQueue(rows as QueueCardSelect[], now);
+
   return NextResponse.json({
-    count: due.length,
+    count: queue.cards.length,
+    counts: queue.counts,
+    caps: queue.caps,
     profile: {
       cefrLevel: user?.cefrLevel ?? null,
       targetLevel: user?.targetLevel ?? null,
       examProvider: user?.examProvider ?? "TELC",
     },
-    cards: due.map((p) => ({
-      progressId: p.id,
-      cardId: p.cardId,
-      prompt: p.card.prompt,
-      context: p.card.context,
-      hint: p.card.hint,
-      theme: p.card.theme.nameFr,
-      level: p.card.level,
-    })),
+    cards: queue.cards,
   });
 }

@@ -4,7 +4,12 @@ import { z } from "zod";
 import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/db";
 import { answersMatch } from "@/lib/normalize";
-import { applySm2, type QualityLabel } from "@/lib/srs/sm2";
+import {
+  previewIntervals,
+  scheduleCard,
+  type QualityLabel,
+  type CardSrsStatus,
+} from "@/lib/srs/sm2";
 import { computePoints } from "@/lib/srs/points";
 import { updateStreak } from "@/lib/srs/streak";
 import { EXAM_CARD_KINDS } from "@/lib/content/exam-catalog";
@@ -34,29 +39,45 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Carte introuvable" }, { status: 404 });
     }
 
+    if ((EXAM_CARD_KINDS as readonly string[]).includes(progress.card.kind)) {
+      return NextResponse.json(
+        { error: "Utilise le flux examen pour ces cartes" },
+        { status: 400 }
+      );
+    }
+
     const correct = answersMatch(data.answer, progress.card.answer);
     const quality = (correct ? data.quality : "HARD") as QualityLabel;
 
-    const sm2 = applySm2(
-      {
-        easeFactor: progress.easeFactor,
-        intervalDays: progress.intervalDays,
-        repetitions: progress.repetitions,
-      },
-      quality
-    );
+    const before = {
+      status: progress.status as CardSrsStatus,
+      learningStep: progress.learningStep,
+      lapses: progress.lapses,
+      easeFactor: progress.easeFactor,
+      intervalDays: progress.intervalDays,
+      repetitions: progress.repetitions,
+    };
+    const scheduled = scheduleCard(before, quality);
+    const intervals = previewIntervals(before);
 
     const streak = updateStreak(progress.user.lastReviewDay, progress.user.streakDays);
     const points = computePoints(quality, streak.streakDays, correct);
+
+    const requeue =
+      (scheduled.status === "LEARNING" || scheduled.status === "RELEARNING") &&
+      scheduled.nextReviewAt.getTime() - Date.now() <= 2 * 60_000;
 
     await prisma.$transaction(async (tx) => {
       await tx.cardProgress.update({
         where: { id: progress.id },
         data: {
-          easeFactor: sm2.easeFactor,
-          intervalDays: sm2.intervalDays,
-          repetitions: sm2.repetitions,
-          nextReviewAt: sm2.nextReviewAt,
+          status: scheduled.status,
+          learningStep: scheduled.learningStep,
+          lapses: scheduled.lapses,
+          easeFactor: scheduled.easeFactor,
+          intervalDays: scheduled.intervalDays,
+          repetitions: scheduled.repetitions,
+          nextReviewAt: scheduled.nextReviewAt,
           lastReviewedAt: new Date(),
         },
       });
@@ -69,6 +90,7 @@ export async function POST(req: Request) {
           correct,
           responseMs: data.responseMs,
           pointsEarned: points,
+          mode: "REVIEW",
         },
       });
 
@@ -110,15 +132,20 @@ export async function POST(req: Request) {
       prisma.cardProgress.count({
         where: {
           userId: session.user.id,
+          status: { in: ["LEARNING", "RELEARNING", "REVIEW"] },
           nextReviewAt: { lte: now },
           card: { kind: { notIn: [...EXAM_CARD_KINDS] } },
         },
       }),
       prisma.reviewLog.count({
-        where: { userId: session.user.id, createdAt: { gte: startOfDay } },
+        where: {
+          userId: session.user.id,
+          mode: "REVIEW",
+          createdAt: { gte: startOfDay },
+        },
       }),
       prisma.reviewLog.findMany({
-        where: { userId: session.user.id },
+        where: { userId: session.user.id, mode: "REVIEW" },
         orderBy: { createdAt: "desc" },
         take: 20,
         select: { correct: true },
@@ -152,9 +179,13 @@ export async function POST(req: Request) {
       expected: progress.card.answer,
       context: progress.card.context,
       points,
-      nextReviewAt: sm2.nextReviewAt,
+      nextReviewAt: scheduled.nextReviewAt,
+      intervalLabel: scheduled.intervalLabel,
+      status: scheduled.status,
+      requeue,
       prepScore: prepValue,
       streakDays: streak.streakDays,
+      intervals,
     });
   } catch (e) {
     if (e instanceof z.ZodError) {

@@ -26,15 +26,16 @@ export async function GET() {
       prisma.cardProgress.count({
         where: {
           userId,
+          status: { in: ["LEARNING", "RELEARNING", "REVIEW"] },
           nextReviewAt: { lte: now },
           card: { kind: practiceKinds },
         },
       }),
       prisma.reviewLog.count({
-        where: { userId, createdAt: { gte: startOfDay } },
+        where: { userId, mode: "REVIEW", createdAt: { gte: startOfDay } },
       }),
       prisma.reviewLog.findMany({
-        where: { userId },
+        where: { userId, mode: "REVIEW" },
         orderBy: { createdAt: "desc" },
         take: 20,
         select: { correct: true },
