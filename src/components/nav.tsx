@@ -7,7 +7,7 @@ import { Brand } from "@/components/brand";
 import { examProviderLabel } from "@/lib/exam-provider";
 
 const studentLinks = [
-  { href: "/review", label: "Reviser" },
+  { href: "/anki", label: "Anki" },
   { href: "/exam", label: "Examen" },
   { href: "/dashboard", label: "Carnet" },
   { href: "/subscription", label: "Pro" },

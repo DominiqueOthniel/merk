@@ -8,6 +8,6 @@ export default async function AdminLayout({
 }) {
   const session = await getSession();
   if (!session?.user) redirect("/login");
-  if (session.user.role !== "CENTER_ADMIN") redirect("/review");
+  if (session.user.role !== "CENTER_ADMIN") redirect("/anki");
   return children;
 }

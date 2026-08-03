@@ -16,7 +16,7 @@ export default async function HomePage() {
   if (session?.user) {
     if (session.user.role === "CENTER_ADMIN") redirect("/admin");
     if (!session.user.placedAt) redirect("/placement");
-    redirect("/review");
+    redirect("/anki");
   }
 
   return (

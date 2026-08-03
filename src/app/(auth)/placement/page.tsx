@@ -59,7 +59,7 @@ export default function PlacementPage() {
           <p className="mt-4 text-[1.1rem] leading-relaxed text-[var(--ink-soft)]">
             {result.correct}/{result.total} reponses justes. Tes cartes sont pretes.
           </p>
-          <Button className="mt-8 w-full" onClick={() => router.push("/review")}>
+          <Button className="mt-8 w-full" onClick={() => router.push("/anki")}>
             Commencer a reviser
           </Button>
         </div>

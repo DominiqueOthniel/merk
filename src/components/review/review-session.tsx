@@ -51,7 +51,11 @@ function queueLabel(kind: DueCard["queueKind"]): string {
   return "Revision";
 }
 
-export function ReviewSession() {
+export function ReviewSession({
+  onBackToHub,
+}: {
+  onBackToHub?: () => void;
+} = {}) {
   const router = useRouter();
   const [cards, setCards] = useState<DueCard[]>([]);
   const [profile, setProfile] = useState<ReviewProfile | null>(null);
@@ -185,7 +189,14 @@ export function ReviewSession() {
               : `+${sessionPoints} points. Ta memoire garde mieux ce que tu revisites.`}
         </p>
         <div className="mt-8 flex flex-col gap-3">
-          <Button onClick={() => router.push("/dashboard")}>Voir mon carnet</Button>
+          {onBackToHub ? (
+            <Button onClick={onBackToHub}>Retour au systeme Anki</Button>
+          ) : (
+            <Button onClick={() => router.push("/anki")}>Retour Anki</Button>
+          )}
+          <Button variant="secondary" onClick={() => router.push("/dashboard")}>
+            Voir mon carnet
+          </Button>
           <Button variant="secondary" onClick={() => router.push("/exam")}>
             Entrainer l examen
           </Button>

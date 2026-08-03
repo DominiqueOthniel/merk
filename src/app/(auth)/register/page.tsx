@@ -121,7 +121,7 @@ function RegisterForm() {
       examProvider,
     });
     setBusy(false);
-    router.push("/review");
+    router.push("/anki");
   }
 
   return (

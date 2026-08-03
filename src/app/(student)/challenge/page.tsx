@@ -60,7 +60,7 @@ export default function ChallengePage() {
             {data.challenge.progress} / {data.challenge.goalCards} cartes · fin{" "}
             {new Date(data.challenge.endsAt).toLocaleDateString("fr-FR")}
           </p>
-          <Link href="/review" className="btn-link btn-link-primary mt-7">
+          <Link href="/anki" className="btn-link btn-link-primary mt-7">
             Contribuer au defi
           </Link>
         </section>

@@ -154,7 +154,7 @@ export default function DashboardPage() {
           ) : null}
 
           <div className="mt-6 grid gap-3 sm:grid-cols-2">
-            <Link href="/review" className="btn-link btn-link-primary">
+            <Link href="/anki" className="btn-link btn-link-primary">
               {data.dueCount > 0
                 ? `Reviser ${Math.min(data.dueCount, 20)} carte${data.dueCount > 1 ? "s" : ""}`
                 : "Ouvrir la revision"}

@@ -324,6 +324,10 @@ a,
   min-height: clamp(250px, 42vw, 340px);
 }
 
+.anki-hero {
+  min-height: clamp(220px, 36vw, 300px);
+}
+
 .exam-choice {
   position: relative;
   display: flex;

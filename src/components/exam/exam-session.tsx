@@ -222,7 +222,7 @@ export function ExamSession({ sourceId }: { sourceId: string }) {
         </p>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <Button onClick={() => router.push("/exam")}>Retour aux series</Button>
-          <Button variant="secondary" onClick={() => router.push("/review")}>
+          <Button variant="secondary" onClick={() => router.push("/anki")}>
             Revision du jour
           </Button>
         </div>
