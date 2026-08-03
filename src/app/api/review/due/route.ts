@@ -4,6 +4,7 @@ import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/db";
 import { EXAM_CARD_KINDS } from "@/lib/content/exam-catalog";
 import { buildReviewQueue, type QueueCardSelect } from "@/lib/srs/queue";
+import { ensureSchema } from "@/lib/ensure-schema";
 
 export async function GET() {
   const session = await getServerSession(authOptions);
@@ -12,6 +13,7 @@ export async function GET() {
   }
 
   try {
+    await ensureSchema();
     const now = new Date();
     const [rows, user] = await Promise.all([
       prisma.cardProgress.findMany({
