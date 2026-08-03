@@ -125,7 +125,7 @@ function advanceLearning(
   }
 
   // Graduate to review
-  let intervalDays = quality === "EASY" ? 2 : 1;
+  const intervalDays = quality === "EASY" ? 2 : 1;
   const nextReviewAt = addDays(now, intervalDays);
   return {
     status: "REVIEW",

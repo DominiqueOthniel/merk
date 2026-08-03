@@ -50,7 +50,6 @@ export function ExamListenPlayer({
         /* ignore */
       }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [audioUrl, script, title, maxPlays]);
 
   useEffect(() => {
@@ -58,7 +57,6 @@ export function ExamListenPlayer({
       stopPlayback();
       if (objectUrlRef.current) URL.revokeObjectURL(objectUrlRef.current);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function stopPlayback() {

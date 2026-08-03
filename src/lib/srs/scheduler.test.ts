@@ -1,5 +1,5 @@
 import { scheduleCard, LEARNING_STEPS_MIN, REVIEW_CAP, NEW_CAP } from "./scheduler";
-import type { QualityLabel, SchedulerState } from "./types";
+import type { SchedulerState } from "./types";
 import {
   burySiblingCards,
   noteKeyFromSourceRef,

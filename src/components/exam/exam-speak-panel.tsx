@@ -87,7 +87,6 @@ export function ExamSpeakPanel({
       return null;
     });
     cleanupRecording();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sourceId]);
 
   function cleanupRecording() {
